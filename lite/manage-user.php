@@ -88,7 +88,17 @@
                     </div>
                     <div class="col-md-8">
                       <div class="card">
+                        <div class="card-block bg-info">
+                          <h4 class="text-white card-title">Users</h4>
+                      
+                      </div>
                           <div class="card-block">
+                            <div class="message-box contact-box">
+                            <h2 class="add-ct-btn">
+                              <button type="button" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                            </h2>
+                          </div>
+
                               <form class="form-horizontal form-material ">
                                 <div class="table-responsive">
                                     <table class="table text-center">
