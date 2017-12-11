@@ -13,7 +13,7 @@
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 
                     <!-- Light Logo icon -->
-                      <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                      <img src="../images/bird_logo.png" alt="homepage" class="light-logo" width="50px" height="50px" />
                     </b>
                 <!--End Logo icon -->
                 <!-- Logo text --><span>
@@ -78,3 +78,19 @@
         <!-- item--><a id="btLogout"  class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
     <!-- End Bottom points-->
 </aside>
+
+<!-- Modal -->
+<div class="modal fade" id="logoutModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="messageModalLabel">Sign-out ?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <button id="confirmLogout"type="button" class="btn btn-info">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,7 +16,7 @@
       <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
           <div class="navbar-header">
               <a class="navbar-brand" href="login.php">
-              <b><img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" /></b>
+              <b><img src="../images/bird_logo.png" alt="homepage" class="light-logo" width="50px" height="50px"/></b>
               <span><img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span></a>
           </div>
       </nav>
@@ -46,9 +46,11 @@
                       <input id="password" type="password" class="form-control" name="password" placeholder="Password">
                     </div>
                   </form>
+
                   <div class="text-center">
-                    <button type="button" class="btn btn-success" id="btLogin" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> กำลังเข้าสู่ระบบ...">Sign-in</button>
+                    <button  type="button" class="btn btn-success" id="btLogin" >Sign-in</button>
                   </div>
+
               </div>
           </div>
       </div>
@@ -69,7 +71,7 @@
         <h4 class="modal-title" id="messageModalLabel">Message</h4>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
       </div>
     </div>
   </div>
