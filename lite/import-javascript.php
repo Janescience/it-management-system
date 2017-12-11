@@ -27,3 +27,4 @@
 <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
 
 <script src="../js/login.js"></script>
+<script src="../js/check_not_login.js"></script>

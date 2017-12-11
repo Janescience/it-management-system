@@ -1,14 +1,14 @@
 $(document).ready(function(){
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyA4WVo9ZjdTKHW1ALNRwbuoqx5uxP8gsWM",
-    authDomain: "itms-management-system.firebaseapp.com",
-    databaseURL: "https://itms-management-system.firebaseio.com",
-    projectId: "itms-management-system",
-    storageBucket: "itms-management-system.appspot.com",
-    messagingSenderId: "131587290108"
-  };
-  firebase.initializeApp(config);
+    var config = {
+      apiKey: "AIzaSyA4WVo9ZjdTKHW1ALNRwbuoqx5uxP8gsWM",
+      authDomain: "itms-management-system.firebaseapp.com",
+      databaseURL: "https://itms-management-system.firebaseio.com",
+      projectId: "itms-management-system",
+      storageBucket: "itms-management-system.appspot.com",
+      messagingSenderId: "131587290108"
+    };
+    firebase.initializeApp(config);
 
   //create firebase references
  var Auth = firebase.auth();
@@ -38,7 +38,7 @@ var contactsRef = dbRef.ref('contacts')
 
 $('#btCreateUser').on('click',function(e){
   e.preventDefault();
-  $('#messageModalLabel').html(spanText('<i class="fa fa-cog fa-spin"></i>', ['center', 'info']));
+  $('#messageModalLabel').html("Processing...  "+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>', ['center', 'info']));
    $('#messageModal').modal('show');
 
    var data = {
@@ -99,7 +99,7 @@ $('#btCreateUser').on('click',function(e){
    e.preventDefault();
    if($('#email').val() != '' && $('#password').val() != ''){
 
-     $('#messageModalLabel').html(spanText('<i class="fa fa-cog fa-spin"></i> Please wait...' , ['center', 'info']))
+     $('#messageModalLabel').html("Please wait..."+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>' , ['center', 'info']));
      $('#messageModal').modal('show');
 
      var data = {
@@ -138,11 +138,10 @@ $('#btCreateUser').on('click',function(e){
     $('#confirmLogout').on('click',function(){
    Auth.signOut().then(function() {
   window.location.href = "login.php"
-}, function(error) {
-  // An error happened.
+  }, function(error) {
   window.location.href = "index.php"
-});
-});
+    });
+  });
  });
 
 })

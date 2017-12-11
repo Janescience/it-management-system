@@ -1,7 +1,7 @@
 
   <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-<title>Material Pro Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+<link rel="icon" type="image/png" sizes="16x16" href="../images/icon_web.png">
+<title>Information of Technology Management System</title>
 <!-- Bootstrap Core CSS -->
 <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- chartist CSS -->
@@ -14,9 +14,3 @@
 <link href="css/style.css" rel="stylesheet">
 <!-- You can change the theme colors from here -->
 <link href="css/colors/blue.css" id="theme" rel="stylesheet">
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
