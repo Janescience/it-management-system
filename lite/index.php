@@ -9,12 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
-
-    <div w3-include-html="navbar.html"></div>
-
-
-
      <?php  include('header.php') ?>
 
 </head>

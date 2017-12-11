@@ -13,25 +13,23 @@ $(document).ready(function(){
   //create firebase references
  var Auth = firebase.auth();
  var dbRef = firebase.database();
+var contactsRef = dbRef.ref('contacts')
  var usersRef = dbRef.ref('users')
  var auth = null;
 
 
- Auth.onAuthStateChanged(function(user) {
- var nameProfile = usersRef.child(user.uid).child("name");
- nameProfile.on('value',snap=>{
-   $('#emailProfile').val(snap.val()) ;
- });
- });
 
-
-
+ $('#password').keypress(function(e){
+      if(e.keyCode==13)
+      $('#btLogin').click();
+    });
 
  var rootRef = dbRef.ref().child("users");
 
  rootRef.on("child_added",snap => {
    var name = snap.child("name").val();
    var status = snap.child("status").val();
+
 
    $('#list_user').append("<tr><td>" + name + "</td><td>" + status +
                           "</td><td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
@@ -99,11 +97,10 @@ $('#btCreateUser').on('click',function(e){
 
  $('#btLogin').on('click',function (e) {
    e.preventDefault();
-
-   $('#messageModalLabel').html(spanText("Please wait...", ['success']))
-   $('#messageModal').modal('show');
-
    if($('#email').val() != '' && $('#password').val() != ''){
+
+     $('#messageModalLabel').html(spanText('<i class="fa fa-cog fa-spin"></i> Please wait...' , ['center', 'info']))
+     $('#messageModal').modal('show');
 
      var data = {
        email: $('#email').val(),
@@ -115,6 +112,10 @@ $('#btCreateUser').on('click',function(e){
         setTimeout(function () {
           $('#messageModal').modal('hide');
           $('.unauthenticated, .userAuth').toggleClass('unauthenticated').toggleClass('authenticated');
+          contactsRef.child(auth.uid)
+           .on("child_added", function(snap) {
+             console.log("added", snap.key(), snap.val());
+           });
           window.location.href = "index.php";
         })
      })
@@ -123,15 +124,24 @@ $('#btCreateUser').on('click',function(e){
           $('#messageModalLabel').html(spanText(error.code, ['danger']))
           $('#messageModal').modal('show');
         });
+   }else if($('#email').val() == '' || $('#password').val() == ''){
+     $('#messageModalLabel').html(spanText('login failed!' , ['danger']))
+     $('#messageModal').modal('show');
+   }else{
+     $('#messageModalLabel').html(spanText('login failed!' , ['danger']))
+     $('#messageModal').modal('show');
    }
  });
 
  $('#btLogout').on('click',function(){
+   $('#logoutModal').modal('show');
+    $('#confirmLogout').on('click',function(){
    Auth.signOut().then(function() {
   window.location.href = "login.php"
 }, function(error) {
   // An error happened.
   window.location.href = "index.php"
+});
 });
  });
 
