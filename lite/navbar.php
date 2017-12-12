@@ -37,11 +37,70 @@
             <!-- User profile and search -->
             <!-- ============================================================== -->
             <ul class="navbar-nav my-lg-0">
+              <li class="nav-item dropdown show">
+                            <a class="nav-link dropdown-toggle text-muted text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <i class="mdi mdi-message"></i>
+                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox scale-up show">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">Notifications</div>
+                                    </li>
+                                    <li style="overflow: visible;">
+                                        <div class="slimScrollDiv" style="position: relative; overflow-x: visible; overflow-y: hidden; width: auto; height: 250px;"><div class="message-center" style="overflow: hidden; width: auto; height: 250px;">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-danger btn-circle"><i class="fa fa-link"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>Luanch Admin</h5> <span class="mail-desc">Just see the my new admin!</span> <span class="time">9:30 AM</span> </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-success btn-circle"><i class="ti-calendar"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>Event today</h5> <span class="mail-desc">Just a reminder that you have event</span> <span class="time">9:10 AM</span> </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-info btn-circle"><i class="ti-settings"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>Settings</h5> <span class="mail-desc">You can customize this template as you want</span> <span class="time">9:08 AM</span> </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-primary btn-circle"><i class="ti-user"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
+                                            </a>
+                                        </div><div class="slimScrollBar" style="background: rgb(220, 220, 220); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 192.901px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                 <!-- ============================================================== -->
                 <!-- Profile -->
                 <!-- ============================================================== -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="profile-pic m-r-10" />User</a>
+                <li class="nav-item dropdown show">
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src="../assets/images/users/user.png" alt="user" class="profile-pic m-r-10" />User
+                      <div class="dropdown-menu dropdown-menu-right scale-up show">
+                                  <ul class="dropdown-user">
+                                      <li>
+                                          <div class="dw-user-box">
+                                              <div class="u-img"><img src="../assets/images/users/user.png" alt="user"></div>
+                                              <div class="u-text">
+                                                  <h4>User</h4>
+                                                  <p class="text-muted">mail@gmail.com</p>
+                                                  <a href="pages-profile.php" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                          </div>
+                                      </li>
+
+                                      <li role="separator" class="divider"></li>
+                                      <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                  </ul>
+                      </div></a>
                 </li>
             </ul>
         </div>
@@ -53,8 +112,16 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li> <a class="waves-effect waves-dark" href="index.php" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Main</span></a>
-                </li>
+                <li > <a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Main</span></a>
+                  <ul aria-expanded="true" class="collapse in">
+                               <li class="active"><a href="index.php">Home</a></li>
+                               <li><a href="">About</a></li>
+                               <li><a href="">Course</a></li>
+                               <li><a href="">Recruit</a></li>
+                               <li><a href="">Research</a></li>
+                               <li><a href="">Student</a></li>
+                               <li><a href="">Alumni</a></li>
+                           </ul></li>
                 <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                 </li>
                 <li> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">Manage User</span></a>
