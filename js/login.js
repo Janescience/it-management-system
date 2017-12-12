@@ -31,13 +31,19 @@ var contactsRef = dbRef.ref('contacts')
    var status = snap.child("status").val();
 
 
-   $('#list_user').append("<tr><td>" + name + "</td><td>" + status +
+$('#list_user').append("<tr><td>" + name + "</td><td>" + status +
                           "</td><td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
                           "  <button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
- });
+});
+
+$('#btAddUser').on('click',function(e){
+  e.preventDefault();
+   $('#addUserModal').modal('show');
+});
 
 $('#btCreateUser').on('click',function(e){
   e.preventDefault();
+  $('#addUserModal').modal('hide');
   $('#messageModalLabel').html("Processing...  "+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>', ['center', 'info']));
    $('#messageModal').modal('show');
 

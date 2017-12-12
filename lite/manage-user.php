@@ -38,64 +38,16 @@
                 <!-- Row -->
                 <div class="row">
 
-                    <!-- Column -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-block">
-                                <form class="form-horizontal form-material">
-                                    <div class="form-group">
-                                        <label class="col-md-12">Full Name</label>
-                                        <div class="col-md-12">
-                                            <input id="nameCreateUser" type="text"  class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="example-email" class="col-md-12">Email</label>
-                                        <div class="col-md-12">
-                                            <input id="emailCreateUser" type="email"  class="form-control form-control-line" name="example-email" id="example-email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Password</label>
-                                        <div class="col-md-12">
-                                            <input id="passwordCreateUser" type="password"  class="form-control ">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Phone No</label>
-                                        <div class="col-md-12">
-                                            <input id="phoneCreateUser" type="text"  class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">Select Rank</label>
-                                        <div class="col-sm-12">
-                                            <select id="rankCreateUser" class="form-control form-control-line">
-                                                <option>Admin</option>
-                                                <option>User</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12 text-center">
-                                            <button id="btCreateUser" class="btn btn-success">Sign-up</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                       <div class="card">
                         <div class="card-block bg-info">
                           <h4 class="text-white card-title">Users</h4>
-                      
+
                       </div>
                           <div class="card-block">
                             <div class="message-box contact-box">
                             <h2 class="add-ct-btn">
-                              <button type="button" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                              <button type="button" id="btAddUser" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                             </h2>
                           </div>
 
@@ -139,6 +91,72 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addUserModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="messageModalLabel">Create User</h4>
+          </div>
+            <br>
+         <!-- Column -->
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-block">
+
+          <form class="form-horizontal form-material">
+
+            <div class="form-group">
+              <label class="col-md-12">Full Name</label>
+                <div class="col-md-12">
+                  <input id="nameCreateUser" type="text"  class="form-control form-control-line">
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label for="example-email" class="col-md-12">Email</label>
+                <div class="col-md-12">
+                  <input id="emailCreateUser" type="email"  class="form-control form-control-line" name="example-email" id="example-email">
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-12">Password</label>
+                <div class="col-md-12">
+                  <input id="passwordCreateUser" type="password"  class="form-control ">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-12">Phone No</label>
+                <div class="col-md-12">
+                    <input id="phoneCreateUser" type="text"  class="form-control form-control-line">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-12">Select Rank</label>
+                <div class="col-sm-12">
+                    <select id="rankCreateUser" class="form-control form-control-line">
+                        <option>Admin</option>
+                        <option>User</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 text-center">
+                    <button id="btCreateUser" class="btn btn-success">Sign-up</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <?php include('import-javascript.php')?>
 

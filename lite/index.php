@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
      <?php  include('header.php') ?>
 
 </head>
@@ -21,7 +23,6 @@
     </div>
 
     <div id="main-wrapper">
-
 
       <?php  include('navbar.php') ?>
 
@@ -37,27 +38,49 @@
                     </div>
                 </div>
 
-                <!-- Row -->
                 <div class="row">
-                    <!-- Column -->
                     <div class="col-lg-12">
                         <div class="card">
-
-                                    <div class="card-block">
-
-                                    </div>
+                            <div class="card-block">
+                                <div class="w3-content w3-display-container">
+                                  <img class="mySlides" src="../assets/images/big/slide-1.jpg" style="width:100%">
+                                  <img class="mySlides" src="../assets/images/big/slide-4.jpg" style="width:100%">
+                                  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                                  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+          </div>
+      </div>
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
     </div>
-
     <?php include('import-javascript.php')?>
+    <script>
 
+      var slideIndex = 1;
+
+      showDivs(slideIndex);
+
+      function plusDivs(n) {
+        showDivs(slideIndex += n);
+      }
+
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        x[slideIndex-1].style.display = "block";
+      }
+
+    </script>
 </body>
 
 </html>
