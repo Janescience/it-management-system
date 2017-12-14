@@ -116,7 +116,13 @@
                   <ul aria-expanded="true" class="collapse in">
                                <li class="active"><a href="index.php">Home</a></li>
                                <li><a href="">About</a></li>
-                               <li><a href="">Course</a></li>
+                               <li><a class="has-arrow waves-effect waves-dark "href="">Course</a>
+                                <ul aria-expanded="true" class="collapse in">
+                               <li class="active"><a href="index.php">Bachelor</a></li>
+                               <li class="active"><a href="index.php">Master</a></li>
+                               <li class="active"><a href="index.php">Doctorate</a></li>                         
+                                </ul>
+                              </li>                         
                                <li><a href="">Recruit</a></li>
                                <li><a href="">Research</a></li>
                                <li><a href="">Student</a></li>
