@@ -19,7 +19,7 @@
                 <!-- Logo text --><span>
 
                  <!-- Light Logo text -->
-                   <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span></a>
+                   <img src="../assets/images/logo-it.png" class="light-logo" alt="homepage" /></span></a>
         </div>
         <!-- ============================================================== -->
         <!-- End Logo -->
@@ -115,24 +115,16 @@
                 <li > <a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Main</span></a>
                   <ul aria-expanded="true" class="collapse in">
                                <li class="active"><a href="index.php">Home</a></li>
-                               <li><a href="">About</a></li>
+                               <li><a href="about.php"  >About</a>
+                               </li>
                                <li><a href="">Course</a></li>
-                               <li><a href="">Recruit</a></li>
-                               <li><a href="">Research</a></li>
                                <li><a href="">Student</a></li>
-                               <li><a href="">Alumni</a></li>
                            </ul></li>
                 <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                 </li>
                 <li> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">Manage User</span></a>
                 </li>
-                <li> <a class="waves-effect waves-dark" href="icon-material.php" aria-expanded="false"><i class="mdi mdi-emoticon"></i><span class="hide-menu">Icons</span></a>
-                </li>
 
-                <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank Page</span></a>
-                </li>
-                <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">Error 404</span></a>
-                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->
@@ -156,6 +148,34 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         <button id="confirmLogout"type="button" class="btn btn-info">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="uploadModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="messageModalLabel">Uploading...</h4>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="messageModalLabel">Deleting...</h4>
+      </div>
+      <div class="modal-footer">
       </div>
     </div>
   </div>

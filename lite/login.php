@@ -17,7 +17,7 @@
           <div class="navbar-header">
               <a class="navbar-brand" href="login.php">
               <b><img src="../images/bird_logo.png" alt="homepage" class="light-logo" width="50px" height="50px"/></b>
-              <span><img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span></a>
+              <span><img src="../assets/images/logo-it.png" class="light-logo" alt="homepage" /></span></a>
           </div>
       </nav>
   </header>
@@ -103,10 +103,7 @@
 <script src="js/custom.min.js"></script>
 <!-- ============================================================== -->
 <!-- This page plugins -->
-<!-- ============================================================== -->
-<!-- chartist chart -->
-<script src="../assets/plugins/chartist-js/dist/chartist.min.js"></script>
-<script src="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+
 <!--c3 JavaScript -->
 <script src="../assets/plugins/d3/d3.min.js"></script>
 <script src="../assets/plugins/c3-master/c3.min.js"></script>
