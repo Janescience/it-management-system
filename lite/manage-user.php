@@ -42,7 +42,6 @@
                       <div class="card">
                         <div class="card-block bg-info">
                           <h4 class="text-white card-title">Users</h4>
-
                       </div>
                           <div class="card-block">
                             <div class="message-box contact-box">
