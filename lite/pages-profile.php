@@ -43,7 +43,7 @@
                           <ul class="nav nav-tabs profile-tab" role="tablist">
                               <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
                               <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#history" role="tab">History | Work</a> </li>
-                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab">Office Owner</a> </li>
+                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab">Office Hours</a> </li>
                           </ul>
                           <!-- Tab panes -->
                           <div class="tab-content">
@@ -97,23 +97,113 @@
 
                                   </div>
                               </div>
+
+                              <!-- Third Tab -->
                               <div class="tab-pane" id="office" role="tabpanel">
+                                <!-- <div class="col-lg-12"> -->
                                   <div class="card-block">
+                                    <div class="row">
+                                      <div class="col-lg-6 col-lg-push-5">
+                                        <center class="m-t-30"> <img src="../assets/images/users/user.png" id="teacherOffPic" class="img-circle" width="150" />
+                                        <h4 class="card-title m-t-10">Teacher - name</h4>
+                                      </div>
+                                      <div class="col-lg-4 col-lg-pull-5" style="padding-top:50px;">
+                                        <div class="card-body card-outline-info">
+                                          <h3 class="card-header text-white">Contact</h3>
+                                          <div><i class="mdi mdi-email"></i> : <label for="email" id="tEmail">teacher@email.com</label></div>
+                                          <div><i class="mdi mdi-cellphone-iphone"></i> : <label for="tel" id="tTel">086-6498231</label></div>
+                                          <div><i class="mdi mdi-phone-classic"></i> : <label for="OfTel" id="tOffTel">044-123-456-789-1</label></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                        <div class="demo-radio " style="padding-right:40px;" id="OffStatus"><center class="m-t-30">
+                                          <input type="radio" name="status" id="md_radio_32" class="with-gap radio-col-light-green" >
+                                          <label for="md_radio_32">Available</label>
+                                          <input type="radio" name="status" id="md_radio_27" class="with-gap radio-col-light-blue" >
+                                          <label for="md_radio_27">Not in the Office</label>
+                                          <input type="radio" name="status" id="md_radio_34" class="with-gap radio-col-amber" >
+                                          <label for="md_radio_34">Be back</label>
+                                          <input type="radio" name="status" id="md_radio_21" class="with-gap radio-col-red" >
+                                          <label for="md_radio_21">Don't Disturb</label>
+                                        </div>
+                                        <center class="m-t-30">
+                                      <div class="col-lg-10" >
+                                        <div class="card">
+                                          <div class="card-body">
+                                            <h4 class="card-title">Schedule</h4>
+                                            <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
+                                            <div class="table-responsive">
+                                              <table class="table table-hover color-table info-table" id="OffTable">
+                                                <thead>
+                                                  <tr>
+                                                     <th>Day</th>
+                                                     <th>Place</th>
+                                                     <th>From</th>
+                                                     <th>To</th>
+                                                     <th>Status</th>
+                                                 </tr>
+                                               </thead>
+                                               <tbody>
+                                                 <tr>
+                                                     <td>Monday</td>
+                                                     <td>F7</td>
+                                                     <td>10.00 am</td>
+                                                     <td>01.00 pm</td>
+                                                     <td><span class="label label-danger">admin</span> </td>
+                                               </tr>
+                                               <tr>
+                                                   <td>Tuesday</td>
+                                                   <td>B1</td>
+                                                   <td>08.00 am</td>
+                                                   <td>12.00 am</td>
+                                                   <td><span class="label label-info">member</span> </td>
+                                               </tr>
+                                               <tr>
+                                                   <td>Wednesday</td>
+                                                   <td>C1</td>
+                                                   <td>09.00 am</td>
+                                                   <td>03.00 pm</td>
+                                                   <td><span class="label label-warning">developer</span> </td>
+                                               </tr>
+                                               <tr>
+                                                   <td>Thusday</td>
+                                                   <td>-</td>
+                                                   <td>-</td>
+                                                   <td>-</td>
+                                                   <td><span class="label label-success">supporter</span> </td>
+                                               </tr>
+                                               <tr>
+                                                   <td>Friday</td>
+                                                   <td>C1</td>
+                                                   <td>01.00 pm</td>
+                                                   <td>05.00 pm</td>
+                                                   <td><span class="label label-info">member</span> </td>
+                                               </tr>
+                                             </tbody>
+                                           </table>
+                                         </div>
+                                       </div>
+                                     </div>
+                                      <input type="submit" class="btn btn-success " value="Submit Button" id="OffSave">
+                                     <input type="reset" class="btn btn-danger  " value="Cancel" id="OffCancel">
+                                   </center>
+                                   </div>
+                                  </div>
+                                <!-- </div> -->
+                              </div>
 
-
-                          </div>
                       </div>
                   </div>
-              </div>
-          </div>
-        </div>
-      </div>
+                </div>
+
             <footer class="footer">
                 Copyright © Information Technology 2017
             </footer>
 
         </div>
     </div>
+  </div>
+</div>
 
     <?php include('import-javascript.php')?>
 
