@@ -212,31 +212,29 @@
       </div>
       <!-- Modal -->
       <div class="modal fade" id="editHeaderModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="messageModalLabel">Manage Header</h4>
             </div>
             <div class="modal-body">
-              <div class="btn-group">
-                  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Selection
-                  </button>
-
-                  <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 56px, 0px); top: 0px; left: 0px; will-change: transform;">
-                      <a class="dropdown-item" href="#">Header Slide First</a>
-                      <a class="dropdown-item" href="#">Header Slide Second</a>
-                      <a class="dropdown-item" href="#">Header Slide Third</a>
+              <div class="form-group">
+                  <div class="col-sm-12">
+                      <select id="selectHeaderSlide" class="form-control ">
+                          <option>Header Slide First</option>
+                          <option>Header Slide Second</option>
+                      </select>
                   </div>
               </div>
                     <hr>
               <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadImageHeader">
+
               <h5 class="modal-title" >Topic</h5>
-              <input class="form-control " type="text"  id="textTopic">
-              <h5 class="modal-title" >Manage Header</h5>
+              <textarea class="form-control" rows="2" id="textTopic"></textarea>
+              <h5 class="modal-title" >Details</h5>
               <input class="form-control" type="text"   id="">
               <h5 class="modal-title" >Link URL</h5>
-              <input class="form-control" type="text"   id="linkUrl">
+              <textarea class="form-control" rows="2" id="linkUrl"></textarea>
             </div>
             <div class="modal-footer">
               <button id="btUploadImageHeader" type="button" class="btn btn-outline-success "><i class="mdi mdi-folder-image"></i> Upload</button>
@@ -252,6 +250,7 @@
 
 
     <?php include('import-javascript.php')?>
+    <script src="../js/index.js"></script>
     <script>
 
       var slideIndex = 1;
