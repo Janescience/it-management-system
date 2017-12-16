@@ -114,11 +114,10 @@
             <ul id="sidebarnav">
                 <li > <a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Main</span></a>
                   <ul aria-expanded="true" class="collapse in">
-                               <li class="active"><a href="index.php">Home</a></li>
-                               <li><a href="about.php"  >About</a>
-                               </li>
-                               <li><a href="">Course</a></li>
-                               <li><a href="">Student</a></li>
+                               <li ><a href="index.php">Home</a></li>
+                               <li><a href="about.php"  >About</a></li>
+                               <li><a href="Bachelor.php">Course</a></li>
+                               <li><a href="student.php">Student</a></li>
                            </ul></li>
                 <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                 </li>
