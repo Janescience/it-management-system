@@ -48,49 +48,62 @@
                           <!-- Tab panes -->
                           <div class="tab-content">
                               <div class="tab-pane active" id="profile" role="tabpanel">
-                                  <div class="card-block">
 
-                                        <center class="m-t-30"> <img src="../assets/images/users/user.png" class="img-circle" width="150" />
-                                            <h4 class="card-title m-t-10">Firstname - Lastname</h4>
+                                        <div class="col-lg-12">
+                                  <div class="row">
+                                  <div class="card-block ">
+                                    <div class="card">
+                                      <center class="m-t-30">
+                                         <img src="../assets/images/users/user.png" class="img-circle" width="150" />
+                                            <h4 class="card-title m-t-10"></h4>
                                             <h6 class="card-subtitle">Accoubts Manager</h6>
-                                            <div class="row text-center justify-content-md-center">
-                                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">-</font></a></div>
-                                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-picture"></i> <font class="font-medium">-</font></a></div>
-                                            </div>
-                                        </center>
+                                      </center>
+                                        </div>
+                                      </div>
 
                                         <div class="card-block">
-                                            <form class="form-horizontal form-material">
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Full Name</label>
-                                                    <div class="col-md-12">
-                                                        <input  type="text"  class="form-control form-control-line">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="example-email" class="col-md-12">Email</label>
-                                                    <div class="col-md-12">
-                                                        <input id="emailProfile" type="email"  class="form-control form-control-line" name="example-email" id="example-email">
-                                                    </div>
-                                                </div>
+                                            <div class="card">
+                                              <div class="card-block">
+                                              <div class="form-group">
+                                                <label for="nameProfile">Full Name</label>
+                                                    <div class="input-group">
+                                                    <div class="input-group-addon"><i class="ti-user"></i></div>
+                                                    <input id="nameProfile" type="text" class="form-control" disabled="true">
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="emailCreateUser" >Email</label>
+                                                    <div class="input-group">
+                                                    <div class="input-group-addon"><i class="ti-email"></i></div>
+                                                    <input id="emailProfile" type="email"  class="form-control" disabled="true">
+                                                  </div>
+                                              </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Phone No</label>
-                                                    <div class="col-md-12">
-                                                        <input type="text"  class="form-control form-control-line">
-                                                    </div>
-                                                </div>
+                                              <div class="form-group">
+                                                  <label for="phoneCreateUser">Phone No</label>
+                                                  <div class="input-group">
+                                                    <div class="input-group-addon"><i class="ti-mobile"></i></div>
+                                                      <input id="phoneProfile" type="text"  class="form-control" disabled="true">
+                                                  </div>
+                                              </div>
 
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <button class="btn btn-success">Update Profile</button>
+                                                        <button id="btUpdateProfile"class="btn btn-info waves-effect waves-ligh"><i class="ti ti-pencil-alt"></i>  Update Profile</button>
+                                                        <button id="btLoading" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
+                                                        <button id="btSubmitUpdateProfile" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+                                                        <button id="btCancelUpdateProfile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
                                                     </div>
                                                 </div>
                                             </form>
+                                          </div>
                                         </div>
+                                      </div>
 
-                                  </div>
                               </div>
+                            </div>
+
+                        </div>
                               <!--second tab-->
                               <div class="tab-pane" id="history" role="tabpanel">
                                   <div class="card-block">
@@ -116,6 +129,7 @@
     </div>
 
     <?php include('import-javascript.php')?>
+    <script src="../js/profile.js"></script>
 
 </body>
 

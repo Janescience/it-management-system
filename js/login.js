@@ -21,6 +21,7 @@ $(document).ready(function(){
      firebase.auth().signInWithEmailAndPassword(data.email,data.password).then(function(authData){
        auth = authData;
        user = authData.user;
+       sessionStorage.setItem("userId",authData.uid);
         setTimeout(function () {
           $('#messageModal').modal('hide');
           $('.unauthenticated, .userAuth').toggleClass('unauthenticated').toggleClass('authenticated');

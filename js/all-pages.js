@@ -12,17 +12,40 @@ $(document).ready(function(){
 
  //create firebase references
 var Auth = firebase.auth();
+var dbRef = firebase.database();
+var usersRef = dbRef.ref('users')
 
+var dbName = usersRef.child(sessionStorage.getItem("userId")).child('name');
+dbName.on('value',snap => {
+  document.getElementById('userProfile').innerText = snap.val();
+});
+
+var dbEmail = usersRef.child(sessionStorage.getItem("userId")).child('email');
+dbEmail.on('value',snap => {
+  document.getElementById('emailUser').innerText = snap.val();
+});
+
+var dbNameUser = usersRef.child(sessionStorage.getItem("userId")).child('name');
+dbNameUser.on('value',snap => {
+  document.getElementById('nameUser').innerText = snap.val();
+});
 
  $('#btLogout').on('click',function(){
    $('#logoutModal').modal('show');
     $('#confirmLogout').on('click',function(){
-   Auth.signOut().then(function() {
-  window.location.href = "login.php"
-  }, function(error) {
-  window.location.href = "index.php"
-    });
-  });
+
+     firebase.auth().onAuthStateChanged(function(user) {
+       if (sessionStorage.getItem("userId")) {
+         Auth.signOut().then(function() {
+         window.location = "login.php"
+       }, function(error) {
+
+         });
+       } else {
+
+       }
+     });
+   });
  });
 
 });
