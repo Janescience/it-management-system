@@ -84,23 +84,23 @@
                 <!-- Profile -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown show">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src="../assets/images/users/user.png" alt="user" class="profile-pic m-r-10" />User
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src="../assets/images/users/user.png" alt="user" class="profile-pic m-r-10" /><label id="nameUser"></label></a>
                       <div class="dropdown-menu dropdown-menu-right scale-up show">
                                   <ul class="dropdown-user">
                                       <li>
                                           <div class="dw-user-box">
                                               <div class="u-img"><img src="../assets/images/users/user.png" alt="user"></div>
                                               <div class="u-text">
-                                                  <h4>User</h4>
-                                                  <p class="text-muted">mail@gmail.com</p>
+                                                  <h4 id="userProfile"></h4>
+                                                  <p class="text-muted" id="emailUser"></p>
                                                   <a href="pages-profile.php" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                           </div>
                                       </li>
 
                                       <li role="separator" class="divider"></li>
-                                      <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                      <li id="btLogout"><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
                                   </ul>
-                      </div></a>
+                      </div>
                 </li>
             </ul>
         </div>

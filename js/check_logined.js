@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      window.location.href="index.php";
+      // window.location ="index.php";
     } else {
 
     }

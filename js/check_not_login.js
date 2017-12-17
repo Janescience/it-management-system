@@ -3,7 +3,7 @@ $(document).ready(function(){
     if (user) {
 
     } else {
-      window.location.href="login.php";
+      
     }
   });
 });
