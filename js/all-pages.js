@@ -30,6 +30,12 @@ dbNameUser.on('value',snap => {
   document.getElementById('nameUser').innerText = snap.val();
 });
 
+var dbUserImage = usersRef.child(sessionStorage.getItem("userId")).child('image');
+dbUserImage.on('value',snap => {
+  $('#userImageProfile').attr('src',snap.val());
+  $('#userImage').attr('src',snap.val());
+});
+
  $('#btLogout').on('click',function(){
    $('#logoutModal').modal('show');
     $('#confirmLogout').on('click',function(){

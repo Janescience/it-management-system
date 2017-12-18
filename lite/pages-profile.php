@@ -54,9 +54,14 @@
                                   <div class="card-block ">
                                     <div class="card">
                                       <center class="m-t-30">
-                                         <img src="../assets/images/users/user.png" class="img-circle" width="150" />
+                                         <img id="imageProfile"  class="img-circle" width="180"  />
                                             <h4 class="card-title m-t-10"></h4>
-                                            <h6 class="card-subtitle">Accoubts Manager</h6>
+                                            <h6 class="card-subtitle">Accouts Manager</h6>
+                                            <input class=" btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageProfile"><hr>
+                                                <div class="form-group">
+                                            <button id="btUploadImageProfile" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+                                            <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
+                                          </div>
                                       </center>
                                         </div>
                                       </div>
@@ -90,7 +95,7 @@
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
                                                         <button id="btUpdateProfile"class="btn btn-info waves-effect waves-ligh"><i class="ti ti-pencil-alt"></i>  Update Profile</button>
-                                                        <button id="btLoading" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
+                                                        <button id="btLoadingProfile" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
                                                         <button id="btSubmitUpdateProfile" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
                                                         <button id="btCancelUpdateProfile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
                                                     </div>
