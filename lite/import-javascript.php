@@ -15,15 +15,11 @@
 <!-- ============================================================== -->
 <!-- This page plugins -->
 <!-- ============================================================== -->
-<!-- chartist chart -->
-<script src="../assets/plugins/chartist-js/dist/chartist.min.js"></script>
-<script src="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
 <!--c3 JavaScript -->
 <script src="../assets/plugins/d3/d3.min.js"></script>
 <script src="../assets/plugins/c3-master/c3.min.js"></script>
-<!-- Chart JS -->
-<script src="js/dashboard1.js"></script>
+
 <!-- Include Firebase Library -->
 <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-<script src="../js/login.js"></script>
+<script src="../js/all-pages.js"></script>
 <script src="../js/check_not_login.js"></script>

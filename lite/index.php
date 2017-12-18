@@ -31,10 +31,9 @@
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor">Main</h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Main</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)"><h4>Main</h4></a></li>
+                            <li class="breadcrumb-item active">Home</li>
                         </ol>
                     </div>
                 </div>
@@ -56,13 +55,17 @@
                             <div class="card text-center">
                               <div class="card-block">
 
-
                                 <div class="w3-content w3-display-container ">
 
+                                    <div class="centered mySlideText" id="showTopicFirst"></div>
+                                    <div class="brcentered mySlideDetail" id="showDetailFirst"></div>
+                                    <div class="centered mySlideText" id="showTopicSecond"></div>
+                                    <div class="brcentered mySlideDetail" id="showDetailSecond"></div>
+
                                   <img id="imageHeaderSlideFirst" class="mySlides"  style="width:100%">
-                                  <img class="mySlides" src="../assets/images/big/slide-4.jpg" style="width:100%">
-                                  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-                                  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                                  <img class="mySlides" id="imageHeaderSlideSecond" style="width:100%">
+                                  <button class="btn btn-inverse w3-display-left" onclick="plusDivs(-1,-1,-1)">&#10094;</button>
+                                  <button class="btn btn-inverse w3-display-right" onclick="plusDivs(1,1,1)">&#10095;</button>
                                 </div>
                               </div>
                               </div>
@@ -212,36 +215,33 @@
       </div>
       <!-- Modal -->
       <div class="modal fade" id="editHeaderModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="messageModalLabel">Manage Header</h4>
             </div>
             <div class="modal-body">
-              <div class="btn-group">
-                  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Selection
-                  </button>
-
-                  <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 56px, 0px); top: 0px; left: 0px; will-change: transform;">
-                      <a class="dropdown-item" href="#">Header Slide First</a>
-                      <a class="dropdown-item" href="#">Header Slide Second</a>
-                      <a class="dropdown-item" href="#">Header Slide Third</a>
+              <div class="form-group">
+                  <div class="col-sm-12">
+                      <select id="selectHeaderSlide" class="form-control ">
+                          <option>Header Slide First</option>
+                          <option>Header Slide Second</option>
+                      </select>
                   </div>
               </div>
                     <hr>
               <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadImageHeader">
+
               <h5 class="modal-title" >Topic</h5>
-              <input class="form-control " type="text"  id="textTopic">
-              <h5 class="modal-title" >Manage Header</h5>
-              <input class="form-control" type="text"   id="">
-              <h5 class="modal-title" >Link URL</h5>
-              <input class="form-control" type="text"   id="linkUrl">
+              <textarea class="form-control" rows="2" id="textTopic" disabled="true"></textarea>
+              <h5 class="modal-title" >Details</h5>
+              <input class="form-control" type="text"   id="textDetail" disabled="true">
             </div>
             <div class="modal-footer">
-              <button id="btUploadImageHeader" type="button" class="btn btn-outline-success "><i class="mdi mdi-folder-image"></i> Upload</button>
-              <button id="btClearTextFile" type="button" class="btn btn-outline-danger "><i class="mdi mdi-delete"></i> Remove</button>
-              <button class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button id="btLoading" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
+              <button id="btUploadImageHeader" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+              <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
+              <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -252,21 +252,43 @@
 
 
     <?php include('import-javascript.php')?>
+    <script src="../js/index.js"></script>
     <script>
 
       var slideIndex = 1;
+      var slideText = 1;
+      var slideDetail = 1;
 
-      showDivs(slideIndex);
 
-      function plusDivs(n) {
-        showDivs(slideIndex += n);
+      showDivs(slideIndex,slideText,slideDetail);
+
+      function plusDivs(n,m,o) {
+        showDivs(slideIndex += n,slideText += m,slideDetail += o);
       }
 
-      function showDivs(n) {
+      function showDivs(n,m,o) {
         var i;
         var x = document.getElementsByClassName("mySlides");
-        if (n > x.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = x.length}
+        var y = document.getElementsByClassName("mySlideText");
+        var z = document.getElementsByClassName("mySlideDetail");
+
+        if (o > z.length ) {slideDetail = 1}
+        if (o < 1 ) {slideDetail = z.length}
+        for (i = 0; i < z.length; i++) {
+          z[i].style.display = "none";
+        }
+        z[slideDetail-1].style.display = "block";
+
+
+        if (m > y.length ) {slideText = 1}
+        if (m < 1 ) {slideText = y.length}
+        for (i = 0; i < y.length; i++) {
+          y[i].style.display = "none";
+        }
+        y[slideText-1].style.display = "block";
+
+        if (n > x.length ) {slideIndex = 1}
+        if (n < 1 ) {slideIndex = x.length}
         for (i = 0; i < x.length; i++) {
           x[i].style.display = "none";
         }

@@ -48,7 +48,7 @@
                   </form>
 
                   <div class="text-center">
-                    <button  type="button" class="btn btn-success" id="btLogin" >Sign-in</button>
+                    <button   class="btn btn-success" id="btLogin" >Sign-in</button>
                   </div>
 
               </div>
@@ -111,7 +111,7 @@
 <script src="js/dashboard1.js"></script>
 <!-- Include Firebase Library -->
 <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-
+<script src="../js/all-pages.js"></script>
 <script src="../js/login.js"></script>
 <script src="../js/check_logined.js"></script>
 </body>

@@ -104,33 +104,37 @@
       <div class="card">
         <div class="card-block">
 
-          <form class="form-horizontal form-material">
+          <form class="form-horizontal">
 
             <div class="form-group">
-              <label class="col-md-12">Full Name</label>
-                <div class="col-md-12">
-                  <input id="nameCreateUser" type="text"  class="form-control form-control-line">
+              <label for="nameCreateUser">Full Name</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-user"></i></div>
+                  <input id="nameCreateUser" type="text" class="form-control">
                 </div>
             </div>
 
             <div class="form-group">
-              <label for="example-email" class="col-md-12">Email</label>
-                <div class="col-md-12">
-                  <input id="emailCreateUser" type="email"  class="form-control form-control-line" name="example-email" id="example-email">
+              <label for="emailCreateUser" >Email</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-email"></i></div>
+                  <input id="emailCreateUser" type="email"  class="form-control " >
                 </div>
             </div>
 
             <div class="form-group">
-              <label class="col-md-12">Password</label>
-                <div class="col-md-12">
+              <label for="passwordCreateUser">Password</label>
+              <div class="input-group">
+                <div class="input-group-addon"><i class="ti-lock"></i></div>
                   <input id="passwordCreateUser" type="password"  class="form-control ">
-                </div>
+              </div>
             </div>
 
             <div class="form-group">
-                <label class="col-md-12">Phone No</label>
-                <div class="col-md-12">
-                    <input id="phoneCreateUser" type="text"  class="form-control form-control-line">
+                <label for="phoneCreateUser">Phone No</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-telephone"></i></div>
+                    <input id="phoneCreateUser" type="text"  class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -144,8 +148,8 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-12 text-center">
-                    <button id="btCreateUser" class="btn btn-success">Sign-up</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btCreateUser" type="submit" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> Submit</button>
+                    <button   type="submit" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
 
@@ -158,6 +162,7 @@
 </div>
 
     <?php include('import-javascript.php')?>
+    <script src="../js/manage-user.js"></script>
 
 </body>
 
