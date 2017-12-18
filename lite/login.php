@@ -67,11 +67,10 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="messageModalLabel">Message</h4>
       </div>
       <div class="modal-footer">
-
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
