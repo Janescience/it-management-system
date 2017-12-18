@@ -51,15 +51,17 @@
                             <div class="col-xs-12">
                                 <h5 align="center">Bachelor degree</h5><br/>
                                 <div class="form-group" id="BachelorPhilosophy">
-                                  <label for="comment" id="BachelorPhilosophyLB"><u>Philosophy</u></label>
-                                  <textarea class="form-control" rows="5" id="BachelorPhilosophyText"></textarea>
-                                   <input type="submit" class="btn btn-success " value="Submit Button" id="BachelorPhilosophySave">
-                                   <input type="reset" class="btn btn-danger  " value="Cancel" id="BachelorPhilosophyCancel">
+                                  <label for="BachelorPhilosophyText" id="BachelorPhilosophyLB"><u>Philosophy</u></label>
+                                  <textarea class="form-control" rows="5" id="BachelorPhilosophyText" ></textarea>
+                                  <button type="button" id="BachelorPhilosophyEdit"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
+                                  <input type="submit" class="btn btn-success " value="Save" id="BachelorPhilosophySave">
+                                  <input type="reset" class="btn btn-danger  " value="Cancel" id="BachelorPhilosophyCancel">
                                 </div>
                                 <div class="form-group" id="BachelorPurpose">
                                   <label for="comment" id="BachelorPurposeLB"><u>Purpose</u></label>
                                   <textarea class="form-control" rows="5" id="BachelorPurposeText"></textarea>
-                                  <input type="submit" class="btn btn-success " value="Submit Button" id="BachelorPurposeSave">
+                                  <button type="button" id="BachelorPurposeEdit"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
+                                  <input type="submit" class="btn btn-success " value="Save" id="BachelorPurposeSave">
                                   <input type="reset" class="btn btn-danger  " value="Cancel" id="BachelorPurposeCancel">
                                 </div><br/>
 
@@ -67,14 +69,16 @@
                                 <div class="form-group" id="MasterPhilosophy">
                                   <label for="comment" id="MasterPhilosophyLB"><u>Philosophy</u></label>
                                   <textarea class="form-control" rows="5" id="MasterPhilosophyText"></textarea>
-                                  <input type="submit" class="btn btn-success " value="Submit Button" id="MasterPhilosophySave">
+                                  <button type="button" id="MasterPhilosophyEdit"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
+                                  <input type="submit" class="btn btn-success " value="Save" id="MasterPhilosophySave">
                                   <input type="reset" class="btn btn-danger  " value="Cancel" id="MasterPhilosophyCancel">
                                 </div>
 
                                 <div class="form-group" id="MasterPurpose">
                                   <label for="comment" id="MasterPurposeLB"><u>Purpose</u></label>
                                   <textarea class="form-control" rows="5" id="MasterPurposeText"></textarea>
-                                  <input type="submit" class="btn btn-success " value="Submit Button" id="MasterPurposeSave">
+                                  <button type="button" id="MasterPurposeEdit"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
+                                  <input type="submit" class="btn btn-success " value="Save" id="MasterPurposeSave">
                                   <input type="reset" class="btn btn-danger  " value="Cancel"id="MasterPurposeCancel">
                                 </div>
                             </div>
@@ -88,28 +92,8 @@
         </div>
     </div>
     <?php include('import-javascript.php')?>
-    <script>
+    <script src="../js/about.js"></script>
 
-      var slideIndex = 1;
-
-      showDivs(slideIndex);
-
-      function plusDivs(n) {
-        showDivs(slideIndex += n);
-      }
-
-      function showDivs(n) {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        if (n > x.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = x.length}
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        x[slideIndex-1].style.display = "block";
-      }
-
-    </script>
 </body>
 
 </html>

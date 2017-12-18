@@ -1,14 +1,14 @@
 $(document).ready(function(){
   // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyA4WVo9ZjdTKHW1ALNRwbuoqx5uxP8gsWM",
-      authDomain: "itms-management-system.firebaseapp.com",
-      databaseURL: "https://itms-management-system.firebaseio.com",
-      projectId: "itms-management-system",
-      storageBucket: "itms-management-system.appspot.com",
-      messagingSenderId: "131587290108"
-    };
-    firebase.initializeApp(config);
+  var config = {
+    apiKey: "AIzaSyA4WVo9ZjdTKHW1ALNRwbuoqx5uxP8gsWM",
+    authDomain: "itms-management-system.firebaseapp.com",
+    databaseURL: "https://itms-management-system.firebaseio.com",
+    projectId: "itms-management-system",
+    storageBucket: "itms-management-system.appspot.com",
+    messagingSenderId: "131587290108"
+  };
+  firebase.initializeApp(config);
 
  //create firebase references
 var Auth = firebase.auth();
