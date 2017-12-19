@@ -133,7 +133,7 @@
             <div class="form-group">
                 <label for="phoneCreateUser">Phone No</label>
                 <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-telephone"></i></div>
+                  <div class="input-group-addon"><i class="ti-mobile"></i></div>
                     <input id="phoneCreateUser" type="text"  class="form-control">
                 </div>
             </div>
