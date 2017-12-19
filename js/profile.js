@@ -5,6 +5,23 @@ $(document).ready(function(){
  var usersRef = dbRef.ref('users')
  var auth = null;
  var selectedFile;
+  var indexSelect;
+
+$('#btSubmitHisEducation').on('click',function(){
+  indexSelect = document.getElementById("rankHisEducation").selectedIndex;
+    if(indexSelect==0){
+      $('#list_his_education').append("<tr><td>" + $('#txtAreaHisEducation').val() + "</td>" +
+                               "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
+                               "  <button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+    }else if(indexSelect==1){
+      $('#list_expertise').append("<tr><td>" + $('#txtAreaHisEducation').val() + "</td>" +
+                               "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
+                               "  <button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+    }
+});
+
+
+
 
  var dbName = usersRef.child(sessionStorage.getItem("userId")).child('name');
  dbName.on('value',snap => {
@@ -26,6 +43,18 @@ $(document).ready(function(){
    $('#imageProfile').attr("src",snap.val());
  });
 
+ $('#btSetPassword').on('click',function(){
+   var user = firebase.auth().currentUser;
+   user.updatePassword($('#passwordUpdate').val()).then(function() {
+
+         window.location = "login.php"
+
+   }).catch(function(error) {
+  // An error happened.
+  });
+
+ });
+
 
  $('#btUploadImageProfile').hide();
  $('#btClearTextFile').hide();
@@ -42,6 +71,17 @@ $(document).ready(function(){
   $('#btLoadingProfile').show();
    uploadImageProfile();
  });
+
+  $('#btClearTextFile').on('click',function(){
+    $('#fileUploadImageProfile').val("");
+    $('#btUploadImageProfile').hide();
+    $('#btClearTextFile').hide();
+  });
+
+  $('#btUpdatePassword').on('click',function(){
+    $('#changePassModal').modal('show');
+
+  });
 
  function uploadImageProfile(){
    var filename= selectedFile.name;
@@ -107,7 +147,6 @@ $(document).ready(function(){
 
  function updateProfile(){
 
-   var updates = {};
    var postData = {
      name:$('#nameProfile').val(),
      email:$('#emailProfile').val(),
