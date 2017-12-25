@@ -37,7 +37,7 @@
                 </div>
                 <!-- Row -->
                 <div class="row">
-                  <div class="col-lg-12 col-xlg-9 col-md-12">
+                  <div class="col-md-12">
                       <div class="card">
                           <!-- Nav tabs -->
                           <ul class="nav nav-tabs profile-tab" role="tablist">
@@ -298,7 +298,7 @@
                       </div>
                   </div>
                 </div>
-
+              </div>
             <footer class="footer">
                 Copyright © Information Technology 2017
             </footer>
