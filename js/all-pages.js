@@ -14,6 +14,9 @@ $(document).ready(function(){
 var Auth = firebase.auth();
 var dbRef = firebase.database();
 var usersRef = dbRef.ref('users')
+var status;
+
+$('#manageUserMenu').hide();
 
 var dbName = usersRef.child(sessionStorage.getItem("userId")).child('name');
 dbName.on('value',snap => {
@@ -35,6 +38,18 @@ dbUserImage.on('value',snap => {
   $('#userImageProfile').attr('src',snap.val());
   $('#userImage').attr('src',snap.val());
 });
+
+var dbStatus = usersRef.child(sessionStorage.getItem("userId")).child('status');
+dbStatus.on('value',snap => {
+  sessionStorage.setItem("status",snap.val());
+  if(sessionStorage.getItem("status")=="Admin"){
+    $('#manageUserMenu').show();
+  }else if(sessionStorage.getItem("status")=="SuperAdmin"){
+    $('#manageUserMenu').show();
+  }
+});
+
+
 
  $('#btLogout').on('click',function(){
    $('#logoutModal').modal('show');

@@ -9,13 +9,27 @@ $(document).ready(function(){
   var rootRef = dbRef.ref().child("users");
 
   rootRef.on("child_added",snap => {
-    var name = snap.child("name").val();
+
+    var key = snap.key;
     var status = snap.child("status").val();
+    var name = snap.child("name").val();
 
+  if(key != sessionStorage.getItem("userId")){
+    if(sessionStorage.getItem("status") == "Admin"){
+      if(status == "User"){
 
- $('#list_user').append("<tr><td>" + name + "</td><td>" + status +
-                           "</td><td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
-                           "  <button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+    $('#list_user').append("<tr><td>" + name + "</td><td>" + status +"</td>"+
+                           "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
+                           "<button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+      }
+    }else if(sessionStorage.getItem("status") == "SuperAdmin"){
+
+    $('#list_user').append("<tr><td>" + name + "</td><td>" + status +"</td>"+
+                               "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
+                               "<button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+
+        }
+  }
  });
 
  $('#btAddUser').on('click',function(e){

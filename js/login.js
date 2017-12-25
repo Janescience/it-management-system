@@ -5,6 +5,9 @@ $(document).ready(function(){
       $('#btLogin').click();
     });
 
+$('#btClose').on('click',function (e){
+  $('#messageModal').modal('hide');
+});
 
  $('#btLogin').on('click',function (e) {
    e.preventDefault();
@@ -41,6 +44,7 @@ $(document).ready(function(){
      $('#messageModal').modal('show');
    }
  });
+
 
 
 })
