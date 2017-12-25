@@ -108,7 +108,7 @@
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img src="../assets/images/big/slide-1.jpg" alt="Mountain View" width="380" height="235">
+                                <img id="imgBachelor1" alt="Mountain View" width="380" height="235">
                             
                                 </div>
                             </div>
@@ -119,12 +119,17 @@
                         <div class="card">
                             <div class="card-block">
                                 <h4 class="card-title">ส่วนที่ 1</h4>
-                                <input type="text" class="form-control form-control-line" value="Some text value..."> 
-                                <textarea class="form-control" rows="6" cols="75">
-                                    At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelor1"><hr>
+                                <input type="text" class="form-control form-control-line" id="textTopicBachelor1"> 
+                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelor1" >
+                                    
                                 </textarea>
                                 <br>
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                <button id="btBachelor1" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                
+                                <button type="button" id="BachelorPhilosophyEdit"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
+                                  <input type="submit" class="btn btn-success " value="Save" id="BachelorPhilosophySave">
+                                  <input type="reset" class="btn btn-danger  " value="Cancel" id="BachelorPhilosophyCancel">
 
                                 </div>
                             </div>
@@ -138,7 +143,7 @@
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img src="../assets/images/big/slide-1.jpg" alt="Mountain View" width="380" height="235">
+                                <img id="imgBachelor2" alt="Mountain View" width="380" height="235">
                             
                                 </div>
                             </div>
@@ -149,12 +154,18 @@
                         <div class="card">
                             <div class="card-block">
                                 <h4 class="card-title">ส่วนที่ 2</h4>
-                                <input type="text" class="form-control form-control-line" value="Some text value..."> 
-                                <textarea class="form-control" rows="6" cols="75">
-                                    At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelor2"><hr>
+                                <input type="text" class="form-control form-control-line" id="textTopicBachelor2"> 
+                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelor2" >
+                                    
                                 </textarea>
                                 <br>
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                
+                                <button id="btBachelor2" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+
+                                <button type="button" id="BachelorPhilosophyEdit2"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
+                                  <input type="submit" class="btn btn-success " value="Save" id="BachelorPhilosophySave2">
+                                  <input type="reset" class="btn btn-danger  " value="Cancel" id="BachelorPhilosophyCancel2">
 
                                 </div>
                             </div>
@@ -168,7 +179,7 @@
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img src="../assets/images/big/slide-1.jpg" alt="Mountain View" width="380" height="235">
+                                <img id="imgBachelor3" alt="Mountain View" width="380" height="235">
                             
                                 </div>
                             </div>
@@ -178,13 +189,14 @@
                     <div class="col-lg-7">
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">ส่วนที่ 3</h4>
+                                <h4 class="card-title">ส่วนที่ 3</h4>  
+                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelor3"><hr>                            
                                 <input type="text" class="form-control form-control-line" value="Some text value..."> 
                                 <textarea class="form-control" rows="6" cols="75">
                                     At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
                                 </textarea>
                                 <br>
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                <button id="btBachelor3" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
 
                                 </div>
                             </div>
@@ -198,7 +210,7 @@
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img src="../assets/images/big/slide-1.jpg" alt="Mountain View" width="380" height="235">
+                                <img id="imgBachelor4" alt="Mountain View" width="380" height="235">
                             
                                 </div>
                             </div>
@@ -209,12 +221,13 @@
                         <div class="card">
                             <div class="card-block">
                                 <h4 class="card-title">ส่วนที่ 4</h4>
+                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelor4"><hr>
                                 <input type="text" class="form-control form-control-line" value="Some text value..."> 
                                 <textarea class="form-control" rows="6" cols="75">
                                     At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
                                 </textarea>
                                 <br>
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                <button id="btBachelor4" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
 
                                 </div>
                             </div>
@@ -262,7 +275,9 @@
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
     </div>
+
     <?php include('import-javascript.php')?>
+    <script src="../js/bachelor.js"></script>
     
 </body>
 
