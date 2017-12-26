@@ -1,24 +1,81 @@
 
 $(document).ready(function(){
 
-	$('#btAddstudent1').on('click',function(e){
+	$('#btAddBechelorPortfolio').on('click',function(e){
   		e.preventDefault();
-   			$('#addStudent1').modal('show');
+   			$('#addBechelorPortfolio').modal('show');
 		});
 
-	$('#btAddstudent2').on('click',function(e){
+	$('#btAddBechelorActivity').on('click',function(e){
   		e.preventDefault();
-   			$('#addStudent2').modal('show');
+   			$('#addBechelorActivity').modal('show');
 		});
 
-	$('#btAddstudent3').on('click',function(e){
+	$('#btAddGraduatePortfolio').on('click',function(e){
   		e.preventDefault();
-   			$('#addStudent3').modal('show');
+   			$('#addGraduatePortfolio').modal('show');
 		});
 
-	$('#btAddstudent4').on('click',function(e){
+	$('#btAddGraduateActivity').on('click',function(e){
   		e.preventDefault();
-   			$('#addStudent4').modal('show');
+   			$('#addGraduateActivity').modal('show');
 		});
-  
+
+
+		// ========================================= Bachelor Activity Upload Script =========================================
+    //
+		// $('#btUploadImageActivity').hide();
+		// $('#btClearTextFile').hide();
+    //
+		// $('#fileUploadImageActivity').on('change',function(event){
+		//   selectedFile = event.target.files[0];
+		//   document.getElementById("textDetail").disabled = false;
+		//   // document.getElementById("textDetail").disabled = false;
+		//   $('#btUploadImageActivity').show();
+		//   $('#btClearTextFile').show();
+		// });
+    //
+		// $('#btUploadImageActivity').on('click',function(e){
+		//   e.preventDefault();
+		//   $('#btUploadImageActivity').hide();
+		//   $('#btClearTextFile').hide();
+		//   $('#btClose').hide();
+		//   uploadImage();
+		//   // document.getElementById("textTopic").disabled = true;
+		//   document.getElementById("textDetail").disabled = true;
+		// });
+    //
+		// function uploadImage(){
+		//   var filename= selectedFile.name;
+		//   var storageRef = firebase.storage().ref('/BachelorActivityImage//' + filename);
+		//   var uplodadTask = storageRef.put(selectedFile);
+    //
+		//   uplodadTask.on('state_changed',function(sanpshot){
+    //
+		//   },function(error){
+    //
+		//   },function(){
+		//     var downloadURL = uplodadTask.snapshot.downloadURL;
+		//     var updates = {};
+		//     var updatesTopic = {};
+		//     var updatesDetail = {};
+		//     var postData = {
+		//       imageSlideFirst:downloadURL,
+		//       imageSlideSecond:downloadURL,
+		//       textDetailFirst:$('#textDetail').val(),
+		//       textDetailSecond:$('#textDetail').val()
+    //
+		//     };
+    //
+    //
+    //
+		//     console.log(downloadURL);
+		//     $('#fileUploadImageHeader').val("");
+		//     $('#btLoading').hide();
+		//     $('#btClose').show();
+		//   });
+		// }
+
+
+
  });
