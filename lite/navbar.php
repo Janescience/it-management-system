@@ -116,7 +116,7 @@
                   <ul aria-expanded="true" class="collapse in">
                                <li ><a href="index.php">Home</a></li>
                                <li><a href="about.php"  >About</a></li>
-                               <li><a href="Bachelor.php">Course</a></li>
+                               <li><a href="course.php">Course</a></li>
                                <li><a href="student.php">Student</a></li>
                            </ul></li>
                 <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
