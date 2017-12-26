@@ -46,7 +46,7 @@
                                 <h6 class="card-subtitle">เลือกหลักสูตร</h6>
                                   
 
-                                  <select class="form-control js--animations">
+                                  <select class="form-control js--animations" id="CourseMenu" >
                                                     <optgroup label="ระดับปริญญาตรี">
                                                         <option value="Course1">หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปี พ.ศ 2555)</option>
                                                         <option value="Course2">หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปรับปรุง พ.ศ 2560)</option>
@@ -63,25 +63,27 @@
                                                     </optgroup>                                                   
                                                 </select>
 
+
+                                    <button class="btn btn-success waves-effect waves-light m-r-10" onclick="coursemenu()">ดูรายละเอียด</button>
                                                 
                             </div>
                         </div>
                     </div>
                 </div>
 
-            <!-- Start Page Content  -->
+                <!-- Start Page Content  -->
 
-              <div class="row">
+            <div class="row">
                 <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-block">
-                                <h4 class="card-title">Recent Comments</h4>
+                                <h4 class="card-title">แผนการศึกษา หลักสูตรวิทยาการสารสนเทศบัณฑิต</h4>
 
-                                <h6 class="card-subtitle">Latest Comments on users from Material</h6> 
+                                <h6 class="card-subtitle">(หลักสูตรปรับปรุง พ.ศ. 2555) ภาคการศึกษาที่ 2/2560 </h6> 
                                 
                                 <form action="/action_page.php">
                                     <input type="file" name="pic" accept="image/*">
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">ดูรายละเอียด</button>
                                 </form>
 
                                 </div>
@@ -91,24 +93,24 @@
                 <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-block">
-                                <h4 class="card-title">Recent Comments</h4>
-                                <h6 class="card-subtitle">Latest Comments on users from Material</h6> 
+                                <h4 class="card-title">วิชาที่เปิดสอน ระดับปริญญาตรี</h4>
+                                 
                                 
-                                <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Sign in</button>
+                                <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">รายวิชาที่เปิดสอน</button>
 
                                 </div>
                             </div>
                 </div>
               </div>
 
-                <!-- Start Page Content 1 -->
+              <!-- Start Page Content 1 -->
 
                 <div class="row">
                       <div class="col-lg-5">
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img id="imgBachelor1" alt="Mountain View" width="380" height="235">
+                                <img id="imgBachelorEs" alt="Mountain View" width="380" height="235">
                             
                                 </div>
                             </div>
@@ -119,31 +121,31 @@
                         <div class="card">
                             <div class="card-block">
                                 <h4 class="card-title">ส่วนที่ 1</h4>
-                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelor1"><hr>
-                                <input type="text" class="form-control form-control-line" id="textTopicBachelor1"> 
-                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelor1" >
+                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelorEs"><hr>
+                                <input type="text" class="form-control form-control-line" id="textTopicBachelorEs"> 
+                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelorEs" >
                                     
                                 </textarea>
                                 <br>
-                                <button id="btBachelor1" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                <button id="btUploadImageBachelorEs" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                                 
-                                <button type="button" id="BachelorPhilosophyEdit"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
-                                  <input type="submit" class="btn btn-success " value="Save" id="BachelorPhilosophySave">
-                                  <input type="reset" class="btn btn-danger  " value="Cancel" id="BachelorPhilosophyCancel">
+                                <button type="button" id="btBachelorEditEs"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
+                                  <input type="submit" class="btn btn-success " value="Save" id="btBachelorSaveEs">
+                                  <input type="reset" class="btn btn-danger  " value="Cancel" id="btBachelorCancelEs">
 
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                  <!-- Start Page Content 2 -->
+                    <!-- Start Page Content 2 -->
 
                     <div class="row">
                   <div class="col-lg-5">
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img id="imgBachelor2" alt="Mountain View" width="380" height="235">
+                                <img id="imgBachelorIc" alt="Mountain View" width="380" height="235">
                             
                                 </div>
                             </div>
@@ -154,18 +156,18 @@
                         <div class="card">
                             <div class="card-block">
                                 <h4 class="card-title">ส่วนที่ 2</h4>
-                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelor2"><hr>
-                                <input type="text" class="form-control form-control-line" id="textTopicBachelor2"> 
-                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelor2" >
+                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelorIc"><hr>
+                                <input type="text" class="form-control form-control-line" id="textTopicBachelorIc"> 
+                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelorIc" >
                                     
                                 </textarea>
                                 <br>
                                 
-                                <button id="btBachelor2" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                <button id="btUploadImageBachelorIc" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
 
-                                <button type="button" id="BachelorPhilosophyEdit2"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
-                                  <input type="submit" class="btn btn-success " value="Save" id="BachelorPhilosophySave2">
-                                  <input type="reset" class="btn btn-danger  " value="Cancel" id="BachelorPhilosophyCancel2">
+                                <button type="button" id="btBachelorEditIc"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
+                                  <input type="submit" class="btn btn-success " value="Save" id="btBachelorSaveIc">
+                                  <input type="reset" class="btn btn-danger  " value="Cancel" id="btBachelorCancelIc">
 
                                 </div>
                             </div>
@@ -179,7 +181,7 @@
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img id="imgBachelor3" alt="Mountain View" width="380" height="235">
+                                <img id="imgBachelorMis" alt="Mountain View" width="380" height="235">
                             
                                 </div>
                             </div>
@@ -189,28 +191,33 @@
                     <div class="col-lg-7">
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">ส่วนที่ 3</h4>  
-                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelor3"><hr>                            
-                                <input type="text" class="form-control form-control-line" value="Some text value..."> 
-                                <textarea class="form-control" rows="6" cols="75">
-                                    At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+                                <h4 class="card-title">ส่วนที่ 3</h4>
+                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelorMis"><hr>
+                                <input type="text" class="form-control form-control-line" id="textTopicBachelorMis"> 
+                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelorMis" >
+                                    
                                 </textarea>
                                 <br>
-                                <button id="btBachelor3" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                
+                                <button id="btUploadImageBachelorMis" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+
+                                <button type="button" id="btBachelorEditMis"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
+                                  <input type="submit" class="btn btn-success " value="Save" id="btBachelorSaveMis">
+                                  <input type="reset" class="btn btn-danger  " value="Cancel" id="btBachelorCancelMis">
 
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Start Page Content 4 -->
+                    <!-- Start Page Content 3 -->
 
                     <div class="row">
                   <div class="col-lg-5">
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img id="imgBachelor4" alt="Mountain View" width="380" height="235">
+                                <img id="imgBachelorIs" alt="Mountain View" width="380" height="235">
                             
                                 </div>
                             </div>
@@ -221,20 +228,26 @@
                         <div class="card">
                             <div class="card-block">
                                 <h4 class="card-title">ส่วนที่ 4</h4>
-                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelor4"><hr>
-                                <input type="text" class="form-control form-control-line" value="Some text value..."> 
-                                <textarea class="form-control" rows="6" cols="75">
-                                    At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+                                <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageBachelorIs"><hr>
+                                <input type="text" class="form-control form-control-line" id="textTopicBachelorIs"> 
+                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelorIs" >
+                                    
                                 </textarea>
                                 <br>
-                                <button id="btBachelor4" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                
+                                <button id="btUploadImageBachelorIs" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+
+                                <button type="button" id="btBachelorEditIs"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
+                                  <input type="submit" class="btn btn-success " value="Save" id="btBachelorSaveIs">
+                                  <input type="reset" class="btn btn-danger  " value="Cancel" id="btBachelorCancelIs">
 
                                 </div>
                             </div>
                         </div>
-                        </div>
+                    </div>
 
-                        <!-- Start Page Download -->
+
+                    <!-- Start Page Download -->
 
                         <div class="col-lg-12">
                             <div class="card">
@@ -243,8 +256,8 @@
                                 <h6 class="card-subtitle">Latest Comments on users from Material</h6> 
                                 
                                 <form action="/action_page.php">
-                                    <input type="file" name="pic" accept="image/*">
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                    <input class="btn btn-outline-inverse col-md-6" type="file" id="fileUploadPdfBachelor">
+                                <button id="btUploadPdfBachelor" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                                 </form>
                                 <br>
                                 <a href="https://www.w3schools.com/html/">Visit our HTML tutorial</a>
@@ -255,16 +268,9 @@
                             </div>
                         </div>
 
-                    </div>
-
-               
-
-                  </div>
                     
 
 
-            </div>
-          </div>
 
 
 
@@ -277,7 +283,31 @@
     </div>
 
     <?php include('import-javascript.php')?>
-    <script src="../js/bachelor.js"></script>
+
+    <script language = javascript>
+
+        function coursemenu() {
+
+        var s = document.getElementById('CourseMenu');
+        var item1 = s.options[s.selectedIndex].value;
+
+        if (s == "Course1") {
+            <script src="../js/bachelor2555.js"></script>
+        }
+            else if (s == "Course2") {
+            <script src="../js/bachelor2560.js"></script>
+        }
+            else if (s == "Course3") {
+            
+        }
+        }
+
+    </script>
+
+<script src="../js/bachelor2555.js"></script>
+
+
+    
     
 </body>
 
