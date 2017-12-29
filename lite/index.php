@@ -19,199 +19,178 @@
 <body class="fix-header fix-sidebar card-no-border">
 
     <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
     </div>
 
     <div id="main-wrapper">
 
-      <?php  include('navbar.php') ?>
+    <?php  include('navbar.php') ?>
 
-        <div class="page-wrapper">
-            <div class="container-fluid">
-                <div class="row page-titles">
-                    <div class="col-md-5 col-8 align-self-center">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)"><h4>Main</h4></a></li>
-                            <li class="breadcrumb-item active">Home</li>
-                        </ol>
-                    </div>
-                </div>
+      <div class="page-wrapper">
+        <div class="container-fluid">
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card ">
-                          <div class="card-block ">
-                            <h4 class="text-black card-title">Header</h4>
-                            <div class="message-box contact-box">
-                            <h2 class="add-ct-btn">
-                              <button type="button" id="btEditHeader" class="btn btn-circle btn-lg btn-success waves-effect waves-dark"><i class="mdi mdi-pencil"></i></button>
-                            </h2>
-                          </div>
-
-                        </div>
-                        <hr>
-                            <div class="card-block ">
-                            <div class="card text-center">
-                              <div class="card-block">
-
-                                <div class="w3-content w3-display-container ">
-
-                                    <div class="centered mySlideText" id="showTopicFirst"></div>
-                                    <div class="brcentered mySlideDetail" id="showDetailFirst"></div>
-                                    <div class="centered mySlideText" id="showTopicSecond"></div>
-                                    <div class="brcentered mySlideDetail" id="showDetailSecond"></div>
-
-                                  <img id="imageHeaderSlideFirst" class="mySlides"  style="width:100%">
-                                  <img class="mySlides" id="imageHeaderSlideSecond" style="width:100%">
-                                  <button class="btn btn-inverse w3-display-left" onclick="plusDivs(-1,-1,-1)">&#10094;</button>
-                                  <button class="btn btn-inverse w3-display-right" onclick="plusDivs(1,1,1)">&#10095;</button>
-                                </div>
-                              </div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            <div class="card">
-              <div class="card-header ">
-                <h4 class="m-b-0 text-black card-title">Course offered</h4>
-
-              </div>
-              <hr>
-              <div class="card-block">
-
-                <div class="row">
-                  <div class="col-lg-4">
-                    <div class="card text-center">
-                      <div class="card-block ">
-                      <img  src="../assets/images/big/bachelor.jpg" style="width:100%">
-                      </div>
-                      <div class="card-block ">
-                        <button id="btUploadBachelor" type="button" class="btn btn-outline-success btn-rounded"><i class="mdi mdi-folder-image"></i> Upload</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="card text-center">
-                      <div class="card-block ">
-                        <img  src="../assets/images/big/master.jpg" style="width:100%">
-                      </div>
-                      <div class="card-block ">
-                        <button id="btUploadMaster" type="button" class="btn btn-outline-success btn-rounded"><i class="mdi mdi-folder-image"></i> Upload</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="card text-center">
-                      <div class="card-block ">
-                        <img  src="../assets/images/big/phd.jpg" style="width:100%">
-                      </div>
-                      <div class="card-block ">
-                        <button id="btUploadPhd" type="button" class="btn btn-outline-success btn-rounded"><i class="mdi mdi-folder-image"></i> Upload</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-header">
-                <h4 class="text-black card-title">Info</h4>
-
-              </div>
-              <hr>
-              <div class="card-block">
-
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="card text-center">
-                      <div class="card-block ">
-                        <div class="btn-group">
-                                            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Bachelor Info
-                                            </button>
-                                            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 56px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                              <a class="dropdown-item" href="#">First Bachelor Info.</a>
-                                              <a class="dropdown-item" href="#">Second Bachelor Info.</a>
-                                              <a class="dropdown-item" href="#">Third Bachelor Info.</a>
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-b-40">
-                                          <br><label for="input1">Topic</label>
-                                        <input type="text" class="form-control" id="input1">
-                                        <span class="bar"></span>
-
-                                    </div>
-                                    <div class="form-group m-b-40">
-                                      <label for="input1">Link URL</label>
-                                    <input type="text" class="form-control" id="input1">
-                                    <span class="bar"></span>
-
-                                </div>
-                                <div class="col-lg-12 text-center">
-                                  <div class="card text-center">
-                                    <div class="card-block ">
-                                      <img  src="../assets/images/big/info-1.jpg" style="width:100%">
-                                    </div>
-                                    <div class="card-block ">
-                                      <button id="btUploadPhd" type="button" class="btn btn-outline-success btn-rounded"><i class="mdi mdi-folder-image"></i> Upload</button>
-                                    </div>
-                                  </div>
-                                </div>
-
-
-
-
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="card text-center">
-                      <div class="card-block ">
-                        <div class="btn-group">
-                                            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Graduate Studies
-                                            </button>
-                                            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 56px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                <a class="dropdown-item" href="#">First Graduate Studies Info.</a>
-                                                <a class="dropdown-item" href="#">Second Graduate Studies Info.</a>
-                                                <a class="dropdown-item" href="#">Third Graduate Studies Info.</a>
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-b-40">
-                                          <br><label for="input1">Topic</label>
-                                        <input type="text" class="form-control" id="input1">
-                                        <span class="bar"></span>
-
-                                    </div>
-                                    <div class="form-group m-b-40">
-                                      <label for="input1">Link URL</label>
-                                    <input type="text" class="form-control" id="input1">
-                                    <span class="bar"></span>
-
-                                </div>
-                                <div class="col-lg-12">
-                                  <div class="card text-center">
-                                    <div class="card-block ">
-                                      <img  src="../assets/images/big/info-2.jpg" style="width:100%">
-                                    </div>
-                                    <div class="card-block ">
-                                      <button id="btUploadPhd" type="button" class="btn btn-outline-success btn-rounded"><i class="mdi mdi-folder-image"></i> Upload</button>
-                                    </div>
-                                  </div>
-                                </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)"><h4>เมนูหลัก</h4></a></li>
+                <li class="breadcrumb-item active">หน้าแรก</li>
+              </ol>
             </div>
           </div>
+<!--=========================== ส่วนหัว [รูปภาพสไลด์] ===========================-->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card ">
+                <div class="card-block ">
+                  <h4 class="text-black card-title">ส่วนหัว [รูปภาพไสลด์]</h4>
+                    <div class="message-box contact-box">
+                      <h2 class="add-ct-btn">
+                        <button type="button" id="btEditHeader" class="btn btn-circle btn-lg btn-success waves-effect waves-dark"><i class="mdi mdi-pencil"></i></button>
+                      </h2>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="card-block ">
+                  <div class="card text-center">
+                    <div class="card-block">
+                      <div class="w3-content w3-display-container ">
+
+                        <div class="centered mySlideText" id="showTopicFirst"></div>
+                        <div class="brcentered mySlideDetail" id="showDetailFirst"></div>
+                        <div class="centered mySlideText" id="showTopicSecond"></div>
+                        <div class="brcentered mySlideDetail" id="showDetailSecond"></div>
+
+                        <img id="imageHeaderSlideFirst" class="mySlides"  style="width:100%">
+                        <img class="mySlides" id="imageHeaderSlideSecond" style="width:100%">
+
+                        <button class="btn btn-inverse w3-display-left" onclick="plusDivs(-1,-1,-1)">&#10094;</button>
+                        <button class="btn btn-inverse w3-display-right" onclick="plusDivs(1,1,1)">&#10095;</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<!--======================================================================-->
+
+<!--=========================== หลักสูตรที่เปิดสอน ===========================-->
+            <div class="card">
+              <div class="card-block ">
+                <h4 class="text-black card-title">หลักสูตรที่เปิดสอน</h4>
+                  <div class="message-box contact-box">
+                    <h2 class="add-ct-btn">
+                      <button type="button" id="btEditCourse" class="btn btn-circle btn-lg btn-success waves-effect waves-dark"><i class="mdi mdi-pencil"></i></button>
+                    </h2>
+                  </div>
+              </div>
+
+              <hr>
+
+              <div class="card-block">
+                <div class="row">
+
+                  <div class="col-lg-4">
+                    <div class="card text-center">
+                      <div class="card-block ">
+                      <img  id="imageBachelor"  style="width:100%">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div class="card text-center">
+                      <div class="card-block ">
+                        <img  id="imageMaster"  style="width:100%">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div class="card text-center">
+                      <div class="card-block ">
+                        <img  id="imageDoctor"  style="width:100%">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+<!--=====================================================================-->
+
+<!--============================ ข่าวสาร =================================-->
+            <div class="card">
+              <div class="card-header">
+                <h4 class="text-black card-title">ข่าวสาร</h4>
+              </div>
+
+              <hr>
+
+              <div class="card-block">
+                <div class="row">
+
+                  <div class="col-lg-5">
+                    <div class="card text-center">
+                      <div class="card-block">
+                        <img id="imgInfo"  style="width:100%"><hr>
+
+                        <input class="btn btn-outline-inverse col-md-12"  type="file" id="fileUploadImageInfo"><hr>
+
+                        <button type="submit" class="btn btn-outline-success" id="btInfoUploadImg">อัปโหลด <i class="fa fa-upload"></i></button>
+                        <button type="reset" class="btn btn-outline-danger" id="btInfoCancelUploadImg">ยกเลิก <i class="fa fa-close"></i></button>
+                        <button id="btLoadingInfo" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-7">
+                    <div class="card ">
+                      <div class="card-block ">
+
+                        <div class="form-group">
+                          <select id="selectInfoLevel" class="form-control ">
+                            <option>ข่าวสารระดับปริญญาตรี</option>
+                            <option>ข่าวสารระดับบัณฑิตศึกษา</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <select id="selectLevel" class="form-control ">
+                            <option>ข่าวสารเรื่องแรก</option>
+                            <option>ข่าวสารเรื่องที่สอง</option>
+                            <option>ข่าวสารเรื่องที่สาม</option>
+                          </select>
+                        </div>
+
+                        <hr>
+
+                        <h5 class="modal-title" >หัวข้อ</h5>
+                          <textarea class="form-control" rows="2" id="textTopicInfo" disabled="true"></textarea>
+
+                        <h5 class="modal-title" >ลิงค์</h5>
+                          <input class="form-control" type="text"   id="textLinkInfo" disabled="true">
+
+                        <div class="m-t-15">
+                          <button type="button" id="btInfoEdit"  class="btn btn-outline-inverse">แก้ไข <i class="fa fa-edit"></i></button>
+                          <button type="submit" class="btn btn-outline-success" id="btInfoSave">บันทึก <i class="fa fa-save"></i></button>
+                          <button type="reset" class="btn btn-outline-danger" id="btInfoCancel">ยกเลิก <i class="fa fa-close"></i></button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+<!--=====================================================================-->
+          </div>
+        </div>
       </div>
       <!-- Modal -->
       <div class="modal fade" id="editHeaderModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
@@ -242,6 +221,36 @@
               <button id="btUploadImageHeader" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
               <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
               <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-- Modal -->
+      <div class="modal fade" id="editCourseModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="messageModalLabel">จัดการหลักสูตรที่เปิดสอน</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                  <div class="col-sm-12">
+                      <select id="selectCourse" class="form-control ">
+                          <option>ระดับปริญญาตรี</option>
+                          <option>ระดับปริญญาโท</option>
+                          <option>ระดับปริญญาเอก</option>
+                      </select>
+                  </div>
+              </div>
+                    <hr>
+              <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadImageCourse">
+            </div>
+            <div class="modal-footer">
+              <button id="btLoadingCourse" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
+              <button id="btUploadImageCourse" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+              <button id="btClearTextFileCourse" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
+              <button id="btCloseCourse" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>

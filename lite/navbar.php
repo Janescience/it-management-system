@@ -123,6 +123,10 @@
                 </li>
                 <li id="manageUserMenu"> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">Manage User</span></a>
                 </li>
+                <li id="historyMenu"> <a class="waves-effect waves-dark" href="history.php" aria-expanded="false"><i class="mdi mdi-history"></i><span class="hide-menu">History</span></a>
+                </li>
+                <li id="manageWebsiteMenu"> <a class="waves-effect waves-dark" href="mange-website.php" aria-expanded="false"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">Manage Website</span></a>
+                </li>
 
             </ul>
         </nav>
