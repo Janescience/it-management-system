@@ -13,10 +13,7 @@
 <!-- You can change the theme colors from here -->
 <link href="css/colors/blue.css" id="theme" rel="stylesheet">
 <style>
-.page-wrapper{
-  font-family: "kanit";
-  font-size:16px;
-}
+
 .w3-content {
 position: relative;
 text-align: center;
