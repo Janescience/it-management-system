@@ -5,19 +5,69 @@ $(document).ready(function(){
  var usersRef = dbRef.ref('users')
  var auth = null;
  var selectedFile;
-  var indexSelect;
+ var indexSelect;
 
-$('#btSubmitHisEducation').on('click',function(){
-  indexSelect = document.getElementById("rankHisEducation").selectedIndex;
-    if(indexSelect==0){
-      $('#list_his_education').append("<tr><td>" + $('#txtAreaHisEducation').val() + "</td>" +
-                               "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
-                               "  <button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
-    }else if(indexSelect==1){
-      $('#list_expertise').append("<tr><td>" + $('#txtAreaHisEducation').val() + "</td>" +
-                               "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
-                               "  <button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
-    }
+$('#btOpenModalEdu').on('click',function(){
+  $('#addHisEduModal').modal('show');
+});
+
+$('#btOpenModalExpert').on('click',function(){
+  $('#addExpertModal').modal('show');
+});
+
+  var rootRef = usersRef.child(sessionStorage.getItem("userId")).child('education').child('his_education');
+
+  rootRef.on("child_added",snap => {
+    var i = 1;
+    i=i+1;
+    var degree = snap.child("degree").val();
+    var faculty = snap.child("faculty").val();
+    var university = snap.child("university").val();
+    var year = snap.child("year").val();
+
+    $('#list_his_education').append("<tr><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+'md_checkbox'+"'></label></td>"+"<td>" + degree + "</td>" +
+                              "<td>" + faculty + "</td>" + "<td>" + university + "</td>" + "<td>" + year + "</td>"+
+                             "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
+                             "  <button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+  });
+
+  var rootRef = usersRef.child(sessionStorage.getItem("userId")).child('education').child('expertise');
+
+  rootRef.on("child_added",snap => {
+    var detail = snap.child('detail').val();
+
+    $('#list_expertise').append("<tr><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+'md_checkbox'+"'></label></td><td>" + detail + "</td>" +
+                             "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
+                             "  <button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+  });
+
+$('#btSubmitEdu').on('click',function(){
+
+  $('#addHisEduModal').modal('hide');
+
+  var data = {
+    degree:$('#degreeHisEdu').val(),
+    faculty:$('#facultyHisEdu').val(),
+    university:$('#universityHisEdu').val(),
+    year:$('#yearHisEdu').val()
+  };
+
+ usersRef.child(sessionStorage.getItem("userId")).child('education').child('his_education').push().set(data).then(function(){
+   console.log("User Information Saved:", sessionStorage.getItem("userId"));
+ });
+
+});
+
+$('#btSubmitExpert').on('click',function(){
+  $('#addExpertModal').modal('hide');
+  var data = {
+    detail:$('#expertHisEdu').val()
+  };
+  usersRef.child(sessionStorage.getItem("userId")).child('education').child('expertise').push().set(data).then(function(){
+    console.log("User Information Saved:", sessionStorage.getItem("userId"));
+  });
 });
 
 
