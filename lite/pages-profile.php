@@ -41,9 +41,9 @@
                       <div class="card">
                           <!-- Nav tabs -->
                           <ul class="nav nav-tabs profile-tab" role="tablist">
-                              <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
-                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#history" role="tab">History | Work</a> </li>
-                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab">Office Hours</a> </li>
+                              <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">ข้อมูลส่วนตัว</a> </li>
+                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#history" role="tab">ประวัติและผลงาน</a> </li>
+                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab">จัดการตารางงาน</a> </li>
                           </ul>
                           <!-- Tab panes -->
                           <div class="tab-content">
@@ -116,46 +116,36 @@
                                   <div class="card-block">
                                     <div class="card">
                                       <!-- Nav tabs -->
-                                      <ul class="nav nav-tabs profile-tab" role="tablist">
-                                          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#hisEducation" role="tab">History Education</a> </li>
-                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#hisWork" role="tab">History Work</a> </li>
-                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academic" role="tab">Academic</a> </li>
+                                      <ul class="nav nav-tabs profile-tab " role="tablist">
+                                          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#hisEducation" role="tab">ประวัติการศึกษา</a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#hisWork" role="tab">ประวัติการทำงาน</a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academic" role="tab">ผลงานวิชาการ</a> </li>
                                       </ul>
                                       <!-- Tab panes -->
                                       <div class="tab-content">
                                           <div class="tab-pane active" id="hisEducation" role="tabpanel">
                                             <div class="card-block ">
-                                              <div class="card">
-                                                <div class="form-group">
-                                                    <label class="col-sm-12">Select</label>
-                                                    <div class="col-sm-12">
-                                                        <select id="rankHisEducation" class="form-control form-control-line">
-                                                            <option>History Education</option>
-                                                            <option>Expertise</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                <div class="form-group">
-                                                <textarea id="txtAreaHisEducation" class="form-control" row="5"></textarea>
-                                              </div>
-                                              <div class="form-group">
-                                                <button id="btSubmitHisEducation" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
-                                            </div>
 
-                                              </div>
-                                                <div class="card-block bg-success">
-                                                  <h4 class="text-white card-title">History Education</h4>
+                                                <div class="card-block bg-info">
+                                                  <h4 class="text-white card-title">ประวัติการศึกษา</h4>
+                                                        <div class="message-box contact-box">
+                                                        <h2 class="add-ct-btn">
+                                                          <button type="button" id="btOpenModalEdu" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                        </h2>
                                                       </div>
-                                                  <div class="card-block">
+                                                      </div>
+
                                                     <form class="form-horizontal form-material ">
                                                       <div class="table-responsive">
-                                                          <table class="table text-center">
+                                                          <table class="table text-center color-bordered-table success-bordered-table">
                                                               <thead >
                                                                   <tr >
-                                                                      <th class="text-center">DETAILS</th>
-
-                                                                      <th class="text-center">MANAGE</th>
+                                                                      <th class="text-center">แสดง</th>
+                                                                      <th class="text-center">ปริญญา</th>
+                                                                      <th class="text-center">สาขาวิชา</th>
+                                                                      <th class="text-center">มหาวิทยาลัย</th>
+                                                                      <th class="text-center">ปีที่จบการศึกษา</th>
+                                                                      <th class="text-center">จัดการ</th>
                                                                   </tr>
                                                               </thead>
                                                               <tbody id="list_his_education">
@@ -165,20 +155,26 @@
                                                       </div>
                                                     </form>
 
-                                                  </div>
+
                                                   <br>
-                                                  <div class="card-block bg-success">
-                                                    <h4 class="text-white card-title">Expertise</h4>
+                                                  <div class="card-block bg-info">
+                                                    <h4 class="text-white card-title">ความเชี่ยวชาญ</h4>
+                                                    <div class="message-box contact-box">
+                                                    <h2 class="add-ct-btn">
+                                                      <button type="button" id="btOpenModalExpert" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                    </h2>
+                                                  </div>
                                                         </div>
-                                                    <div class="card-block">
+
+
                                                       <form class="form-horizontal form-material ">
                                                         <div class="table-responsive">
-                                                            <table class="table text-center">
+                                                            <table class="table text-center color-bordered-table success-bordered-table">
                                                                 <thead >
                                                                     <tr >
-                                                                        <th class="text-center">DETAILS</th>
-
-                                                                        <th class="text-center">MANAGE</th>
+                                                                        <th class="text-center">แสดง</th>
+                                                                        <th class="text-center">รายละเอียด</th>
+                                                                        <th class="text-center">จัดการ</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="list_expertise">
@@ -187,9 +183,9 @@
                                                             </table>
                                                         </div>
                                                       </form>
-                                                    </div>
 
-                                              </div>
+
+
                                             </div>
                                           </div>
                                           <div class="tab-pane active" id="hisWork" role="tabpanel">
@@ -323,6 +319,80 @@
           </div>
           <div class="modal-footer">
             <button id="btSetPassword"  class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> Submit</button>
+            <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addHisEduModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">ประวัติการศึกษา</h4>
+          </div>
+          <div class="modal-body">
+            <div id="degree" class="form-group">
+              <label for="degreeHisEdu">ปริญญา</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-bookmark-alt"></i></div>
+                  <select id="degreeHisEdu" class="form-control ">
+                    <option>ปริญญาตรี</option>
+                    <option>ปริญญาโท</option>
+                    <option>ปริญญาเอก</option>
+                  </select>
+                </div>
+            </div>
+            <div id="faculty" class="form-group">
+              <label for="facultyHisEdu" >สาขาวิชา</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                  <input id="facultyHisEdu" type="email"  class="form-control" >
+                </div>
+            </div>
+
+            <div id="university" class="form-group">
+                <label for="universityHisEdu">มหาวิทยาลัย</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-flag-alt"></i></div>
+                    <input id="universityHisEdu" type="text"  class="form-control" >
+                </div>
+            </div>
+
+            <div id="year" class="form-group">
+                <label for="yearHisEdu">ปีที่จบการศึกษา</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                    <input id="yearHisEdu" type="text"  class="form-control" >
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="btSubmitEdu" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+            <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addExpertModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">ความเชี่ยวชาญ</h4>
+          </div>
+          <div class="modal-body">
+            <div id="expert" class="form-group">
+                <label for="expertHisEdu">รายละเอียด</label>
+                <div class="input-group">
+                    <textarea id="expertHisEdu" type="text"  class="form-control" ></textarea>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="btSubmitExpert" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
             <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
