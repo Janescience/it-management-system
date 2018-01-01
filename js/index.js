@@ -96,6 +96,7 @@ if(indexSelect==0){
    $('#btClose').hide();
    $('#btLoading').show();
    uploadImage();
+   pushHeaderHistory();
    document.getElementById("textTopic").disabled = true;
    document.getElementById("textDetail").disabled = true;
  });
@@ -171,6 +172,25 @@ if(indexSelect==0){
      $('#btLoading').hide();
      $('#btClose').show();
    });
+ }
+
+ function pushHeaderHistory(){
+   var nameValue;
+   var dateTimeCurrent = new Date();
+
+   var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
+   nameHistory.on('value',snap => {
+     nameValue = snap.val();
+   });
+
+   var dataHistory = {
+     name:nameValue,
+     topic:$('#selectHeaderSlide').val(),
+     date:dateTimeCurrent.toDateString(),
+     time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
+   };
+
+   firebase.database().ref('history').push().set(dataHistory);
  }
 <!--========================================================================-->
 
