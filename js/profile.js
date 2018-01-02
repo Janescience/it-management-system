@@ -7,6 +7,31 @@ $(document).ready(function(){
  var selectedFile;
  var indexSelect;
 
+ $('#headInterWork').hide();
+ $('#tableInterWork').hide();
+ $('#headNationJour').hide();
+ $('#tableNationJour').hide();
+
+ $('#interWork').on('click',function(){
+   $('#iconNationJour').attr("class","fa fa-chevron-right");
+   $('#iconInterWork').attr("class","fa fa-check text-info");
+
+   $('#headInterWork').show();
+   $('#tableInterWork').show();
+   $('#headNationJour').hide();
+   $('#tableNationJour').hide();
+ });
+
+ $('#nationJour').on('click',function(){
+   $('#iconNationJour').attr("class","fa fa-check text-info");
+   $('#iconInterWork').attr("class","fa fa-chevron-right");
+
+   $('#headNationJour').show();
+   $('#tableNationJour').show();
+   $('#headInterWork').hide();
+   $('#tableInterWork').hide();
+ });
+
 $('#btOpenModalEdu').on('click',function(){
   $('#addHisEduModal').modal('show');
 });
@@ -15,11 +40,18 @@ $('#btOpenModalExpert').on('click',function(){
   $('#addExpertModal').modal('show');
 });
 
-  var rootRef = usersRef.child(sessionStorage.getItem("userId")).child('education').child('his_education');
+$('#btOpenModalWork').on('click',function(){
+  $('#addWorkModal').modal('show');
+});
 
-  rootRef.on("child_added",snap => {
-    var i = 1;
-    i=i+1;
+$('#btOpenModalExp').on('click',function(){
+  $('#addExpModal').modal('show');
+});
+
+  var rootRefEducation = usersRef.child(sessionStorage.getItem("userId")).child('education').child('his_education');
+
+  rootRefEducation.on("child_added",snap => {
+
     var degree = snap.child("degree").val();
     var faculty = snap.child("faculty").val();
     var university = snap.child("university").val();
@@ -28,23 +60,56 @@ $('#btOpenModalExpert').on('click',function(){
     $('#list_his_education').append("<tr><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
                               "<label for='"+'md_checkbox'+"'></label></td>"+"<td>" + degree + "</td>" +
                               "<td>" + faculty + "</td>" + "<td>" + university + "</td>" + "<td>" + year + "</td>"+
-                             "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
-                             "  <button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+                             "<td><button id='"+'editHisEdu'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
+                             " <button id='"+'removeHisEdu'+"' class='"+'btn btn-inverse'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
   });
 
-  var rootRef = usersRef.child(sessionStorage.getItem("userId")).child('education').child('expertise');
+  var rootRefExpert = usersRef.child(sessionStorage.getItem("userId")).child('education').child('expertise');
 
-  rootRef.on("child_added",snap => {
+  rootRefExpert.on("child_added",snap => {
+    var snapkey = snap.key;
     var detail = snap.child('detail').val();
 
     $('#list_expertise').append("<tr><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
                               "<label for='"+'md_checkbox'+"'></label></td><td>" + detail + "</td>" +
-                             "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
-                             "  <button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+                             "<td><button id='"+'editExpert'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
+                             "  <button id='"+'removeExpert'+"' class='"+'btn btn-inverse'+"' onclick='"+'delExpert()'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
   });
 
-$('#btSubmitEdu').on('click',function(){
+  var rootRefWork = usersRef.child(sessionStorage.getItem("userId")).child('work').child('his_work');
 
+  rootRefWork.on("child_added",snap => {
+
+    var start_time = snap.child("start_time").val();
+    var finish_time = snap.child("finish_time").val();
+    var address = snap.child("address").val();
+    var work = snap.child("work").val();
+
+    $('#list_his_work').append("<tr><td><input type='"+'checkbox'+"' id='"+'md_checkbox_work'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+'md_checkbox_work'+"'></label></td>"+"<td>" + start_time +" ถึง "+ finish_time +"</td>" +
+                              "<td>" + address + "</td>" + "<td>" + work + "</td>"+
+                             "<td><button id='"+'editHisWork'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
+                             " <button id='"+'removeHisWork'+"' class='"+'btn btn-inverse'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+  });
+
+  var rootRefExp = usersRef.child(sessionStorage.getItem("userId")).child('work').child('experience');
+
+  rootRefExp.on("child_added",snap => {
+    var exp = snap.child("exp").val();
+    var start_time = snap.child("start_time").val();
+    var finish_time = snap.child("finish_time").val();
+    var detail = snap.child("detail").val();
+
+    $('#list_exp').append("<tr><td><input type='"+'checkbox'+"' id='"+'md_checkbox_exp'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+'md_checkbox_exp'+"'></label></td><td>" + exp + "</td>" + "<td>" +start_time +" ถึง "+ finish_time + "</td>"+"<td>" + detail + "</td>"+
+                             "<td><button id='"+'editExp'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
+                             "  <button id='"+'removeExp'+"' class='"+'btn btn-inverse'+"' onclick='"+'delExpert()'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+  });
+
+
+
+
+$('#btSubmitEdu').on('click',function(){
   $('#addHisEduModal').modal('hide');
 
   var data = {
@@ -67,6 +132,37 @@ $('#btSubmitExpert').on('click',function(){
   };
   usersRef.child(sessionStorage.getItem("userId")).child('education').child('expertise').push().set(data).then(function(){
     console.log("User Information Saved:", sessionStorage.getItem("userId"));
+  });
+});
+
+
+
+$('#btSubmitWork').on('click',function(){
+  $('#addWorkModal').modal('hide');
+
+  var data = {
+    start_time:$('#timeStartHisWork').val(),
+    finish_time:$('#timeFinishHisWork').val(),
+    address:$('#addressHisWork').val(),
+    work:$('#workHisWork').val()
+  };
+
+ usersRef.child(sessionStorage.getItem("userId")).child('work').child('his_work').push().set(data).then(function(){
+   console.log("Information Saved:", sessionStorage.getItem("userId"));
+ });
+
+});
+
+$('#btSubmitExp').on('click',function(){
+  $('#addExpModal').modal('hide');
+  var data = {
+    exp:$('#expExp').val(),
+    start_time:$('#timeStartExp').val(),
+    finish_time:$('#timeFinishExp').val(),
+    detail:$('#detailExp').val()
+  };
+  usersRef.child(sessionStorage.getItem("userId")).child('work').child('experience').push().set(data).then(function(){
+    console.log("Information Saved:", sessionStorage.getItem("userId"));
   });
 });
 
