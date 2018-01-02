@@ -154,8 +154,6 @@
                                                           </table>
                                                       </div>
                                                     </form>
-
-
                                                   <br>
                                                   <div class="card-block bg-info">
                                                     <h4 class="text-white card-title">ความเชี่ยวชาญ</h4>
@@ -165,8 +163,6 @@
                                                     </h2>
                                                   </div>
                                                         </div>
-
-
                                                       <form class="form-horizontal form-material ">
                                                         <div class="table-responsive">
                                                             <table class="table text-center color-bordered-table success-bordered-table">
@@ -178,19 +174,145 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="list_expertise">
-
                                                                 </tbody>
                                                             </table>
                                                         </div>
                                                       </form>
-
-
-
                                             </div>
                                           </div>
-                                          <div class="tab-pane active" id="hisWork" role="tabpanel">
+                                          <div class="tab-pane" id="hisWork" role="tabpanel">
+                                              <div class="card-block ">
+                                                <div class="card-block bg-info">
+                                                  <h4 class="text-white card-title">ประวัติการทำงาน</h4>
+                                                    <div class="message-box contact-box">
+                                                        <h2 class="add-ct-btn">
+                                                          <button type="button" id="btOpenModalWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                        </h2>
+                                                    </div>
+                                                  </div>
+                                                  <form class="form-horizontal form-material ">
+                                                    <div class="table-responsive">
+                                                        <table class="table text-center color-bordered-table success-bordered-table">
+                                                            <thead >
+                                                                <tr >
+                                                                    <th class="text-center">แสดง</th>
+                                                                    <th class="text-center">ระยะเวลา</th>
+                                                                    <th class="text-center">สถานที่ทำงาน</th>
+                                                                    <th class="text-center">งาน</th>
+                                                                    <th class="text-center">จัดการ</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="list_his_work">
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                  </form>
+                                                  <div class="card-block bg-info">
+                                                    <h4 class="text-white card-title">ประสบการณ์ด้านต่างๆ</h4>
+                                                      <div class="message-box contact-box">
+                                                          <h2 class="add-ct-btn">
+                                                            <button type="button" id="btOpenModalExp" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                          </h2>
+                                                      </div>
+                                                    </div>
+                                                  <form class="form-horizontal form-material ">
+                                                    <div class="table-responsive">
+                                                        <table class="table text-center color-bordered-table success-bordered-table">
+                                                            <thead >
+                                                                <tr >
+                                                                    <th class="text-center">แสดง</th>
+                                                                    <th class="text-center">ประสบการณ์</th>
+                                                                    <th class="text-center">ระยะเวลา</th>
+                                                                    <th class="text-center">รายละเอียด</th>
+                                                                    <th class="text-center">จัดการ</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="list_exp">
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                  </form>
+                                              </div>
                                           </div>
-                                          <div class="tab-pane active" id="academic" role="tabpanel">
+                                          <div class="tab-pane" id="academic" role="tabpanel">
+
+                                    <div class="card-block">
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                            <ul class="list-icons">
+                                            <li ><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> งานวิจัยฉบับสมบูรณ์ที่ผ่านการรับรอง</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> วารสารระดับนานาชาตที่มีอยู่ในฐานข้อมูลสากล</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> ผลงานที่ได้รับรางวัลระดับชาติ</a></li>
+                                            <li id="interWork" ><a href="javascript:void(0)"><i id="iconInterWork" class="fa fa-chevron-right"></i> ผลงานที่ได้รับรางวัลระดับนานาชาติ</a></li>
+                                            </ul>
+                                         </div>
+                                      <div class="col-md-6">
+                                            <ul class="list-icons">
+                                            <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> การประชุมระดับชาติ</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> การประชุมระดับนานาชาติ</a></li>
+                                            <li id="nationJour"><a href="javascript:void(0)"><i id="iconNationJour" class="fa fa-chevron-right"></i> วารสารระดับชาติ</a></li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> วารสารระดับนานาชาติที่ไม่อยู่ในฐานข้อมูลสากล</a></li>
+                                            </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div id="headInterWork" class="card-block bg-info">
+                                    <h4 class="text-white card-title">ผลงานที่ได้รับรางวัลระดับนานาชาติ</h4>
+                                      <div class="message-box contact-box">
+                                          <h2 class="add-ct-btn">
+                                            <button type="button" id="btOpenModalInterWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                          </h2>
+                                      </div>
+                                    </div>
+                                    <form class="form-horizontal form-material ">
+                                      <div class="table-responsive">
+                                          <table id="tableInterWork" class="table text-center color-bordered-table success-bordered-table">
+                                              <thead >
+                                                  <tr >
+                                                      <th class="text-center">แสดง</th>
+                                                      <th class="text-center">ชื่อรางวัล</th>
+                                                      <th class="text-center">ชื่อผลงาน</th>
+                                                      <th class="text-center">หน่วยงานที่ได้รับรางวัล</th>
+                                                      <th class="text-center">ค่าภาระงานที่ได้รับ</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody id="list_inter_work">
+
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                    </form>
+
+                                    <div id="headNationJour" class="card-block bg-info">
+                                      <h4 class="text-white card-title">วารสารระดับชาติ</h4>
+                                        <div class="message-box contact-box">
+                                            <h2 class="add-ct-btn">
+                                              <button type="button" id="btOpenModalInterWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                            </h2>
+                                        </div>
+                                      </div>
+                                      <form class="form-horizontal form-material ">
+                                        <div class="table-responsive">
+                                            <table id="tableNationJour" class="table text-center color-bordered-table success-bordered-table">
+                                                <thead >
+                                                    <tr >
+                                                        <th class="text-center">แสดง</th>
+                                                        <th class="text-center">ชื่อบทความ</th>
+                                                        <th class="text-center">ชื่อวารสาร</th>
+                                                        <th class="text-center">ประเภทบทความ</th>
+                                                        <th class="text-center">ปีที่พิมพ์</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="list_nation_jour">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                      </form>
+
                                           </div>
                                       </div>
                                     </div>
@@ -201,20 +323,7 @@
                               <div class="tab-pane" id="office" role="tabpanel">
                                 <!-- <div class="col-lg-12"> -->
                                   <div class="card-block">
-                                    <div class="row">
-                                      <div class="col-lg-6 col-lg-push-5">
-                                        <center class="m-t-30"> <img src="../assets/images/users/user.png" id="teacherOffPic" class="img-circle" width="150" />
-                                        <h4 class="card-title m-t-10">Teacher - name</h4>
-                                      </div>
-                                      <div class="col-lg-4 col-lg-pull-5" style="padding-top:50px;">
-                                        <div class="card-body card-outline-info">
-                                          <h3 class="card-header text-white">Contact</h3>
-                                          <div><i class="mdi mdi-email"></i> : <label for="email" id="tEmail">teacher@email.com</label></div>
-                                          <div><i class="mdi mdi-cellphone-iphone"></i> : <label for="tel" id="tTel">086-6498231</label></div>
-                                          <div><i class="mdi mdi-phone-classic"></i> : <label for="OfTel" id="tOffTel">044-123-456-789-1</label></div>
-                                        </div>
-                                      </div>
-                                    </div>
+
                                         <div class="demo-radio " style="padding-right:40px;" id="OffStatus"><center class="m-t-30">
                                           <input type="radio" name="status" id="md_radio_32" class="with-gap radio-col-light-green" >
                                           <label for="md_radio_32">Available</label>
@@ -301,104 +410,8 @@
 
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="changePassModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="messagePassModal">Change Password</h4>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="passwordUpdate">Please Input Password</label>
-              <div class="input-group">
-                <div class="input-group-addon"><i class="ti-lock"></i></div>
-                  <input id="passwordUpdate" type="password"  class="form-control ">
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button id="btSetPassword"  class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> Submit</button>
-            <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="addHisEduModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">ประวัติการศึกษา</h4>
-          </div>
-          <div class="modal-body">
-            <div id="degree" class="form-group">
-              <label for="degreeHisEdu">ปริญญา</label>
-                  <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-bookmark-alt"></i></div>
-                  <select id="degreeHisEdu" class="form-control ">
-                    <option>ปริญญาตรี</option>
-                    <option>ปริญญาโท</option>
-                    <option>ปริญญาเอก</option>
-                  </select>
-                </div>
-            </div>
-            <div id="faculty" class="form-group">
-              <label for="facultyHisEdu" >สาขาวิชา</label>
-                  <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                  <input id="facultyHisEdu" type="email"  class="form-control" >
-                </div>
-            </div>
-
-            <div id="university" class="form-group">
-                <label for="universityHisEdu">มหาวิทยาลัย</label>
-                <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-flag-alt"></i></div>
-                    <input id="universityHisEdu" type="text"  class="form-control" >
-                </div>
-            </div>
-
-            <div id="year" class="form-group">
-                <label for="yearHisEdu">ปีที่จบการศึกษา</label>
-                <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-calendar"></i></div>
-                    <input id="yearHisEdu" type="text"  class="form-control" >
-                </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button id="btSubmitEdu" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
-            <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="addExpertModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">ความเชี่ยวชาญ</h4>
-          </div>
-          <div class="modal-body">
-            <div id="expert" class="form-group">
-                <label for="expertHisEdu">รายละเอียด</label>
-                <div class="input-group">
-                    <textarea id="expertHisEdu" type="text"  class="form-control" ></textarea>
-                </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button id="btSubmitExpert" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
-            <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <?php include('modal-profile.php')?>
     <?php include('import-javascript.php')?>
     <script src="../js/profile.js"></script>
 
