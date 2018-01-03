@@ -12,21 +12,26 @@ $(document).ready(function(){
 
     var key = snap.key;
     var status = snap.child("status").val();
+    var email = snap.child("email").val();
+    var phone = snap.child("telephone").val();
+    var image = snap.child("image").val();
     var name = snap.child("name").val();
+
 
   if(key != sessionStorage.getItem("userId")){
     if(sessionStorage.getItem("status") == "Admin"){
       if(status == "User"){
 
-    $('#list_user').append("<tr><td>" + name + "</td><td>" + status +"</td>"+
-                           "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
-                           "<button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+    $('#list_user').append("<tr><td><img src='"+image+"' class='"+'img-circle'+"' width='"+'50'+"' height='"+'50'+"'></td><td>" + name + "</td><td>" + email +"</td><td>" + phone +"</td><td>" + status +"</td>"+
+    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
       }
     }else if(sessionStorage.getItem("status") == "SuperAdmin"){
 
-    $('#list_user').append("<tr><td>" + name + "</td><td>" + status +"</td>"+
-                               "<td><button id='"+'editUser'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
-                               "<button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+    $('#list_user').append("<tr><td><img src='"+image+"' class='"+'img-circle'+"' width='"+'50'+"' height='"+'50'+"'></td>"+
+        "<td>" + name + "</td><td>" + email +"</td><td>" + phone +"</td><td><span class='"+'label label-success'+"'>"+status+"</span></td>"+
+    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
         }
   }

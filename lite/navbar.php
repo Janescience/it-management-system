@@ -84,15 +84,15 @@
                 <!-- Profile -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown show">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img id="userImageProfile"  class="profile-pic m-r-10" /><label id="nameUser"></label></a>
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img id="userImageProfile"  src="../assets/images/users/user.png" class="profile-pic m-r-10" /><label id="nameUser">name - surename</label></a>
                       <div class="dropdown-menu dropdown-menu-right scale-up show">
                                   <ul class="dropdown-user">
                                       <li>
                                           <div class="dw-user-box">
-                                              <div class="u-img"><img id="userImage"  alt="user"></div>
+                                              <div class="u-img"><img id="userImage" src="../assets/images/users/user.png" alt="user"></div>
                                               <div class="u-text">
-                                                  <h4 id="userProfile"></h4>
-                                                  <p class="text-muted" id="emailUser"></p>
+                                                  <h4 id="userProfile">name - surename</h4>
+                                                  <p class="text-muted" id="emailUser">e-mail</p>
                                                   <a href="pages-profile.php" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                           </div>
                                       </li>
@@ -121,7 +121,7 @@
                            </ul></li>
                 <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                 </li>
-                <li id="manageUserMenu"> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">Manage User</span></a>
+                <li id="manageUserMenu"> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">Manage Users</span></a>
                 </li>
                 <li id="historyMenu"> <a class="waves-effect waves-dark" href="history.php" aria-expanded="false"><i class="mdi mdi-history"></i><span class="hide-menu">History</span></a>
                 </li>
