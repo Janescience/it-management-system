@@ -47,29 +47,46 @@
                 </div>
                 <!-- Row -->
                 <div class="row">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
+
+                  <div class="form-group">
+                    <span class="counter pull-right"></span>
+                      <div class="input-group">
+                        <div class="input-group-addon"><i class="ti-search"></i></div>
+                        <input id="search" type="text"  class="form-control" >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+
 
                     <div class="col-md-12">
-                      <div class="card">
-                        <div class="card-block bg-info">
-                          <h4 class="text-white card-title">ประวัติการเปลี่ยนแปลง</h4>
-                          <div class="message-box contact-box">
-                          <h2 class="add-ct-btn">
-                        <input class="form-control" id="search" type="text" placeholder="Search...">
-                      </h2>
-                      </div>
-                      </div>
 
+
+                        <div class="card-block bg-info">
+
+                          <h4 class="text-white card-title">History</h4>
+                          <div class="message-box contact-box">
+
+
+                      </div>
+                      </div>
                               <form class="form-horizontal form-material ">
+
                                 <div class="table-responsive">
-                                  <span class="counter pull-right"></span>
-                                    <table class="table text-center results">
+                                    <table class="table text-center results color-bordered-table success-bordered-table">
                                         <thead >
                                             <tr >
-                                                <th class="text-center">ชื่อ-นามสกุล</th>
-                                                <th class="text-center">หัวข้อ</th>
-                                                <th class="text-center">วันที่</th>
-                                                <th class="text-center">เวลา</th>
-                                                <th class="text-center">จัดการ</th>
+                                                <th class="text-center">Name - Surename</th>
+                                                <th class="text-center">Topic</th>
+                                                <th class="text-center">Date</th>
+                                                <th class="text-center">Time</th>
+                                                <th class="text-center">Manage</th>
                                             </tr>
                                             <tr class="warning no-result">
   <td colspan="4"><i class="fa fa-warning"></i> No result</td>
@@ -82,7 +99,6 @@
                                 </div>
                               </form>
 
-                      </div>
                     </div>
                 </div>
             </div>

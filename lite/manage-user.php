@@ -40,24 +40,27 @@
 
                     <div class="col-md-12">
                       <div class="card">
+                        <div class="card-block">
                         <div class="card-block bg-info">
                           <h4 class="text-white card-title">Users</h4>
+                          <div class="message-box contact-box">
+                          <h2 class="add-ct-btn">
+                            <button type="button" id="btAddUser" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                          </h2>
+                        </div>
                       </div>
-                          <div class="card-block">
-                            <div class="message-box contact-box">
-                            <h2 class="add-ct-btn">
-                              <button type="button" id="btAddUser" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
-                            </h2>
-                          </div>
 
                               <form class="form-horizontal form-material ">
                                 <div class="table-responsive">
-                                    <table class="table text-center">
+                                    <table class="table text-center color-bordered-table success-bordered-table">
                                         <thead >
                                             <tr >
-                                                <th class="text-center">NAME</th>
-                                                <th class="text-center">STATUS</th>
-                                                <th class="text-center">MANAGE</th>
+                                              <th class="text-center">Profile</th>                                  
+                                                <th class="text-center">Name-surename</th>
+                                                <th class="text-center">E-mail</th>
+                                                <th class="text-center">Telephone</th>
+                                                <th class="text-center">Role</th>
+                                                <th class="text-center">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody id="list_user">
@@ -66,7 +69,7 @@
                                     </table>
                                 </div>
                               </form>
-                          </div>
+                            </div>
                       </div>
                     </div>
                 </div>

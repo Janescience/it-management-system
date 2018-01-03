@@ -41,9 +41,9 @@
                       <div class="card">
                           <!-- Nav tabs -->
                           <ul class="nav nav-tabs profile-tab" role="tablist">
-                              <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">ข้อมูลส่วนตัว</a> </li>
-                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#history" role="tab">ประวัติและผลงาน</a> </li>
-                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab">จัดการตารางงาน</a> </li>
+                              <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
+                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#history" role="tab">History | Working</a> </li>
+                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab">Office Hours</a> </li>
                           </ul>
                           <!-- Tab panes -->
                           <div class="tab-content">
@@ -54,9 +54,16 @@
                                   <div class="card-block ">
                                     <div class="card">
                                       <center class="m-t-30">
-                                         <img id="imageProfile"  class="img-circle" width="180"  />
+
+                                         <img id="imageProfile"  src="../assets/images/users/user.png" class="img-circle" width="180"  />
                                             <h4 class="card-title m-t-10"></h4>
-                                            <h6 class="card-subtitle">Accouts Manager</h6>
+
+                                            <svg height="40" width="40">
+
+                                                <circle id="statusProfile" cx="20" cy="20" r="10"  fill="#BDBDBD" stroke-width="3"/>
+                                            </svg>
+                                            <h6 id="statusOffice" class="card-subtitle"></h6>
+
                                             <input class=" btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageProfile"><hr>
                                                 <div class="form-group">
                                             <button id="btUploadImageProfile" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
@@ -117,9 +124,9 @@
                                     <div class="card">
                                       <!-- Nav tabs -->
                                       <ul class="nav nav-tabs profile-tab " role="tablist">
-                                          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#hisEducation" role="tab">ประวัติการศึกษา</a> </li>
-                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#hisWork" role="tab">ประวัติการทำงาน</a> </li>
-                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academic" role="tab">ผลงานวิชาการ</a> </li>
+                                          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#hisEducation" role="tab">History Education</a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#hisWork" role="tab">History Work</a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academic" role="tab">Academic Work</a> </li>
                                       </ul>
                                       <!-- Tab panes -->
                                       <div class="tab-content">
@@ -127,7 +134,7 @@
                                             <div class="card-block ">
 
                                                 <div class="card-block bg-info">
-                                                  <h4 class="text-white card-title">ประวัติการศึกษา</h4>
+                                                  <h4 class="text-white card-title"> History Education</h4>
                                                         <div class="message-box contact-box">
                                                         <h2 class="add-ct-btn">
                                                           <button type="button" id="btOpenModalEdu" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
@@ -137,18 +144,18 @@
 
                                                     <form class="form-horizontal form-material ">
                                                       <div class="table-responsive">
-                                                          <table class="table text-center color-bordered-table success-bordered-table">
+                                                          <table id="tableHisEdu" class="table text-center color-bordered-table success-bordered-table">
                                                               <thead >
                                                                   <tr >
-                                                                      <th class="text-center">แสดง</th>
-                                                                      <th class="text-center">ปริญญา</th>
-                                                                      <th class="text-center">สาขาวิชา</th>
-                                                                      <th class="text-center">มหาวิทยาลัย</th>
-                                                                      <th class="text-center">ปีที่จบการศึกษา</th>
-                                                                      <th class="text-center">จัดการ</th>
+                                                                      <th class="text-center">Show</th>
+                                                                      <th class="text-center">Degree</th>
+                                                                      <th class="text-center">Faculty</th>
+                                                                      <th class="text-center">University</th>
+                                                                      <th class="text-center">Graduation</th>
+                                                                      <th class="text-center">Actions</th>
                                                                   </tr>
                                                               </thead>
-                                                              <tbody id="list_his_education">
+                                                              <tbody id="list_his_education" class="list_his_education">
 
                                                               </tbody>
                                                           </table>
@@ -156,7 +163,7 @@
                                                     </form>
                                                   <br>
                                                   <div class="card-block bg-info">
-                                                    <h4 class="text-white card-title">ความเชี่ยวชาญ</h4>
+                                                    <h4 class="text-white card-title"> Expertise </h4>
                                                     <div class="message-box contact-box">
                                                     <h2 class="add-ct-btn">
                                                       <button type="button" id="btOpenModalExpert" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
@@ -168,9 +175,9 @@
                                                             <table class="table text-center color-bordered-table success-bordered-table">
                                                                 <thead >
                                                                     <tr >
-                                                                        <th class="text-center">แสดง</th>
-                                                                        <th class="text-center">รายละเอียด</th>
-                                                                        <th class="text-center">จัดการ</th>
+                                                                        <th class="text-center">Show</th>
+                                                                        <th class="text-center">Detail</th>
+                                                                        <th class="text-center">Manage</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="list_expertise">
@@ -183,7 +190,7 @@
                                           <div class="tab-pane" id="hisWork" role="tabpanel">
                                               <div class="card-block ">
                                                 <div class="card-block bg-info">
-                                                  <h4 class="text-white card-title">ประวัติการทำงาน</h4>
+                                                  <h4 class="text-white card-title">History Work</h4>
                                                     <div class="message-box contact-box">
                                                         <h2 class="add-ct-btn">
                                                           <button type="button" id="btOpenModalWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
@@ -195,11 +202,11 @@
                                                         <table class="table text-center color-bordered-table success-bordered-table">
                                                             <thead >
                                                                 <tr >
-                                                                    <th class="text-center">แสดง</th>
-                                                                    <th class="text-center">ระยะเวลา</th>
-                                                                    <th class="text-center">สถานที่ทำงาน</th>
-                                                                    <th class="text-center">งาน</th>
-                                                                    <th class="text-center">จัดการ</th>
+                                                                    <th class="text-center">Show</th>
+                                                                    <th class="text-center">Time Length</th>
+                                                                    <th class="text-center">Workplace</th>
+                                                                    <th class="text-center">Work Details</th>
+                                                                    <th class="text-center">Manage</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="list_his_work">
@@ -209,7 +216,7 @@
                                                     </div>
                                                   </form>
                                                   <div class="card-block bg-info">
-                                                    <h4 class="text-white card-title">ประสบการณ์ด้านต่างๆ</h4>
+                                                    <h4 class="text-white card-title">Experience</h4>
                                                       <div class="message-box contact-box">
                                                           <h2 class="add-ct-btn">
                                                             <button type="button" id="btOpenModalExp" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
@@ -221,11 +228,11 @@
                                                         <table class="table text-center color-bordered-table success-bordered-table">
                                                             <thead >
                                                                 <tr >
-                                                                    <th class="text-center">แสดง</th>
-                                                                    <th class="text-center">ประสบการณ์</th>
-                                                                    <th class="text-center">ระยะเวลา</th>
-                                                                    <th class="text-center">รายละเอียด</th>
-                                                                    <th class="text-center">จัดการ</th>
+                                                                    <th class="text-center">Show</th>
+                                                                    <th class="text-center">Experience</th>
+                                                                    <th class="text-center">Time Length</th>
+                                                                    <th class="text-center">Details</th>
+                                                                    <th class="text-center">Manage</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="list_exp">
@@ -242,24 +249,25 @@
                                       <div class="row">
                                           <div class="col-md-6">
                                             <ul class="list-icons">
-                                            <li ><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> งานวิจัยฉบับสมบูรณ์ที่ผ่านการรับรอง</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> วารสารระดับนานาชาตที่มีอยู่ในฐานข้อมูลสากล</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> ผลงานที่ได้รับรางวัลระดับชาติ</a></li>
-                                            <li id="interWork" ><a href="javascript:void(0)"><i id="iconInterWork" class="fa fa-chevron-right"></i> ผลงานที่ได้รับรางวัลระดับนานาชาติ</a></li>
+                                            <li id="research" ><a href="javascript:void(0)"><i id="iconResearch" class="fa fa-chevron-right"></i> Complete Certified Research</a></li>
+                                            <li id="interJourInDatabase"><a href="javascript:void(0)"><i id="iconInterJourInDatabase" class="fa fa-chevron-right"></i>International journals are available in international databases.</a></li>
+                                            <li id="nationWork"><a href="javascript:void(0)"><i id="iconNationWork" class="fa fa-chevron-right"></i>National Award Winners</a></li>
+                                            <li id="interWork" ><a href="javascript:void(0)"><i id="iconInterWork" class="fa fa-chevron-right"></i>International Award Winners</a></li>
                                             </ul>
                                          </div>
                                       <div class="col-md-6">
                                             <ul class="list-icons">
-                                            <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> การประชุมระดับชาติ</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> การประชุมระดับนานาชาติ</a></li>
-                                            <li id="nationJour"><a href="javascript:void(0)"><i id="iconNationJour" class="fa fa-chevron-right"></i> วารสารระดับชาติ</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> วารสารระดับนานาชาติที่ไม่อยู่ในฐานข้อมูลสากล</a></li>
+                                            <li id="nationMeet"><a href="javascript:void(0)"><i id="iconNationMeet" class="fa fa-chevron-right"></i> National Conference</a></li>
+                                            <li id="interMeet"><a href="javascript:void(0)"><i id="iconInterMeet" class="fa fa-chevron-right"></i> International Conference</a></li>
+                                            <li id="nationJour"><a href="javascript:void(0)"><i id="iconNationJour" class="fa fa-chevron-right"></i> National Journal</a></li>
+                                            <li id="interJourNotDatabase"><a href="javascript:void(0)"><i id="iconInterJourNotDatabase" class="fa fa-chevron-right"></i> International journals not in the international database.</a></li>
                                             </ul>
                                       </div>
                                     </div>
                                   </div>
 
                                   <div id="headInterWork" class="card-block bg-info">
+
                                     <h4 class="text-white card-title">ผลงานที่ได้รับรางวัลระดับนานาชาติ</h4>
                                       <div class="message-box contact-box">
                                           <h2 class="add-ct-btn">
@@ -290,7 +298,7 @@
                                       <h4 class="text-white card-title">วารสารระดับชาติ</h4>
                                         <div class="message-box contact-box">
                                             <h2 class="add-ct-btn">
-                                              <button type="button" id="btOpenModalInterWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                              <button type="button" id="btOpenModalNationJour" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                             </h2>
                                         </div>
                                       </div>
@@ -313,6 +321,60 @@
                                         </div>
                                       </form>
 
+                                      <div id="headInterJourNotDatabase" class="card-block bg-info">
+                                        <h4 class="text-white card-title">วารสารระดับนานาชาติที่ไม่อยู่ในฐานข้อมูลสากล</h4>
+                                          <div class="message-box contact-box">
+                                              <h2 class="add-ct-btn">
+                                                <button type="button" id="btOpenModalInterJourNotDatabase" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                              </h2>
+                                          </div>
+                                        </div>
+                                        <form class="form-horizontal form-material ">
+                                          <div class="table-responsive">
+                                              <table id="tableInterJourNotDatabase" class="table text-center color-bordered-table success-bordered-table">
+                                                  <thead >
+                                                      <tr >
+                                                          <th class="text-center">แสดง</th>
+                                                          <th class="text-center">ชื่อบทความ</th>
+                                                          <th class="text-center">ชื่อวารสาร</th>
+                                                          <th class="text-center">ประเภทบทความ</th>
+                                                          <th class="text-center">ปีที่พิมพ์</th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody id="list_inter_jour_not_database">
+
+                                                  </tbody>
+                                              </table>
+                                          </div>
+                                        </form>
+
+                                        <div id="headNationWork" class="card-block bg-info">
+                                          <h4 class="text-white card-title">ผลงานที่ได้รับรางวัลระดับชาติ</h4>
+                                            <div class="message-box contact-box">
+                                                <h2 class="add-ct-btn">
+                                                  <button type="button" id="btOpenModalNationWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                </h2>
+                                            </div>
+                                          </div>
+                                          <form class="form-horizontal form-material ">
+                                            <div class="table-responsive">
+                                                <table id="tableNationWork" class="table text-center color-bordered-table success-bordered-table">
+                                                    <thead >
+                                                        <tr >
+                                                          <th class="text-center">แสดง</th>
+                                                          <th class="text-center">ชื่อรางวัล</th>
+                                                          <th class="text-center">ชื่อผลงาน</th>
+                                                          <th class="text-center">หน่วยงานที่ได้รับรางวัล</th>
+                                                          <th class="text-center">ค่าภาระงานที่ได้รับ</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="list_nation_work">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                          </form>
+
                                           </div>
                                       </div>
                                     </div>
@@ -325,73 +387,17 @@
                                   <div class="card-block">
 
                                         <div class="demo-radio " style="padding-right:40px;" id="OffStatus"><center class="m-t-30">
-                                          <input type="radio" name="status" id="md_radio_32" class="with-gap radio-col-light-green" >
-                                          <label for="md_radio_32">Available</label>
-                                          <input type="radio" name="status" id="md_radio_27" class="with-gap radio-col-light-blue" >
-                                          <label for="md_radio_27">Not in the Office</label>
-                                          <input type="radio" name="status" id="md_radio_34" class="with-gap radio-col-amber" >
-                                          <label for="md_radio_34">Be back</label>
-                                          <input type="radio" name="status" id="md_radio_21" class="with-gap radio-col-red" >
-                                          <label for="md_radio_21">Don't Disturb</label>
+                                          <input type="radio" name="status" id="radioAvai" class="with-gap radio-col-light-green" >
+                                          <label for="radioAvai">Available</label>
+                                          <input type="radio" name="status" id="radioNotOffice" class="with-gap radio-col-light-blue" >
+                                          <label for="radioNotOffice">Not in the Office</label>
+                                          <input type="radio" name="status" id="radioBeBack" class="with-gap radio-col-amber" >
+                                          <label for="radioBeBack">Be back</label>
+                                          <input type="radio" name="status" id="radioDontDisturb" class="with-gap radio-col-red" >
+                                          <label for="radioDontDisturb">Don't Disturb</label>
                                         </div>
                                         <center class="m-t-30">
-                                      <div class="col-lg-10" >
-                                        <div class="card">
-                                          <div class="card-body">
-                                            <h4 class="card-title">Schedule</h4>
-                                            <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
-                                            <div class="table-responsive">
-                                              <table class="table table-hover color-table info-table" id="OffTable">
-                                                <thead>
-                                                  <tr>
-                                                     <th>Day</th>
-                                                     <th>Place</th>
-                                                     <th>From</th>
-                                                     <th>To</th>
-                                                     <th>Status</th>
-                                                 </tr>
-                                               </thead>
-                                               <tbody>
-                                                 <tr>
-                                                     <td>Monday</td>
-                                                     <td>F7</td>
-                                                     <td>10.00 am</td>
-                                                     <td>01.00 pm</td>
-                                                     <td><span class="label label-danger">admin</span> </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Tuesday</td>
-                                                   <td>B1</td>
-                                                   <td>08.00 am</td>
-                                                   <td>12.00 am</td>
-                                                   <td><span class="label label-info">member</span> </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Wednesday</td>
-                                                   <td>C1</td>
-                                                   <td>09.00 am</td>
-                                                   <td>03.00 pm</td>
-                                                   <td><span class="label label-warning">developer</span> </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Thusday</td>
-                                                   <td>-</td>
-                                                   <td>-</td>
-                                                   <td>-</td>
-                                                   <td><span class="label label-success">supporter</span> </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Friday</td>
-                                                   <td>C1</td>
-                                                   <td>01.00 pm</td>
-                                                   <td>05.00 pm</td>
-                                                   <td><span class="label label-info">member</span> </td>
-                                               </tr>
-                                             </tbody>
-                                           </table>
-                                         </div>
-                                       </div>
-                                     </div>
+
                                       <input type="submit" class="btn btn-success " value="Submit Button" id="OffSave">
                                      <input type="reset" class="btn btn-danger  " value="Cancel" id="OffCancel">
                                    </center>
@@ -414,6 +420,7 @@
     <?php include('modal-profile.php')?>
     <?php include('import-javascript.php')?>
     <script src="../js/profile.js"></script>
+
 
 </body>
 

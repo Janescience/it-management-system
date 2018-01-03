@@ -63,8 +63,8 @@
                         <div class="centered mySlideText" id="showTopicSecond"></div>
                         <div class="brcentered mySlideDetail" id="showDetailSecond"></div>
 
-                        <img id="imageHeaderSlideFirst" class="mySlides"  style="width:100%">
-                        <img class="mySlides" id="imageHeaderSlideSecond" style="width:100%">
+                        <img id="imageHeaderSlideFirst" src="../assets/images/big/image.png" class="mySlides"  style="width:100%">
+                        <img class="mySlides" id="imageHeaderSlideSecond" src="../assets/images/big/image.png"  style="width:100%">
 
                         <button class="btn btn-inverse w3-display-left" onclick="plusDivs(-1,-1,-1)">&#10094;</button>
                         <button class="btn btn-inverse w3-display-right" onclick="plusDivs(1,1,1)">&#10095;</button>
@@ -98,7 +98,7 @@
                   <div class="col-lg-4">
                     <div class="card text-center">
                       <div class="card-block ">
-                      <img  id="imageBachelor"  style="width:100%">
+                      <img  id="imageBachelor" src="../assets/images/big/image.png" style="width:100%">
                       </div>
                     </div>
                   </div>
@@ -106,7 +106,7 @@
                   <div class="col-lg-4">
                     <div class="card text-center">
                       <div class="card-block ">
-                        <img  id="imageMaster"  style="width:100%">
+                        <img  id="imageMaster" src="../assets/images/big/image.png" style="width:100%">
                       </div>
                     </div>
                   </div>
@@ -114,7 +114,7 @@
                   <div class="col-lg-4">
                     <div class="card text-center">
                       <div class="card-block ">
-                        <img  id="imageDoctor"  style="width:100%">
+                        <img  id="imageDoctor" src="../assets/images/big/image.png" style="width:100%">
                       </div>
                     </div>
                   </div>
@@ -138,7 +138,7 @@
                   <div class="col-lg-5">
                     <div class="card text-center">
                       <div class="card-block">
-                        <img id="imgInfo"  style="width:100%"><hr>
+                        <img id="imgInfo" src="../assets/images/big/image.png" style="width:100%"><hr>
 
                         <input class="btn btn-outline-inverse col-md-12"  type="file" id="fileUploadImageInfo"><hr>
 

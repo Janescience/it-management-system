@@ -26,28 +26,99 @@
 
 <!--===========================================================================================================-->
 
+<!--==================================== Delete ====================================================-->
+
+<div class="modal fade" id="deleteProfileModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="messagePassModal">Delete Successfully</h4>
+      </div>
+      <div class="modal-footer">
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--================================================================================================-->
+
+<!--==================================== Edit History Education ================================================-->
+
+<div class="modal fade" id="editHisEduModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">History Education</h4>
+      </div>
+      <div class="modal-body">
+        <div id="degree" class="form-group">
+          <label for="degreeHisEdu">Degree</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-bookmark-alt"></i></div>
+              <select id="degreeEditHisEdu" class="form-control ">
+                <option>Bachelor</option>
+                <option>Master</option>
+                <option>Doctorate</option>
+              </select>
+            </div>
+        </div>
+        <div id="faculty" class="form-group">
+          <label for="facultyHisEdu" >Faculty</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+              <input id="facultyEditHisEdu" type="email"  class="form-control" >
+            </div>
+        </div>
+
+        <div id="university" class="form-group">
+            <label for="universityHisEdu">University</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-flag-alt"></i></div>
+                <input id="universityEditHisEdu" type="text"  class="form-control" >
+            </div>
+        </div>
+
+        <div id="year" class="form-group">
+            <label for="yearHisEdu">Graduation Year</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                <input id="yearEditHisEdu" type="text"  class="form-control" >
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btEditEdu" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--===========================================================================================================-->
+
 <!--==================================== Add History Education ================================================-->
 
 <div class="modal fade" id="addHisEduModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">ประวัติการศึกษา</h4>
+        <h4 class="modal-title">History Education</h4>
       </div>
       <div class="modal-body">
         <div id="degree" class="form-group">
-          <label for="degreeHisEdu">ปริญญา</label>
+          <label for="degreeHisEdu">Degree</label>
               <div class="input-group">
               <div class="input-group-addon"><i class="ti-bookmark-alt"></i></div>
               <select id="degreeHisEdu" class="form-control ">
-                <option>ปริญญาตรี</option>
-                <option>ปริญญาโท</option>
-                <option>ปริญญาเอก</option>
+                <option>Bachelor</option>
+                <option>Master</option>
+                <option>Doctorate</option>
               </select>
             </div>
         </div>
         <div id="faculty" class="form-group">
-          <label for="facultyHisEdu" >สาขาวิชา</label>
+          <label for="facultyHisEdu" >Faculty</label>
               <div class="input-group">
               <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
               <input id="facultyHisEdu" type="email"  class="form-control" >
@@ -55,7 +126,7 @@
         </div>
 
         <div id="university" class="form-group">
-            <label for="universityHisEdu">มหาวิทยาลัย</label>
+            <label for="universityHisEdu">University</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-flag-alt"></i></div>
                 <input id="universityHisEdu" type="text"  class="form-control" >
@@ -63,7 +134,7 @@
         </div>
 
         <div id="year" class="form-group">
-            <label for="yearHisEdu">ปีที่จบการศึกษา</label>
+            <label for="yearHisEdu">Graduation Year</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-calendar"></i></div>
                 <input id="yearHisEdu" type="text"  class="form-control" >
@@ -86,11 +157,11 @@
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">ความเชี่ยวชาญ</h4>
+        <h4 class="modal-title">Expertise</h4>
       </div>
       <div class="modal-body">
         <div id="expert" class="form-group">
-            <label for="expertHisEdu">รายละเอียด</label>
+            <label for="expertHisEdu">Detail</label>
             <div class="input-group">
                 <textarea id="expertHisEdu" type="text"  class="form-control" ></textarea>
             </div>
@@ -106,28 +177,54 @@
 
 <!--===========================================================================================================-->
 
+<!--==================================== Edit History Expertise ================================================-->
+
+<div class="modal fade" id="editExpertModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Expertise</h4>
+      </div>
+      <div class="modal-body">
+        <div id="expert" class="form-group">
+            <label for="expertHisEdu">Detail</label>
+            <div class="input-group">
+                <textarea id="detailExpert" type="text"  class="form-control" ></textarea>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btEditExpert" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--===========================================================================================================-->
+
 <!--==================================== Add History Work ================================================-->
 
 <div class="modal fade" id="addWorkModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">ประวัติการทำงาน</h4>
+        <h4 class="modal-title">History Work</h4>
       </div>
       <div class="modal-body">
 
-    <label for="facultyHisEdu" >ระยะเวลา</label><br>
+    <label for="facultyHisEdu" >Time Length</label><br>
     <div id="university" class="form-group">
       <div class="row">
         <div class="col-md-6">
-        <h6 for="facultyHisEdu" >เริ่มต้น</h6>
+        <h6 for="facultyHisEdu" >Start</h6>
         <div class="input-group">
           <div class="input-group-addon"><i class="ti-time"></i></div>
             <input id="timeStartHisWork" type="text"  class="form-control col-md-6" >
           </div>
         </div>
         <div class="col-md-6">
-          <h6 for="facultyHisEdu" >สิ้นสุด</h6>
+          <h6 for="facultyHisEdu" >Finish</h6>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-time"></i></div>
               <input id="timeFinishHisWork" type="text"  class="form-control col-md-6" >
@@ -137,7 +234,7 @@
     </div>
 
         <div id="university" class="form-group">
-            <label for="universityHisEdu">สถานที่ทำงาน</label>
+            <label for="universityHisEdu">Workplace</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-location-pin"></i></div>
                 <textarea id="addressHisWork" type="text"  class="form-control" ></textarea>
@@ -145,7 +242,7 @@
         </div>
 
         <div id="year" class="form-group">
-            <label for="yearHisEdu">งาน</label>
+            <label for="yearHisEdu">Work Detail</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-briefcase"></i></div>
                 <textarea id="workHisWork" type="text"  class="form-control" ></textarea>
@@ -168,13 +265,13 @@
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">ประสบการณ์ด้านต่างๆ</h4>
+        <h4 class="modal-title">Experience</h4>
       </div>
       <div class="modal-body">
 
 
         <div id="university" class="form-group">
-            <label>ประสบการณ์</label>
+            <label>Experience</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-location-pin"></i></div>
                 <input id="expExp" type="text"  class="form-control" >
@@ -182,18 +279,18 @@
         </div>
 
 
-    <label>ระยะเวลา</label><br>
+    <label>Time Length</label><br>
     <div id="university" class="form-group">
       <div class="row">
         <div class="col-md-6">
-        <h6 >เริ่มต้น</h6>
+        <h6 >Start</h6>
         <div class="input-group">
           <div class="input-group-addon"><i class="ti-time"></i></div>
             <input id="timeStartExp" type="text"  class="form-control col-md-6" >
           </div>
         </div>
         <div class="col-md-6">
-          <h6 for="facultyHisEdu" >สิ้นสุด</h6>
+          <h6 for="facultyHisEdu" >Finish</h6>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-time"></i></div>
               <input id="timeFinishExp" type="text"  class="form-control col-md-6" >
@@ -203,7 +300,7 @@
     </div>
 
         <div class="form-group">
-            <label >รายละเอียด</label>
+            <label >Detail</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-briefcase"></i></div>
                 <textarea id="detailExp" type="text"  class="form-control" ></textarea>
