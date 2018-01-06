@@ -20,6 +20,10 @@
   display:table-row;
 }
 
+
+
+
+
 </style>
 </head>
 
@@ -79,14 +83,13 @@
                               <form class="form-horizontal form-material ">
 
                                 <div class="table-responsive">
-                                    <table class="table text-center results color-bordered-table success-bordered-table">
+                                    <table id="tableHistory" class="table text-center results color-bordered-table success-bordered-table">
                                         <thead >
                                             <tr >
                                                 <th class="text-center">Name - Surename</th>
                                                 <th class="text-center">Topic</th>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Time</th>
-                                                <th class="text-center">Manage</th>
                                             </tr>
                                             <tr class="warning no-result">
   <td colspan="4"><i class="fa fa-warning"></i> No result</td>

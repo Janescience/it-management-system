@@ -37,6 +37,7 @@
                 </div>
                 <!-- Row -->
                 <div class="row">
+
                   <div class="col-md-12">
                       <div class="card">
                           <!-- Nav tabs -->
@@ -55,7 +56,8 @@
                                     <div class="card">
                                       <center class="m-t-30">
 
-                                         <img id="imageProfile"  src="../assets/images/users/user.png" class="img-circle" width="180"  />
+                                         <img id="imageProfile"  src="../assets/images/users/user.png"  class="img-circle" width="180"/>
+
                                             <h4 class="card-title m-t-10"></h4>
 
                                             <svg height="40" width="40">
@@ -398,8 +400,6 @@
                                         </div>
                                         <center class="m-t-30">
 
-                                      <input type="submit" class="btn btn-success " value="Submit Button" id="OffSave">
-                                     <input type="reset" class="btn btn-danger  " value="Cancel" id="OffCancel">
                                    </center>
                                    </div>
                                   </div>
@@ -416,6 +416,60 @@
 
         </div>
     </div>
+
+    <!--==================================== Add History Education ================================================-->
+
+    <div class="modal fade" id="addHisEduModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">History Education</h4>
+          </div>
+          <div class="modal-body">
+            <div id="degree" class="form-group">
+              <label for="degreeHisEdu">Degree</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-bookmark-alt"></i></div>
+                  <select id="degreeHisEdu" class="form-control ">
+                    <option>Bachelor</option>
+                    <option>Master</option>
+                    <option>Doctorate</option>
+                  </select>
+                </div>
+            </div>
+            <div id="faculty" class="form-group">
+              <label for="facultyHisEdu" >Faculty</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                  <input id="facultyHisEdu" type="email"  class="form-control" >
+                </div>
+            </div>
+
+            <div id="university" class="form-group">
+                <label for="universityHisEdu">University</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-flag-alt"></i></div>
+                    <input id="universityHisEdu" type="text"  class="form-control" >
+                </div>
+            </div>
+
+            <div id="year" class="form-group">
+                <label for="yearHisEdu">Graduation Year</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                    <input id="yearHisEdu" type="text"  class="form-control" >
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="btSubmitEdu" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+            <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--===========================================================================================================-->
 
     <?php include('modal-profile.php')?>
     <?php include('import-javascript.php')?>

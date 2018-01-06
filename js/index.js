@@ -99,6 +99,7 @@ if(indexSelect==0){
    pushHeaderHistory();
    document.getElementById("textTopic").disabled = true;
    document.getElementById("textDetail").disabled = true;
+
  });
 
  $('#btClearTextFile').on('click',function(){

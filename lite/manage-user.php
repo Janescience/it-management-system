@@ -11,6 +11,18 @@
 
     <?php  include('header.php') ?>
 
+    <style>
+    .results tr[visible='false'],
+    .no-result{
+      display:none;
+    }
+
+    .results tr[visible='true']{
+      display:table-row;
+    }
+
+    </style>
+
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -36,11 +48,28 @@
                     </div>
                 </div>
                 <!-- Row -->
+
                 <div class="row">
 
                     <div class="col-md-12">
                       <div class="card">
                         <div class="card-block">
+                          <div class="row">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+
+                            <div class="form-group">
+                              <span class="counter pull-right"></span>
+                                <div class="input-group">
+                                  <div class="input-group-addon"><i class="ti-search"></i></div>
+                                  <input id="searchUser" type="text"  class="form-control" >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         <div class="card-block bg-info">
                           <h4 class="text-white card-title">Users</h4>
                           <div class="message-box contact-box">
@@ -52,15 +81,18 @@
 
                               <form class="form-horizontal form-material ">
                                 <div class="table-responsive">
-                                    <table class="table text-center color-bordered-table success-bordered-table">
+                                    <table class="table text-center color-bordered-table results success-bordered-table">
                                         <thead >
                                             <tr >
-                                              <th class="text-center">Profile</th>                                  
+                                              <th class="text-center">Profile</th>
                                                 <th class="text-center">Name-surename</th>
                                                 <th class="text-center">E-mail</th>
                                                 <th class="text-center">Telephone</th>
                                                 <th class="text-center">Role</th>
                                                 <th class="text-center">Actions</th>
+                                            </tr>
+                                            <tr class="warning no-result">
+                                              <td colspan="6"><i class="fa fa-warning"></i> No result</td>
                                             </tr>
                                         </thead>
                                         <tbody id="list_user">
@@ -93,6 +125,23 @@
         </div>
       </div>
     </div>
+
+    <!--==================================== Delete ====================================================-->
+
+    <div class="modal fade" id="deleteUserModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="messagePassModal">Delete Successfully</h4>
+          </div>
+          <div class="modal-footer">
+            <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--================================================================================================-->
 
     <!-- Modal -->
     <div class="modal fade" id="addUserModal" role="dialog" aria-labelledby="Message" aria-hidden="true">

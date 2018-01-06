@@ -7,6 +7,7 @@ $(document).ready(function(){
  var selectedFile;
  var indexSelect;
  var idEducation;
+ var clicked;
 
  $('#radioAvai').change(function(){
    var color={
@@ -109,6 +110,7 @@ $(document).ready(function(){
 
 
 $('#btOpenModalEdu').on('click',function(){
+
   $('#addHisEduModal').modal('show');
 });
 
@@ -139,6 +141,7 @@ $('#btOpenModalExp').on('click',function(){
                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>"
                            );
+          console.log("Table : ",snap.key);
   });
 
 
@@ -165,6 +168,7 @@ $('#btOpenModalExp').on('click',function(){
   });
 
   $('#btEditEdu').on('click',function(){
+
     $('#editHisEduModal').modal('hide');
     var dataUpdateEducation = {
       degree:$('#degreeEditHisEdu').val(),
@@ -172,24 +176,25 @@ $('#btOpenModalExp').on('click',function(){
       university:$('#universityEditHisEdu').val(),
       year:$('#yearEditHisEdu').val()
     };
-    rootRefEducation.child(idEducation).update(dataUpdateEducation).then(function(){
-      $('#list_his_education').empty();
-      rootRefEducation.on("child_added",snap => {
+    rootRefEducation.child(idEducation).update(dataUpdateEducation);
 
-        var degree = snap.child("degree").val();
-        var faculty = snap.child("faculty").val();
-        var university = snap.child("university").val();
-        var year = snap.child("year").val();
+    $('#list_his_education').empty();
 
-        $('#list_his_education').append("<tr id='"+snap.key+"' ><td><input type='"+'checkbox'+"'  class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
-                                  "<label for='"+'md_checkbox'+"'></label></td>"+"<td class='"+'txtdegree'+"'>" + degree + "</td>" +
-                                  "<td class='"+'txtfaculty'+"'>" + faculty + "</td>" + "<td class='"+'txtuniversity'+"'>" + university + "</td>" + "<td class='"+'txtyear'+"'>" + year + "</td>"+
-                                 "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
-                                 " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>"
-                               );
-      });
+        rootRefEducation.on("child_added",snap => {
 
-    });
+          var degree = snap.child("degree").val();
+          var faculty = snap.child("faculty").val();
+          var university = snap.child("university").val();
+          var year = snap.child("year").val();
+
+          $('#list_his_education').append("<tr id='"+snap.key +"' ><td><input type='"+'checkbox'+"'  class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                                    "<label for='"+'md_checkbox'+"'></label></td>"+"<td class='"+'txtdegree'+"'>" + degree + "</td>" +
+                                    "<td class='"+'txtfaculty'+"'>" + faculty + "</td>" + "<td class='"+'txtuniversity'+"'>" + university + "</td>" + "<td class='"+'txtyear'+"'>" + year + "</td>"+
+                                   "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                   " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>"
+                                 );
+            console.log("Edit and Add To Table : ",snap.key);
+        });
 
   });
 
@@ -256,6 +261,14 @@ $('#btOpenModalExp').on('click',function(){
 
 
 $('#btSubmitEdu').on('click',function(){
+
+if($('#facultyHisEdu').val()==""){
+
+  }else if($('#universityHisEdu').val()==""){
+
+  }else if($('#yearHisEdu').val()==""){
+
+  }else{
   $('#addHisEduModal').modal('hide');
 
   var data = {
@@ -267,11 +280,17 @@ $('#btSubmitEdu').on('click',function(){
 
  usersRef.child(sessionStorage.getItem("userId")).child('education').child('his_education').push().set(data).then(function(){
    console.log("User Information Saved:", sessionStorage.getItem("userId"));
+     $('#facultyHisEdu').val("");
+     $('#universityHisEdu').val("");
+     $('#yearHisEdu').val("");
  });
+}
+$('#list_his_education tr:last').remove();
 
 });
 
 $('#btSubmitExpert').on('click',function(){
+
   $('#addExpertModal').modal('hide');
   var data = {
     detail:$('#expertHisEdu').val()
@@ -279,6 +298,7 @@ $('#btSubmitExpert').on('click',function(){
   usersRef.child(sessionStorage.getItem("userId")).child('education').child('expertise').push().set(data).then(function(){
     console.log("User Information Saved:", sessionStorage.getItem("userId"));
   });
+
 });
 
 
