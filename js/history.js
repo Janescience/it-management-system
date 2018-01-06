@@ -13,7 +13,7 @@ $(document).ready(function(){
       var time = snap.child('time').val();
 
       $('#list_history').append("<tr><td>" + name + "</td>" + "<td>" + topic + "</td>"+ "<td>" + date + "</td>"+ "<td>" + time + "</td>"+
-                               "<td><button id='"+'removeUser'+"' class='"+'btn btn-danger'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+                               "</tr>");
 
     });
 
@@ -42,4 +42,5 @@ if(jobCount == '0') {$('.no-result').show();}
   else {$('.no-result').hide();}
 
  });
+
 })

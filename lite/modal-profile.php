@@ -97,59 +97,7 @@
 
 <!--===========================================================================================================-->
 
-<!--==================================== Add History Education ================================================-->
 
-<div class="modal fade" id="addHisEduModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">History Education</h4>
-      </div>
-      <div class="modal-body">
-        <div id="degree" class="form-group">
-          <label for="degreeHisEdu">Degree</label>
-              <div class="input-group">
-              <div class="input-group-addon"><i class="ti-bookmark-alt"></i></div>
-              <select id="degreeHisEdu" class="form-control ">
-                <option>Bachelor</option>
-                <option>Master</option>
-                <option>Doctorate</option>
-              </select>
-            </div>
-        </div>
-        <div id="faculty" class="form-group">
-          <label for="facultyHisEdu" >Faculty</label>
-              <div class="input-group">
-              <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-              <input id="facultyHisEdu" type="email"  class="form-control" >
-            </div>
-        </div>
-
-        <div id="university" class="form-group">
-            <label for="universityHisEdu">University</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="ti-flag-alt"></i></div>
-                <input id="universityHisEdu" type="text"  class="form-control" >
-            </div>
-        </div>
-
-        <div id="year" class="form-group">
-            <label for="yearHisEdu">Graduation Year</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="ti-calendar"></i></div>
-                <input id="yearHisEdu" type="text"  class="form-control" >
-            </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button id="btSubmitEdu" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
-        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--===========================================================================================================-->
 
 <!--==================================== Add History Expertise ================================================-->
 

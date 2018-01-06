@@ -5,6 +5,31 @@ $(document).ready(function(){
  var usersRef = dbRef.ref('users')
  var auth = null;
 
+ $("#searchUser").keyup(function () {
+   var searchTerm = $("#searchUser").val();
+   var listItem = $('.results tbody').children('tr');
+   var searchSplit = searchTerm.replace(/ /g, "'):containsi('");
+
+   $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+       return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+     }
+     });
+   $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+   $(this).attr('visible','false');
+   });
+
+   $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+   $(this).attr('visible','true');
+   });
+
+ var jobCount = $('.results tbody tr[visible="true"]').length;
+   $('.counter').text(jobCount + ' item');
+
+ if(jobCount == '0') {$('.no-result').show();}
+   else {$('.no-result').hide();}
+
+  });
+
 
   var rootRef = dbRef.ref().child("users");
 
@@ -28,14 +53,28 @@ $(document).ready(function(){
       }
     }else if(sessionStorage.getItem("status") == "SuperAdmin"){
 
-    $('#list_user').append("<tr><td><img src='"+image+"' class='"+'img-circle'+"' width='"+'50'+"' height='"+'50'+"'></td>"+
+    $('#list_user').append("<tr id='"+snap.key+"'valign='"+'middle'+"'><td><img src='"+image+"' class='"+'img-circle'+"' width='"+'60'+"' height='"+'60'+"'></td>"+
         "<td>" + name + "</td><td>" + email +"</td><td>" + phone +"</td><td><span class='"+'label label-success'+"'>"+status+"</span></td>"+
     "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
-    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
         }
   }
  });
+
+   $('#list_user').on('click','.btn-delete-user',function(){
+     var id = $(this).closest('tr').attr("id");
+     var user = firebase.auth();
+     user.delete(id).then(function() {
+         $('#deleteUserModal').modal('show');
+       }).catch(function(error) {
+          // An error happened.
+      });
+    //  rootRef.child(id).remove().then(function(){
+    //      $('#deleteUserModal').modal('show');
+    //  });
+    //    $(this).closest('tr').remove();
+   });
 
  $('#btAddUser').on('click',function(e){
    e.preventDefault();
