@@ -14,11 +14,12 @@
       <!-- Include Required Prerequisites -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
 
       <!-- Include Date Range Picker -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+
 
      <?php  include('header.php') ?>
 
@@ -193,41 +194,38 @@
             <h4 class="modal-title" id="messageModalLabel">ผลงานนักศึกษา</h4>
             <h6 class="card-subtitle">ระดับปริญญาตรี</h6>
           </div>
-            <br>
-         <!-- Column -->
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-block">
-
-          <form class="form-horizontal form-material">
+          <div class="modal-body">
 
             <div class="form-group">
               <label class="col-md-12">ชื่อผลงาน</label>
-                <div class="col-md-12">
-                  <input id="BechelorPortfolioName" type="text"  class="form-control form-control-line">
-                </div>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="mdi mdi-clipboard-text"></i></div>
+                    <input id="BechelorPortfolioName" type="text"  class="form-control form-control-line">
+                  </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-12">รายละเอียด</label>
-                <div class="col-md-12">
-                  <textarea class="form-control" rows="3" id="BechelorPortfolioDetail" ></textarea>
-                </div>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                    <textarea class="form-control" rows="3" id="BechelorPortfolioDetail" ></textarea>
+                  </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-12">ประเภทผลงาน</label>
-                <div class="col-md-12">
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-trophy"></i></div>
                   <select id="BechelorPortfolioGroup" class="form-control form-control-line">
-                      <option>การประกวดทั่วไป</option>
-                      <option>การออกแบบเว็บไซต์(Website)</option>
-                      <option>แอนิเมชั่น(Animation)</option>
-                      <option>หนังสืออิเล็กทรอนิกส์(E-Book)</option>
-                      <option>ภาพยนตร์สั้น</option>
-                      <option>เรื่องสั้น</option>
-                      <option>การอบรม</option>
-                      <option>อื่นๆ</option>
-                  </select>
+                    <option>การประกวดทั่วไป</option>
+                    <option>การออกแบบเว็บไซต์(Website)</option>
+                    <option>แอนิเมชั่น(Animation)</option>
+                    <option>หนังสืออิเล็กทรอนิกส์(E-Book)</option>
+                    <option>ภาพยนตร์สั้น</option>
+                    <option>เรื่องสั้น</option>
+                    <option>การอบรม</option>
+                    <option>อื่นๆ</option>
+                </select>
                 </div>
             </div>
 
@@ -236,8 +234,8 @@
                 <div class="col-md-12">
                   <div class="row">
                     <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
-                      <input type="checkbox" id="GeneralBechelorPortfolio" class="chk-col-blue-grey">
-                      <label for="GeneralBechelorPortfolio">ผลงานทั่วไป</label>
+                      <input type="checkbox" id="BechelorPortfolioGeneral" class="chk-col-grey" checked disabled>
+                      <label for="BechelorPortfolioGeneral">ผลงานทั่วไป</label>
                       <input type="checkbox" id="BechelorPortfolioHallOfFame" class="chk-col-grey" >
                       <label for="BechelorPortfolioHallOfFame">Hall of Fame</label>
                     </div>
@@ -247,42 +245,27 @@
 
             <div class="form-group">
               <label class="col-md-12">ปีที่ได้รับรางวัล</label>
-                <div class="col-md-12">
-                  <select class="form-control form-control-line" id="BechelorPortfolioYear" name="year">
-                    <script>
-                    var myDate = new Date();
-                    var year = myDate.getFullYear();
-                    for(var i = 1900; i < year+1; i++){
-                  	  document.write('<option value="'+i+'">'+i+'</option>');
-                    }
-                    </script>
-                  </select>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="mdi mdi-calendar-check"></i></div>
+                  <select id="BechelorPortfolioYear"  class="form-control form-control-line"></select>
+                    <!-- <input id="BechelorPortfolioYear" type="text" pattern="(?:25|25)[0-9]{2}" title="กรุณากรอกปีพ.ศ.ปีที่ได้รับรางวัล" class="form-control form-control-line"> -->
                 </div>
-            </div>
+              </div>
 
             <div class="form-group">
               <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
-                <div class="col-md-12">
-                  <input type="file" id="BechelorPortfolioPicture" multiple size="50" onchange="BechelorUploadFunction()">
-                    <p id="Bechelordemo"></p>
+                  <input type="file" id="BechelorPortfolioPicture" class="form-control" >
+                    <p id="BechelorDemo"></p>
                   <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
-                </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-sm-12 text-center">
-                    <button id="btSubmitBechelorPortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
-                </div>
-            </div>
-
-            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="btSubmitBechelorPortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
+            <button id="btCloseBechelorPortfolio" type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
     <!-- Modal Bechelor Student Activity -->
     <div class="modal fade" id="addBechelorActivity" role="dialog" aria-labelledby="Message" aria-hidden="true">
@@ -292,114 +275,108 @@
             <h4 class="modal-title" id="messageModalLabel">ภาพกิจกรรมนักศึกษา</h4>
             <h6 class="card-subtitle">ระดับปริญญาตรี</h6>
           </div>
-          <br>
-
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-block">
-                <form class="form-horizontal form-material">
-
-                  <div class="form-group">
-                    <label class="col-md-12">ชื่อกิจกรรม</label>
-                      <div class="col-md-12">
-                        <input id="BechelorActivityName" type="text"  class="form-control form-control-line">
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-12">รายละเอียด</label>
-                      <div class="col-md-12">
-                        <textarea class="form-control" rows="5" id="BechelorActivityDetail" ></textarea>
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-12">แฟ้มรูปภาพ</label>
-                      <div class="col-md-12">
-                        <textarea class="form-control" rows="5" id="BechelorActivityPhoto" ></textarea>
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-12">วิดีโอ<label style="color:red;">(ถ้ามี)</label></label>
-                      <div class="col-md-12">
-                        <textarea class="form-control" rows="5" id="BechelorActivityVideo" ></textarea>
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-12">วันที่จัดกิจกรรม</label>
-                      <div class="col-md-12">
-                        <input  class="form-control " type="text" id="BechelorActivityDate" name="daterange" value="" />
-                        <script type="text/javascript">
-                              $('input[name="daterange"]').daterangepicker(
-                              {
-                                "showWeekNumbers": true,
-                                "timePicker": true,
-                                "timePicker24Hour": true,
-                                "timePickerIncrement": 5,
-                                "autoApply": true,
-                                "locale": {
-                                    "format": 'DD/MM/YYYY HH:mm ',
-                                    "separator": " - ",
-                                    "applyLabel": "Apply",
-                                    "cancelLabel": "Cancel",
-                                    "fromLabel": "From",
-                                    "toLabel": "To",
-                                    "customRangeLabel": "Custom",
-                                    "weekLabel": "W",
-                                    "daysOfWeek": [
-                                        "Su",
-                                        "Mo",
-                                        "Tu",
-                                        "We",
-                                        "Th",
-                                        "Fr",
-                                        "Sa"
-                                    ],
-                                    "monthNames": [
-                                        "January",
-                                        "February",
-                                        "March",
-                                        "April",
-                                        "May",
-                                        "June",
-                                        "July",
-                                        "August",
-                                        "September",
-                                        "October",
-                                        "November",
-                                        "December"
-                                    ],
-                                    "firstDay": 1
-                                },
-                                "linkedCalendars": false,
-                                "alwaysShowCalendars": true,
-                                "startDate": "01/01/2018",
-                                "endDate": "01/01/2018",
-                                "opens": "center",
-                                "drops": "up",
-                                "buttonClasses": "btn btn-md",
-                                "applyClass": "btn-info",
-                                "cancelClass": "btn-danger"
-                            }, function(start, end, label) {
-                              console.log("New date range selected: ' + start.format('DD/MM/YYYY HH:mm ') + ' to ' + end.format('DD/MM/YYYY HH:mm ') + ' (predefined range: ' + label + ')");
-                              alert("จัดกิจกรรมตั้งแต่วันที่ : " + start.format('DD/MM/YYYY HH:mm ') + ' ถึง ' + end.format('DD/MM/YYYY HH:mm '));
-                            });
-                        </script>
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                      <div class="col-sm-12 text-center">
-                        <button id="btUploadBechelorImageActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   Submit</button>
-                        <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
-                        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
-                      </div>
-                  </div>
-
-                </form>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="col-md-12">ชื่อกิจกรรม</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="mdi mdi-clipboard-text"></i></div>
+                <input id="GraduateActivityName" type="text"  class="form-control form-control-line">
               </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-12">รายละเอียด</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                <textarea class="form-control" rows="5" id="GraduateActivityDetail" ></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-12">แฟ้มรูปภาพ</label>
+              <input type="file" multiple="60" name="" value="">
+              <button id="capture" class="btn btn-success"><i class="fa fa-check"></i>   capture</button>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-12">วิดีโอ<label style="color:red;">(ถ้ามี)</label></label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                <textarea class="form-control" rows="5" id="GraduateActivityVideo" ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-12">วันที่จัดกิจกรรม</label>
+              <div class="col-md-12">
+                <input  class="form-control " type="text" id="GraduateActivityDate" name="daterange" value="" />
+                <script type="text/javascript">
+                      $('input[name="daterange"]').daterangepicker(
+                      {
+                        "showWeekNumbers": true,
+                        "timePicker": true,
+                        "timePicker24Hour": true,
+                        "timePickerIncrement": 5,
+                        "autoApply": true,
+                        "locale": {
+                            "format": 'DD/MM/YYYY HH:mm ',
+                            "separator": " - ",
+                            "applyLabel": "Apply",
+                            "cancelLabel": "Cancel",
+                            "fromLabel": "From",
+                            "toLabel": "To",
+                            "customRangeLabel": "Custom",
+                            "weekLabel": "W",
+                            "daysOfWeek": [
+                                "Su",
+                                "Mo",
+                                "Tu",
+                                "We",
+                                "Th",
+                                "Fr",
+                                "Sa"
+                            ],
+                            "monthNames": [
+                                "January",
+                                "February",
+                                "March",
+                                "April",
+                                "May",
+                                "June",
+                                "July",
+                                "August",
+                                "September",
+                                "October",
+                                "November",
+                                "December"
+                            ],
+                            "firstDay": 1
+                        },
+                        "linkedCalendars": false,
+                        "alwaysShowCalendars": true,
+                        "startDate": "01/01/2018",
+                        "endDate": "01/01/2018",
+                        "opens": "center",
+                        "drops": "up",
+                        "buttonClasses": "btn btn-md",
+                        "applyClass": "btn-info",
+                        "cancelClass": "btn-danger"
+                    }, function(start, end, label) {
+                      console.log("New date range selected: ' + start.format('DD/MM/YYYY HH:mm ') + ' to ' + end.format('DD/MM/YYYY HH:mm ') + ' (predefined range: ' + label + ')");
+                      alert("จัดกิจกรรมตั้งแต่วันที่ : " + start.format('DD/MM/YYYY HH:mm ') + ' ถึง ' + end.format('DD/MM/YYYY HH:mm '));
+                    });
+                </script>
+              </div>
+          </div>
+
+          <div class="modal-footer">
+            <div class="form-group">
+                <div class="col-sm-12 text-center">
+                  <button id="btUploadBechelorImageActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   Submit</button>
+                  <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
+                  <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
             </div>
           </div>
         </div>
@@ -414,93 +391,77 @@
               <h4 class="modal-title" id="messageModalLabel">ผลงานบัณฑิตศึกษา</h4>
               <h6 class="card-subtitle">ระดับบัณฑิตศึกษา</h6>
             </div>
-            <br>
-            <!-- Column -->
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-block">
+             <!-- <form> -->
+            <div class="modal-body">
 
-                  <form class="form-horizontal form-material">
-
-                    <div class="form-group">
-                      <label class="col-md-12">ชื่อผลงาน</label>
-                        <div class="col-md-12">
-                          <input id="GraduatePortfolioName" type="text"  class="form-control form-control-line">
-                        </div>
+              <div class="form-group">
+                <label class="col-md-12">ชื่อผลงาน</label>
+                    <div class="input-group">
+                    <div class="input-group-addon"><i class="mdi mdi-clipboard-text"></i></div>
+                      <input id="GraduatePortfolioName" type="text"  class="form-control form-control-line">
                     </div>
+              </div>
 
-                    <div class="form-group">
-                      <label class="col-md-12">รายละเอียด</label>
-                        <div class="col-md-12">
-                          <textarea class="form-control" rows="3" id="GraduatePortfolioDetail" ></textarea>
-                        </div>
+              <div class="form-group">
+                <label class="col-md-12">รายละเอียด</label>
+                    <div class="input-group">
+                    <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                      <textarea class="form-control" rows="3" id="GraduatePortfolioDetail" ></textarea>
                     </div>
+              </div>
 
-                    <div class="form-group">
-                      <label class="col-md-12">ประเภทผลงาน</label>
-                        <div class="col-md-12">
-                          <select id="GraduatePortfolioGroup" class="form-control form-control-line">
-                              <option>การประกวดทั่วไป</option>
-                              <option>การออกแบบเว็บไซต์(Website)</option>
-                              <option>แอนิเมชั่น(Animation)</option>
-                              <option>หนังสืออิเล็กทรอนิกส์(E-Book)</option>
-                              <option>ภาพยนตร์สั้น</option>
-                              <option>เรื่องสั้น</option>
-                              <option>การอบรม</option>
-                              <option>อื่นๆ</option>
-                          </select>
-                        </div>
-                    </div>
+              <div class="form-group">
+                <label class="col-md-12">ประเภทผลงาน</label>
+                    <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-trophy"></i></div>
+                    <select id="GraduatePortfolioGroup" class="form-control form-control-line">
+                      <option>การประกวดทั่วไป</option>
+                      <option>การออกแบบเว็บไซต์(Website)</option>
+                      <option>แอนิเมชั่น(Animation)</option>
+                      <option>หนังสืออิเล็กทรอนิกส์(E-Book)</option>
+                      <option>ภาพยนตร์สั้น</option>
+                      <option>เรื่องสั้น</option>
+                      <option>การอบรม</option>
+                      <option>อื่นๆ</option>
+                  </select>
+                  </div>
+              </div>
 
-                    <div class="form-group">
-                        <label class="col-md-12">Status</label>
-                        <div class="col-md-12">
-                          <div class="row">
-                            <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
-                              <input type="checkbox" id="GeneralGraduatePortfolio" class="chk-col-blue-grey">
-                              <label for="GeneralGraduatePortfolio">ผลงานทั่วไป</label>
-                              <input type="checkbox" id="BechelorGraduateHallOfFame" class="chk-col-grey" >
-                              <label for="BechelorGraduateHallOfFame">Hall of Fame</label>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label class="col-md-12">ปีที่ได้รับรางวัล</label>
-                        <div class="col-md-12">
-                          <select class="form-control form-control-line" id="GraduatePortfolioYear" name="year">
-                            <script>
-                            var myDate = new Date();
-                            var year = myDate.getFullYear();
-                            for(var i = 1900; i < year+1; i++){
-                          	  document.write('<option value="'+i+'">'+i+'</option>');
-                            }
-                            </script>
-                          </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
-                        <div class="col-md-12">
-                          <input type="file" id="GraduatePortfolioPicture" multiple size="50" onchange="GraduateUploadFunction()">
-                            <p id="GraduateDemo"></p>
-                          <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="col-sm-12 text-center">
-                        <button id="btSubmitGraduatePortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
+              <div class="form-group">
+                  <label class="col-md-12">Status</label>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
+                        <input type="checkbox" id="GraduatePortfolioGeneral" class="chk-col-grey" checked disabled>
+                        <label for="GraduatePortfolioGeneral">ผลงานทั่วไป</label>
+                        <input type="checkbox" id="GraduatePortfolioHallOfFame" class="chk-col-grey" >
+                        <label for="GraduatePortfolioHallOfFame">Hall of Fame</label>
                       </div>
                     </div>
+                  </div>
+              </div>
 
-                  </form>
+              <div class="form-group">
+                <label class="col-md-12">ปีที่ได้รับรางวัล</label>
+                    <div class="input-group">
+                    <div class="input-group-addon"><i class="mdi mdi-calendar-check"></i></div>
+                    <select id="GraduatePortfolioYear"  class="form-control form-control-line"></select>
+                      <!-- <input id="GraduatePortfolioYear" type="text" pattern="(?:25|25)[0-9]{2}"  title="กรุณากรอกปีพ.ศ.ปีที่ได้รับรางวัล" class="form-control form-control-line"> -->
+                  </div>
                 </div>
+
+              <div class="form-group">
+                <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
+                    <input type="file" id="GraduatePortfolioPicture" class="form-control" >
+                      <p id="GraduateDemo"></p>
+                    <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
               </div>
             </div>
+            <div class="modal-footer">
+              <button id="btSubmitGraduatePortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
+            </div>
+            <!-- </form> -->
           </div>
         </div>
       </div>
@@ -513,103 +474,47 @@
             <h4 class="modal-title" id="messageModalLabel">ภาพกิจกรรมบันฑิตศึกษา</h4>
             <h6 class="card-subtitle">ระดับบัณฑิตศึกษา</h6>
           </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="col-md-12">ชื่อกิจกรรม</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="mdi mdi-clipboard-text"></i></div>
+                <input id="GraduateActivityName" type="text"  class="form-control form-control-line">
+              </div>
+            </div>
 
-          <br/>
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-block">
-                <form class="form-horizontal form-material">
+            <div class="form-group">
+              <label class="col-md-12">รายละเอียด</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                <textarea class="form-control" rows="5" id="GraduateActivityDetail" ></textarea>
+              </div>
+            </div>
 
-                  <div class="form-group">
-                    <label class="col-md-12">ชื่อกิจกรรม</label>
-                      <div class="col-md-12">
-                        <input id="GraduateActivityName" type="text"  class="form-control form-control-line">
-                      </div>
-                  </div>
+            <div class="form-group">
+              <label class="col-md-12">แฟ้มรูปภาพ</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                <textarea class="form-control" rows="5" id="GraduateActivityPhoto" ></textarea>
+              </div>
+            </div>
 
-                  <div class="form-group">
-                    <label class="col-md-12">รายละเอียด</label>
-                      <div class="col-md-12">
-                        <textarea class="form-control" rows="5" id="GraduateActivityDetail" ></textarea>
-                      </div>
-                  </div>
+            <div class="form-group">
+              <label class="col-md-12">วิดีโอ<label style="color:red;">(ถ้ามี)</label></label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                <textarea class="form-control" rows="5" id="GraduateActivityVideo" ></textarea>
+              </div>
+            </div>
 
-                  <div class="form-group">
-                    <label class="col-md-12">แฟ้มรูปภาพ</label>
-                      <div class="col-md-12">
-                        <textarea class="form-control" rows="5" id="GraduateActivityPhoto" ></textarea>
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-12">วิดีโอ<label style="color:red;">(ถ้ามี)</label></label>
-                      <div class="col-md-12">
-                        <textarea class="form-control" rows="5" id="GraduateActivityVideo" ></textarea>
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-12">วันที่จัดกิจกรรม</label>
-                      <div class="col-md-12">
-                        <input  class="form-control " type="text" id="GraduateActivityDate" name="daterange" value="" />
-                        <script type="text/javascript">
-                              $('input[name="daterange"]').daterangepicker(
-                              {
-                                "showWeekNumbers": true,
-                                "timePicker": true,
-                                "timePicker24Hour": true,
-                                "timePickerIncrement": 5,
-                                "autoApply": true,
-                                "locale": {
-                                    "format": 'DD/MM/YYYY HH:mm ',
-                                    "separator": " - ",
-                                    "applyLabel": "Apply",
-                                    "cancelLabel": "Cancel",
-                                    "fromLabel": "From",
-                                    "toLabel": "To",
-                                    "customRangeLabel": "Custom",
-                                    "weekLabel": "W",
-                                    "daysOfWeek": [
-                                        "Su",
-                                        "Mo",
-                                        "Tu",
-                                        "We",
-                                        "Th",
-                                        "Fr",
-                                        "Sa"
-                                    ],
-                                    "monthNames": [
-                                        "January",
-                                        "February",
-                                        "March",
-                                        "April",
-                                        "May",
-                                        "June",
-                                        "July",
-                                        "August",
-                                        "September",
-                                        "October",
-                                        "November",
-                                        "December"
-                                    ],
-                                    "firstDay": 1
-                                },
-                                "linkedCalendars": false,
-                                "alwaysShowCalendars": true,
-                                "startDate": "01/01/2018",
-                                "endDate": "01/01/2018",
-                                "opens": "center",
-                                "drops": "up",
-                                "buttonClasses": "btn btn-md",
-                                "applyClass": "btn-info",
-                                "cancelClass": "btn-danger"
-                            }, function(start, end, label) {
-                              console.log("New date range selected: ' + start.format('DD/MM/YYYY HH:mm ') + ' to ' + end.format('DD/MM/YYYY HH:mm ') + ' (predefined range: ' + label + ')");
-                              alert("จัดกิจกรรมตั้งแต่วันที่ : " + start.format('DD/MM/YYYY HH:mm ') + ' ถึง ' + end.format('DD/MM/YYYY HH:mm '));
-                            });
-                        </script>
-                      </div>
-                  </div>
+            <div class="form-group">
+              <label class="col-md-12">วันที่จัดกิจกรรม</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+              <input  class="form-control " type="text" id="GraduateActivityDate"  name="GraduateDaterange" value="">
+              </div>
+            </div>
+          </div>
 
                   <div class="form-group">
                       <div class="col-sm-12 text-center">
@@ -618,100 +523,45 @@
                         <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
                       </div>
                   </div>
+        </div>
+      </div>
+    </div>
 
-                </form>
-              </div>
+    <!-- Modal Capture Student Activity -->
+
+
+    <div class="modal fade" id="CaptureBechelorActivity" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="messageModalLabel">ถ่ายภาพกิจกรรม</h4>
+            <h6 class="card-subtitle">ระดับปริญญาตรี</h6>
+          </div>
+          <div class="modal-body">
+              <video id="video" width="470" height="320" autoplay></video>
+              <canvas id="canvas" width="470" height="320"></canvas>
+          </div>
+
+          <div class="modal-footer">
+            <div class="form-group">
+                <div class="col-sm-12 text-center">
+                  <button id="snap" type="button" class="btn btn-success "><i class="fa fa-check"></i>   snap</button>
+
+                </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-
-
-
-
-
-
       </div>
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
     </div>
 
-
-
     <?php include('import-javascript.php')?>
     <script src="../js/student.js"></script>
 
 </body>
-
-<!-- <=========================================================== BechelorPortfolioPicture ===========================================================> -->
-<script type="text/javascript">
-function BechelorUploadFunction(){
-    var x = document.getElementById("BechelorPortfolioPicture");
-    var txt = "";
-    if ('files' in x) {
-        if (x.files.length == 0) {
-            txt = "เพิ่มไฟล์รูปภาพ";
-        } else {
-            for (var i = 0; i < x.files.length; i++) {
-                // txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-                var file = x.files[i];
-                if ('name' in file) {
-                    txt += "<strong> File " + (i+1)+ ". </strong>" + "name: " + file.name + "<br>";
-                }
-                if ('size' in file) {
-                    txt += "size: " + file.size + " bytes <br>";
-                }
-            }
-        }
-    }
-    else {
-        if (x.value == "") {
-            txt += "เพิ่มไฟล์รูปภาพ";
-        } else {
-            txt += "The files property is not supported by your browser!";
-            txt  += "<br>The path of the selected file: " + x.value;
-        }
-    }
-    document.getElementById("Bechelordemo").innerHTML = txt;
-}
-
-</script>
-
-<!-- <=========================================================== GraduatePortfolioPicture ===========================================================> -->
-<script type="text/javascript">
-function GraduateUploadFunction(){
-    var x = document.getElementById("GraduatePortfolioPicture");
-    var txt = "";
-    if ('files' in x) {
-        if (x.files.length == 0) {
-            txt = "เพิ่มไฟล์รูปภาพ";
-        } else {
-            for (var i = 0; i < x.files.length; i++) {
-                // txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-                var file = x.files[i];
-                if ('name' in file) {
-                    txt += "<strong> File " + (i+1)+ ". </strong>" + "name: " + file.name + "<br>";
-                }
-                if ('size' in file) {
-                    txt += "size: " + file.size + " bytes <br>";
-                }
-            }
-        }
-    }
-    else {
-        if (x.value == "") {
-            txt += "เพิ่มไฟล์รูปภาพ";
-        } else {
-            txt += "The files property is not supported by your browser!";
-            txt  += "<br>The path of the selected file: " + x.value;
-        }
-    }
-    document.getElementById("GraduateDemo").innerHTML = txt;
-}
-
-</script>
-
 
 </html>
