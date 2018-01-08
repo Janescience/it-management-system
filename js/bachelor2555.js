@@ -5,6 +5,71 @@ $(document).ready(function(){
  var auth = null;
  var selectedFile;
 
+ /*------------------------ Bachelor Studyplan (2555) -----------------------------------*/
+
+ $('#btAddStudyplan').on('click',function(e){
+      e.preventDefault();
+        $('#addStudyplan').modal('show');
+    });
+
+ /*======================= END Bachelor Studyplan  ======================*/
+
+
+
+ /*------------------------ Bachelor OpenCourses (2555) -----------------------------------*/
+
+ $('#btAddOpenCourses').on('click',function(e){
+      e.preventDefault();
+        $('#addOpenCourses').modal('show');
+    });
+
+ /*======================= END Bachelor OpenCourses  ======================*/
+
+
+ /*------------------------ Bachelor ModifyEs (2555) -----------------------------------*/
+
+ $('#btBachelorModifyEs').on('click',function(e){
+      e.preventDefault();
+        $('#addOpenModifyEs').modal('show');
+    });
+
+ /*======================= END Bachelor ModifyEs  ======================*/
+
+
+ /*------------------------ Bachelor ModifyIc (2555) -----------------------------------*/
+
+ $('#btBachelorModifyIc').on('click',function(e){
+      e.preventDefault();
+        $('#addOpenModifyIc').modal('show');
+    });
+
+ /*======================= END Bachelor ModifyIc  ======================*/
+
+
+ /*------------------------ Bachelor ModifyMis (2555) -----------------------------------*/
+
+ $('#btBachelorModifyMis').on('click',function(e){
+      e.preventDefault();
+        $('#addOpenModifyMis').modal('show');
+    });
+
+ /*======================= END Bachelor ModifyMis  ======================*/
+
+
+  /*------------------------ Bachelor ModifyIs (2555) -----------------------------------*/
+
+ $('#btBachelorModifyIs').on('click',function(e){
+      e.preventDefault();
+        $('#addOpenModifyIs').modal('show');
+    });
+
+ /*======================= END Bachelor ModifyIs  ======================*/
+
+
+
+
+
+
 /*------------------------ Bachelor Es (2555) -----------------------------------*/
 
 /*======================= Bachelor Edit Text ======================*/
@@ -339,15 +404,16 @@ $(document).ready(function(){
    $('#imgBachelorMis').attr("src",snap.val());
  });
 
-
-  $('#btUploadImageBacheloMis').hide();
+  $('#btBachelorSaveMis').hide();
+  $('#btBachelorCancelMis').hide();
+  $('#btUploadImageBachelorMis').hide();
 
  $('#fileUploadImageBachelorMis').on('change',function(event){
    selectedFile = event.target.files[0];
-   $('#btUploadImageBacheloMis').show();
+   $('#btUploadImageBachelorMis').show();
  });
 
- $('#btUploadImageBacheloMis').on('click',function(event){
+ $('#btUploadImageBachelorMis').on('click',function(event){
    uploadImagebachelorMis();
  });
 
@@ -377,7 +443,7 @@ $(document).ready(function(){
        });
        firebase.database().ref('website').child("course").child('bachelor').child('year2555').update(postImage);
        $('#fileUploadImageBachelorMis').val("");
-       $('#btUploadImageBacheloMis').hide();
+       $('#btUploadImageBachelorMis').hide();
      });
    }
 
@@ -466,12 +532,14 @@ $(document).ready(function(){
    $('#imgBachelorIs').attr("src",snap.val());
  });
 
+  $('#btBachelorSaveIs').hide();
+  $('#btBachelorCancelIs').hide();
 
-  $('#btUploadImageBacheloIs').hide();
+  $('#btUploadImageBachelorIs').hide();
 
  $('#fileUploadImageBachelorIs').on('change',function(event){
    selectedFile = event.target.files[0];
-   $('#btUploadImageBacheloIs').show();
+   $('#btUploadImageBachelorIs').show();
  });
 
  $('#btUploadImageBachelorIs').on('click',function(event){
@@ -504,7 +572,7 @@ $(document).ready(function(){
        });
        firebase.database().ref('website').child("course").child('bachelor').child('year2555').update(postImage);
        $('#fileUploadImageBachelorIs').val("");
-       $('#btUploadImageBacheloIs').hide();
+       $('#btUploadImageBachelorIs').hide();
      });
    }
 
