@@ -47,63 +47,72 @@ $(document).ready(function(){
    			$('#addGraduateActivity').modal('show');
 		});
 
-	$('#capture').on('click',function(e){
-  		e.preventDefault();
-   			$('#CaptureBechelorActivity').modal('show');
+		$('#btAddGraduateActivity').on('click',function(e){
+	  		e.preventDefault();
+	   			$('#addGraduateActivity').modal('show');
+			});
 
-				// Grab elements, create settings, etc.
-				var video = document.getElementById('video');
-
-				// Get access to the camera!
-				if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-				    // Not adding `{ audio: true }` since we only want video now
-				    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-				        video.src = window.URL.createObjectURL(stream);
-				        video.play();
-				    });
-				}
-
-				/* Legacy code below: getUserMedia
-				else if(navigator.getUserMedia) { // Standard
-				    navigator.getUserMedia({ video: true }, function(stream) {
-				        video.src = stream;
-				        video.play();
-				    }, errBack);
-				} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
-				    navigator.webkitGetUserMedia({ video: true }, function(stream){
-				        video.src = window.webkitURL.createObjectURL(stream);
-				        video.play();
-				    }, errBack);
-				} else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
-				    navigator.mozGetUserMedia({ video: true }, function(stream){
-				        video.src = window.URL.createObjectURL(stream);
-				        video.play();
-				    }, errBack);
-				}
-				*/
-
-				// Elements for taking the snapshot
-				var canvas = document.getElementById('canvas');
-				var context = canvas.getContext('2d');
-				var video = document.getElementById('video');
-
-				// Trigger photo take
-				document.getElementById("snap").addEventListener("click", function() {
-				context.drawImage(video, 0, 0, 460, 320);
+			$('#btShowBechelorPortfolio').on('click',function(e){
+		  		location.href = "showBechelorPortfolio.php";
 				});
 
+	// $('#capture').on('click',function(e){
+  // 		e.preventDefault();
+  //  			$('#CaptureBechelorActivity').modal('show');
+  //
+	// 			// Grab elements, create settings, etc.
+	// 			var video = document.getElementById('video');
+  //
+	// 			// Get access to the camera!
+	// 			if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+	// 			    // Not adding `{ audio: true }` since we only want video now
+	// 			    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+	// 			        video.src = window.URL.createObjectURL(stream);
+	// 			        video.play();
+	// 			    });
+	// 			}
+  //
+	// 			/* Legacy code below: getUserMedia
+	// 			else if(navigator.getUserMedia) { // Standard
+	// 			    navigator.getUserMedia({ video: true }, function(stream) {
+	// 			        video.src = stream;
+	// 			        video.play();
+	// 			    }, errBack);
+	// 			} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+	// 			    navigator.webkitGetUserMedia({ video: true }, function(stream){
+	// 			        video.src = window.webkitURL.createObjectURL(stream);
+	// 			        video.play();
+	// 			    }, errBack);
+	// 			} else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
+	// 			    navigator.mozGetUserMedia({ video: true }, function(stream){
+	// 			        video.src = window.URL.createObjectURL(stream);
+	// 			        video.play();
+	// 			    }, errBack);
+	// 			}
+	// 			*/
+  //
+	// 			// Elements for taking the snapshot
+	// 			var canvas = document.getElementById('canvas');
+	// 			var context = canvas.getContext('2d');
+	// 			var video = document.getElementById('video');
+  //
+	// 			// Trigger photo take
+	// 			document.getElementById("snap").addEventListener("click", function() {
+	// 			context.drawImage(video, 0, 0, 460, 320);
+	// 			});
+  //
+  //
+	// 	});
 
-		});
-
-		$('#canvas').hide();
-
-			$('#snap').on('click',function(e){
-
-
-
-				$('#canvas').show();
-
-			});
+		// $('#canvas').hide();
+    //
+		// 	$('#snap').on('click',function(e){
+    //
+    //
+    //
+		// 		$('#canvas').show();
+    //
+		// 	});
 
 			// ========================================= Bachelor Portfolio Script =========================================
 
@@ -212,6 +221,137 @@ $(document).ready(function(){
 			});
 
 		// ========================================= Bachelor Activity Upload Script =========================================
+
+			document.getElementById("GraduateActivityImage").addEventListener('change', function(e){
+					//Get files
+					$('#btUploadGraduateActivity').on('click',function(){
+
+
+					for (var i = 0; i < e.target.files.length; i++) {
+							var imageFile = e.target.files[i];
+							uploadImageAsPromise(imageFile);
+					}
+
+				});
+			});
+
+
+
+			//Handle waiting to upload each file using promise
+			function uploadImageAsPromise (imageFile) {
+					return new Promise(function (resolve, reject) {
+							var storageRef = firebase.storage().ref("/Activity/Graduate/Image/"+imageFile.name);
+
+							//Upload file
+							var task = storageRef.put(imageFile);
+
+							task.on('state_changed',function(sanpshot){
+
+							},function(error){
+
+							},function(){
+								var downloadURL = task.snapshot.downloadURL;
+
+								firebase.database().ref('website/student').child('bechelor').child('portfolio').child('image').push().set(downloadURL);
+					});
+			});
+		}
+
+			document.getElementById("GraduateActivityVideo").addEventListener('change', function(e){
+					//Get files
+					for (var i = 0; i < e.target.files.length; i++) {
+							var videoFile = e.target.files[i];
+
+							uploadVideoAsPromise(videoFile);
+					}
+			});
+
+			//Handle waiting to upload each file using promise
+			function uploadVideoAsPromise (videoFile) {
+					return new Promise(function (resolve, reject) {
+							var storageRef = firebase.storage().ref("/Activity/Graduate/Video/"+videoFile.name);
+
+							//Upload file
+							var task = storageRef.put(videoFile);
+
+
+
+					});
+			};
+
+
+		// ========================================= Bachelor Portfolio Button Action =========================================
+
+
+	$('#btUploadBechelorImageActivity').on('click',function(){
+
+		$('#addBechelorActivity').modal('hide');
+
+		var filename= selectedFile.name;
+		var storageRef = firebase.storage().ref('/Portfolio/Bechelor/' + filename);
+		var uplodadTask = storageRef.put(selectedFile);
+		var Status;
+
+
+		if ($("#BechelorPortfolioHallOfFame").prop("checked") == true) {
+			 Status = "Hall Of Fame"
+
+		}else if ($("#BechelorPortfolioHallOfFame").prop("checked") == false)
+		{
+			Status = null
+		}
+
+		 uplodadTask.on('state_changed',function(sanpshot){
+
+		 },function(error){
+
+		 },function(){
+			 var downloadURL = uplodadTask.snapshot.downloadURL;
+			 var updates = {};
+
+			 var data = {
+				port_name:$('#BechelorPortfolioName').val(),
+				port_detail:$('#BechelorPortfolioDetail').val(),
+				port_type:$('#BechelorPortfolioGroup').val(),
+				port_status:Status,
+				port_years:$('#BechelorPortfolioYear').val(),
+				port_image:downloadURL
+			};
+
+			firebase.database().ref('website/student').child('bechelor').child('portfolio').push().set(data).then(function(){
+			 console.log("Bechelor portfolio Saved:");
+
+			});
+
+			txt = "";
+
+			$('#BechelorPortfolioName').val("");
+			$('#BechelorPortfolioDetail').val("");
+			$('#BechelorPortfolioGroup').val("");
+			$("#BechelorPortfolioHallOfFame").prop('checked', false);
+			$('#BechelorPortfolioYear').val("");
+			$('#BechelorPortfolioPicture').val("");
+			document.getElementById("BechelorDemo").innerHTML = txt;
+
+		});
+
+
+
+	});
+
+	$('#btCloseBechelorPortfolio').on('click',function(){
+
+		txt = "";
+		$('#addBechelorPortfolio').modal('hide');
+
+			$('#BechelorPortfolioName').val("");
+			$('#BechelorPortfolioDetail').val("");
+			$('#BechelorPortfolioGroup').val("");
+			$("#BechelorPortfolioHallOfFame").prop('checked', false);
+			$('#BechelorPortfolioYear').val("");
+			$('#BechelorPortfolioPicture').val("");
+			document.getElementById("BechelorDemo").innerHTML = txt;
+	});
 
 		// ========================================= Graduate Portfolio Script =========================================
 
@@ -393,6 +533,8 @@ $(document).ready(function(){
 
 
  // <!-- <=========================================================== GraduatePortfolioYear ===========================================================> -->
+	var nowYear;
+	nowYear = new Date().getFullYear();
  var min = 2500,
      max = min + 100,
      select = document.getElementById('GraduatePortfolioYear');
