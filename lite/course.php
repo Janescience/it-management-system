@@ -46,7 +46,7 @@
                                 <h6 class="card-subtitle">เลือกหลักสูตร</h6>
                                   
 
-                                  <select class="form-control js--animations" id="CourseMenu">
+                                  <select class="form-control js--animations" id="selectHeaderSlide">
                                                     <optgroup label="ระดับปริญญาตรี">
                                                         <option value="Course1">หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปี พ.ศ 2555)</option>
                                                         <option value="Course2">หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปรับปรุง พ.ศ 2560)</option>
@@ -64,7 +64,7 @@
                                                 </select>
 
 
-                                    <button class="btn btn-success waves-effect waves-light m-r-10" onclick="coursemenu()">เลือก</button>
+                                    
                                                 
                             </div>
                         </div>
@@ -174,6 +174,7 @@
                                     
                                 </textarea>
                                 <br>
+                                <p></p> 
                                 <button id="btUploadImageBachelorEs" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                                 
                                 <button type="button" id="btBachelorEditEs"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
@@ -238,6 +239,7 @@
                                 <textarea class="form-control" rows="6" cols="75" id="textDetailBachelorIc" >
                                     
                                 </textarea>
+                                <p></p> 
                                 <br>
                                 
                                 <button id="btUploadImageBachelorIc" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
@@ -300,6 +302,7 @@
                                 <textarea class="form-control" rows="6" cols="75" id="textDetailBachelorMis" >
                                     
                                 </textarea>
+                                <p></p> 
                                 <br>
                                 
                                 <button id="btUploadImageBachelorMis" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
@@ -362,6 +365,7 @@
                                 <textarea class="form-control" rows="6" cols="75" id="textDetailBachelorIs" >
                                     
                                 </textarea>
+                                <p></p> 
                                 <br>
                                 
                                 <button id="btUploadImageBachelorIs" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>

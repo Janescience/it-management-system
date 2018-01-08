@@ -49,7 +49,7 @@
                                 <h6 class="card-subtitle">เลือกหลักสูตร</h6>
                                   
 
-                                  <select class="form-control js--animations" id="CourseMenu">
+                                  <select class="form-control js--animations" id="selectHeaderSlide">
                                                     <optgroup label="ระดับปริญญาเอก">
                                                         <option value="bounceOutDown">หลักสูตรปรัชญาดุษฎีบัณฑิต (หลักสูตรปรับปรุง พ.ศ. 2558)</option>
                                                         <option value="bounceOut">หลักสูตรปรัชญาดุษฎีบัณฑิต (หลักสูตรปี พ.ศ. 2553) </option>
@@ -70,7 +70,7 @@
                                                 </select>
 
 <p></p> 
-                                    <button class="btn btn-success waves-effect waves-light m-r-10" onclick="coursemenu()">เลือก</button>
+                                    
                                                 
                             </div>
                         </div>

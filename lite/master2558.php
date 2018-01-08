@@ -49,16 +49,17 @@
                                 <h6 class="card-subtitle">เลือกหลักสูตร</h6>
                                   
 
-                                  <select class="form-control js--animations" id="CourseMenu">
+                                  <select class="form-control js--animations" id="selectHeaderSlide">
                                                     
                                                     <optgroup label="ระดับปริญญาโท">
                                                         <option value="bounceInDown">หลักสูตรวิทยาการสารสนเทศมหาบัณฑิต (หลักสูตรปรับปรุง พ.ศ. 2558)</option> 
                                                         <option value="bounceIn">หลักสูตรวิทยาการสารสนเทศมหาบัณฑิต (หลักสูตรปี พ.ศ. 2553)</option>                       
                                                     </optgroup>
 
-                                                    <optgroup label="ระดับปริญญาตรี">                                                     
+                                                    <optgroup label="ระดับปริญญาตรี">
+                                                        <option value="Course1">หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปี พ.ศ 2555)</option>                                                     
                                                         <option value="Course2">หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปรับปรุง พ.ศ 2560)</option>
-                                                        <option value="Course1">หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปี พ.ศ 2555)</option>
+                                                        
                                                         <option value="Course3">หลักสูตรวิทยาการสารสนเทศบัณฑิต สาขาวิชานิเทศศาสตร์ดิจิทัล (หลักสูตรปรับปรุง พ.ศ. 2560)</option>    
                                                     </optgroup>
 
@@ -69,9 +70,7 @@
                                                     </optgroup>                                                   
                                                 </select>
 
-<p></p> 
-                                    <button class="btn btn-success waves-effect waves-light m-r-10" onclick="coursemenu()">เลือก</button>
-                                                
+<p></p>          
                             </div>
                         </div>
                     </div>
@@ -142,7 +141,7 @@
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img id="imgTopic1" alt="Mountain View" width="380" height="235">
+                                <img id="imgTopic1" alt="Mountain View" style="width:100%">
 
                                 <input class="btn btn-outline-inverse col-md-12" type="file" id="fileUploadImageTopic1">
                                 <p></p>
@@ -228,7 +227,7 @@
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img id="imgTopic2" alt="Mountain View" width="380" height="235">
+                                <img id="imgTopic2" alt="Mountain View" style="width:100%">
 
                                 <input class="btn btn-outline-inverse col-md-12" type="file" id="fileUploadImageTopic2"><hr>
                                 <input type="text" class="form-control form-control-line" id="textMasterDegreeTopic">

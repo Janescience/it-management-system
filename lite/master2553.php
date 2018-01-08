@@ -49,28 +49,29 @@
                                 <h6 class="card-subtitle">เลือกหลักสูตร</h6>
                                   
 
-                                  <select class="form-control js--animations" id="CourseMenu">
+                                  <select class="form-control js--animations" id="selectHeaderSlide">
                                                     
                                                     <optgroup label="ระดับปริญญาโท">
-                                                        <option value="bounceIn">หลักสูตรวิทยาการสารสนเทศมหาบัณฑิต (หลักสูตรปี พ.ศ. 2553)</option>
-                                                        <option value="bounceInDown">หลักสูตรวิทยาการสารสนเทศมหาบัณฑิต (หลักสูตรปรับปรุง พ.ศ. 2558)</option>                                                 
+                                                        <option >หลักสูตรวิทยาการสารสนเทศมหาบัณฑิต (หลักสูตรปี พ.ศ. 2553)</option>
+                                                        <option >หลักสูตรวิทยาการสารสนเทศมหาบัณฑิต (หลักสูตรปรับปรุง พ.ศ. 2558)</option>                                                 
                                                     </optgroup>
 
-                                                    <optgroup label="ระดับปริญญาตรี">                                                     
-                                                        <option value="Course2">หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปรับปรุง พ.ศ 2560)</option>
-                                                        <option value="Course1">หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปี พ.ศ 2555)</option>
-                                                        <option value="Course3">หลักสูตรวิทยาการสารสนเทศบัณฑิต สาขาวิชานิเทศศาสตร์ดิจิทัล (หลักสูตรปรับปรุง พ.ศ. 2560)</option>    
+                                                    <optgroup label="ระดับปริญญาตรี">
+                                                        <option >หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปี พ.ศ 2555)</option>                        
+                                                        <option >หลักสูตรวิทยาการสารสนเทศบัณทิต (หลักสูตรปรับปรุง พ.ศ 2560)</option>
+                                                        
+                                                        <option >หลักสูตรวิทยาการสารสนเทศบัณฑิต สาขาวิชานิเทศศาสตร์ดิจิทัล (หลักสูตรปรับปรุง พ.ศ. 2560)</option>    
                                                     </optgroup>
 
                                                     <optgroup label="ระดับปริญญาเอก">
-                                                        <option value="bounceOut">หลักสูตรปรัชญาดุษฎีบัณฑิต (หลักสูตรปี พ.ศ. 2553) </option>
-                                                        <option value="bounceOutDown">หลักสูตรปรัชญาดุษฎีบัณฑิต (หลักสูตรปรับปรุง พ.ศ. 2558)</option>
-                                                        <option value="bounceOutLeft">หลักเกณฑ์การพิจารณาวารสารทางวิชาการเพื่อสำเร็จการศึกษา</option>                                                        
+                                                        <option >หลักสูตรปรัชญาดุษฎีบัณฑิต (หลักสูตรปี พ.ศ. 2553) </option>
+                                                        <option >หลักสูตรปรัชญาดุษฎีบัณฑิต (หลักสูตรปรับปรุง พ.ศ. 2558)</option>
+                                                        <option >หลักเกณฑ์การพิจารณาวารสารทางวิชาการเพื่อสำเร็จการศึกษา</option>                                                        
                                                     </optgroup>                                                   
                                                 </select>
 
 <p></p> 
-                                    <button class="btn btn-success waves-effect waves-light m-r-10" onclick="coursemenu()">เลือก</button>
+                                   
                                                 
                             </div>
                         </div>
@@ -149,7 +150,7 @@
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img id="imgDigital" alt="Mountain View" width="380" height="235">
+                                <img id="imgDigital" alt="Mountain View" style="width:100%">
                             
                                 </div>
                             </div>
@@ -165,7 +166,7 @@
                                 <textarea class="form-control" rows="6" cols="75" id="textDetailDigital" >
                                     
                                 </textarea>
-                                <br>
+                                <p></p> 
                                 <button id="btUploadImageDigital" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                                 
                                 <button type="button" id="btEditDigital"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
@@ -216,7 +217,7 @@
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img id="imgEnterprise" alt="Mountain View" width="380" height="235">
+                                <img id="imgEnterprise" alt="Mountain View" style="width:100%">
                             
                                 </div>
                             </div>
@@ -232,7 +233,7 @@
                                 <textarea class="form-control" rows="6" cols="75" id="textDetailEnterprise" >
                                     
                                 </textarea>
-                                <br>
+                                <p></p> 
                                 <button id="btUploadImageEnterprise" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                                 
                                 <button type="button" id="btEditEnterprise"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
@@ -283,7 +284,7 @@
                             <div class="card">
                                 <div class="card-block">
                                 
-                                <img id="imgKnowledge" alt="Mountain View" width="380" height="235">
+                                <img id="imgKnowledge" alt="Mountain View" style="width:100%">
                             
                                 </div>
                             </div>
@@ -299,7 +300,7 @@
                                 <textarea class="form-control" rows="6" cols="75" id="textDetailKnowledge" >
                                     
                                 </textarea>
-                                <br>
+                                <p></p> 
                                 <button id="btUploadImageKnowledge" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                                 
                                 <button type="button" id="btEditKnowledge"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
