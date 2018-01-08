@@ -4,6 +4,31 @@ $(document).ready(function(){
  var dbRef = firebase.database();
  var auth = null;
  var selectedFile;
+ var indexSelect;
+
+
+/*------------------------ select page -----------------------------------*/
+
+ $('#selectHeaderSlide').on('change',function(){
+  indexSelect = document.getElementById("selectHeaderSlide").selectedIndex;
+  if(indexSelect==0){
+    window.location.href = "doctorate2553.php";
+  }else if(indexSelect==1){
+    window.location.href = "doctorate2558.php";
+  }else if(indexSelect==2){
+    window.location.href = "doctorate.php";
+  }else if(indexSelect==3){
+    window.location.href = "course.php";
+  }else if(indexSelect==4){
+    window.location.href = "bachelor2560.php";
+  }else if(indexSelect==5){
+    window.location.href = "bachelorIc2560.php";
+  }else if(indexSelect==6){
+    window.location.href = "master2553.php";
+  }else if(indexSelect==7){
+    window.location.href = "master2558.php";
+  }
+});
 
 
  /*------------------------ doctorate textDetailtitle (2558) -----------------------------------*/
