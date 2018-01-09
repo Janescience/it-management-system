@@ -8,28 +8,89 @@ $(document).ready(function(){
  var indexSelect;
  var idEducation;
  var clicked;
+ var latitude;
+ var longitude;
+
+var latitudeAndLongitude=document.getElementById("latitudeAndLongitude"),
+location={
+   latitude:'',
+   longitude:''
+};
+
+if (navigator.geolocation){
+ navigator.geolocation.getCurrentPosition(showPosition);
+}
+else{
+ latitudeAndLongitude.innerHTML="Geolocation is not supported by this browser.";
+}
+
+function showPosition(position){
+   location.latitude=position.coords.latitude;
+   location.longitude=position.coords.longitude;
+   var geocoder = new google.maps.Geocoder();
+   var latLng = new google.maps.LatLng(location.latitude, location.longitude);
+
+   var initMap = function() {
+       var map = new google.maps.Map(document.getElementById('map'), {
+           center: { lat: location.latitude, lng: location.longitude},
+           scrollwheel: false,
+           zoom: 20
+       });
+       var geocoder = new google.maps.Geocoder;
+       var infowindow = new google.maps.InfoWindow;
+       geocodeLatLng(geocoder, map, infowindow);
+
+   }
+
+   var geocodeLatLng = function(geocoder, map, infowindow) {
+     var input = ""+location.latitude+","+ location.longitude+"";
+     var latlngStr = input.split(',', 2);
+     var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+     geocoder.geocode({'location': latlng}, function(results, status) {
+       if (status === 'OK') {
+         if (results[0]) {
+           map.setZoom(17);
+           var marker = new google.maps.Marker({
+             position: latlng,
+             map: map
+           });
+           infowindow.setContent(results[0].formatted_address);
+           infowindow.open(map, marker);
+         } else {
+           window.alert('No results found');
+         }
+       } else {
+         window.alert('Geocoder failed due to: ' + status);
+       }
+     });
+   }
+
+   initMap();
+
+} //showPositi
+
 
  $('#radioAvai').change(function(){
    var color={
-     statusOffice:"#00ff00"
+     office:"#00ff00"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
  $('#radioNotOffice').change(function(){
    var color={
-     statusOffice:"#0099ff"
+     office:"#0099ff"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
  $('#radioBeBack').change(function(){
    var color={
-     statusOffice:"#ffcc00"
+     office:"#ffcc00"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
  $('#radioDontDisturb').change(function(){
    var color={
-     statusOffice:"#ff3300"
+     office:"#ff3300"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
@@ -355,7 +416,7 @@ $('#btSubmitExp').on('click',function(){
    $('#imageProfile').attr("src",snap.val());
  });
 
- var dbStatus = usersRef.child(sessionStorage.getItem("userId")).child('statusOffice');
+ var dbStatus = usersRef.child(sessionStorage.getItem("userId")).child('office');
  dbStatus.on('value',snap => {
    $('#statusProfile').attr("fill",snap.val());
    if(snap.val() == "#00ff00"){

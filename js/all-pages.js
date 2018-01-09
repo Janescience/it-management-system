@@ -16,6 +16,8 @@ var dbRef = firebase.database();
 var usersRef = dbRef.ref('users')
 var status;
 
+
+
 var historyRef = dbRef.ref('history');
 
 var rootRefHistory = historyRef;
@@ -26,7 +28,7 @@ var rootRefHistory = historyRef;
     var date = snap.child('date').val();
     var time = snap.child('time').val();
 
-    $('#notify').append("<a href='"+'#'+"'><div class='"+'btn btn-success btn-circle'+"'><i class='"+'fa fa-pencil'+"'></i></div>"+
+    $('#notify').prepend("<a href='"+'#'+"'><div class='"+'btn btn-success btn-circle'+"'><i class='"+'fa fa-pencil'+"'></i></div>"+
                         " <div class='"+'mail-contnet'+"'><h5>"+ name +"</h5><span class='"+'mail-desc'+"'>"+topic+"</span>"+
                         "<span class='"+'time'+"'>"+date+ "  "+time+"</span></div></a>");
 
@@ -87,12 +89,10 @@ dbUserImage.on('value',snap => {
   $('#userImage').attr('src',snap.val());
 });
 
-var dbStatus = usersRef.child(sessionStorage.getItem("userId")).child('status');
+var dbStatus = usersRef.child(sessionStorage.getItem("userId")).child('level');
 dbStatus.on('value',snap => {
-  sessionStorage.setItem("status",snap.val());
-  if(sessionStorage.getItem("status")=="Admin"){
-    $('#manageUserMenu').show();
-  }else if(sessionStorage.getItem("status")=="SuperAdmin"){
+  sessionStorage.setItem("level",snap.val());
+  if(sessionStorage.getItem("level")!="คณาจารย์และบุคลากร"){
     $('#manageUserMenu').show();
   }
 });

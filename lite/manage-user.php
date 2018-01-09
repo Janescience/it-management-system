@@ -21,6 +21,17 @@
       display:table-row;
     }
 
+
+    #container {
+    position:relative;
+    }
+
+    #imageListProfile {
+    position: absolute;
+    left: 25px;
+    top: 15px;
+    }
+
     </style>
 
 </head>
@@ -152,11 +163,17 @@
           </div>
             <br>
          <!-- Column -->
+    <div class="modal-body">
     <div class="col-md-12">
-      <div class="card">
-        <div class="card-block">
 
           <form class="form-horizontal">
+            <div class="form-group">
+              <label for="nameCreateUser">Profile Image</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-image"></i></div>
+                  <input class="form-control" type="file" id="fileUploadImageCreateUser"><hr>
+                </div>
+            </div>
 
             <div class="form-group">
               <label for="nameCreateUser">Full Name</label>
@@ -190,25 +207,20 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-12">Select Rank</label>
-                <div class="col-sm-12">
+                <label >Select Rank</label>
                     <select id="rankCreateUser" class="form-control form-control-line">
-                        <option>Admin</option>
-                        <option>User</option>
+                        <option>คณาจารย์และบุคลากร</option>
+                        <option>เจ้าหน้าที่บริหารงานทั่วไป</option>
+                        <option>ผู้ช่วยสอนและวิจัย</option>
                     </select>
-                </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-12 text-center">
-                    <button id="btCreateUser" type="submit" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> Submit</button>
-                    <button   type="submit" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-
             </form>
-          </div>
-        </div>
       </div>
+    </div>
+    <div class="modal-footer">
+      <button id="btCreateUser" type="submit" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> Submit</button>
+      <button   type="submit" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
+    </div>
     </div>
   </div>
 </div>
