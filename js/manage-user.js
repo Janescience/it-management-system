@@ -4,6 +4,7 @@ $(document).ready(function(){
  var dbRef = firebase.database();
  var usersRef = dbRef.ref('users')
  var auth = null;
+ var selectedFile;
 
  $("#searchUser").keyup(function () {
    var searchTerm = $("#searchUser").val();
@@ -36,49 +37,34 @@ $(document).ready(function(){
   rootRef.on("child_added",snap => {
 
     var key = snap.key;
-    var status = snap.child("status").val();
+    var level = snap.child("level").val();
     var email = snap.child("email").val();
     var phone = snap.child("telephone").val();
     var image = snap.child("image").val();
     var name = snap.child("name").val();
+    var office = snap.child("office").val();
 
 
   if(key != sessionStorage.getItem("userId")){
-    if(sessionStorage.getItem("status") == "Admin"){
-      if(status == "User"){
 
-    $('#list_user').append("<tr><td><img src='"+image+"' class='"+'img-circle'+"' width='"+'50'+"' height='"+'50'+"'></td><td>" + name + "</td><td>" + email +"</td><td>" + phone +"</td><td>" + status +"</td>"+
-    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
-    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
-      }
-    }else if(sessionStorage.getItem("status") == "SuperAdmin"){
-
-    $('#list_user').append("<tr id='"+snap.key+"'valign='"+'middle'+"'><td><img src='"+image+"' class='"+'img-circle'+"' width='"+'60'+"' height='"+'60'+"'></td>"+
-        "<td>" + name + "</td><td>" + email +"</td><td>" + phone +"</td><td><span class='"+'label label-success'+"'>"+status+"</span></td>"+
-    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
-    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
-
-        }
+    $('#list_user').append("<tr id='"+snap.key+"'valign='"+'middle'+"'><td><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'img-circle'+"' width='"+'60'+"' height='"+'60'+"'>"+
+    "<svg width='"+'90'+"' height='"+'90'+"'>"+
+      "<circle cx='"+'45'+"' cy='"+'45'+"' r='"+'35'+"'  fill='"+office+"' stroke-width='"+'3'+"'/></svg></div></td>"+
+        "<td>" + name + "</td><td>" + email +"</td><td>" + phone +"</td><td><span class='"+'label label-success'+"'>"+level+"</span></td>"+
+        "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+        " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+      
   }
  });
 
-   $('#list_user').on('click','.btn-delete-user',function(){
-     var id = $(this).closest('tr').attr("id");
-     var user = firebase.auth();
-     user.delete(id).then(function() {
-         $('#deleteUserModal').modal('show');
-       }).catch(function(error) {
-          // An error happened.
-      });
-    //  rootRef.child(id).remove().then(function(){
-    //      $('#deleteUserModal').modal('show');
-    //  });
-    //    $(this).closest('tr').remove();
-   });
 
  $('#btAddUser').on('click',function(e){
    e.preventDefault();
     $('#addUserModal').modal('show');
+ });
+
+ $('#fileUploadImageCreateUser').on('change',function(event){
+   selectedFile = event.target.files[0];
  });
 
  $('#btCreateUser').on('click',function(e){
@@ -87,58 +73,76 @@ $(document).ready(function(){
    $('#messageModalLabel').html("Processing...  "+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>', ['center', 'info']));
     $('#messageModal').modal('show');
 
-    var data = {
-     name:$('#nameCreateUser').val(),
-     email: $('#emailCreateUser').val(),
-     telephone: $('#phoneCreateUser').val(),
-     image: "no image",
-     status: $('#rankCreateUser').val(),
-     academic_work :{
-       academic:"-",
-       research:"-"
-     },
-     education:{
-       expertise:"-",
-       his_education:"-"
-     },
-     work:{
-       hiswork:"-",
-       more_info:"-",
-     }
-   };
+    var filename= selectedFile.name;
+    var storageRef = firebase.storage().ref('/ProfileImage/' + filename);
+    var uplodadTask = storageRef.put(selectedFile);
 
-   var passwords = {
-     password : $('#passwordCreateUser').val(), //get the pass from Form
-   }
+    uplodadTask.on('state_changed',function(sanpshot){
 
-   if( data.email != '' && passwords.password != ''){
-     firebase.auth().createUserWithEmailAndPassword(data.email, passwords.password).then(function(user){
+    },function(error){
 
-          console.log("Authenticated successfully with payload:", user);
-          auth = user;
-          usersRef
-               .child(user.uid)
-               .set(data)
-               .then(function(){
-                 console.log("User Information Saved:", user.uid);
-               })
-            $('#messageModalLabel').html(spanText('Success!', ['center', 'success']))
+    },function(){
+      var downloadURL = uplodadTask.snapshot.downloadURL;
+      var data = {
+           name:$('#nameCreateUser').val(),
+           email: $('#emailCreateUser').val(),
+           telephone: $('#phoneCreateUser').val(),
+           image: downloadURL,
+           level: $('#rankCreateUser').val(),
+           office:"",
+           status:"",
+           academic_work :{
+             academic:"-",
+             research:"-"
+           },
+           education:{
+             expertise:"-",
+             his_education:"-"
+           },
+           work:{
+             hiswork:"-",
+             more_info:"-",
+           }
+         };
 
-            setTimeout(function() {
-               $('#messageModal').modal('hide');
-               $('.unauthenticated, .userAuth').toggleClass('unauthenticated').toggleClass('authenticated');
+         var passwords = {
+           password : $('#passwordCreateUser').val(), //get the pass from Form
+         }
 
-           },500);
 
-         }).catch(function(error){
-             console.log("Error creating user:", error);
-             $('#messageModalLabel').html(spanText(error.code, ['danger']))
-           });
-         }else {
-         //password and confirm password didn't match
-         $('#messageModalLabel').html(spanText("Create user failed!", ['danger']))
-     }
+            if( data.email != '' && passwords.password != ''){
+              firebase.auth().createUserWithEmailAndPassword(data.email, passwords.password).then(function(user){
 
- });
+                   console.log("Authenticated successfully with payload:", user);
+                   auth = user;
+                   usersRef
+                        .child(user.uid)
+                        .set(data)
+                        .then(function(){
+                          console.log("User Information Saved:", user.uid);
+                        })
+                     $('#messageModalLabel').html(spanText('Success!', ['center', 'success']))
+
+                     setTimeout(function() {
+                        $('#messageModal').modal('hide');
+                        $('.unauthenticated, .userAuth').toggleClass('unauthenticated').toggleClass('authenticated');
+
+                    },500);
+
+                  }).catch(function(error){
+                      console.log("Error creating user:", error);
+                      $('#messageModalLabel').html(spanText(error.code, ['danger']))
+                    });
+                  }else {
+                  //password and confirm password didn't match
+                  $('#messageModalLabel').html(spanText("Create user failed!", ['danger']))
+              }
+          });
+       });
 
 });
+
+function spanText(textStr, textClasses) {
+  var classNames = textClasses.map(c => 'text-'+c).join(' ');
+  return '<span class="'+classNames+'">'+ textStr + '</span>';
+}

@@ -10,11 +10,23 @@
     <meta name="author" content="">
 
     <?php  include('header.php') ?>
+    <style>
+
+    #container {
+    position:relative;
+    }
+
+    #imageProfile {
+    position: absolute;
+    left: 132px;
+    top: 20px;
+    }
+
+    </style>
 
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
-
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
@@ -38,6 +50,7 @@
                 <!-- Row -->
                 <div class="row">
 
+
                   <div class="col-md-12">
                       <div class="card">
                           <!-- Nav tabs -->
@@ -54,17 +67,17 @@
                                   <div class="row">
                                   <div class="card-block ">
                                     <div class="card">
-                                      <center class="m-t-30">
 
+                                      <center class="m-t-30">
+                                        <div id="container">
                                          <img id="imageProfile"  src="../assets/images/users/user.png"  class="img-circle" width="180"/>
 
-                                            <h4 class="card-title m-t-10"></h4>
-
-                                            <svg height="40" width="40">
-
-                                                <circle id="statusProfile" cx="20" cy="20" r="10"  fill="#BDBDBD" stroke-width="3"/>
+                                            <svg width="220" height="220" id="svg" >
+                                                <circle id="statusProfile" cx="110" cy="110" r="100"  fill="#BDBDBD" stroke-width="3"/>
                                             </svg>
+                                          </div>
                                             <h6 id="statusOffice" class="card-subtitle"></h6>
+
 
                                             <input class=" btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageProfile"><hr>
                                                 <div class="form-group">
@@ -115,6 +128,7 @@
                                           </div>
                                         </div>
                                       </div>
+
 
                               </div>
                             </div>
@@ -385,6 +399,19 @@
 
                               <!-- Third Tab -->
                               <div class="tab-pane" id="office" role="tabpanel">
+                                <div class="card-block">
+
+                                <div class="card">
+                                  <div class="card-block">
+
+                                  <center>
+                                    <div>
+                                      <div id="map" style="width: 500px; height: 400px;"></div>
+                                    </div>
+                                  </center>
+                                </div>
+                                </div>
+                              </div>
                                 <!-- <div class="col-lg-12"> -->
                                   <div class="card-block">
 
@@ -474,8 +501,7 @@
     <?php include('modal-profile.php')?>
     <?php include('import-javascript.php')?>
     <script src="../js/profile.js"></script>
-
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8j_1h5wkEyz5GVQcc8uqMiSDZwFZkuNs&callback=initMap" type="text/javascript"></script>
 </body>
 
 </html>

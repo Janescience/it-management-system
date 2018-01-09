@@ -14,6 +14,7 @@ $(document).ready(function(){
  var indexSelectLevel;
 
 
+
 <!--============================== ส่วนหัว ===================================-->
 var dbTopicSlideFirst = dbRef.ref('website/index/header').child('textTopicFirst');
 dbTopicSlideFirst.on('value',snap => {
