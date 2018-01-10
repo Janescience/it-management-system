@@ -95,8 +95,8 @@
             <ul id="sidebarnav">
                 <li > <a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Main</span></a>
                   <ul aria-expanded="true" class="collapse in">
-                               <li ><a href="index.php">Home</a></li>
-                               <li><a href="about.php"  >About</a></li>
+                               <li ><a id="indexPage" href="index.php">Home</a></li>
+                               <li><a href="about.php">About</a></li>
                                <li><a href="course.php">Course</a></li>
                                <li><a href="student.php">Student</a></li>
                            </ul></li>

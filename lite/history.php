@@ -87,6 +87,7 @@
                                         <thead >
                                             <tr >
                                                 <th class="text-center">Name - Surename</th>
+                                                <th class="text-center">Page</th>
                                                 <th class="text-center">Topic</th>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Time</th>

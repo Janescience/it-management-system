@@ -187,6 +187,7 @@ if(indexSelect==0){
 
    var dataHistory = {
      name:nameValue,
+     page:$('#indexPage').text(),
      topic:$('#selectHeaderSlide').val(),
      date:dateTimeCurrent.toDateString(),
      time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()

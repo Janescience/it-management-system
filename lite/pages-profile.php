@@ -22,11 +22,17 @@
     top: 20px;
     }
 
+    #list_day  {
+    cursor: pointer;
+}
+
+
+
     </style>
 
 </head>
 
-<body class="fix-header fix-sidebar card-no-border">
+<body  class="fix-header fix-sidebar card-no-border">
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
@@ -76,7 +82,11 @@
                                                 <circle id="statusProfile" cx="110" cy="110" r="100"  fill="#BDBDBD" stroke-width="3"/>
                                             </svg>
                                           </div>
-                                            <h6 id="statusOffice" class="card-subtitle"></h6>
+
+
+                                          <button id="openMap" type="button" class="btn btn-outline-success "><i class="fa fa-location"></i> Location</button>
+
+                                          <h6 id="statusOffice" ></h6>
 
 
                                             <input class=" btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageProfile"><hr>
@@ -130,8 +140,11 @@
                                       </div>
 
 
+
                               </div>
                             </div>
+
+
 
                         </div>
                               <!--second tab-->
@@ -399,19 +412,34 @@
 
                               <!-- Third Tab -->
                               <div class="tab-pane" id="office" role="tabpanel">
+
                                 <div class="card-block">
+                                  <div class="card">
+                                    <div class="card-block">
+                                      <div class="table-responsive">
+                                    <table class="table table-bordered text-center" >
+                                      <thead >
 
-                                <div class="card">
-                                  <div class="card-block">
+                                        <th ><h6>Date / Time</h6></th>
+                                        <th ><h6>08:30-09:00</h6></th>
+                                        <th><h6>09:00-10:00</h6></th>
+                                        <th><h6>10:00-11:00</h6></th>
+                                        <th><h6>11:00-12:00</h6></th>
+                                        <th><h6>13:00-14:00</h6></th>
+                                        <th><h6>14:00-15:00</h6></th>
+                                        <th><h6>15:00-16:00</h6></th>
+                                        <th><h6>16:00-16:30</h6></th>
 
-                                  <center>
-                                    <div>
-                                      <div id="map" style="width: 500px; height: 400px;"></div>
-                                    </div>
-                                  </center>
+                                      </thead>
+                                      <tbody id="list_day" disabled="true">
+
+                                      <tbody>
+                                    </table>
+                                  </div>
+                                  </div>
+                                  </div>
                                 </div>
-                                </div>
-                              </div>
+
                                 <!-- <div class="col-lg-12"> -->
                                   <div class="card-block">
 
@@ -428,6 +456,7 @@
                                         <center class="m-t-30">
 
                                    </center>
+
                                    </div>
                                   </div>
                                 <!-- </div> -->
@@ -501,7 +530,8 @@
     <?php include('modal-profile.php')?>
     <?php include('import-javascript.php')?>
     <script src="../js/profile.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8j_1h5wkEyz5GVQcc8uqMiSDZwFZkuNs&callback=initMap" type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8j_1h5wkEyz5GVQcc8uqMiSDZwFZkuNs" type="text/javascript"></script>
+
 </body>
 
 </html>
