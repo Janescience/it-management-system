@@ -7,67 +7,118 @@ $(document).ready(function(){
  var selectedFile;
  var indexSelect;
  var idEducation;
- var clicked;
+ var idExpert;
+ var clickBtEditEdu;
+ var clickBtEditExpert;
  var latitude;
  var longitude;
 
-var latitudeAndLongitude=document.getElementById("latitudeAndLongitude"),
-location={
-   latitude:'',
-   longitude:''
-};
+ var dbDay = usersRef.child(sessionStorage.getItem("userId")).child('office_hour');
+ dbDay.on('child_added',snap =>{
+   var day = snap.child('day').val();
 
-if (navigator.geolocation){
- navigator.geolocation.getCurrentPosition(showPosition);
-}
-else{
- latitudeAndLongitude.innerHTML="Geolocation is not supported by this browser.";
-}
+   var h1 = snap.child('hour_1').val();
+   var h2 = snap.child('hour_2').val();
+   var h3 = snap.child('hour_3').val();
+   var h4 = snap.child('hour_4').val();
+   var h5 = snap.child('hour_5').val();
+   var h6 = snap.child('hour_6').val();
+   var h7 = snap.child('hour_7').val();
+   var h8 = snap.child('hour_8').val();
 
-function showPosition(position){
-   location.latitude=position.coords.latitude;
-   location.longitude=position.coords.longitude;
-   var geocoder = new google.maps.Geocoder();
-   var latLng = new google.maps.LatLng(location.latitude, location.longitude);
+   $('#list_day').append("<tr id='"+snap.key+"'><td >"+day+"</td><td width='"+'120px'+"' id='"+'h1'+"' bgcolor='"+h1+"'></td><td id='"+'h2'+"' width='"+'120px'+"' bgcolor='"+h2+"'></td><td id='"+'h3'+"' width='"+'120px'+"' bgcolor='"+h3+"'>"+
+                                            "</td><td id='"+'h4'+"' width='"+'120px'+"' bgcolor='"+h4+"' ></td>"+
+                                            "<td id='"+'h5'+"' width='"+'120px'+"' bgcolor='"+h5+"'></td><td id='"+'h6'+"' width='"+'120px'+"' bgcolor='"+h6+"'></td><td id='"+'h7'+"' width='"+'120px'+"' bgcolor='"+h7+"'></td>"+
+                                            "<td id='"+'h8'+"' width='"+'120px'+"' bgcolor='"+h8+"'></td></tr>");
+ });
 
-   var initMap = function() {
-       var map = new google.maps.Map(document.getElementById('map'), {
-           center: { lat: location.latitude, lng: location.longitude},
-           scrollwheel: false,
-           zoom: 20
-       });
-       var geocoder = new google.maps.Geocoder;
-       var infowindow = new google.maps.InfoWindow;
-       geocodeLatLng(geocoder, map, infowindow);
 
+ $('#list_day').on('click','td',function(){
+
+   var id = $(this).closest('tr').attr('id');
+   var color = $(this).closest('td').attr('bgcolor');
+   var date = $(this).siblings(":first").text();
+
+
+   if(color == "#40FF00"){
+     $(this).closest('td').attr('bgcolor',"#ebebe0");
+   }else if(color == "#ebebe0"){
+     $(this).closest('td').attr('bgcolor',"#40FF00");
    }
 
-   var geocodeLatLng = function(geocoder, map, infowindow) {
-     var input = ""+location.latitude+","+ location.longitude+"";
-     var latlngStr = input.split(',', 2);
-     var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
-     geocoder.geocode({'location': latlng}, function(results, status) {
-       if (status === 'OK') {
-         if (results[0]) {
-           map.setZoom(17);
-           var marker = new google.maps.Marker({
-             position: latlng,
-             map: map
-           });
-           infowindow.setContent(results[0].formatted_address);
-           infowindow.open(map, marker);
+   var dataDay = {
+     day:date,
+     hour_1:$(this).closest('tr').find('#h1').attr('bgcolor'),
+     hour_2:$(this).closest('tr').find('#h2').attr('bgcolor'),
+     hour_3:$(this).closest('tr').find('#h3').attr('bgcolor'),
+     hour_4:$(this).closest('tr').find('#h4').attr('bgcolor'),
+     hour_5:$(this).closest('tr').find('#h5').attr('bgcolor'),
+     hour_6:$(this).closest('tr').find('#h6').attr('bgcolor'),
+     hour_7:$(this).closest('tr').find('#h7').attr('bgcolor'),
+     hour_8:$(this).closest('tr').find('#h8').attr('bgcolor')
+   };
+
+   usersRef.child(sessionStorage.getItem("userId")).child('office_hour').child(id).update(dataDay);
+
+   var time = $(this).closest('table').find('th').eq($(this).index()).text();
+
+
+ });
+
+
+
+
+$('#openMap').on('click',function(){
+  if (navigator.geolocation){
+   navigator.geolocation.getCurrentPosition(showPosition);
+  }
+  else{
+   latitudeAndLongitude.innerHTML="Geolocation is not supported by this browser.";
+  }
+
+  function showPosition(position){
+     location.latitude=position.coords.latitude;
+     location.longitude=position.coords.longitude;
+     var geocoder = new google.maps.Geocoder();
+     var latLng = new google.maps.LatLng(location.latitude, location.longitude);
+
+     var initMap = function() {
+         var map = new google.maps.Map(document.getElementById('map'), {
+             center: { lat: location.latitude, lng: location.longitude},
+             scrollwheel: false,
+             zoom: 20
+         });
+         var geocoder = new google.maps.Geocoder;
+         var infowindow = new google.maps.InfoWindow;
+         geocodeLatLng(geocoder, map, infowindow);
+     }
+
+     var geocodeLatLng = function(geocoder, map, infowindow) {
+       var input = ""+location.latitude+","+ location.longitude+"";
+       var latlngStr = input.split(',', 2);
+       var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+       geocoder.geocode({'location': latlng}, function(results, status) {
+         if (status === 'OK') {
+           if (results[0]) {
+             map.setZoom(17);
+             var marker = new google.maps.Marker({
+               position: latlng,
+               map: map
+             });
+             infowindow.setContent(results[0].formatted_address);
+             infowindow.open(map, marker);
+           } else {
+             window.alert('No results found');
+           }
          } else {
-           window.alert('No results found');
+           window.alert('Geocoder failed due to: ' + status);
          }
-       } else {
-         window.alert('Geocoder failed due to: ' + status);
-       }
-     });
-   }
-
-   initMap();
-
-} //showPositi
+       });
+     }
+     initMap();
+  } //showPositi
+  $('#mapModal').modal('show');
+});
 
 
  $('#radioAvai').change(function(){
@@ -94,6 +145,8 @@ function showPosition(position){
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
+
+
 
  $('#headInterWork').hide();
  $('#tableInterWork').hide();
@@ -229,7 +282,7 @@ $('#btOpenModalExp').on('click',function(){
   });
 
   $('#btEditEdu').on('click',function(){
-
+    clickBtEditEdu = "clicked";
     $('#editHisEduModal').modal('hide');
     var dataUpdateEducation = {
       degree:$('#degreeEditHisEdu').val(),
@@ -282,10 +335,35 @@ $('#btOpenModalExp').on('click',function(){
   });
 
   $('#list_expertise').on('click','.btn-edit-expert',function(){
+    idExpert = $(this).closest('tr').attr("id");
     var id = $(this).closest('tr').attr("id");
     var detail = $(this).closest('tr').find('.txtdetail').text();
     $('#detailExpert').val(detail);
     $('#editExpertModal').modal('show');
+  });
+
+  $('#btEditExpert').on('click',function(){
+
+    clickBtEditExpert = "clicked";
+    $('#editExpertModal').modal('hide');
+
+    var dataUpdateExpert = {
+      detail:$('#detailExpert').val(),
+    };
+
+    rootRefExpert.child(idExpert).update(dataUpdateExpert);
+
+    $('#list_expertise').empty();
+
+    rootRefExpert.on("child_added",snap => {
+      var snapkey = snap.key;
+      var detail = snap.child('detail').val();
+
+      $('#list_expertise').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                                "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+                                "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+    });
   });
 
   var rootRefWork = usersRef.child(sessionStorage.getItem("userId")).child('work').child('his_work');
@@ -346,19 +424,29 @@ if($('#facultyHisEdu').val()==""){
      $('#yearHisEdu').val("");
  });
 }
-$('#list_his_education tr:last').remove();
+if(clickBtEditEdu=="clicked"){
+  $('#list_his_education tr:last').remove();
+}
 
 });
 
 $('#btSubmitExpert').on('click',function(){
+if($('#expertHisEdu').val() == ""){
 
+}else{
   $('#addExpertModal').modal('hide');
   var data = {
     detail:$('#expertHisEdu').val()
   };
   usersRef.child(sessionStorage.getItem("userId")).child('education').child('expertise').push().set(data).then(function(){
     console.log("User Information Saved:", sessionStorage.getItem("userId"));
+    $('#expertHisEdu').val("");
   });
+}
+
+if(clickBtEditExpert=="clicked"){
+  $('#list_expertise tr:last').remove();
+}
 
 });
 
@@ -430,6 +518,7 @@ $('#btSubmitExp').on('click',function(){
 
    }
  });
+
 
  $('#btSetPassword').on('click',function(){
    var user = firebase.auth().currentUser;

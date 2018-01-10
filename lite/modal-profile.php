@@ -1,3 +1,37 @@
+<!--==================================== Google Map ====================================================-->
+
+<div class="modal fade" id="mapModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="messagePassModal">Location</h4>
+      </div>
+      <div class="modal-body">
+        <div class="card-block">
+
+        <div class="card">
+
+          <center>
+
+            <div>
+              <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" id="map" style="width: 600px; height: 400px;"></div>
+            </div>
+
+          </center>
+
+        </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--===========================================================================================================-->
 
 <!--==================================== Change Password ====================================================-->
 
