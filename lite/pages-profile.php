@@ -12,19 +12,16 @@
     <?php  include('header.php') ?>
     <style>
 
-    #container {
-    position:relative;
-    }
 
-    #imageProfile {
-    position: absolute;
-    left: 132px;
-    top: 20px;
-    }
-
-    #list_day  {
-    cursor: pointer;
+    .avatar {
+    width:200px;
+    margin: 10px;
+    border-radius: 500px;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
 }
+
+
 
 
 
@@ -71,25 +68,57 @@
 
                                         <div class="col-lg-12">
                                   <div class="row">
+
                                   <div class="card-block ">
+
                                     <div class="card">
+                                      <div class="card-block">
+                                      <button id="openMap" type="button" class="btn btn-circle btn-success waves-effect waves-ligh pull-right"><i class="fa fa-map-marker"></i></button>
+                                      <button id="showUpload" type="button" class="btn btn btn-rounded btn-outline-success col-md-4 waves-effect waves-ligh pull-left"><i class="fa fa-user-circle"></i> Update Image</button>
+                                      <button hidden id="cancelUpload" type="button" class="btn btn btn-rounded btn-outline-danger col-md-4 waves-effect waves-ligh pull-left"><i class="fa fa-close"></i> Cancel Update  </button>
 
-                                      <center class="m-t-30">
-                                        <div id="container">
-                                         <img id="imageProfile"  src="../assets/images/users/user.png"  class="img-circle" width="180"/>
-
-                                            <svg width="220" height="220" id="svg" >
-                                                <circle id="statusProfile" cx="110" cy="110" r="100"  fill="#BDBDBD" stroke-width="3"/>
-                                            </svg>
-                                          </div>
+                                    </div>
+                                      <center >
 
 
-                                          <button id="openMap" type="button" class="btn btn-outline-success "><i class="fa fa-location"></i> Location</button>
+                                         <img  id="imageProfile" src="../assets/images/users/user.png" class="avatar" style="border:5px solid #00ff00;"/>
+                                         <br>
 
+
+
+                                          <div class="btn-group">
+                                            <button type="button" class="btn btn-secondary" id="showStatus" >Status</button>
+                                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(69px, 33px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                <a class="dropdown-item" href="javascript:void(0)" id="available">
+                                                  <svg width="30" height="30"  >
+                                                      <circle  cx="15" cy="15" r="5"  fill="#00ff00" stroke-width="3"/>
+                                                  </svg>Available
+                                                </a>
+                                                <a class="dropdown-item" href="javascript:void(0)" id="notintheoffice">
+                                                  <svg width="30" height="30" id="svg" >
+                                                      <circle  cx="15" cy="15" r="5"  fill="#0099ff" stroke-width="3"/>
+                                                  </svg>Not in the office
+                                                </a>
+                                                <a class="dropdown-item" href="javascript:void(0)" id="beback">
+                                                  <svg width="30" height="30" id="svg" >
+                                                    <circle  cx="15" cy="15" r="5"  fill="#ffcc00" stroke-width="3"/>
+                                                  </svg>Be back
+                                               </a>
+                                                <a class="dropdown-item" href="javascript:void(0)" id="dontdisturb">
+                                                  <svg width="30" height="30" id="svg" >
+                                                    <circle  cx="15" cy="15" r="5"  fill="#ff3300" stroke-width="3"/>
+                                                  </svg>Don't Disturb
+                                                </a>
+                                            </div>
+                                        </div>
                                           <h6 id="statusOffice" ></h6>
 
 
-                                            <input class=" btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageProfile"><hr>
+
+                                            <input hidden class=" btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageProfile"><hr>
                                                 <div class="form-group">
                                             <button id="btUploadImageProfile" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
                                             <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
@@ -440,24 +469,7 @@
                                   </div>
                                 </div>
 
-                                <!-- <div class="col-lg-12"> -->
-                                  <div class="card-block">
 
-                                        <div class="demo-radio " style="padding-right:40px;" id="OffStatus"><center class="m-t-30">
-                                          <input type="radio" name="status" id="radioAvai" class="with-gap radio-col-light-green" >
-                                          <label for="radioAvai">Available</label>
-                                          <input type="radio" name="status" id="radioNotOffice" class="with-gap radio-col-light-blue" >
-                                          <label for="radioNotOffice">Not in the Office</label>
-                                          <input type="radio" name="status" id="radioBeBack" class="with-gap radio-col-amber" >
-                                          <label for="radioBeBack">Be back</label>
-                                          <input type="radio" name="status" id="radioDontDisturb" class="with-gap radio-col-red" >
-                                          <label for="radioDontDisturb">Don't Disturb</label>
-                                        </div>
-                                        <center class="m-t-30">
-
-                                   </center>
-
-                                   </div>
                                   </div>
                                 <!-- </div> -->
                               </div>

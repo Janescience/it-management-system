@@ -21,16 +21,13 @@
       display:table-row;
     }
 
-
-    #container {
-    position:relative;
-    }
-
-    #imageListProfile {
-    position: absolute;
-    left: 25px;
-    top: 15px;
-    }
+    .avatar {
+    width:100px;
+    margin: 10px;
+    border-radius: 500px;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+}
 
     </style>
 

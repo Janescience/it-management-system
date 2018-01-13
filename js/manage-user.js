@@ -47,13 +47,11 @@ $(document).ready(function(){
 
   if(key != sessionStorage.getItem("userId")){
 
-    $('#list_user').append("<tr id='"+snap.key+"'valign='"+'middle'+"'><td><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'img-circle'+"' width='"+'60'+"' height='"+'60'+"'>"+
-    "<svg width='"+'90'+"' height='"+'90'+"'>"+
-      "<circle cx='"+'45'+"' cy='"+'45'+"' r='"+'35'+"'  fill='"+office+"' stroke-width='"+'3'+"'/></svg></div></td>"+
+    $('#list_user').append("<tr id='"+snap.key+"'valign='"+'middle'+"'  style='"+'height: 100px;'+"'><td><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
         "<td>" + name + "</td><td>" + email +"</td><td>" + phone +"</td><td><span class='"+'label label-success'+"'>"+level+"</span></td>"+
         "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
         " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
-      
+
   }
  });
 

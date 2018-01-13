@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+
+
     <?php  include('header.php') ?>
 <style>
 .results tr[visible='false'],
@@ -19,10 +21,6 @@
 .results tr[visible='true']{
   display:table-row;
 }
-
-
-
-
 
 </style>
 </head>
@@ -75,10 +73,7 @@
                         <div class="card-block bg-info">
 
                           <h4 class="text-white card-title">History</h4>
-                          <div class="message-box contact-box">
 
-
-                      </div>
                       </div>
                               <form class="form-horizontal form-material ">
 
@@ -93,19 +88,23 @@
                                                 <th class="text-center">Time</th>
                                             </tr>
                                             <tr class="warning no-result">
-  <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+  <td colspan="5"><i class="fa fa-warning"></i> No result</td>
 </tr>
                                         </thead>
                                         <tbody id="list_history">
 
                                         </tbody>
                                     </table>
+
                                 </div>
                               </form>
+
 
                     </div>
                 </div>
             </div>
+
+
             <footer class="footer">
                 Copyright © Information Technology 2017
             </footer>
@@ -129,7 +128,10 @@
 
     <?php include('import-javascript.php')?>
     <script src="../js/history.js"></script>
+    <script src="js/jquery.twbsPagination.js" type="text/javascript"></script>
+    <script type="text/javascript">
 
+    </script>
 </body>
 
 </html>
