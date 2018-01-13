@@ -16,6 +16,14 @@ var dbRef = firebase.database();
 var usersRef = dbRef.ref('users')
 var status;
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+  } else {
+    window.location.href="login.php";
+  }
+});
+
 
 
 var historyRef = dbRef.ref('history');
@@ -23,15 +31,17 @@ var historyRef = dbRef.ref('history');
 var rootRefHistory = historyRef;
 
   rootRefHistory.on("child_added",snap => {
+    var id = snap.child('id').val();
     var name = snap.child('name').val();
     var page = snap.child('page').val();
     var topic = snap.child('topic').val();
     var date = snap.child('date').val();
     var time = snap.child('time').val();
-
+if(id !=  sessionStorage.getItem("userId")){
     $('#notify').prepend("<a href='"+'#'+"'><div class='"+'btn btn-success btn-circle'+"'><i class='"+'fa fa-pencil'+"'></i></div>"+
                         " <div class='"+'mail-contnet'+"'><h5>"+ name +"</h5><span class='"+'mail-desc'+"'>"+page+ ":" +topic+"</span>"+
                         "<span class='"+'time'+"'>"+date+ "  "+time+"</span></div></a>");
+                      }
 
   });
 

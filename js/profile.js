@@ -8,8 +8,8 @@ $(document).ready(function(){
  var indexSelect;
  var idEducation;
  var idExpert;
- var clickBtEditEdu;
- var clickBtEditExpert;
+ var clickBtEditEdu = 0;
+ var clickBtEditExpert = 0;
  var latitude;
  var longitude;
 
@@ -65,7 +65,19 @@ $(document).ready(function(){
 
  });
 
+$('#showUpload').on('click',function(){
+  $('#showUpload').attr('hidden',"true");
+  $('#fileUploadImageProfile').removeAttr('hidden');
 
+  $('#cancelUpload').removeAttr('hidden');
+});
+
+$('#cancelUpload').on('click',function(){
+  $('#fileUploadImageProfile').attr('hidden',"true");
+
+  $('#cancelUpload').attr('hidden',"true");
+    $('#showUpload').removeAttr('hidden');
+});
 
 
 $('#openMap').on('click',function(){
@@ -121,27 +133,27 @@ $('#openMap').on('click',function(){
 });
 
 
- $('#radioAvai').change(function(){
+ $('#available').click(function(){
    var color={
-     office:"#00ff00"
+     office:"border:5px solid #00ff00;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
- $('#radioNotOffice').change(function(){
+ $('#notintheoffice').click(function(){
    var color={
-     office:"#0099ff"
+     office:"border:5px solid #0099ff;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
- $('#radioBeBack').change(function(){
+ $('#beback').click(function(){
    var color={
-     office:"#ffcc00"
+     office:"border:5px solid #ffcc00;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
- $('#radioDontDisturb').change(function(){
+ $('#dontdisturb').click(function(){
    var color={
-     office:"#ff3300"
+     office:"border:5px solid #ff3300;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
@@ -282,7 +294,7 @@ $('#btOpenModalExp').on('click',function(){
   });
 
   $('#btEditEdu').on('click',function(){
-    clickBtEditEdu = "clicked";
+    clickBtEditEdu= clickBtEditEdu+1;
     $('#editHisEduModal').modal('hide');
     var dataUpdateEducation = {
       degree:$('#degreeEditHisEdu').val(),
@@ -344,7 +356,8 @@ $('#btOpenModalExp').on('click',function(){
 
   $('#btEditExpert').on('click',function(){
 
-    clickBtEditExpert = "clicked";
+      clickBtEditExpert= clickBtEditExpert+1;
+
     $('#editExpertModal').modal('hide');
 
     var dataUpdateExpert = {
@@ -364,6 +377,7 @@ $('#btOpenModalExp').on('click',function(){
                                 "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                 " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
     });
+
   });
 
   var rootRefWork = usersRef.child(sessionStorage.getItem("userId")).child('work').child('his_work');
@@ -424,7 +438,7 @@ if($('#facultyHisEdu').val()==""){
      $('#yearHisEdu').val("");
  });
 }
-if(clickBtEditEdu=="clicked"){
+for(var i = 0;i< clickBtEditEdu;i++){
   $('#list_his_education tr:last').remove();
 }
 
@@ -444,7 +458,7 @@ if($('#expertHisEdu').val() == ""){
   });
 }
 
-if(clickBtEditExpert=="clicked"){
+for(var i = 0;i< clickBtEditExpert;i++){
   $('#list_expertise tr:last').remove();
 }
 
@@ -506,15 +520,15 @@ $('#btSubmitExp').on('click',function(){
 
  var dbStatus = usersRef.child(sessionStorage.getItem("userId")).child('office');
  dbStatus.on('value',snap => {
-   $('#statusProfile').attr("fill",snap.val());
-   if(snap.val() == "#00ff00"){
-     document.getElementById('statusOffice').innerText = "Available";
-   }else if(snap.val() == "#0099ff"){
-     document.getElementById('statusOffice').innerText = "Not in the office";
-   }else if(snap.val() == "#ffcc00"){
-     document.getElementById('statusOffice').innerText = "Be back";
-   }else if(snap.val() == "#ff3300"){
-     document.getElementById('statusOffice').innerText = "Don't Disturb";
+   $('#imageProfile').attr("style",snap.val());
+   if(snap.val() == "border:5px solid #00ff00;"){
+     document.getElementById('showStatus').innerText = "Available";
+   }else if(snap.val() == "border:5px solid #0099ff;"){
+     document.getElementById('showStatus').innerText = "Not in the office";
+   }else if(snap.val() == "border:5px solid #ffcc00;"){
+     document.getElementById('showStatus').innerText = "Be back";
+   }else if(snap.val() == "border:5px solid #ff3300;"){
+     document.getElementById('showStatus').innerText = "Don't Disturb";
 
    }
  });

@@ -3,6 +3,11 @@ $(document).ready(function(){
   var Auth = firebase.auth();
   var dbRef = firebase.database();
   var historyRef = dbRef.ref('history');
+  var key;
+  var firstKey;
+  var next = 0;
+  var page = 1;
+  var previous = 0;
 
   var rootRef = historyRef;
 
@@ -15,8 +20,10 @@ $(document).ready(function(){
 
       $('#list_history').append("<tr><td>" + name + "</td>" + "<td>" + page + "</td>" + "<td>" + topic + "</td>"+ "<td>" + date + "</td>"+ "<td>" + time + "</td>"+
                                "</tr>");
-
+      key = snap.key;
+      console.log("table on ready");
     });
+
 
 
 $("#search").keyup(function () {

@@ -15,6 +15,7 @@ $(document).ready(function(){
 
 
 
+
 <!--============================== ส่วนหัว ===================================-->
 var dbTopicSlideFirst = dbRef.ref('website/index/header').child('textTopicFirst');
 dbTopicSlideFirst.on('value',snap => {
@@ -186,6 +187,7 @@ if(indexSelect==0){
    });
 
    var dataHistory = {
+     id:sessionStorage.getItem("userId"),
      name:nameValue,
      page:$('#indexPage').text(),
      topic:$('#selectHeaderSlide').val(),
