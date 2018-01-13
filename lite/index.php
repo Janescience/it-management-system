@@ -33,8 +33,8 @@
           <div class="row page-titles">
             <div class="col-md-5 col-8 align-self-center">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)"><h4>เมนูหลัก</h4></a></li>
-                <li class="breadcrumb-item active">หน้าแรก</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)"><h4>Main</h4></a></li>
+                <li class="breadcrumb-item active">Home</li>
               </ol>
             </div>
           </div>
@@ -43,7 +43,7 @@
             <div class="col-lg-12">
               <div class="card ">
                 <div class="card-block ">
-                  <h4 class="text-black card-title">ส่วนหัว [รูปภาพไสลด์]</h4>
+                  <h4 class="text-black card-title">Header</h4>
                     <div class="message-box contact-box">
                       <h2 class="add-ct-btn">
                         <button type="button" id="btEditHeader" class="btn btn-circle btn-lg btn-success waves-effect waves-dark"><i class="mdi mdi-pencil"></i></button>
@@ -82,7 +82,7 @@
 <!--=========================== หลักสูตรที่เปิดสอน ===========================-->
             <div class="card">
               <div class="card-block ">
-                <h4 class="text-black card-title">หลักสูตรที่เปิดสอน</h4>
+                <h4 class="text-black card-title">Course offers</h4>
                   <div class="message-box contact-box">
                     <h2 class="add-ct-btn">
                       <button type="button" id="btEditCourse" class="btn btn-circle btn-lg btn-success waves-effect waves-dark"><i class="mdi mdi-pencil"></i></button>
@@ -127,7 +127,7 @@
 <!--============================ ข่าวสาร =================================-->
             <div class="card">
               <div class="card-header">
-                <h4 class="text-black card-title">ข่าวสาร</h4>
+                <h4 class="text-black card-title">Info</h4>
               </div>
 
               <hr>
@@ -142,8 +142,8 @@
 
                         <input class="btn btn-outline-inverse col-md-12"  type="file" id="fileUploadImageInfo"><hr>
 
-                        <button type="submit" class="btn btn-outline-success" id="btInfoUploadImg">อัปโหลด <i class="fa fa-upload"></i></button>
-                        <button type="reset" class="btn btn-outline-danger" id="btInfoCancelUploadImg">ยกเลิก <i class="fa fa-close"></i></button>
+                        <button type="submit" class="btn btn-outline-success" id="btInfoUploadImg">Upload <i class="fa fa-upload"></i></button>
+                        <button type="reset" class="btn btn-outline-danger" id="btInfoCancelUploadImg">Cancel <i class="fa fa-close"></i></button>
                         <button id="btLoadingInfo" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
                       </div>
                     </div>
@@ -170,16 +170,16 @@
 
                         <hr>
 
-                        <h5 class="modal-title" >หัวข้อ</h5>
+                        <h5 class="modal-title" >Topic</h5>
                           <textarea class="form-control" rows="2" id="textTopicInfo" disabled="true"></textarea>
 
-                        <h5 class="modal-title" >ลิงค์</h5>
+                        <h5 class="modal-title" >Link URL</h5>
                           <input class="form-control" type="text"   id="textLinkInfo" disabled="true">
 
                         <div class="m-t-15">
-                          <button type="button" id="btInfoEdit"  class="btn btn-outline-inverse">แก้ไข <i class="fa fa-edit"></i></button>
-                          <button type="submit" class="btn btn-outline-success" id="btInfoSave">บันทึก <i class="fa fa-save"></i></button>
-                          <button type="reset" class="btn btn-outline-danger" id="btInfoCancel">ยกเลิก <i class="fa fa-close"></i></button>
+                          <button type="button" id="btInfoEdit"  class="btn btn-outline-inverse">Edit <i class="fa fa-edit"></i></button>
+                          <button type="submit" class="btn btn-outline-success" id="btInfoSave">Submit <i class="fa fa-save"></i></button>
+                          <button type="reset" class="btn btn-outline-danger" id="btInfoCancel">Cancel <i class="fa fa-close"></i></button>
                         </div>
 
                       </div>
