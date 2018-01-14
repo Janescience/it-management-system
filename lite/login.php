@@ -76,6 +76,20 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="errorModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" >email or password is wrong !!</h4>
+      </div>
+      <div class="modal-footer">
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="container container-fluid bg-4 text-center">
     <div class="row-lg-12">

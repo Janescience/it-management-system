@@ -116,7 +116,7 @@
     <!-- End Sidebar scroll-->
     <!-- Bottom points-->
     <div class="sidebar-footer">
-        <!-- item--><a id="btLogout"  class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
+        <!-- item--><a id="btLogoutFooter"  class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
     <!-- End Bottom points-->
 </aside>
 

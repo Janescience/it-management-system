@@ -77,8 +77,6 @@ $('#notifyClick').on('click',function(e){
 
 
 
-$('#manageUserMenu').hide();
-
 var dbName = usersRef.child(sessionStorage.getItem("userId")).child('name');
 dbName.on('value',snap => {
   document.getElementById('userProfile').innerText = snap.val();
@@ -103,14 +101,34 @@ dbUserImage.on('value',snap => {
 var dbStatus = usersRef.child(sessionStorage.getItem("userId")).child('level');
 dbStatus.on('value',snap => {
   sessionStorage.setItem("level",snap.val());
-  if(sessionStorage.getItem("level")!="คณาจารย์และบุคลากร"){
-    $('#manageUserMenu').show();
+  if(sessionStorage.getItem("level") != "คณาจารย์และบุคลากร"){
+    $('#manageUserMenu').removeAttr('hidden');
+  }else{
+    $('#manageUserMenu').attr('hidden',"true");
   }
 });
 
 
 
  $('#btLogout').on('click',function(){
+   $('#logoutModal').modal('show');
+    $('#confirmLogout').on('click',function(){
+
+     firebase.auth().onAuthStateChanged(function(user) {
+       if (sessionStorage.getItem("userId")) {
+         Auth.signOut().then(function() {
+         window.location = "login.php"
+       }, function(error) {
+
+         });
+       } else {
+
+       }
+     });
+   });
+ });
+
+ $('#btLogoutFooter').on('click',function(){
    $('#logoutModal').modal('show');
     $('#confirmLogout').on('click',function(){
 
