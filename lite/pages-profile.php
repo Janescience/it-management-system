@@ -12,18 +12,13 @@
     <?php  include('header.php') ?>
     <style>
 
-
     .avatar {
     width:200px;
     margin: 10px;
     border-radius: 500px;
     -webkit-border-radius: 500px;
     -moz-border-radius: 500px;
-}
-
-
-
-
+    }
 
     </style>
 
@@ -74,7 +69,7 @@
                                     <div class="card">
                                       <div class="card-block">
                                       <button id="openMap" type="button" class="btn btn-circle btn-success waves-effect waves-ligh pull-right"><i class="fa fa-map-marker"></i></button>
-                                      <button id="showUpload" type="button" class="btn btn btn-rounded btn-outline-success col-md-4 waves-effect waves-ligh pull-left"><i class="fa fa-user-circle"></i> Update Image</button>
+                                      <button id="showUpload" type="button" class="btn btn btn-rounded btn-outline-success col-md-6 waves-effect waves-ligh pull-left"><i class="fa fa-user-circle"></i> Update Image</button>
                                       <button hidden id="cancelUpload" type="button" class="btn btn btn-rounded btn-outline-danger col-md-4 waves-effect waves-ligh pull-left"><i class="fa fa-close"></i> Cancel Update  </button>
 
                                     </div>

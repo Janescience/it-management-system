@@ -8,8 +8,10 @@ $(document).ready(function(){
  var indexSelect;
  var idEducation;
  var idExpert;
+ var idWork;
  var clickBtEditEdu = 0;
  var clickBtEditExpert = 0;
+ var clickBtEditWork = 0;
  var latitude;
  var longitude;
 
@@ -389,12 +391,69 @@ $('#btOpenModalExp').on('click',function(){
     var address = snap.child("address").val();
     var work = snap.child("work").val();
 
-    $('#list_his_work').append("<tr  value='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_work'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
-                              "<label for='"+'md_checkbox_work'+"'></label></td>"+"<td>" + start_time +" ถึง "+ finish_time +"</td>" +
-                              "<td>" + address + "</td>" + "<td>" + work + "</td>"+
-                             "<td><button id='"+'editHisWork'+"' class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
-                             " <button id='"+'removeHisWork'+"' class='"+'btn btn-inverse'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+    $('#list_his_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_work'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+'md_checkbox_work'+"'></label></td>"+"<td class='"+'txttime'+"'>" + start_time +" ถึง "+ finish_time +"</td>" +
+                              "<td class='"+'txtaddress'+"'>" + address + "</td>" + "<td class='"+'txtwork'+"'>" + work + "</td>"+
+                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-work'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-work'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
   });
+
+  $('#list_his_work').on('click','.btn-delete-work',function(){
+    var id = $(this).closest('tr').attr("id");
+    rootRefWork.child(id).remove().then(function(){
+        $('#deleteProfileModal').modal('show');
+    });
+      $(this).closest('tr').remove();
+  });
+
+  $('#list_his_work').on('click','.btn-edit-work',function(){
+    idWork = $(this).closest('tr').attr("id");
+    var id = $(this).closest('tr').attr("id");
+    var time = $(this).closest('tr').find('.txttime').text();
+    var splitSTime = time.split("ถึง")[0];
+    var splitFTime = time.split("ถึง")[1];
+    var address = $(this).closest('tr').find('.txtaddress').text();
+    var work = $(this).closest('tr').find('.txtwork').text();
+    $('#timeStartHisEditWork').val(splitSTime);
+    $('#timeFinishHisEditWork').val(splitFTime);
+    $('#addressHisEditWork').val(address);
+    $('#workHisEditWork').val(work);
+    $('#editWorkModal').modal('show');
+  });
+
+  $('#btEditWork').on('click',function(){
+
+      clickBtEditWork= clickBtEditWork+1;
+
+    $('#editWorkModal').modal('hide');
+
+    var dataUpdateWork = {
+      start_time:$('#timeStartHisEditWork').val(),
+      finish_time:$('#timeFinishHisEditWork').val(),
+      address:$('#addressHisEditWork').val(),
+      work:$('#workHisEditWork').val()
+    };
+
+    rootRefWork.child(idWork).update(dataUpdateWork);
+
+    $('#list_his_work').empty();
+
+    rootRefWork.on("child_added",snap => {
+      var start_time = snap.child("start_time").val();
+      var finish_time = snap.child("finish_time").val();
+      var address = snap.child("address").val();
+      var work = snap.child("work").val();
+
+      $('#list_his_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_work'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                                "<label for='"+'md_checkbox_work'+"'></label></td>"+"<td class='"+'txttime'+"'>" + start_time +" ถึง "+ finish_time +"</td>" +
+                                "<td class='"+'txtaddress'+"'>" + address + "</td>" + "<td class='"+'txtwork'+"'>" + work + "</td>"+
+                                "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-work'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-work'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+    });
+  });
+
+
+
 
   var rootRefExp = usersRef.child(sessionStorage.getItem("userId")).child('work').child('experience');
 
@@ -478,8 +537,14 @@ $('#btSubmitWork').on('click',function(){
 
  usersRef.child(sessionStorage.getItem("userId")).child('work').child('his_work').push().set(data).then(function(){
    console.log("Information Saved:", sessionStorage.getItem("userId"));
+     $('#timeStartHisWork').val("");
+     $('#timeFinishHisWork').val("");
+     $('#addressHisWork').val("");
+     $('#workHisWork').val("");
  });
-
+ for(var i = 0;i< clickBtEditWork;i++){
+   $('#list_his_work tr:last').remove();
+ }
 });
 
 $('#btSubmitExp').on('click',function(){

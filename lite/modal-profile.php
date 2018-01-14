@@ -8,17 +8,12 @@
       </div>
       <div class="modal-body">
         <div class="card-block">
-
         <div class="card">
-
           <center>
-
             <div>
               <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" id="map" style="width: 600px; height: 400px;"></div>
             </div>
-
           </center>
-
         </div>
       </div>
       </div>
@@ -28,8 +23,6 @@
     </div>
   </div>
 </div>
-
-
 
 <!--===========================================================================================================-->
 
@@ -130,8 +123,6 @@
 </div>
 
 <!--===========================================================================================================-->
-
-
 
 <!--==================================== Add History Expertise ================================================-->
 
@@ -234,6 +225,63 @@
       <div class="modal-footer">
         <button id="btSubmitWork" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
         <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--======================================================================================================-->
+
+
+<!--==================================== Edit History Work ================================================-->
+
+<div class="modal fade" id="editWorkModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">History Work</h4>
+      </div>
+      <div class="modal-body">
+
+    <label for="facultyHisEdu" >Time Length</label><br>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+        <h6  >Start</h6>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="ti-time"></i></div>
+            <input id="timeStartHisEditWork" type="text"  class="form-control col-md-6" >
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h6  >Finish</h6>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-time"></i></div>
+              <input id="timeFinishHisEditWork" type="text"  class="form-control col-md-6" >
+           </div>
+        </div>
+      </div>
+    </div>
+
+        <div id="university" class="form-group">
+            <label >Workplace</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-location-pin"></i></div>
+                <textarea id="addressHisEditWork" type="text"  class="form-control" ></textarea>
+            </div>
+        </div>
+
+        <div id="year" class="form-group">
+            <label >Work Detail</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-briefcase"></i></div>
+                <textarea id="workHisEditWork" type="text"  class="form-control" ></textarea>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btEditWork" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+        <button  class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

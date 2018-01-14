@@ -49,9 +49,7 @@ $('#btClose').on('click',function (e){
         })
      })
      .catch(function(error) {
-          console.log("Login Failed!", error);
           $('#messageModalLabel').html(spanText(error.code, ['danger']))
-          $('#messageModal').modal('show');
         });
    }else if($('#email').val() == '' || $('#password').val() == ''){
      $('#messageModalLabel').html(spanText('login failed!' , ['danger']))
