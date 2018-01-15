@@ -33,10 +33,10 @@
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h2 class="text-themecolor">Bechelor Portfolio <h5 class="text-themecolor">Bechelor Degree</h5></h2>
+                        <h2 class="text-themecolor">Graduate Portfolio <h5 class="text-themecolor">Graduate Degree</h5></h2>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Student</a></li>
-                            <li class="breadcrumb-item active">Show Bechelor Portfolio</li>
+                            <li class="breadcrumb-item active">Show Graduate Portfolio</li>
                         </ol>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                       <div class="card">
                           <div class="card-block">
                             <h1 class="w3-animate-right">Portfolio</h1>
-                            <h4>Bechelor Degrees</h4>
+                            <h4>Graduate Degrees</h4>
                                 <hr/><br/>
 
                                 <div class="row">
@@ -98,7 +98,7 @@
                                             <td colspan="6"><i class="fa fa-warning"></i> No result</td>
                                           </tr> -->
                                       </thead>
-                                      <tbody id="list_BechelorPortfolio">
+                                      <tbody id="list_GraduatePortfolio">
 
                                       </tbody>
                                   </table>
@@ -112,8 +112,8 @@
             </div>
           </div>
 
-          <!-- Edit Bechelor Portfolio Modal -->
-          <div class="modal fade" id="editBechelorPortfolio" role="dialog" aria-labelledby="Message" aria-hidden="true">
+          <!-- Edit Graduate Portfolio Modal -->
+          <div class="modal fade" id="editGraduatePortfolio" role="dialog" aria-labelledby="Message" aria-hidden="true">
             <div class="modal-dialog modal-md">
               <div class="modal-content">
                 <div class="modal-header">
@@ -127,7 +127,7 @@
                     <label class="col-md-12">ชื่อผลงาน</label>
                         <div class="input-group">
                         <div class="input-group-addon"><i class="mdi mdi-clipboard-text"></i></div>
-                          <input id="BechelorPortfolioName" type="text"  class="form-control form-control-line">
+                          <input id="GraduatePortfolioName" type="text"  class="form-control form-control-line">
                         </div>
                   </div>
 
@@ -135,7 +135,7 @@
                     <label class="col-md-12">รายละเอียด</label>
                         <div class="input-group">
                         <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                          <textarea class="form-control" rows="3" id="BechelorPortfolioDetail" ></textarea>
+                          <textarea class="form-control" rows="3" id="GraduatePortfolioDetail" ></textarea>
                         </div>
                   </div>
 
@@ -143,7 +143,7 @@
                     <label class="col-md-12">ประเภทผลงาน</label>
                         <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-trophy"></i></div>
-                        <select id="BechelorPortfolioGroup" class="form-control form-control-line">
+                        <select id="GraduatePortfolioGroup" class="form-control form-control-line">
                           <!-- <option>การประกวดทั่วไป</option>
                           <option>การออกแบบเว็บไซต์(Website)</option>
                           <option>แอนิเมชั่น(Animation)</option>
@@ -156,12 +156,12 @@
                     </div><br/>
 
                       <div class="">
-                        <input id="AddBechelorPortfolioType" type="text"  class="form-control form-control-line">
+                        <input id="AddGraduatePortfolioType" type="text"  class="form-control form-control-line">
                       </div><br/>
                       <div align="right" class="">
-                        <button id="AddBechelorPortfolioGroup" class="btn btn-info"><i class="fa fa-plus"></i>   เพิ่มประเภทผลงาน</button>
-                        <button id="SaveBechelorPortfolioGroup" class="btn btn-success">   ตกลง</button>
-                        <button id="CancelAddBechelorPortfolioGroup" class="btn btn-danger">   ยกเลิก</button>
+                        <button id="AddGraduatePortfolioGroup" class="btn btn-info"><i class="fa fa-plus"></i>   เพิ่มประเภทผลงาน</button>
+                        <button id="SaveGraduatePortfolioGroup" class="btn btn-success">   ตกลง</button>
+                        <button id="CancelAddGraduatePortfolioGroup" class="btn btn-danger">   ยกเลิก</button>
                       </div>
                   </div>
 
@@ -170,10 +170,10 @@
                       <div class="col-md-12">
                         <div class="row">
                           <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
-                            <input type="checkbox" id="BechelorPortfolioGeneral" class="chk-col-grey" checked disabled>
-                            <label for="BechelorPortfolioGeneral">ผลงานทั่วไป</label>
-                            <input type="checkbox" id="BechelorPortfolioHallOfFame" class="chk-col-grey" >
-                            <label for="BechelorPortfolioHallOfFame">Hall of Fame</label>
+                            <input type="checkbox" id="GraduatePortfolioGeneral" class="chk-col-grey" checked disabled>
+                            <label for="GraduatePortfolioGeneral">ผลงานทั่วไป</label>
+                            <input type="checkbox" id="GraduatePortfolioHallOfFame" class="chk-col-grey" >
+                            <label for="GraduatePortfolioHallOfFame">Hall of Fame</label>
                           </div>
                         </div>
                       </div>
@@ -183,20 +183,20 @@
                     <label class="col-md-12">ปีที่ได้รับรางวัล</label>
                         <div class="input-group">
                         <div class="input-group-addon"><i class="mdi mdi-calendar-check"></i></div>
-                        <select id="BechelorPortfolioYear"  class="form-control form-control-line"></select>
+                        <select id="GraduatePortfolioYear"  class="form-control form-control-line"></select>
                           <!-- <input id="GraduatePortfolioYear" type="text" pattern="(?:25|25)[0-9]{2}"  title="กรุณากรอกปีพ.ศ.ปีที่ได้รับรางวัล" class="form-control form-control-line"> -->
                       </div>
                     </div>
 
                   <div class="form-group">
                     <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
-                        <img id="BechelorPortfolioPicturePreview" width="70" height="70" >
-                        <input type="file" id="BechelorPortfolioPicture" class="form-control" >                          
-                        <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
+                        <img id="GraduatePortfolioPicturePreview" width="70" height="70" >
+                        <input type="file" id="GraduatePortfolioPicture" class="form-control" >
+                        <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="GraduatePortfolioPicture"> -->
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button id="btSubmitEditBechelorPortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
+                  <button id="btSubmitEditGraduatePortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
                 </div>
                 <!-- </form> -->
@@ -209,7 +209,7 @@
         </div>
     </div>
     <?php include('import-javascript.php')?>
-    <script src="../js/showBechelorPortfolio.js"></script>
+    <script src="../js/showGraduatePortfolio.js"></script>
 
 </body>
 
