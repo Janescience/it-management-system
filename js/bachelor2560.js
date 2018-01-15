@@ -2,6 +2,7 @@ $(document).ready(function(){
 
  var Auth = firebase.auth();
  var dbRef = firebase.database();
+  var topicRef = dbRef.ref('website')
  var auth = null;
  var selectedFile;
  var indexSelect;
@@ -145,7 +146,7 @@ $(document).ready(function(){
       var data = {
        textTopicBachelorEs:$('#textTopicBachelorEs').val(),
        textDetailBachelorEs:$('#textDetailBachelorEs').val()
-     
+
     };
 
     firebase.database().ref('website').child('course').child('bachelor').child('year2560').update(data);
@@ -213,7 +214,7 @@ $(document).ready(function(){
        });
        firebase.database().ref('website').child("course").child('bachelor').child('year2560').update(postImage);
        $('#fileUploadImageBachelorEs').val("");
-       $('#btBachelorEs').hide();
+       $('#btUploadImageBachelorEs').hide();
      });
  }
 
@@ -347,7 +348,7 @@ $(document).ready(function(){
        $('#btUploadImageBachelorBida').hide();
      });
  }
- 
+
    /*======================= End Bachelor Edit Image  ======================*/
 
    /*------------------------ End Bachelor Ic (2560) -----------------------------------*/
@@ -472,7 +473,7 @@ $(document).ready(function(){
        }).catch(function(error) {
 
        });
-       firebase.database().ref('website').child("course").child('bachelor').child('year2555').update(postImage);
+       firebase.database().ref('website').child("course").child('bachelor').child('year2560').update(postImage);
        $('#fileUploadImageBachelorIs').val("");
        $('#btUploadImageBachelorIs').hide();
      });
@@ -481,11 +482,11 @@ $(document).ready(function(){
    /*======================= End Bachelor Edit Image  IS ======================*/
 
 
-  /*------------------------ End Bachelor IS (2555) -----------------------------------*/
+  /*------------------------ End Bachelor IS (2560) -----------------------------------*/
 
 
 
-  /*------------------------ Dowload Bachelor (2555) -----------------------------------*/
+  /*------------------------ Dowload Bachelor (2560) -----------------------------------*/
 
   $('#btUploadPdfBachelor').hide();
 
@@ -527,8 +528,333 @@ $(document).ready(function(){
        $('#btUploadPdfBachelor').hide();
      });
    }
-   
 
-  /*------------------------ End Dowload Bachelor (2555) -----------------------------------*/
+
+  /*------------------------ End Dowload Bachelor (2560) -----------------------------------*/
+
+
+  $('#headSuggestion').hide();
+  $('#tableSuggestion').hide();
+  $('#headEducation').hide();
+  $('#tableEducation').hide();
+  $('#headCourse').hide();
+  $('#tableCourse').hide();
+  $('#headLearning').hide();
+  $('#tableLearning').hide();
+
+  /*------------------------  Dowload Suggestion (2560) -----------------------------------*/
+
+
+  $('#Suggestion').on('click',function(){
+
+    $('#iconEducation').attr("class","fa fa-chevron-right");
+    $('#iconSuggestion').attr("class","fa fa-check text-info");
+    $('#iconCourse').attr("class","fa fa-chevron-right");
+    $('#iconLearning').attr("class","fa fa-chevron-right");
+
+    $('#headSuggestion').show();
+    $('#tableSuggestion').show();
+    $('#headEducation').hide();
+    $('#tableEducation').hide();
+    $('#headCourse').hide();
+    $('#tableCourse').hide();
+    $('#headLearning').hide();
+    $('#tableLearning').hide();
+
+  });
+
+
+
+  var rootRefExpert = topicRef.child("course").child('bachelor').child('year2560').child('filePDF').child('suggestion');
+
+  rootRefExpert.on("child_added",snap => {
+    var snapkey = snap.key;
+    var detail = snap.child('topic').val();
+
+    $('#Suggestion_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+  });
+
+  $('#Suggestion_work').on('click','.btn-delete-expert',function(){
+    var id = $(this).closest('tr').attr("id");
+    rootRefExpert.child(id).remove().then(function(){
+        $('#deleteProfileModal').modal('show');
+    });
+      $(this).closest('tr').remove();
+  });
+
+  $('#Suggestion_work').on('click','.btn-edit-expert',function(){
+    var id = $(this).closest('tr').attr("id");
+    var detail = $(this).closest('tr').find('.txtdetail').text();
+    $('#detailExpert').val(detail);
+    $('#editExpertModal').modal('show');
+  });
+
+
+  $('#btOpenModalSuggestion').on('click',function(e){
+       e.preventDefault();
+         $('#addSuggestion').modal('show');
+     });
+
+     $('#btUploadSuggestion').hide();
+
+     $('#fileUploadSuggestion').on('change',function(event){
+       selectedFile = event.target.files[0];
+
+       $('#btUploadSuggestion').show();
+     });
+
+     $('#btUploadSuggestion').on('click',function(){
+       uploadSuggestion();
+     });
+
+     function uploadSuggestion(){
+       var filename= selectedFile.name;
+       var filesurename = filename.split(".")[1];
+       if(filesurename == "PDF" || filesurename == "pdf"){
+         var storageRef = firebase.storage().ref('/CoursePDF/bachelor2560/' + filename);
+         var uplodadTask = storageRef.put(selectedFile);
+
+         uplodadTask.on('state_changed',function(sanpshot){
+
+         },function(error){
+
+         },function(){
+           var downloadURL = uplodadTask.snapshot.downloadURL;
+           var updates = {};
+           var postPDF = {
+             file:downloadURL,
+             topic:$('#TopicSuggestion').val()
+           };
+
+           firebase.database().ref('website').child("course").child('bachelor').child('year2560').child('filePDF').child('suggestion').push().set(postPDF);
+           $('#fileUploadSuggestion').val("");
+           $('#addSuggestion').modal('hide');
+           $('#addSuggestion3').modal('show')
+
+         });
+
+       }else {
+         $('#addSuggestion').modal('hide');
+         $('#addSuggestion2').modal('show');
+       }
+
+
+     }
+
+       /*------------------------ End Dowload Suggestion (2560) -----------------------------------*/
+
+  /*------------------------  Dowload Education (2560) -----------------------------------*/
+
+  $('#Education').on('click',function(){
+    $('#iconEducation').attr("class","fa fa-check text-info");
+    $('#iconSuggestion').attr("class","fa fa-chevron-right");
+    $('#iconCourse').attr("class","fa fa-chevron-right");
+    $('#iconLearning').attr("class","fa fa-chevron-right");
+
+    $('#headEducation').show();
+    $('#tableEducation').show();
+    $('#headSuggestion').hide();
+    $('#tableSuggestion').hide();
+    $('#headCourse').hide();
+    $('#tableCourse').hide();
+    $('#headLearning').hide();
+    $('#tableLearning').hide();
+  ;
+  });
+
+  $('#btOpenModalEducation').on('click',function(e){
+       e.preventDefault();
+         $('#addEducation').modal('show');
+     });
+
+     $('#btUploadEducation').hide();
+
+     $('#fileUploadEducation').on('change',function(event){
+       selectedFile = event.target.files[0];
+       $('#btUploadEducation').show();
+     });
+
+     $('#btUploadEducation').on('click',function(){
+       uploadEducation();
+     });
+
+     function uploadEducation(){
+       var filename= selectedFile.name;
+       var filesurename = filename.split(".")[1];
+       if(filesurename == "PDF" || filesurename == "pdf"){
+         var storageRef = firebase.storage().ref('/CoursePDF/bachelor2560/' + filename);
+         var uplodadTask = storageRef.put(selectedFile);
+
+         uplodadTask.on('state_changed',function(sanpshot){
+
+         },function(error){
+
+         },function(){
+           var downloadURL = uplodadTask.snapshot.downloadURL;
+           var updates = {};
+           var postPDF = {
+             file:downloadURL,
+             topic:$('#TopicEducation').val()
+           };
+
+           firebase.database().ref('website').child("course").child('bachelor').child('year2560').child('filePDF').child('education').push().set(postPDF);
+           $('#fileUploadEducation').val("");
+           $('#addEducation').modal('hide');
+           $('#addEducation3').modal('show');
+
+         });
+
+       }else {
+         $('#addEducation').modal('hide');
+         $('#addEducation2').modal('show');
+       }
+
+
+     }
+
+     /*------------------------ End Dowload Education (2560) -----------------------------------*/
+
+       /*------------------------  Dowload Course (2560) -----------------------------------*/
+
+  $('#Course').on('click',function(){
+    $('#iconSuggestion').attr("class","fa fa-chevron-right");
+    $('#iconEducation').attr("class","fa fa-chevron-right");
+    $('#iconCourse').attr("class","fa fa-check text-info");
+    $('#iconLearning').attr("class","fa fa-chevron-right");
+
+    $('#headCourse').show();
+    $('#tableCourse').show();
+    $('#headSuggestion').hide();
+    $('#tableSuggestion').hide();
+    $('#headEducation').hide();
+    $('#tableEducation').hide();
+    $('#headLearning').hide();
+    $('#tableLearning').hide();
+  });
+
+  $('#btOpenModalCourse').on('click',function(e){
+       e.preventDefault();
+         $('#addCourse').modal('show');
+     });
+
+     $('#btUploadCourse').hide();
+
+     $('#fileUploadCourse').on('change',function(event){
+       selectedFile = event.target.files[0];
+       $('#btUploadCourse').show();
+     });
+
+     $('#btUploadCourse').on('click',function(){
+       uploadCourse();
+     });
+
+     function uploadCourse(){
+       var filename= selectedFile.name;
+       var filesurename = filename.split(".")[1];
+       if(filesurename == "PDF" || filesurename == "pdf"){
+         var storageRef = firebase.storage().ref('/CoursePDF/bachelor2560/' + filename);
+         var uplodadTask = storageRef.put(selectedFile);
+
+         uplodadTask.on('state_changed',function(sanpshot){
+
+         },function(error){
+
+         },function(){
+           var downloadURL = uplodadTask.snapshot.downloadURL;
+           var updates = {};
+           var postPDF = {
+             file:downloadURL,
+             topic:$('#TopicCourse').val()
+           };
+
+           firebase.database().ref('website').child("course").child('bachelor').child('year2560').child('filePDF').child('course').push().set(postPDF);
+           $('#fileUploadCourse').val("");
+           $('#addCourse').modal('hide');
+           $('#addCourse3').modal('show');
+
+         });
+
+       }else {
+         $('#addCourse').modal('hide');
+         $('#addCourse2').modal('show');
+       }
+
+
+     }
+
+     /*------------------------ End Dowload Course (2560) -----------------------------------*/
+
+    /*------------------------  Dowload Learning (2560) -----------------------------------*/
+
+  $('#Learning').on('click',function(){
+    $('#iconSuggestion').attr("class","fa fa-chevron-right");
+    $('#iconEducation').attr("class","fa fa-chevron-right");
+    $('#iconCourse').attr("class","fa fa-chevron-right");
+    $('#iconLearning').attr("class","fa fa-check text-info");
+
+    $('#headCourse').hide();
+    $('#tableCourse').hide();
+    $('#headSuggestion').hide();
+    $('#tableSuggestion').hide();
+    $('#headEducation').hide();
+    $('#tableEducation').hide();
+    $('#headLearning').show();
+    $('#tableLearning').show();
+  });
+
+  $('#btOpenModalLearning').on('click',function(e){
+       e.preventDefault();
+         $('#addLearning').modal('show');
+     });
+
+     $('#btUploadLearning').hide();
+
+     $('#fileUploadLearning').on('change',function(event){
+       selectedFile = event.target.files[0];
+       $('#btUploadLearning').show();
+     });
+
+     $('#btUploadLearning').on('click',function(){
+       uploadLearning();
+     });
+
+     function uploadLearning(){
+       var filename= selectedFile.name;
+       var filesurename = filename.split(".")[1];
+       if(filesurename == "PDF" || filesurename == "pdf"){
+         var storageRef = firebase.storage().ref('/CoursePDF/bachelor2560/' + filename);
+         var uplodadTask = storageRef.put(selectedFile);
+
+         uplodadTask.on('state_changed',function(sanpshot){
+
+         },function(error){
+
+         },function(){
+           var downloadURL = uplodadTask.snapshot.downloadURL;
+           var updates = {};
+           var postPDF = {
+             file:downloadURL,
+             topic:$('#TopicLearning').val()
+           };
+
+           firebase.database().ref('website').child("course").child('bachelor').child('year2560').child('filePDF').child('learning').push().set(postPDF);
+           $('#fileUploadCourse').val("");
+           $('#addLearning').modal('hide');
+           $('#addLearning3').modal('show');
+
+         });
+
+       }else {
+         $('#addLearning').modal('hide');
+         $('#addLearning2').modal('show');
+       }
+
+
+     }
+
+      /*------------------------ End Dowload Learning (2560) -----------------------------------*/
 
 })
