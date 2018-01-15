@@ -225,17 +225,27 @@
               <label class="col-md-12">ประเภทผลงาน</label>
                   <div class="input-group">
                   <div class="input-group-addon"><i class="fa fa-trophy"></i></div>
-                  <select id="BechelorPortfolioGroup" class="form-control form-control-line">
-                    <option>การประกวดทั่วไป</option>
+                  <select id="BechelorPortfolioGroup" class="form-control form-control-line"></select>
+                    <!-- <option>การประกวดทั่วไป</option>
                     <option>การออกแบบเว็บไซต์(Website)</option>
                     <option>แอนิเมชั่น(Animation)</option>
                     <option>หนังสืออิเล็กทรอนิกส์(E-Book)</option>
                     <option>ภาพยนตร์สั้น</option>
                     <option>เรื่องสั้น</option>
                     <option>การอบรม</option>
-                    <option>อื่นๆ</option>
-                </select>
+                    <option>อื่นๆ</option> -->
+
+              </div><br/>
+
+                <div class="">
+                  <input id="AddBechelorPortfolioType" type="text"  class="form-control form-control-line">
+                </div><br/>
+                <div align="right" class="">
+                  <button id="AddBechelorPortfolioGroup" class="btn btn-info"><i class="fa fa-plus"></i>   เพิ่มประเภทผลงาน</button>
+                  <button id="SaveBechelorPortfolioGroup" class="btn btn-success">   ตกลง</button>
+                  <button id="CancelAddBechelorPortfolioGroup" class="btn btn-danger">   ยกเลิก</button>
                 </div>
+
             </div>
 
             <div class="form-group">
@@ -377,15 +387,24 @@
                     <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-trophy"></i></div>
                     <select id="GraduatePortfolioGroup" class="form-control form-control-line">
-                      <option>การประกวดทั่วไป</option>
+                      <!-- <option>การประกวดทั่วไป</option>
                       <option>การออกแบบเว็บไซต์(Website)</option>
                       <option>แอนิเมชั่น(Animation)</option>
                       <option>หนังสืออิเล็กทรอนิกส์(E-Book)</option>
                       <option>ภาพยนตร์สั้น</option>
                       <option>เรื่องสั้น</option>
                       <option>การอบรม</option>
-                      <option>อื่นๆ</option>
+                      <option>อื่นๆ</option> -->
                   </select>
+                </div><br/>
+
+                  <div class="">
+                    <input id="AddGraduatePortfolioType" type="text"  class="form-control form-control-line">
+                  </div><br/>
+                  <div align="right" class="">
+                    <button id="AddGraduatePortfolioGroup" class="btn btn-info"><i class="fa fa-plus"></i>   เพิ่มประเภทผลงาน</button>
+                    <button id="SaveGraduatePortfolioGroup" class="btn btn-success">   ตกลง</button>
+                    <button id="CancelAddGraduatePortfolioGroup" class="btn btn-danger">   ยกเลิก</button>
                   </div>
               </div>
 
