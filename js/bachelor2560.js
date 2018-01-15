@@ -44,6 +44,49 @@ $(document).ready(function(){
         $('#addStudyplan').modal('show');
     });
 
+    $('#fileUploadStudyplan').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btAddStudyplan').on('click',function(){
+      uploadStudyplan();
+    });
+
+    function uploadStudyplan(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2560/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicStudyplan').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2560').child('filePDF').child('studyplan').push().set(postPDF);
+          $('#fileUploadStudyplan').val("");
+          $('#addStudyplan').modal('hide');
+          $('#addStudyplan3').modal('show');
+
+        });
+
+      }else {
+        $('#addStudyplan').modal('hide');
+        $('#addStudyplan2').modal('show');
+      }
+
+
+    }
+
  /*======================= END Bachelor Studyplan  ======================*/
 
 
@@ -55,6 +98,49 @@ $(document).ready(function(){
         $('#addOpenCourses').modal('show');
     });
 
+    $('#fileUploadOpenCourses').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadOpenCourses').on('click',function(){
+      uploadOpenCourses();
+    });
+
+    function uploadOpenCourses(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2560/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicOpenCourses').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2560').child('filePDF').child('openCourses').push().set(postPDF);
+          $('#fileUploadOpenCourses').val("");
+          $('#addOpenCourses').modal('hide');
+          $('#addOpenCourses3').modal('show');
+
+        });
+
+      }else {
+        $('#addOpenCourses').modal('hide');
+        $('#addOpenCourses2').modal('show');
+      }
+
+
+    }
+
  /*======================= END Bachelor OpenCourses  ======================*/
 
 
@@ -64,6 +150,49 @@ $(document).ready(function(){
       e.preventDefault();
         $('#addOpenModifyEs').modal('show');
     });
+
+    $('#fileUploadModifyEs').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadModifyEs').on('click',function(){
+      uploadModifyEs();
+    });
+
+    function uploadModifyEs(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2560/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicModifyEs').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2560').child('filePDF').child('Es').push().set(postPDF);
+          $('#fileUploadModifyEs').val("");
+          $('#addOpenModifyEs').modal('hide');
+          $('#addOpenModifyEs3').modal('show');
+
+        });
+
+      }else {
+        $('#addOpenModifyEs').modal('hide');
+        $('#addOpenModifyEs2').modal('show');
+      }
+
+
+    }
 
  /*======================= END Bachelor ModifyEs  ======================*/
 
@@ -486,52 +615,6 @@ $(document).ready(function(){
 
 
 
-  /*------------------------ Dowload Bachelor (2560) -----------------------------------*/
-
-  $('#btUploadPdfBachelor').hide();
-
- $('#fileUploadPdfBachelor').on('change',function(event){
-   selectedFile = event.target.files[0];
-   $('#btUploadPdfBachelor').show();
- });
-
- $('#btUploadPdfBachelor').on('click',function(event){
-   uploadPdfBachelor();
- });
-
-  function uploadPdfBachelor(){
-   var filename= selectedFile.name;
-   var storageRef = firebase.storage().ref('/CourseImage/CoursePDF_Bachelor2555/' + filename);
-   var uplodadTask = storageRef.put(selectedFile);
-
-     uplodadTask.on('state_changed',function(sanpshot){
-
-     },function(error){
-
-     },function(){
-       var downloadURL = uplodadTask.snapshot.downloadURL;
-       var updates = {};
-       var postImage = {
-         imageBachelorMis:downloadURL
-       };
-       var deleteRef;
-       var deleteImageProfile = firebase.database().ref('website').child("course").child('bachelor').child('DowloadPDF2555');
-       deleteImageProfile.on('value',snap => {
-         deleteRef = firebase.storage().refFromURL(snap.val());
-       });
-       deleteRef.delete().then(function() {
-       }).catch(function(error) {
-
-       });
-       firebase.database().ref('website').child("course").child('bachelor').child('DowloadPDF2555').update(postImage);
-       $('#fileUploadPdfBachelor').val("");
-       $('#btUploadPdfBachelor').hide();
-     });
-   }
-
-
-  /*------------------------ End Dowload Bachelor (2560) -----------------------------------*/
-
 
   $('#headSuggestion').hide();
   $('#tableSuggestion').hide();
@@ -665,6 +748,34 @@ $(document).ready(function(){
   ;
   });
 
+  var rootRefExpert2 = topicRef.child("course").child('bachelor').child('year2560').child('filePDF').child('education');
+
+  rootRefExpert2.on("child_added",snap => {
+    var snapkey = snap.key;
+    var detail = snap.child('topic').val();
+
+    $('#Education_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+  });
+
+  $('#Education_work').on('click','.btn-delete-expert',function(){
+    var id = $(this).closest('tr').attr("id");
+    rootRefExpert2.child(id).remove().then(function(){
+        $('#deleteModal2').modal('show');
+    });
+      $(this).closest('tr').remove();
+  });
+
+  $('#Education_work').on('click','.btn-edit-expert',function(){
+    var id = $(this).closest('tr').attr("id");
+    var detail = $(this).closest('tr').find('.txtdetail').text();
+    $('#detailExpert2').val(detail);
+    $('#editExpertModal2').modal('show');
+  });
+
+
   $('#btOpenModalEducation').on('click',function(e){
        e.preventDefault();
          $('#addEducation').modal('show');
@@ -735,6 +846,34 @@ $(document).ready(function(){
     $('#tableLearning').hide();
   });
 
+  var rootRefExpert3 = topicRef.child("course").child('bachelor').child('year2560').child('filePDF').child('course');
+
+  rootRefExpert3.on("child_added",snap => {
+    var snapkey = snap.key;
+    var detail = snap.child('topic').val();
+
+    $('#Course_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+  });
+
+  $('#Course_work').on('click','.btn-delete-expert',function(){
+    var id = $(this).closest('tr').attr("id");
+    rootRefExpert3.child(id).remove().then(function(){
+        $('#deleteModal3').modal('show');
+    });
+      $(this).closest('tr').remove();
+  });
+
+  $('#Course_work').on('click','.btn-edit-expert',function(){
+    var id = $(this).closest('tr').attr("id");
+    var detail = $(this).closest('tr').find('.txtdetail').text();
+    $('#detailExpert3').val(detail);
+    $('#editExpertModal3').modal('show');
+  });
+
+
   $('#btOpenModalCourse').on('click',function(e){
        e.preventDefault();
          $('#addCourse').modal('show');
@@ -803,6 +942,33 @@ $(document).ready(function(){
     $('#tableEducation').hide();
     $('#headLearning').show();
     $('#tableLearning').show();
+  });
+
+  var rootRefExpert4 = topicRef.child("course").child('bachelor').child('year2560').child('filePDF').child('learning');
+
+  rootRefExpert4.on("child_added",snap => {
+    var snapkey = snap.key;
+    var detail = snap.child('topic').val();
+
+    $('#Learning_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+  });
+
+  $('#Learning_work').on('click','.btn-delete-expert',function(){
+    var id = $(this).closest('tr').attr("id");
+    rootRefExpert3.child(id).remove().then(function(){
+        $('#deleteModal4').modal('show');
+    });
+      $(this).closest('tr').remove();
+  });
+
+  $('#Learning_work').on('click','.btn-edit-expert',function(){
+    var id = $(this).closest('tr').attr("id");
+    var detail = $(this).closest('tr').find('.txtdetail').text();
+    $('#detailExpert4').val(detail);
+    $('#editExpertModal4').modal('show');
   });
 
   $('#btOpenModalLearning').on('click',function(e){
