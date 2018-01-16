@@ -10,6 +10,8 @@
     <meta name="author" content="">
 
     <?php  include('header.php') ?>
+    <link href="css/hover.css" rel="stylesheet" type="text/css">
+
     <style>
 
     .avatar {
@@ -55,7 +57,7 @@
                           <ul class="nav nav-tabs profile-tab" role="tablist">
                               <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
                               <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#history" role="tab">History | Working</a> </li>
-                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab">Office Hours</a> </li>
+                              <li hidden id="tabOfficeHour" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab">Office Hours</a> </li>
                           </ul>
                           <!-- Tab panes -->
                           <div class="tab-content">
@@ -69,15 +71,17 @@
                                     <div class="card">
                                       <div class="card-block">
                                       <button id="openMap" type="button" class="btn btn-circle btn-success waves-effect waves-ligh pull-right"><i class="fa fa-map-marker"></i></button>
-                                      <button id="showUpload" type="button" class="btn btn btn-rounded btn-outline-success col-md-6 waves-effect waves-ligh pull-left"><i class="fa fa-user-circle"></i> Update Image</button>
-                                      <button hidden id="cancelUpload" type="button" class="btn btn btn-rounded btn-outline-danger col-md-4 waves-effect waves-ligh pull-left"><i class="fa fa-close"></i> Cancel Update  </button>
 
                                     </div>
-                                      <center >
 
-
-                                         <img  id="imageProfile" src="../assets/images/users/user.png" class="avatar" style="border:5px solid #00ff00;"/>
-                                         <br>
+                                        <center>
+                                            <div class="hovereffect">
+                                         <img  id="imageProfile" src="../assets/images/users/user.png" class="avatar" style="border:8px solid #BDBDBD;"/>
+                                              <div class="overlay">
+                                            <a class="info" href="#"><i class="fa fa-image"></i> change</a>
+                                            </div>
+                                          </div>
+                                          <br>
 
 
 
@@ -109,7 +113,6 @@
                                                 </a>
                                             </div>
                                         </div>
-                                          <h6 id="statusOffice" ></h6>
 
 
 
@@ -118,7 +121,7 @@
                                             <button id="btUploadImageProfile" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
                                             <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
                                           </div>
-                                      </center>
+  </center>
                                         </div>
                                       </div>
 

@@ -29,6 +29,12 @@
     -moz-border-radius: 500px;
 }
 
+  #list_user td{
+   text-align:center;
+   vertical-align:middle;
+  }
+
+
     </style>
 
 </head>
@@ -48,10 +54,9 @@
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Manage User</h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Manage</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Manage User</a></li>
+                            <li class="breadcrumb-item active">Users</li>
                         </ol>
                     </div>
                 </div>
@@ -67,19 +72,20 @@
                             </div>
                             <div class="col-md-4">
                             </div>
-                            <div class="col-md-4">
 
-                            <div class="form-group">
-                              <span class="counter pull-right"></span>
-                                <div class="input-group">
-                                  <div class="input-group-addon"><i class="ti-search"></i></div>
-                                  <input id="searchUser" type="text"  class="form-control" >
-                                </div>
+                          </div>
+                        <div class="card-block">
+                          <div class="col-md-4">
+
+                          <div class="form-group">
+                            <span class="counter pull-right"></span>
+                              <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-search"></i></div>
+                                <input id="searchUser" type="text"  class="form-control" >
                               </div>
                             </div>
                           </div>
-                        <div class="card-block bg-info">
-                          <h4 class="text-white card-title">Users</h4>
+                          <h4 class="text-black card-title"></h4>
                           <div class="message-box contact-box">
                           <h2 class="add-ct-btn">
                             <button type="button" id="btAddUser" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
@@ -89,11 +95,11 @@
 
                               <form class="form-horizontal form-material ">
                                 <div class="table-responsive">
-                                    <table class="table text-center color-bordered-table results success-bordered-table">
+                                    <table class="table text-center results table-hover" >
                                         <thead >
                                             <tr >
                                               <th class="text-center">Profile</th>
-                                                <th class="text-center">Name-surename</th>
+                                                <th class="text-center">Name-Surname</th>
                                                 <th class="text-center">E-mail</th>
                                                 <th class="text-center">Telephone</th>
                                                 <th class="text-center">Role</th>
@@ -109,6 +115,7 @@
                                     </table>
                                 </div>
                               </form>
+
                             </div>
                       </div>
                     </div>
@@ -120,12 +127,12 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="messageModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+    <div class="modal fade" id="waitModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="messageModalLabel">Message</h4>
+            <h4 class="modal-title" id="messageModalWait">Message</h4>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -220,6 +227,66 @@
     </div>
     </div>
   </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editUserModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="messageModalLabel">Create User</h4>
+      </div>
+        <br>
+     <!-- Column -->
+<div class="modal-body">
+<div class="col-md-12">
+
+      <form class="form-horizontal">
+        <center>
+        <img id="imgShowEdit" width="150px" class="img-circle">
+      </center>
+        <div class="form-group">
+          <label for="nameCreateUser">Profile Image</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-image"></i></div>
+              <input class="form-control" type="file" id="fileUploadImageCreateUser"><hr>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameCreateUser">Full Name</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input id="nameEditUser" type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="emailCreateUser" >Email</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-email"></i></div>
+              <input id="emailEditUser" type="email"  class="form-control " >
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="phoneCreateUser">Phone No</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-mobile"></i></div>
+                <input id="phoneEditUser" type="text"  class="form-control">
+            </div>
+        </div>
+        </form>
+  </div>
+</div>
+<div class="modal-footer">
+  <button id="btEditUser" type="submit" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> Submit</button>
+  <button   type="submit" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
+</div>
+</div>
+</div>
 </div>
 
     <?php include('import-javascript.php')?>

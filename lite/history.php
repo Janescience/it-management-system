@@ -53,32 +53,34 @@
                   </div>
                   <div class="col-md-4">
                   </div>
-                  <div class="col-md-4">
 
-                  <div class="form-group">
-                    <span class="counter pull-right"></span>
-                      <div class="input-group">
-                        <div class="input-group-addon"><i class="ti-search"></i></div>
-                        <input id="search" type="text"  class="form-control" >
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <div class="row">
 
 
                     <div class="col-md-12">
 
+                      <div class="card">
+                        <div class="card-block">
 
-                        <div class="card-block bg-info">
+                        <div class="card-block ">
 
-                          <h4 class="text-white card-title">History</h4>
+                          <div class="col-md-4">
+
+                          <div class="form-group">
+                            <span class="counter pull-right"></span>
+                              <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-search"></i></div>
+                                <input id="search" type="text"  class="form-control" >
+                              </div>
+                            </div>
+                          </div>
 
                       </div>
                               <form class="form-horizontal form-material ">
 
                                 <div class="table-responsive">
-                                    <table id="tableHistory" class="table text-center results color-bordered-table success-bordered-table">
+                                    <table id="tableHistory" class="table text-center results ">
                                         <thead >
                                             <tr >
                                                 <th class="text-center">Name - Surename</th>
@@ -99,8 +101,9 @@
                                 </div>
                               </form>
 
-
+                      </div>
                     </div>
+                  </div>
                 </div>
             </div>
 
