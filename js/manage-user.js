@@ -47,13 +47,26 @@ $(document).ready(function(){
 
   if(key != sessionStorage.getItem("userId")){
 
-    $('#list_user').append("<tr id='"+snap.key+"'valign='"+'middle'+"'  style='"+'height: 100px;'+"'><td><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
-        "<td>" + name + "</td><td>" + email +"</td><td>" + phone +"</td><td><span class='"+'label label-success'+"'>"+level+"</span></td>"+
-        "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+    $('#list_user').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
+        "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td><td><span class='"+'label label-success'+"'>"+level+"</span></td>"+
+        "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
         " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
   }
  });
+
+$('#list_user').on('click','.btn-edit-user',function(){
+  var image = $(this).closest('tr').find(".avatar").attr("src");
+  var name =  $(this).closest('tr').find(".txtname").text();
+  var email =  $(this).closest('tr').find(".txtemail").text();
+  var phone =  $(this).closest('tr').find(".txtphone").text();
+  $('#imgShowEdit').attr("src",image);
+  $('#nameEditUser').val(name);
+  $('#emailEditUser').val(email);
+  $('#phoneEditUser').val(phone);
+  $('#editUserModal').modal('show');
+});
+
 
 
  $('#btAddUser').on('click',function(e){
@@ -68,8 +81,8 @@ $(document).ready(function(){
  $('#btCreateUser').on('click',function(e){
    e.preventDefault();
    $('#addUserModal').modal('hide');
-   $('#messageModalLabel').html("Processing...  "+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>', ['center', 'info']));
-    $('#messageModal').modal('show');
+   $('#messageModalWait').html("Processing...  "+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>', ['center', 'info']));
+    $('#waitModal').modal('show');
 
     var filename= selectedFile.name;
     var storageRef = firebase.storage().ref('/ProfileImage/' + filename);
@@ -87,19 +100,64 @@ $(document).ready(function(){
            telephone: $('#phoneCreateUser').val(),
            image: downloadURL,
            level: $('#rankCreateUser').val(),
-           office:"",
+           office:"border:8px solid #BDBDBD;",
            status:"",
-           academic_work :{
-             academic:"-",
-             research:"-"
-           },
-           education:{
-             expertise:"-",
-             his_education:"-"
-           },
-           work:{
-             hiswork:"-",
-             more_info:"-",
+           office_hour:{
+             day_1:{
+               day:"Monday",
+               hour_1:"#ebebe0",
+               hour_2:"#ebebe0",
+               hour_3:"#ebebe0",
+               hour_4:"#ebebe0",
+               hour_5:"#ebebe0",
+               hour_6:"#ebebe0",
+               hour_7:"#ebebe0",
+               hour_8:"#ebebe0"
+             },
+             day_2:{
+               day:"Tuesday",
+               hour_1:"#ebebe0",
+               hour_2:"#ebebe0",
+               hour_3:"#ebebe0",
+               hour_4:"#ebebe0",
+               hour_5:"#ebebe0",
+               hour_6:"#ebebe0",
+               hour_7:"#ebebe0",
+               hour_8:"#ebebe0"
+             },
+             day_3:{
+               day:"Wednesday",
+               hour_1:"#ebebe0",
+               hour_2:"#ebebe0",
+               hour_3:"#ebebe0",
+               hour_4:"#ebebe0",
+               hour_5:"#ebebe0",
+               hour_6:"#ebebe0",
+               hour_7:"#ebebe0",
+               hour_8:"#ebebe0"
+             },
+             day_4:{
+               day:"Thursday",
+               hour_1:"#ebebe0",
+               hour_2:"#ebebe0",
+               hour_3:"#ebebe0",
+               hour_4:"#ebebe0",
+               hour_5:"#ebebe0",
+               hour_6:"#ebebe0",
+               hour_7:"#ebebe0",
+               hour_8:"#ebebe0"
+             },
+             day_5:{
+               day:"Friday",
+               hour_1:"#ebebe0",
+               hour_2:"#ebebe0",
+               hour_3:"#ebebe0",
+               hour_4:"#ebebe0",
+               hour_5:"#ebebe0",
+               hour_6:"#ebebe0",
+               hour_7:"#ebebe0",
+               hour_8:"#ebebe0"
+             }
            }
          };
 
@@ -118,11 +176,16 @@ $(document).ready(function(){
                         .set(data)
                         .then(function(){
                           console.log("User Information Saved:", user.uid);
+                          $('#nameCreateUser').val("");
+                          $('#emailCreateUser').val("");
+                          $('#phoneCreateUser').val("");
+                          $('#passwordCreateUser').val("");
+                          $('#fileUploadImageCreateUser').val("");
                         })
-                     $('#messageModalLabel').html(spanText('Success!', ['center', 'success']))
+                     $('#messageModalWait').html(spanText('Success!', ['center', 'success']))
 
                      setTimeout(function() {
-                        $('#messageModal').modal('hide');
+                        $('#waitModal').modal('hide');
                         $('.unauthenticated, .userAuth').toggleClass('unauthenticated').toggleClass('authenticated');
 
                     },500);

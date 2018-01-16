@@ -169,6 +169,7 @@ dbStatus.on('value',snap => {
   if(sessionStorage.getItem("level") != "คณาจารย์และบุคลากร"){
     $('#manageUserMenu').removeAttr('hidden');
   }else{
+    $('#tabOfficeHour').removeAttr('hidden');
     $('#manageUserMenu').attr('hidden',"true");
   }
 });

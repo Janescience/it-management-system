@@ -137,25 +137,25 @@ $('#openMap').on('click',function(){
 
  $('#available').click(function(){
    var color={
-     office:"border:5px solid #00ff00;"
+     office:"border:8px solid #00ff00;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
  $('#notintheoffice').click(function(){
    var color={
-     office:"border:5px solid #0099ff;"
+     office:"border:8px solid #0099ff;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
  $('#beback').click(function(){
    var color={
-     office:"border:5px solid #ffcc00;"
+     office:"border:8px solid #ffcc00;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
  $('#dontdisturb').click(function(){
    var color={
-     office:"border:5px solid #ff3300;"
+     office:"border:8px solid #ff3300;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
@@ -586,13 +586,13 @@ $('#btSubmitExp').on('click',function(){
  var dbStatus = usersRef.child(sessionStorage.getItem("userId")).child('office');
  dbStatus.on('value',snap => {
    $('#imageProfile').attr("style",snap.val());
-   if(snap.val() == "border:5px solid #00ff00;"){
+   if(snap.val() == "border:8px solid #00ff00;"){
      document.getElementById('showStatus').innerText = "Available";
-   }else if(snap.val() == "border:5px solid #0099ff;"){
+   }else if(snap.val() == "border:8px solid #0099ff;"){
      document.getElementById('showStatus').innerText = "Not in the office";
-   }else if(snap.val() == "border:5px solid #ffcc00;"){
+   }else if(snap.val() == "border:8px solid #ffcc00;"){
      document.getElementById('showStatus').innerText = "Be back";
-   }else if(snap.val() == "border:5px solid #ff3300;"){
+   }else if(snap.val() == "border:8px solid #ff3300;"){
      document.getElementById('showStatus').innerText = "Don't Disturb";
 
    }
@@ -699,6 +699,13 @@ $('#btSubmitExp').on('click',function(){
    $('#btCancelUpdateProfile').hide();
     $('#btLoadingProfile').show();
     updateProfile();
+    var user = firebase.auth().currentUser;
+    var newEmail = $('#emailProfile').val();
+    user.updateEmail(newEmail).then(function() {
+
+    }).catch(function(error) {
+      // An error happened.
+   });
  });
 
  function updateProfile(){
@@ -709,7 +716,9 @@ $('#btSubmitExp').on('click',function(){
      telephone:$('#phoneProfile').val()
    };
    firebase.database().ref('users').child(sessionStorage.getItem("userId")).update(postData);
+
    $('#btLoadingProfile').hide();
+
  }
 
 
