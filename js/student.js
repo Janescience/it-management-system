@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var selectedFile;
 	var txt = "";
 
-	// ========================================= Set initial Bachelor Portfolio Modal =========================================
+	// ========================================= Set initial Bechelor Portfolio Modal =========================================
 	txt = "";
 	$('#BechelorPortfolioName').val("");
 	$('#BechelorPortfolioDetail').val("");
@@ -110,7 +110,7 @@ $(document).ready(function(){
 
 
 
-				// ========================================= Get Bachelor Portfolio Type Dropdown =========================================
+				// ========================================= Get Bechelor Portfolio Type Dropdown =========================================
 
 				// var Auth = firebase.auth();
 				var dbRef = firebase.database();
@@ -126,7 +126,7 @@ $(document).ready(function(){
 
 					});
 
-				// ========================================= End Bachelor Portfolio Type =========================================
+				// ========================================= End Bechelor Portfolio Type =========================================
 
 				// ========================================= Get Graduate Portfolio Type Dropdown =========================================
 
@@ -144,9 +144,9 @@ $(document).ready(function(){
 
 					});
 
-				// ========================================= End Bachelor Portfolio Type =========================================
+				// ========================================= End Bechelor Portfolio Type =========================================
 
-				// ========================================= Add Bachelor Portfolio Type =========================================
+				// ========================================= Add Bechelor Portfolio Type =========================================
 				$('#SaveBechelorPortfolioGroup').on('click',function(e){
 
 						 var data = {
@@ -165,7 +165,7 @@ $(document).ready(function(){
 
 
 					});
-				// ========================================= End Add Bachelor Portfolio Type =========================================
+				// ========================================= End Add Bechelor Portfolio Type =========================================
 
 				// ========================================= Add Graduate Portfolio Type =========================================
 				$('#SaveGraduatePortfolioGroup').on('click',function(e){
@@ -188,7 +188,7 @@ $(document).ready(function(){
 					});
 				// ========================================= End Add Graduate Portfolio Type =========================================
 
-			// ========================================= Bachelor Portfolio Script =========================================
+			// ========================================= Bechelor Portfolio Script =========================================
 
 			$('#BechelorPortfolioPicture').on('change',function(event){
 				selectedFile = event.target.files[0];
@@ -226,7 +226,7 @@ $(document).ready(function(){
 				document.getElementById("BechelorDemo").innerHTML = txt;
 				});
 
-				// ========================================= Bachelor Portfolio Button Action =========================================
+				// ========================================= Bechelor Portfolio Button Action =========================================
 
 
 			$('#btSubmitBechelorPortfolio').on('click',function(){
@@ -294,7 +294,7 @@ $(document).ready(function(){
 					document.getElementById("BechelorDemo").innerHTML = txt;
 			});
 
-		// ========================================= Bachelor Activity Upload Script =========================================
+		// ========================================= Bechelor Activity Upload Script =========================================
 
 			document.getElementById("GraduateActivityImage").addEventListener('change', function(e){
 					//Get files
@@ -520,7 +520,7 @@ $(document).ready(function(){
  // <!-- <=========================================================== BechelorPortfolioYear ===========================================================> -->
  var min = 2500,
  		max = min + 100,
- 		select = document.getElementById('BachelorPortfolioYear');
+ 		select = document.getElementById('BechelorPortfolioYear');
 
  for (var i = min; i<=max; i++){
  		var opt = document.createElement('option');
