@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
 
       <!-- date picker -->
       <!-- <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
@@ -70,7 +71,7 @@
                 <div class="col-lg-4">
                             <div class="card" style="margin-top: 20px;margin-left: 25px;margin-bottom: 20px;">
                                 <div class="card-block">
-                                    <i class="fa fa-university fa-5x" aria-hidden="true"></i>
+                                    <i class="fa fa-fort-awesome fa-5x" aria-hidden="true"></i>
                                 <h4 class="card-title">Hall of Fame</h4>
 
                                 <!-- <h6 class="card-subtitle">ระดับปริญญาตรี</h6> -->
@@ -137,7 +138,7 @@
                   <div class="col-lg-4">
                             <div class="card" style="margin-top: 20px;margin-left: 25px;margin-bottom: 20px;">
                                 <div class="card-block">
-                                    <i class="fa fa-bank fa-5x" aria-hidden="true"></i>
+                                    <i class="fa fa-fort-awesome fa-5x" aria-hidden="true"></i>
                                 <h4 class="card-title">Hall of Fame</h4>
 
                                 <!-- <h6 class="card-subtitle">ระดับปริญญาตรี</h6> -->

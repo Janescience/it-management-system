@@ -7,6 +7,10 @@ $(document).ready(function(){
   var rootRef = portfolioRef;
   var idPort;
   var selectedFile;
+  var currentPicture;
+  var  currentStatus;
+  var clickBtEditPort = 0;
+
 
 
 // ========================================= Set initial Bechelor Portfolio Modal =========================================
@@ -14,7 +18,7 @@ $(document).ready(function(){
   $('#BechelorPortfolioName').val("");
   $('#BechelorPortfolioDetail').val("");
   $('#BechelorPortfolioGroup').val("");
-  $("#BechelorPortfolioHallOfFame").prop('checked', false);
+  $("#BechelorPortfolioHallOfFame").prop("checked", false);
   $('#BechelorPortfolioYear').val("");
   $('#BechelorPortfolioPicture').val("");
   // document.getElementById("BechelorDemo").innerHTML = txt;
@@ -42,7 +46,7 @@ $(document).ready(function(){
       });
 
 // ========================================= End Code =====================================================================
-// ========================================= Add Bachelor Portfolio Type =========================================
+// ========================================= Add Bechelor Portfolio Type =========================================
   $('#SaveBechelorPortfolioGroup').on('click',function(e){
 
        var data = {
@@ -61,7 +65,7 @@ $(document).ready(function(){
 
 
     });
-// ========================================= End Add Bachelor Portfolio Type =========================================
+// ========================================= End Add Bechelor Portfolio Type =========================================
 // ========================================= Get Bechelor Portfolio Type Dropdown =========================================
 
 // var Auth = firebase.auth();
@@ -94,11 +98,23 @@ $(document).ready(function(){
                                 "<label for='"+'md_checkbox_BecPort'+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
                                 + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"'  width='"+'60'+"' height='"+'60'+"'></td>"+
                                "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
-                               " <button id='"+'removeBecPort'+"' class='"+'btn btn-inverse'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+                               " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
-// ========================================= End Code =====================================================================
+// ========================================= End Code =============================================================================
+// ========================================= Delete Portfolio =====================================================================
 
-// ========================================= Edit Bechelor Portfolio =========================================
+$('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
+  var id = $(this).closest('tr').attr("id");
+  rootRef.child(id).remove().then(function(){
+      $('#deletePortModal').modal('show');
+  });
+    $(this).closest('tr').remove();
+});
+// ========================================= End Code =============================================================================
+
+// ========================================= Edit Bechelor Portfolio ==============================================================
+
+
    $('#list_BechelorPortfolio').on('click','.btn-edit-port',function(e){
 
      idPort = $(this).closest('tr').attr("id");
@@ -106,21 +122,31 @@ $(document).ready(function(){
      var Name = $(this).closest('tr').find('.txtName').text();
      var Detail = $(this).closest('tr').find('.txtDetail').text();
      var Type = $(this).closest('tr').find('.txtType').text();
-     var Status = $(this).closest('td').find('.txtStatus').text();
+     var Status = $(this).closest('tr').find('.txtStatus').text();
+     // var Status = $(this).closest('tr').find('.txtStatus').attr( 'checked', 'checked' )
      var Year = $(this).closest('tr').find('.txtYear').text();
-     var Picture = $(this).closest('td').find('.txtPicture').text();
+     var Picture = $(this).closest('tr').find(".txtPicture").attr("src");
+     // $(this).closest('tr').find(".txtPicture").attr("src");
 
-     if(Status == "Hall Of Fame"){
-       $("#BechelorPortfolioHallOfFame").attr('checked', true);
-     }else {
-       $("#BechelorPortfolioHallOfFame").attr('checked', false);
+     currentPicture = Picture;
+     // currentStatus  = Status;
 
-     }
+
+
 
      $('#BechelorPortfolioName').val(Name);
      $('#BechelorPortfolioDetail').val(Detail);
      $('#BechelorPortfolioGroup').val(Type);
-     // $('#BechelorPortfolioHallOfFame').attr("checked") == true;
+     if(Status == "Hall Of Fame"){
+       // $('#BechelorPortfolioHallOfFame').prop('checked',true);
+       // $("#BechelorPortfolioHallOfFame").prop("checked") == true
+       document.getElementById("BechelorPortfolioHallOfFame").checked = true;
+     }else if(Status == "General") {
+       // $('#BechelorPortfolioHallOfFame').prop('checked',false);
+       // $("#BechelorPortfolioHallOfFame").prop("checked") == false
+       document.getElementById("BechelorPortfolioHallOfFame").checked = false;
+     }
+     // $('#BechelorPortfolioHallOfFame').prop("checked") == currentStatus;
      $('#BechelorPortfolioYear').val(Year);
      $('#BechelorPortfolioPicturePreview').attr('src',Picture);
      $('#editBechelorPortfolio').modal('show');
@@ -129,19 +155,19 @@ $(document).ready(function(){
 
      });
 
-     // ========================================= Bachelor Portfolio Script =========================================
+     // ========================================= Bechelor Portfolio Script =========================================
 
      $('#BechelorPortfolioPicture').on('change',function(event){
        selectedFile = event.target.files[0];
 
      });
 
-    
+
        // <!-- <=========================================================== Save Edit Bechelor Portfolio ===========================================================> -->
 
      $('#btSubmitEditBechelorPortfolio').on('click',function(){
 
-         // clickBtEditExpert= clickBtEditExpert+1;
+         clickBtEditPort= clickBtEditPort+1;
 
        $('#editBechelorPortfolio').modal('hide');
 
@@ -157,7 +183,7 @@ $(document).ready(function(){
          Status = "General"
        }
 
-       uplodadTask.on('state_changed',function(sanpshot){
+       uplodadTask.on('state_changed',function(snapshot){
 
        },function(error){
 
@@ -173,6 +199,18 @@ $(document).ready(function(){
           port_years:$('#BechelorPortfolioYear').val(),
           port_image:downloadURL
         };
+
+        if (currentPicture = downloadURL) {
+          $('#alreadyPicturePortModal').modal('show');
+        }else {
+          var deleteRef;
+          deleteRef = firebase.storage().refFromURL(currentPicture);
+          deleteRef.delete().then(function() {
+          }).catch(function(error) {
+          });
+        }
+
+
 
         rootRef.child(idPort).update(updatePortdata);
 
@@ -191,7 +229,7 @@ $(document).ready(function(){
                                     "<label for='"+'md_checkbox_BecPort'+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
                                     + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"'  width='"+'60'+"' height='"+'60'+"'></td>"+
                                    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
-                                   " <button id='"+'removeBecPort'+"' class='"+'btn btn-inverse'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+                                   " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
         });
 
 
@@ -205,6 +243,11 @@ $(document).ready(function(){
         $('#BechelorPortfolioPicture').val("");
         // document.getElementById("BechelorDemo").innerHTML = txt;
       });
+
+      for(var i = 0;i< clickBtEditPort;i++){
+        $('#list_expertise tr:last').remove();
+      }
+
      });
 // <========================================= End Add Graduate Portfolio Type =========================================
 // <=========================================================== BechelorPortfolioYear ===========================================================> -->

@@ -191,7 +191,7 @@
                   <div class="form-group">
                     <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
                         <img id="BechelorPortfolioPicturePreview" width="70" height="70" >
-                        <input type="file" id="BechelorPortfolioPicture" class="form-control" >                          
+                        <input type="file" id="BechelorPortfolioPicture" class="form-control" >
                         <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
                   </div>
                 </div>
@@ -208,6 +208,7 @@
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
     </div>
+    <?php include('modal-showBechelorPort.php')?>
     <?php include('import-javascript.php')?>
     <script src="../js/showBechelorPortfolio.js"></script>
 

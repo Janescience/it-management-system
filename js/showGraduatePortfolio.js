@@ -42,7 +42,7 @@ $(document).ready(function(){
       });
 
 // ========================================= End Code =====================================================================
-// ========================================= Add Bachelor Portfolio Type =========================================
+// ========================================= Add Graduate Portfolio Type =========================================
   $('#SaveGraduatePortfolioGroup').on('click',function(e){
 
        var data = {
@@ -61,7 +61,7 @@ $(document).ready(function(){
 
 
     });
-// ========================================= End Add Bachelor Portfolio Type =========================================
+// ========================================= End Add Graduate Portfolio Type =========================================
 // ========================================= Get Graduate Portfolio Type Dropdown =========================================
 
 // var Auth = firebase.auth();
@@ -108,7 +108,7 @@ $(document).ready(function(){
      var Type = $(this).closest('tr').find('.txtType').text();
      var Status = $(this).closest('td').find('.txtStatus').text();
      var Year = $(this).closest('tr').find('.txtYear').text();
-     var Picture = $(this).closest('td').find('.txtPicture').text();
+     var Picture = $(this).closest('tr').find(".txtPicture").attr("src");
 
      if(Status == "Hall Of Fame"){
        $("#GraduatePortfolioHallOfFame").attr('checked', true);
@@ -129,7 +129,7 @@ $(document).ready(function(){
 
      });
 
-     // ========================================= Bachelor Portfolio Script =========================================
+     // ========================================= Graduate Portfolio Script =========================================
 
      $('#GraduatePortfolioPicture').on('change',function(event){
        selectedFile = event.target.files[0];
