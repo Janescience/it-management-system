@@ -108,6 +108,9 @@
                                             <tr class="warning no-result">
                                               <td colspan="6"><i class="fa fa-warning"></i> No result</td>
                                             </tr>
+                                            <tr id="loaderUser">
+                                              <td colspan="6"><img src="../images/ajax-loader.gif">  Loading...</td>
+                                            </tr>
                                         </thead>
                                         <tbody id="list_user">
 

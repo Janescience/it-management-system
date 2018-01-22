@@ -53,6 +53,7 @@ $(document).ready(function(){
         " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
   }
+  $('#loaderUser').hide();
  });
 
 $('#list_user').on('click','.btn-edit-user',function(){
@@ -102,6 +103,8 @@ $('#list_user').on('click','.btn-edit-user',function(){
            level: $('#rankCreateUser').val(),
            office:"border:8px solid #BDBDBD;",
            status:"",
+           latitude:"",
+           longitude:"",
            office_hour:{
              day_1:{
                day:"Monday",

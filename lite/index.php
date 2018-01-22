@@ -14,6 +14,13 @@
 
      <?php  include('header.php') ?>
 
+     <style>
+     #list_header td{
+      text-align:center;
+      vertical-align:middle;
+     }
+     </style>
+
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -46,7 +53,7 @@
                   <h4 class="text-black card-title">Header</h4>
                     <div class="message-box contact-box">
                       <h2 class="add-ct-btn">
-                        <button type="button" id="btEditHeader" class="btn btn-circle btn-lg btn-success waves-effect waves-dark"><i class="mdi mdi-pencil"></i></button>
+                        <button type="button" id="btAddHeader" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                       </h2>
                     </div>
                 </div>
@@ -54,22 +61,30 @@
                 <hr>
 
                 <div class="card-block ">
-                  <div class="card text-center">
+                  <div class="card">
                     <div class="card-block">
-                      <div class="w3-content w3-display-container ">
+                      <form class="form-horizontal form-material ">
+                        <div class="table-responsive">
+                            <table id="tableHisEdu" class="table text-center">
+                                <thead >
+                                    <tr >
+                                        <th class="text-center">Background</th>
+                                        <th class="text-center">Topic</th>
+                                        <th class="text-center">Detail</th>
+                                        <th class="text-center">Url</th>
+                                        <th class="text-center">Text Button</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                    <tr id="loaderHeader">
+                                      <td colspan="6"><img src="../images/ajax-loader.gif">  Loading...</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="list_header">
 
-                        <div class="centered mySlideText" id="showTopicFirst"></div>
-                        <div class="brcentered mySlideDetail" id="showDetailFirst"></div>
-                        <div class="centered mySlideText" id="showTopicSecond"></div>
-                        <div class="brcentered mySlideDetail" id="showDetailSecond"></div>
-
-                        <img id="imageHeaderSlideFirst" src="../assets/images/big/image.png" class="mySlides"  style="width:100%">
-                        <img class="mySlides" id="imageHeaderSlideSecond" src="../assets/images/big/image.png"  style="width:100%">
-
-                        <button class="btn btn-inverse w3-display-left" onclick="plusDivs(-1,-1,-1)">&#10094;</button>
-                        <button class="btn btn-inverse w3-display-right" onclick="plusDivs(1,1,1)">&#10095;</button>
-
-                      </div>
+                                </tbody>
+                            </table>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -177,7 +192,7 @@
                           <input class="form-control" type="text"   id="textLinkInfo" disabled="true">
 
                         <div class="m-t-15">
-                          <button type="button" id="btInfoEdit"  class="btn btn-outline-inverse">Edit <i class="fa fa-edit"></i></button>
+                          <button type="button" id="btInfoEdit"  class="btn btn-outline-secondary">Edit <i class="fa fa-edit"></i></button>
                           <button type="submit" class="btn btn-outline-success" id="btInfoSave">Submit <i class="fa fa-save"></i></button>
                           <button type="reset" class="btn btn-outline-danger" id="btInfoCancel">Cancel <i class="fa fa-close"></i></button>
                         </div>
@@ -192,35 +207,72 @@
           </div>
         </div>
       </div>
-      <!-- Modal -->
-      <div class="modal fade" id="editHeaderModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <!-- Modal Add Header-->
+      <div class="modal fade" id="addHeaderModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
         <div class="modal-dialog modal-md">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="messageModalLabel">Manage Header</h4>
+              <h4 class="modal-title" id="messageModalLabel">Add Header Slide</h4>
             </div>
             <div class="modal-body">
-              <div class="form-group">
-                  <div class="col-sm-12">
-                      <select id="selectHeaderSlide" class="form-control ">
-                          <option>Header Slide First</option>
-                          <option>Header Slide Second</option>
-                      </select>
-                  </div>
+              <h5 class="modal-title" >Background</h5>
+              <div  class="setting image_picker">
+                <div class="settings_wrap">
+                  <label class="drop_target">
+                    <div class="image_preview"></div>
+                    <input  class="upload" id="fileUploadImageHeader" type="file"/>
+                  </label>
+                  <div class="settings_actions vertical"><a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i> Choose from Uploads</a><a class="disabled" data-action="remove_current_image"><i class="fa fa-ban"></i> Remove Current Image</a></div>
+                </div>
               </div>
-                    <hr>
-              <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadImageHeader">
 
               <h5 class="modal-title" >Topic</h5>
-              <textarea class="form-control" rows="2" id="textTopic" disabled="true"></textarea>
+              <textarea class="form-control" rows="2" id="textTopic"></textarea>
               <h5 class="modal-title" >Details</h5>
-              <input class="form-control" type="text"   id="textDetail" disabled="true">
+              <input class="form-control" type="text"   id="textDetail">
+              <h5 class="modal-title" >Url</h5>
+                <input class="form-control" type="text"   id="textLinkHeader">
+              <h5 class="modal-title" >Text Button</h5>
+                <input class="form-control" type="text"   id="textButton">
             </div>
             <div class="modal-footer">
               <button id="btLoading" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
               <button id="btUploadImageHeader" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
-              <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
               <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Edit Header-->
+      <div class="modal fade" id="editHeaderModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="messageModalLabel">Edit Header Slide</h4>
+            </div>
+            <div class="modal-body">
+              <h5 class="modal-title" >Background</h5><br>
+              <center>
+              <img width="300px" id="bgHeaderEdit" style="border-radius:10px"></center><br>
+
+
+                    <input  id="fileUploadImageHeaderEdit" type="file"/>
+
+
+              <h5 class="modal-title" >Topic</h5>
+              <textarea class="form-control" rows="2" id="textTopicEdit"></textarea>
+              <h5 class="modal-title" >Details</h5>
+              <input class="form-control" type="text"   id="textDetailEdit">
+              <h5 class="modal-title" >Url</h5>
+                <textarea class="form-control" type="text" rows="3"   id="textLinkHeaderEdit"></textarea>
+              <h5 class="modal-title" >Text Button</h5>
+                <input class="form-control" type="text"   id="textButtonEdit">
+            </div>
+            <div class="modal-footer">
+              <button hidden id="btLoadingEdit" class="right-side-toggle waves-effect waves-light btn-secondary btn btn-circle btn-sm pull-right m-l-10"><i class="fa fa-circle-o-notch"></i></button>
+              <button id="btEditHeader" type="button" class="btn btn-success "><i class="fa fa-check"></i> Submit</button>
+              <button id="btCloseEdit" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -255,6 +307,23 @@
           </div>
         </div>
       </div>
+
+      <!--==================================== Delete ====================================================-->
+
+      <div class="modal fade" id="deleteHeaderModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="messagePassModal">Delete Successfully</h4>
+            </div>
+            <div class="modal-footer">
+              <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--================================================================================================-->
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
     </div>
@@ -262,49 +331,7 @@
 
     <?php include('import-javascript.php')?>
     <script src="../js/index.js"></script>
-    <script>
 
-      var slideIndex = 1;
-      var slideText = 1;
-      var slideDetail = 1;
-
-
-      showDivs(slideIndex,slideText,slideDetail);
-
-      function plusDivs(n,m,o) {
-        showDivs(slideIndex += n,slideText += m,slideDetail += o);
-      }
-
-      function showDivs(n,m,o) {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        var y = document.getElementsByClassName("mySlideText");
-        var z = document.getElementsByClassName("mySlideDetail");
-
-        if (o > z.length ) {slideDetail = 1}
-        if (o < 1 ) {slideDetail = z.length}
-        for (i = 0; i < z.length; i++) {
-          z[i].style.display = "none";
-        }
-        z[slideDetail-1].style.display = "block";
-
-
-        if (m > y.length ) {slideText = 1}
-        if (m < 1 ) {slideText = y.length}
-        for (i = 0; i < y.length; i++) {
-          y[i].style.display = "none";
-        }
-        y[slideText-1].style.display = "block";
-
-        if (n > x.length ) {slideIndex = 1}
-        if (n < 1 ) {slideIndex = x.length}
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        x[slideIndex-1].style.display = "block";
-      }
-
-    </script>
 </body>
 
 </html>

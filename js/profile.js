@@ -1,5 +1,70 @@
 $(document).ready(function(){
 
+  <!--===============================upload====================================-->
+   var $dropzone = $('.image_picker'),
+      $droptarget = $('.drop_target'),
+      $dropinput = $('#fileUploadImageProfile'),
+      $dropimg = $('.image_preview'),
+      $remover = $('[data-action="remove_current_image"]');
+
+   $dropzone.on('dragover', function() {
+    $droptarget.addClass('dropping');
+    return false;
+   });
+
+   $dropzone.on('dragend dragleave', function() {
+    $droptarget.removeClass('dropping');
+    return false;
+   });
+
+   $dropzone.on('drop', function(e) {
+    $droptarget.removeClass('dropping');
+    $droptarget.addClass('dropped');
+    $remover.removeClass('disabled');
+    e.preventDefault();
+
+    var file = e.originalEvent.dataTransfer.files[0],
+        reader = new FileReader();
+
+    reader.onload = function(event) {
+      $dropimg.css('background-image', 'url(' + event.target.result + ')');
+    };
+
+    console.log(file);
+    reader.readAsDataURL(file);
+
+    return false;
+   });
+
+   $dropinput.change(function(e) {
+    $droptarget.addClass('dropped');
+    $remover.removeClass('disabled');
+    $('.image_title input').val('');
+
+    var file = $dropinput.get(0).files[0],
+        reader = new FileReader();
+
+    reader.onload = function(event) {
+      $dropimg.css('background-image', 'url(' + event.target.result + ')');
+    }
+
+    reader.readAsDataURL(file);
+   });
+
+   $remover.on('click', function() {
+    $dropimg.css('background-image', '');
+    $droptarget.removeClass('dropped');
+    $remover.addClass('disabled');
+    $('.image_title input').val('');
+   });
+
+   $('.image_title input').blur(function() {
+    if ($(this).val() != '') {
+      $droptarget.removeClass('dropped');
+    }
+   });
+<!--===========================================================================-->
+
  var Auth = firebase.auth();
  var dbRef = firebase.database();
  var usersRef = dbRef.ref('users')
@@ -8,12 +73,26 @@ $(document).ready(function(){
  var indexSelect;
  var idEducation;
  var idExpert;
- var idWork;
+ var idWork,idExperience;
  var clickBtEditEdu = 0;
  var clickBtEditExpert = 0;
- var clickBtEditWork = 0;
+ var clickBtEditWork = 0,clickBtEditExperience = 0;
  var latitude;
  var longitude;
+
+$('#changePictureProfile').on('click',function(){
+  $('#hoverProfile').hide();
+  $('#uploadImageProfile').removeAttr('hidden');
+  $('#cancelUpload').removeAttr('hidden');
+});
+
+$('#cancelUpload').on('click',function(){
+  $('#hoverProfile').show();
+  $('#uploadImageProfile').attr('hidden',"true");
+  $('#cancelUpload').attr('hidden',"true");
+  $('#fileUploadImageProfile').val("");
+  $('#btUploadImageProfile').hide();
+});
 
  var dbDay = usersRef.child(sessionStorage.getItem("userId")).child('office_hour');
  dbDay.on('child_added',snap =>{
@@ -67,19 +146,6 @@ $(document).ready(function(){
 
  });
 
-$('#showUpload').on('click',function(){
-  $('#showUpload').attr('hidden',"true");
-  $('#fileUploadImageProfile').removeAttr('hidden');
-
-  $('#cancelUpload').removeAttr('hidden');
-});
-
-$('#cancelUpload').on('click',function(){
-  $('#fileUploadImageProfile').attr('hidden',"true");
-
-  $('#cancelUpload').attr('hidden',"true");
-    $('#showUpload').removeAttr('hidden');
-});
 
 
 $('#openMap').on('click',function(){
@@ -105,6 +171,13 @@ $('#openMap').on('click',function(){
          var geocoder = new google.maps.Geocoder;
          var infowindow = new google.maps.InfoWindow;
          geocodeLatLng(geocoder, map, infowindow);
+
+         var positionMap ={
+           latitude:""+location.latitude+"",
+           longitude:""+location.longitude+""
+         };
+
+         usersRef.child(sessionStorage.getItem("userId")).update(positionMap);
      }
 
      var geocodeLatLng = function(geocoder, map, infowindow) {
@@ -131,6 +204,8 @@ $('#openMap').on('click',function(){
      }
      initMap();
   } //showPositi
+
+
   $('#mapModal').modal('show');
 });
 
@@ -321,7 +396,7 @@ $('#btOpenModalExp').on('click',function(){
                                    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>"
                                  );
-            console.log("Edit and Add To Table : ",snap.key);
+            console.log("[child_added]: ",snap.key);
         });
 
   });
@@ -464,12 +539,61 @@ $('#btOpenModalExp').on('click',function(){
     var detail = snap.child("detail").val();
 
     $('#list_exp').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_exp'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
-                              "<label for='"+'md_checkbox_exp'+"'></label></td><td >" + exp + "</td>" + "<td>" +start_time +" ถึง "+ finish_time + "</td>"+"<td>" + detail + "</td>"+
-                             "<td><button  class='"+'btn btn-success'+"'><i class='"+'mdi mdi-border-color'+"'></i></button>"+
-                             "  <button  class='"+'btn btn-inverse '+"' onclick='"+'delExpert()'+"'><i class='"+'mdi mdi-delete-forever'+"'></i></button></td></tr>");
+                              "<label for='"+'md_checkbox_exp'+"'></label></td><td class='"+'txtexp'+"'>" + exp + "</td>" + "<td class='"+'txttime'+"'>" +start_time +" ถึง "+ finish_time + "</td>"+"<td class='"+'txtdetail'+"'>" + detail + "</td>"+
+                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-exp'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-exp'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
   });
 
+  $('#list_exp').on('click','.btn-edit-exp',function(){
+    idExperience = $(this).closest('tr').attr("id");
+    var time = $(this).closest('tr').find('.txttime').text();
+    var splitSTime = time.split("ถึง")[0];
+    var splitFTime = time.split("ถึง")[1];
+    var exp = $(this).closest('tr').find('.txtexp').text();
+    var detail = $(this).closest('tr').find('.txtdetail').text();
+    $('#timeStartEditExp').val(splitSTime);
+    $('#timeFinishEditExp').val(splitFTime);
+    $('#expEditExp').val(exp);
+    $('#detailEditExp').val(detail);
+    $('#editExpModal').modal('show');
+  });
 
+  $('#list_exp').on('click','.btn-delete-exp',function(){
+    var id = $(this).closest('tr').attr("id");
+    rootRefExp.child(id).remove().then(function(){
+        $('#deleteProfileModal').modal('show');
+    });
+      $(this).closest('tr').remove();
+  });
+
+  $('#btEditExp').on('click',function(){
+    clickBtEditExperience = clickBtEditExperience+1;
+
+  $('#editExpModal').modal('hide');
+
+  var dataUpdateExp = {
+    exp:$('#expEditExp').val(),
+    start_time:$('#timeStartEditExp').val(),
+    finish_time:$('#timeFinishEditExp').val(),
+    detail:$('#detailEditExp').val()
+  };
+
+  rootRefExp.child(idExperience).update(dataUpdateExp);
+
+  $('#list_exp').empty();
+  rootRefExp.on("child_added",snap => {
+    var exp = snap.child("exp").val();
+    var start_time = snap.child("start_time").val();
+    var finish_time = snap.child("finish_time").val();
+    var detail = snap.child("detail").val();
+
+    $('#list_exp').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_exp'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+'md_checkbox_exp'+"'></label></td><td class='"+'txtexp'+"'>" + exp + "</td>" + "<td class='"+'txttime'+"'>" +start_time +" ถึง "+ finish_time + "</td>"+"<td class='"+'txtdetail'+"'>" + detail + "</td>"+
+                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-exp'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-exp'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+  });
+
+  })
 
 
 $('#btSubmitEdu').on('click',function(){
@@ -557,7 +681,15 @@ $('#btSubmitExp').on('click',function(){
   };
   usersRef.child(sessionStorage.getItem("userId")).child('work').child('experience').push().set(data).then(function(){
     console.log("Information Saved:", sessionStorage.getItem("userId"));
+    $('#timeStartExp').val("");
+    $('#timeFinishExp').val("");
+    $('#expExp').val("");
+    $('#detailExp').val("");
   });
+
+  for(var i = 0;i< clickBtEditExperience;i++){
+    $('#list_exp tr:last').remove();
+  }
 });
 
 
@@ -628,11 +760,7 @@ $('#btSubmitExp').on('click',function(){
    uploadImageProfile();
  });
 
-  $('#btClearTextFile').on('click',function(){
-    $('#fileUploadImageProfile').val("");
-    $('#btUploadImageProfile').hide();
-    $('#btClearTextFile').hide();
-  });
+
 
   $('#btUpdatePassword').on('click',function(){
     $('#changePassModal').modal('show');
@@ -667,6 +795,10 @@ $('#btSubmitExp').on('click',function(){
        firebase.database().ref('users').child(sessionStorage.getItem("userId")).update(postImage);
        $('#fileUploadImageProfile').val("");
        $('#btLoadingProfile').hide();
+       $('#cancelUpload').hide();
+       $('#uploadImageProfile').attr('hidden',"true");
+       $('#hoverProfile').show();
+
      });
  }
 

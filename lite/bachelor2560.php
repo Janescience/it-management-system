@@ -1025,7 +1025,6 @@
 
     <?php include('import-javascript.php')?>
     <script src="../js/all-pages.js"></script>
-    <script  src="../js/test.js"></script>
 
 
 

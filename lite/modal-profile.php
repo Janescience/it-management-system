@@ -346,3 +346,62 @@
 </div>
 
 <!--======================================================================================================-->
+
+
+<!--==================================== Edit Experience ================================================-->
+
+<div class="modal fade" id="editExpModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Experience</h4>
+      </div>
+      <div class="modal-body">
+
+
+        <div id="university" class="form-group">
+            <label>Experience</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-location-pin"></i></div>
+                <input id="expEditExp" type="text"  class="form-control" >
+            </div>
+        </div>
+
+
+    <label>Time Length</label><br>
+    <div id="university" class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+        <h6 >Start</h6>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="ti-time"></i></div>
+            <input id="timeStartEditExp" type="text"  class="form-control col-md-6" >
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h6 for="facultyHisEdu" >Finish</h6>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-time"></i></div>
+              <input id="timeFinishEditExp" type="text"  class="form-control col-md-6" >
+           </div>
+        </div>
+      </div>
+    </div>
+
+        <div class="form-group">
+            <label >Detail</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-briefcase"></i></div>
+                <textarea id="detailEditExp" type="text"  class="form-control" ></textarea>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btEditExp" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--======================================================================================================-->
