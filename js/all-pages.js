@@ -63,7 +63,7 @@ $(document).ready(function(){
       $droptarget.removeClass('dropped');
     }
    });
-
+<!--===========================================================================-->
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyA4WVo9ZjdTKHW1ALNRwbuoqx5uxP8gsWM",
@@ -75,6 +75,12 @@ $(document).ready(function(){
   };
   firebase.initializeApp(config);
 
+$('#notifyClick').on('click',function(){
+$('.dropdown-menu').removeAttr("hidden");
+});
+$('#profileNavbar').on('click',function(){
+$('.dropdown-menu').removeAttr("hidden");
+});
  //create firebase references
 var Auth = firebase.auth();
 var dbRef = firebase.database();

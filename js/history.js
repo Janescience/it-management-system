@@ -20,6 +20,7 @@ $(document).ready(function(){
 
       $('#list_history').append("<tr><td>" + name + "</td>" + "<td>" + page + "</td>" + "<td>" + topic + "</td>"+ "<td>" + date + "</td>"+ "<td>" + time + "</td>"+
                                "</tr>");
+                               $('#loaderHistory').hide();
       key = snap.key;
       console.log("table on ready");
     });

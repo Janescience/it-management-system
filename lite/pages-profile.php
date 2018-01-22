@@ -55,13 +55,13 @@
                       <div class="card">
                           <!-- Nav tabs -->
                           <ul class="nav nav-tabs profile-tab" role="tablist">
-                              <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
-                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#history" role="tab">History | Working</a> </li>
-                              <li hidden id="tabOfficeHour" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab">Office Hours</a> </li>
+                              <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-user"></i></span><span class="hidden-xs-down">Profile</span></a> </li>
+                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#history" role="tab"><span class="hidden-sm-up"><i class="ti-comment-alt"></i></span><span class="hidden-xs-down">History | Working</span></a> </li>
+                              <li hidden id="tabOfficeHour" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab"><span class="hidden-sm-up"><i class="ti-calendar"></i></span><span class="hidden-xs-down">Office Hour</span></a> </li>
                           </ul>
                           <!-- Tab panes -->
-                          <div class="tab-content">
-                              <div class="tab-pane active" id="profile" role="tabpanel">
+                          <div class="tab-content tabcontent-border">
+                              <div class="tab-pane active" id="profile" role="tabpanel" aria-expanded="true">
 
                                         <div class="col-lg-12">
                                   <div class="row">
@@ -75,17 +75,31 @@
                                     </div>
 
                                         <center>
-                                            <div class="hovereffect">
+                                            <div class="hovereffect" id="hoverProfile">
                                          <img  id="imageProfile" src="../assets/images/users/user.png" class="avatar" style="border:8px solid #BDBDBD;"/>
                                               <div class="overlay">
-                                            <a class="info" href="#"><i class="fa fa-image"></i> change</a>
+                                            <a class="info" id="changePictureProfile" href="javascript:void(0)"><i class="fa fa-image"></i> change</a>
+
                                             </div>
                                           </div>
-                                          <br>
+
+                                          <div hidden class="setting image_picker" id="uploadImageProfile">
+                                            <div class="settings_wrap">
+                                              <label class="drop_target">
+                                                <div class="image_preview"></div>
+                                                <input  class="upload" id="fileUploadImageProfile" type="file"/>
+                                              </label>
+                                              <div class="settings_actions vertical"><a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i> Choose from Uploads</a><a class="disabled" data-action="remove_current_image"><i class="fa fa-ban"></i> Remove Current Image</a></div>
+
+                                            </div>
+                                          </div>
+                                          <button id="btUploadImageProfile" type="button" class="btn btn-success "><i class="fa fa-check"></i> Submit</button>
+                                          <button hidden id="cancelUpload" type="button" class="btn btn-danger "><i class="fa fa-close"></i> Cancel</button>
 
 
 
-                                          <div class="btn-group">
+                                        <div class="form-group">
+                                          <div class="btn-group m-t-10">
                                             <button type="button" class="btn btn-secondary" id="showStatus" >Status</button>
                                             <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="sr-only">Toggle Dropdown</span>
@@ -113,15 +127,9 @@
                                                 </a>
                                             </div>
                                         </div>
+                                      </div>
+                                    </center>
 
-
-
-                                            <input hidden class=" btn btn-outline-inverse col-md-6" type="file" id="fileUploadImageProfile"><hr>
-                                                <div class="form-group">
-                                            <button id="btUploadImageProfile" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
-                                            <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
-                                          </div>
-  </center>
                                         </div>
                                       </div>
 
@@ -180,9 +188,9 @@
                                     <div class="card">
                                       <!-- Nav tabs -->
                                       <ul class="nav nav-tabs profile-tab " role="tablist">
-                                          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#hisEducation" role="tab">History Education</a> </li>
-                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#hisWork" role="tab">History Work</a> </li>
-                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academic" role="tab">Academic Work</a> </li>
+                                          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#hisEducation" role="tab"><span class="hidden-sm-up"><i class="ti-ruler-pencil"></i></span><span class="hidden-xs-down">History Education</span></a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#hisWork" role="tab"><span class="hidden-sm-up"><i class="ti-briefcase"></i></span><span class="hidden-xs-down">History Work</span></a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academic" role="tab"><span class="hidden-sm-up"><i class="ti-cup"></i></span><span class="hidden-xs-down">Academic Work</span></a> </li>
                                       </ul>
                                       <!-- Tab panes -->
                                       <div class="tab-content">
@@ -190,10 +198,11 @@
                                             <div class="card-block ">
 
                                                 <div class="card-block bg-info">
-                                                  <h4 class="text-white card-title"> History Education</h4>
+                                                  <h4 class="text-white card-title"><span class="hidden-sm-up"><h5  class="text-white card-title">Education</h5></span><span class="hidden-xs-down">History Education</span></h4>
                                                         <div class="message-box contact-box">
                                                         <h2 class="add-ct-btn">
                                                           <button type="button" id="btOpenModalEdu" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+
                                                         </h2>
                                                       </div>
                                                       </div>

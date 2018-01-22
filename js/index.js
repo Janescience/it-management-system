@@ -1,94 +1,210 @@
 $(document).ready(function(){
 
+  <!--===============================upload====================================-->
+   var $dropzone = $('.image_picker'),
+      $droptarget = $('.drop_target'),
+      $dropinput = $('.upload'),
+      $dropimg = $('.image_preview'),
+      $remover = $('[data-action="remove_current_image"]');
+
+   $dropzone.on('dragover', function() {
+    $droptarget.addClass('dropping');
+    return false;
+   });
+
+   $dropzone.on('dragend dragleave', function() {
+    $droptarget.removeClass('dropping');
+    return false;
+   });
+
+   $dropzone.on('drop', function(e) {
+    $droptarget.removeClass('dropping');
+    $droptarget.addClass('dropped');
+    $remover.removeClass('disabled');
+    e.preventDefault();
+
+    var file = e.originalEvent.dataTransfer.files[0],
+        reader = new FileReader();
+
+    reader.onload = function(event) {
+      $dropimg.css('background-image', 'url(' + event.target.result + ')');
+    };
+
+    console.log(file);
+    reader.readAsDataURL(file);
+
+    return false;
+   });
+
+   $dropinput.change(function(e) {
+    $droptarget.addClass('dropped');
+    $remover.removeClass('disabled');
+    $('.image_title input').val('');
+
+    var file = $dropinput.get(0).files[0],
+        reader = new FileReader();
+
+    reader.onload = function(event) {
+      $dropimg.css('background-image', 'url(' + event.target.result + ')');
+    }
+
+    reader.readAsDataURL(file);
+   });
+
+   $remover.on('click', function() {
+    $dropimg.css('background-image', '');
+    $droptarget.removeClass('dropped');
+    $remover.addClass('disabled');
+    $('.image_title input').val('');
+   });
+
+   $('.image_title input').blur(function() {
+    if ($(this).val() != '') {
+      $droptarget.removeClass('dropped');
+    }
+   });
+<!--===========================================================================-->
+
+
  var Auth = firebase.auth();
  var dbRef = firebase.database();
  var usersRef = dbRef.ref('users')
  var auth = null;
  var user;
  var selectedFile;
+ var selectedIndex;
+ var selectedFileEdit;
  var selectImageCourse;
  var selectImageInfo;
  var indexSelect;
  var indexSelectCourse;
  var indexSelectInfoLevel;
  var indexSelectLevel;
-
-
+ var idHeader;
+ var clickBtEditHeader = 0;
 
 
 <!--============================== ส่วนหัว ===================================-->
-var dbTopicSlideFirst = dbRef.ref('website/index/header').child('textTopicFirst');
-dbTopicSlideFirst.on('value',snap => {
-  $('#textTopic').val(snap.val());
-});
-var dbDetailSlideFirst = dbRef.ref('website/index/header').child('textDetailFirst');
-dbDetailSlideFirst.on('value',snap => {
-  $('#textDetail').val(snap.val());
-});
 
-$('#selectHeaderSlide').on('change',function(){
-  indexSelect = document.getElementById("selectHeaderSlide").selectedIndex;
-if(indexSelect==0){
-  var dbTopicSlideFirst = dbRef.ref('website/index/header').child('textTopicFirst');
-  dbTopicSlideFirst.on('value',snap => {
-    $('#textTopic').val(snap.val());
-  });
-  var dbDetailSlideFirst = dbRef.ref('website/index/header').child('textDetailFirst');
-  dbDetailSlideFirst.on('value',snap => {
-    $('#textDetail').val(snap.val());
-  });
-}else if(indexSelect==1){
-  var dbTopicSlideSecond = dbRef.ref('website/index/header').child('textTopicSecond');
-  dbTopicSlideSecond.on('value',snap => {
-    $('#textTopic').val(snap.val());
-  });
-  var dbDetailSlideSecond = dbRef.ref('website/index/header').child('textDetailSecond');
-  dbDetailSlideSecond.on('value',snap => {
-    $('#textDetail').val(snap.val());
-  });
- }
+var dbHeader = dbRef.ref('website/index/header');
+dbHeader.on('child_added',snap =>{
+  var bg = snap.child('bg').val();
+  var topic = snap.child('topic').val();
+  var detail = snap.child('detail').val();
+  var link = snap.child('link').val();
+  var txt_bt = snap.child('txt_bt').val();
+
+  $('#list_header').append("<tr id='"+snap.key+"'><td><img src='"+bg+"' width='"+'200px'+"' style='"+'border-radius:10px'+"' class='"+'header-bg'+"'></td><td class='"+'txttopic'+"'>"+topic+"</td><td class='"+'txtdetail'+"'>"+detail+"</td><td><a class='"+'txtlink'+"' href='"+link+"'>URL</a></td>"+
+                        "<td><button class='"+'btn btn-info txtbt'+"'>"+txt_bt+"</button></td>"+
+                        "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-header'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                        " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-header'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+$('#loaderHeader').hide();
 });
 
- $('#btEditHeader').on('click',function(){
-    $('#editHeaderModal').modal('show');
+$('#list_header').on('click','.btn-edit-header',function(){
+  idHeader = $(this).closest('tr').attr("id");
+  var bg = $(this).closest('tr').find(".header-bg").attr("src");
+  var topic =  $(this).closest('tr').find(".txttopic").text();
+  var detail =  $(this).closest('tr').find(".txtdetail").text();
+  var link =  $(this).closest('tr').find(".txtlink").attr("href");
+  var txt_bt =  $(this).closest('tr').find(".txtbt").text();
+  $('#bgHeaderEdit').attr("src",bg);
+  $('#textTopicEdit').val(topic);
+  $('#textDetailEdit').val(detail);
+  $('#textLinkHeaderEdit').val(link);
+  $('#textButtonEdit').val(txt_bt);
+  $('#editHeaderModal').modal('show');
+});
+
+$('#list_header').on('click','.btn-delete-header',function(){
+  var id = $(this).closest('tr').attr("id");
+  dbHeader.child(id).remove().then(function(){
+      $('#deleteHeaderModal').modal('show');
+  });
+    $(this).closest('tr').remove();
+});
+
+
+
+$('#btEditHeader').on('click',function(){
+  clickBtEditHeader= clickBtEditHeader+1;
+  $('#btEditHeader').hide();
+  $('#btCloseEdit').hide();
+  $('#btLoadingEdit').removeAttr("hidden");
+  editHeader();
+});
+
+$('#fileUploadImageHeaderEdit').on('change',function(event){
+  selectedFileEdit = event.target.files[0];
+});
+
+function editHeader(){
+  var filename= selectedFileEdit.name;
+  var storageRef = firebase.storage().ref('/HeaderSlideImages/' + filename);
+  var uplodadTask = storageRef.put(selectedFileEdit);
+
+  uplodadTask.on('state_changed',function(sanpshot){
+
+  },function(error){
+
+  },function(){
+    var downloadURL = uplodadTask.snapshot.downloadURL;
+    var updateHeader = {
+      bg:downloadURL,
+      topic:  $('#textTopicEdit').val(),
+      detail:  $('#textDetailEdit').val(),
+      link:  $('#textLinkHeaderEdit').val(),
+      txt_bt:  $('#textButtonEdit').val()
+    };
+    var deleteRef;
+    var deleteImageProfile = firebase.database().ref('website/index/header').child(idHeader).child('bg');
+    deleteImageProfile.on('value',snap => {
+      deleteRef = firebase.storage().refFromURL(snap.val());
+    });
+    deleteRef.delete().then(function() {
+    }).catch(function(error) {
+
+    });
+    firebase.database().ref('website/index/header').child(idHeader).update(updateHeader);
+    $('#fileUploadImageHeaderEdit').val("");
+    $('#textTopicEdit').val("");
+    $('#textDetailEdit').val("");
+    $('#textLinkHeaderEdit').val("");
+    $('#textButtonEdit').val("");
+
+    $('#btLoadingEdit').attr("hidden","true");
+    $('#btEditHeader').show();
+    $('#btCloseEdit').show();
+    $('#editHeaderModal').modal('hide');
+
+      $('#list_header').empty();
+
+      dbHeader.on('child_added',snap =>{
+        var bg = snap.child('bg').val();
+        var topic = snap.child('topic').val();
+        var detail = snap.child('detail').val();
+        var link = snap.child('link').val();
+        var txt_bt = snap.child('txt_bt').val();
+
+        $('#list_header').append("<tr id='"+snap.key+"'><td><img src='"+bg+"' width='"+'200px'+"' style='"+'border-radius:10px'+"' class='"+'header-bg'+"'></td><td class='"+'txttopic'+"'>"+topic+"</td><td class='"+'txtdetail'+"'>"+detail+"</td><td><a class='"+'txtlink'+"' href='"+link+"'>URL</a></td>"+
+                              "<td><button class='"+'btn btn-info txtbt'+"'>"+txt_bt+"</button></td>"+
+                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-header'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-header'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+
+      });
+
+  });
+};
+
+ $('#btAddHeader').on('click',function(){
+    $('#addHeaderModal').modal('show');
  });
 
- var dbImageSlideFirst = dbRef.ref('website/index/header').child('imageSlideFirst');
-  dbImageSlideFirst.on('value',snap => {
-    $('#imageHeaderSlideFirst').attr("src",snap.val());
- });
- var dbImageSlideSecond = dbRef.ref('website/index/header').child('imageSlideSecond');
- dbImageSlideSecond.on('value',snap => {
-   $('#imageHeaderSlideSecond').attr("src",snap.val());
- });
- var dbTopicSlideFirst = dbRef.ref('website/index/header').child('textTopicFirst');
- dbTopicSlideFirst.on('value',snap => {
-   document.getElementById('showTopicFirst').innerText =snap.val();
- });
- var dbDetailSlideFirst = dbRef.ref('website/index/header').child('textDetailFirst');
- dbDetailSlideFirst.on('value',snap => {
-  document.getElementById('showDetailFirst').innerText =snap.val();
- });
 
- var dbTopicSlideSecond = dbRef.ref('website/index/header').child('textTopicSecond');
- dbTopicSlideSecond.on('value',snap => {
- document.getElementById('showTopicSecond').innerText =snap.val();
- });
- var dbDetailSlideSecond = dbRef.ref('website/index/header').child('textDetailSecond');
- dbDetailSlideSecond.on('value',snap => {
- document.getElementById('showDetailSecond').innerText =snap.val();
- });
-
- $('#btUploadImageHeader').hide();
- $('#btClearTextFile').hide();
  $('#btLoading').hide();
 
  $('#fileUploadImageHeader').on('change',function(event){
    selectedFile = event.target.files[0];
-   document.getElementById("textTopic").disabled = false;
-   document.getElementById("textDetail").disabled = false;
-   $('#btUploadImageHeader').show();
-   $('#btClearTextFile').show();
  });
 
  $('#btUploadImageHeader').on('click',function(e){
@@ -97,23 +213,18 @@ if(indexSelect==0){
    $('#btClearTextFile').hide();
    $('#btClose').hide();
    $('#btLoading').show();
-   uploadImage();
+   addHerder();
    pushHeaderHistory();
-   document.getElementById("textTopic").disabled = true;
-   document.getElementById("textDetail").disabled = true;
-
  });
 
  $('#btClearTextFile').on('click',function(){
-   document.getElementById("textTopic").disabled = true;
-   document.getElementById("textDetail").disabled = true;
    $('#fileUploadImageHeader').val("");
    $('#btUploadImageHeader').hide();
    $('#btClearTextFile').hide();
  });
 
 
- function uploadImage(){
+ function addHerder(){
    var filename= selectedFile.name;
    var storageRef = firebase.storage().ref('/HeaderSlideImages/' + filename);
    var uplodadTask = storageRef.put(selectedFile);
@@ -124,57 +235,25 @@ if(indexSelect==0){
 
    },function(){
      var downloadURL = uplodadTask.snapshot.downloadURL;
-     var updates = {};
-     var updatesTopic = {};
-     var updatesDetail = {};
-     var postData = {
-       imageSlideFirst:downloadURL,
-       imageSlideSecond:downloadURL,
-       textTopicFirst:$('#textTopic').val(),
-       textDetailFirst:$('#textDetail').val(),
-       textTopicSecond:$('#textTopic').val(),
-       textDetailSecond:$('#textDetail').val()
-
+     var postHeader = {
+       bg:downloadURL,
+       topic:$('#textTopic').val(),
+       detail:$('#textDetail').val(),
+       link:$('#textLinkHeader').val(),
+       txt_bt:$('#textButton').val()
      };
-     var deleteRef;
 
- if(indexSelect==0){
-     var deleteImageSlideFirst = firebase.database().ref('website/index/header').child('imageSlideFirst');
-     deleteImageSlideFirst.on('value',snap => {
-       deleteRef = firebase.storage().refFromURL(snap.val());
-     });
-
- }else if(indexSelect==1){
-   var deleteImageSlideSecond = firebase.database().ref('website/index/header').child('imageSlideSecond');
-   deleteImageSlideSecond.on('value',snap => {
-     deleteRef = firebase.storage().refFromURL(snap.val());
-   });
-
- }
-
- deleteRef.delete().then(function() {
- }).catch(function(error) {
-
- });
-
-   if(indexSelect==0){
-     updates['website/index/header/imageSlideFirst'] = postData.imageSlideFirst;
-     updatesTopic['website/index/header/textTopicFirst'] = postData.textTopicFirst;
-     updatesDetail['website/index/header/textDetailFirst'] = postData.textDetailFirst;
-   }else if(indexSelect==1){
-     updates['website/index/header/imageSlideSecond'] = postData.imageSlideSecond;
-     updatesTopic['website/index/header/textTopicSecond'] = postData.textTopicSecond;
-     updatesDetail['website/index/header/textDetailSecond'] = postData.textDetailSecond;
-   }
-
-     firebase.database().ref().update(updates);
-     firebase.database().ref().update(updatesTopic);
-     firebase.database().ref().update(updatesDetail);
-     console.log(downloadURL);
+     firebase.database().ref('website/index/header').push().set(postHeader);
      $('#fileUploadImageHeader').val("");
      $('#btLoading').hide();
      $('#btClose').show();
+     $('#addHeaderModal').modal('hide');
+
+     for(var i = 0;i< clickBtEditHeader;i++){
+       $('#list_header tr:last').remove();
+     }
    });
+
  }
 
  function pushHeaderHistory(){
@@ -349,7 +428,7 @@ $('#btInfoCancelUploadImg').on('click',function(){
   $('#btInfoCancelUploadImg').hide();
 });
 
- indexSelect = document.getElementById("selectHeaderSlide").selectedIndex;
+
  indexSelectCourse = document.getElementById("selectCourse").selectedIndex;
  indexSelectInfoLevel = document.getElementById("selectInfoLevel").selectedIndex;
  indexSelectLevel = document.getElementById("selectLevel").selectedIndex;
@@ -727,6 +806,6 @@ $('#btInfoCancelUploadImg').on('click',function(){
 
    /*------------------------ End -----------------------------------*/
 
- 
+
 <!--========================================================================-->
 })

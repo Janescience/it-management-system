@@ -41,7 +41,7 @@
                             <a  class="nav-link dropdown-toggle text-muted text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <i class="mdi mdi-message"></i>
                                 <div class="notify">  <span id="heartBit"></span> <span id="point"></span></div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right mailbox scale-up show">
+                            <div hidden class="dropdown-menu dropdown-menu-right mailbox scale-up show">
                                 <ul>
                                     <li>
                                         <div class="drop-title">Notifications</div>
@@ -64,9 +64,9 @@
                 <!-- ============================================================== -->
                 <!-- Profile -->
                 <!-- ============================================================== -->
-                <li class="nav-item dropdown show">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img id="userImageProfile"  src="../assets/images/users/user.png" class="profile-pic m-r-10" /><label id="nameUser">name - surename</label></a>
-                      <div class="dropdown-menu dropdown-menu-right scale-up show">
+                <li id="profileNavbar" class="nav-item dropdown show">
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img id="userImageProfile"  src="../assets/images/users/user.png" class="profile-pic m-r-10" /><label id="nameUser" class="hidden-xs-down">name - surename</label></a>
+                      <div hidden class="dropdown-menu dropdown-menu-right scale-up show">
                                   <ul class="dropdown-user">
                                       <li>
                                           <div class="dw-user-box">
