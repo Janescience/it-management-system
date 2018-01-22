@@ -346,7 +346,7 @@
           <div class="modal-footer">
             <div class="form-group">
                 <div class="col-sm-12 text-center">
-                  <button id="btUploadBechelorActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   Submit</button>
+                  <button id="btSubmitBechelorActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   Submit</button>
                   <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
                   <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
@@ -507,7 +507,7 @@
           <div class="modal-footer">
             <div class="form-group">
                 <div class="col-sm-12 text-center">
-                  <button id="btUploadGraduateActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   Submit</button>
+                  <button id="btSubmitGraduateActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   Submit</button>
                   <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
                   <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>

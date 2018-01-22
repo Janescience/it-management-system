@@ -3,6 +3,8 @@ $(document).ready(function(){
   var Auth = firebase.auth();
   var dbRef = firebase.database();
   var portfolioRef = dbRef.ref("website/student/bechelor/portfolio");
+  var auth = null;
+
 
   var rootRef = portfolioRef;
   var idPort;
@@ -200,15 +202,15 @@ $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
           port_image:downloadURL
         };
 
-        if (currentPicture = downloadURL) {
-          $('#alreadyPicturePortModal').modal('show');
-        }else {
+        // if (currentPicture = downloadURL) {
+          // $('#alreadyPicturePortModal').modal('show');
+        // }else {
           var deleteRef;
           deleteRef = firebase.storage().refFromURL(currentPicture);
           deleteRef.delete().then(function() {
           }).catch(function(error) {
           });
-        }
+        // }
 
 
 
@@ -249,7 +251,23 @@ $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
       }
 
      });
-// <========================================= End Add Graduate Portfolio Type =========================================
+// <========================================= End Add Bechelor Portfolio Type =========================================
+// <!-- <=========================================================== Close Button Edit Bechelor Portfolio ===========================================================> -->
+
+$('#btCloseEditBechelorPortfolio').on('click',function(){
+
+  txt = "";
+
+  $('#BechelorPortfolioName').val("");
+  $('#BechelorPortfolioDetail').val("");
+  $('#BechelorPortfolioGroup').val("");
+  $("#BechelorPortfolioHallOfFame").prop('checked', false);
+  $('#BechelorPortfolioYear').val("");
+  $('#BechelorPortfolioPicture').val("");
+  // document.getElementById("BechelorDemo").innerHTML = txt;
+
+});
+// <========================================= Close Button Edit Bechelor Portfolio Type =========================================
 // <=========================================================== BechelorPortfolioYear ===========================================================> -->
                var min = 2500,
                    max = min + 100,
@@ -268,29 +286,29 @@ $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
 
 
 
-$("#search").keyup(function () {
-  var searchTerm = $("#search").val();
-  var listItem = $('.results tbody').children('tr');
-  var searchSplit = searchTerm.replace(/ /g, "'):containsi('");
+    $("#searchPort").keyup(function () {
+      var searchTerm = $("#searchPort").val();
+      var listItem = $('.results tbody').children('tr');
+      var searchSplit = searchTerm.replace(/ /g, "'):containsi('");
 
-  $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-      return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-    }
-    });
-  $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-  $(this).attr('visible','false');
-  });
+      $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+          return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+        }
+        });
+      $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+      $(this).attr('visible','false');
+      });
 
-  $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-  $(this).attr('visible','true');
-  });
+      $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+      $(this).attr('visible','true');
+      });
 
-var jobCount = $('.results tbody tr[visible="true"]').length;
-  $('.counter').text(jobCount + ' item');
+    var jobCount = $('.results tbody tr[visible="true"]').length;
+      $('.counter').text(jobCount + ' item');
 
-if(jobCount == '0') {$('.no-result').show();}
-  else {$('.no-result').hide();}
+    if(jobCount == "0") {$('.no-result').show();
+    }else {$('.no-result').hide();}
 
- });
+     });
 
 });

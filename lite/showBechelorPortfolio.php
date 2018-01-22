@@ -16,6 +16,34 @@
 
      <?php  include('header.php') ?>
 
+
+         <style>
+         .results tr[visible='false'],
+         .no-result{
+           display:none;
+         }
+
+         .results tr[visible='true']{
+           display:table-row;
+         }
+
+         .avatar {
+         width:100px;
+         margin: 10px;
+         border-radius: 500px;
+         -webkit-border-radius: 500px;
+         -moz-border-radius: 500px;
+     }
+
+       #list_user td{
+        text-align:center;
+        vertical-align:middle;
+       }
+
+
+         </style>
+
+
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -60,7 +88,7 @@
                                     <span class="counter pull-right"></span>
                                       <div class="input-group">
                                         <div class="input-group-addon"><i class="ti-search"></i></div>
-                                        <input id="search" type="text"  class="form-control" >
+                                        <input id="searchPort" type="text"  class="form-control" >
                                       </div>
                                     </div>
                                   </div>
@@ -80,8 +108,9 @@
 
                             <form class="form-horizontal form-material ">
 
-                              <div class="table-responsive table-hover">
-                                  <table id="tableHistory" class="table text-center results color-bordered-table success-bordered-table ">
+                              <div class="table-responsive">
+                                  <table class="table text-center results table-hover color-bordered-table success-bordered-table">
+                                    <!-- color-bordered-table success-bordered-table -->
                                       <thead >
                                           <tr >
                                               <th class="text-center">Show</th>
@@ -94,9 +123,9 @@
                                               <th class="text-center">Manage</th>
 
                                           </tr>
-                                          <!-- <tr class="warning no-result">
-                                            <td colspan="6"><i class="fa fa-warning"></i> No result</td>
-                                          </tr> -->
+                                          <tr class="warning no-result">
+                                            <td colspan="8"><i class="fa fa-warning"></i> No result</td>
+                                          </tr>
                                       </thead>
                                       <tbody id="list_BechelorPortfolio">
 
@@ -190,20 +219,19 @@
 
                   <div class="form-group">
                     <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
-                        <img id="BechelorPortfolioPicturePreview" width="70" height="70" >
+                        <img id="BechelorPortfolioPicturePreview" width="70" height="70" ><br/>
                         <input type="file" id="BechelorPortfolioPicture" class="form-control" >
                         <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button id="btSubmitEditBechelorPortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
+                  <button id="btSubmitEditBechelorPortfolio" type="submit" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
+                  <button id="btCloseEditBechelorPortfolio" type="reset" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
                 </div>
                 <!-- </form> -->
               </div>
             </div>
           </div>
-
       </div>
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
