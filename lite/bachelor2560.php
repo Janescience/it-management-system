@@ -444,6 +444,15 @@
 
           </div>
           <div class="modal-body">
+
+            <div id="textEducation" class="form-group">
+              <label for="facultyHisEdu" >ชื่อหัวข้อ</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                  <input id="TopicModifyBi" type="text"  class="form-control" >
+                </div>
+            </div>
+
             <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadModifyBida">
 
           </div>
@@ -455,6 +464,46 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal Bi -->
+      <div class="modal fade" id="addOpenModifyBida2" role="dialog" aria-labelledby="Message" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    <h4 class="modal-title">เกิดข้อพลาด</h4>
+
+                  </div>
+
+                  <div class="modal-body">
+                    <h8 class="card-subtitle">กรุณาใส่ไฟล์ PDF</h8>
+                  </div>
+                  <div class="modal-footer">
+
+                      <button id="btCloseModifyBi" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Bi -->
+                  <div class="modal fade" id="addOpenModifyBida3" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                      <div class="modal-dialog modal-sm">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"></h4>
+
+                            </div>
+
+                              <div class="modal-body">
+                                  <h8 class="card-subtitle">เพิ่มข้อมูลเสร็จสิ้น</h8>
+                              </div>
+                                  <div class="modal-footer">
+
+                                      <button id="btCloseModifyBi" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- END Page Content 2 -->
 
@@ -522,6 +571,15 @@
 
           </div>
           <div class="modal-body">
+
+            <div id="textEducation" class="form-group">
+              <label for="facultyHisEdu" >ชื่อหัวข้อ</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                  <input id="TopicModifyIs" type="text"  class="form-control" >
+                </div>
+            </div>
+
             <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadModifyIs">
 
           </div>
@@ -533,6 +591,46 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal Is -->
+      <div class="modal fade" id="addOpenModifyIs2" role="dialog" aria-labelledby="Message" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    <h4 class="modal-title">เกิดข้อพลาด</h4>
+
+                  </div>
+
+                  <div class="modal-body">
+                    <h8 class="card-subtitle">กรุณาใส่ไฟล์ PDF</h8>
+                  </div>
+                  <div class="modal-footer">
+
+                      <button id="btCloseModifyIs" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Is -->
+                  <div class="modal fade" id="addOpenModifyIs3" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                      <div class="modal-dialog modal-sm">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"></h4>
+
+                            </div>
+
+                              <div class="modal-body">
+                                  <h8 class="card-subtitle">เพิ่มข้อมูลเสร็จสิ้น</h8>
+                              </div>
+                                  <div class="modal-footer">
+
+                                      <button id="btCloseModifyIs" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- END Page Content 3 -->
 

@@ -2,6 +2,7 @@ $(document).ready(function(){
 
  var Auth = firebase.auth();
  var dbRef = firebase.database();
+ var topicRef = dbRef.ref('website')
  var auth = null;
  var selectedFile;
  var indexSelect;
@@ -39,6 +40,49 @@ $(document).ready(function(){
         $('#addStudyplan').modal('show');
     });
 
+    $('#fileUploadStudyplan').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadStudyplan').on('click',function(){
+      uploadStudyplan();
+    });
+
+    function uploadStudyplan(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2555/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicStudyplan').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2555').child('filePDF').child('studyplan').push().set(postPDF);
+          $('#fileUploadStudyplan').val("");
+          $('#addStudyplan').modal('hide');
+          $('#addStudyplan3').modal('show');
+
+        });
+
+      }else {
+        $('#addStudyplan').modal('hide');
+        $('#addStudyplan2').modal('show');
+      }
+
+
+    }
+
  /*======================= END Bachelor Studyplan  ======================*/
 
 
@@ -50,6 +94,49 @@ $(document).ready(function(){
         $('#addOpenCourses').modal('show');
     });
 
+    $('#fileUploadOpenCourses').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadOpenCourses').on('click',function(){
+      uploadOpenCourses();
+    });
+
+    function uploadOpenCourses(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2555/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicOpenCourses').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2555').child('filePDF').child('openCourses').push().set(postPDF);
+          $('#fileUploadOpenCourses').val("");
+          $('#addOpenCourses').modal('hide');
+          $('#addOpenCourses3').modal('show');
+
+        });
+
+      }else {
+        $('#addOpenCourses').modal('hide');
+        $('#addOpenCourses2').modal('show');
+      }
+
+
+    }
+
  /*======================= END Bachelor OpenCourses  ======================*/
 
 
@@ -59,6 +146,49 @@ $(document).ready(function(){
       e.preventDefault();
         $('#addOpenModifyEs').modal('show');
     });
+
+    $('#fileUploadModifyEs').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadModifyEs').on('click',function(){
+      uploadEs();
+    });
+
+    function uploadEs(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2555/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicEs').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2555').child('filePDF').child('Es').push().set(postPDF);
+          $('#fileUploadModifyEs').val("");
+          $('#addOpenModifyEs').modal('hide');
+          $('#addOpenModifyEs3').modal('show');
+
+        });
+
+      }else {
+        $('#addOpenModifyEs').modal('hide');
+        $('#addOpenModifyEs2').modal('show');
+      }
+
+
+    }
 
  /*======================= END Bachelor ModifyEs  ======================*/
 
@@ -70,6 +200,49 @@ $(document).ready(function(){
         $('#addOpenModifyIc').modal('show');
     });
 
+    $('#fileUploadModifyIc').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadModifyIc').on('click',function(){
+      uploadIc();
+    });
+
+    function uploadIc(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2555/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicIc').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2555').child('filePDF').child('Ic').push().set(postPDF);
+          $('#fileUploadModifyIc').val("");
+          $('#addOpenModifyIc').modal('hide');
+          $('#addOpenModifyIc3').modal('show');
+
+        });
+
+      }else {
+        $('#addOpenModifyIc').modal('hide');
+        $('#addOpenModifyIc2').modal('show');
+      }
+
+
+    }
+
  /*======================= END Bachelor ModifyIc  ======================*/
 
 
@@ -80,6 +253,49 @@ $(document).ready(function(){
         $('#addOpenModifyMis').modal('show');
     });
 
+    $('#fileUploadModifyMis').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadModifyMis').on('click',function(){
+      uploadMis();
+    });
+
+    function uploadMis(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2555/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicMis').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2555').child('filePDF').child('Mis').push().set(postPDF);
+          $('#fileUploadModifyMis').val("");
+          $('#addOpenModifyMis').modal('hide');
+          $('#addOpenModifyMis3').modal('show');
+
+        });
+
+      }else {
+        $('#addOpenModifyMis').modal('hide');
+        $('#addOpenModifyMis2').modal('show');
+      }
+
+
+    }
+
  /*======================= END Bachelor ModifyMis  ======================*/
 
 
@@ -89,6 +305,49 @@ $(document).ready(function(){
       e.preventDefault();
         $('#addOpenModifyIs').modal('show');
     });
+
+    $('#fileUploadModifyIs').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadModifyIs').on('click',function(){
+      uploadIs();
+    });
+
+    function uploadIs(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2555/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicIs').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2555').child('filePDF').child('Is').push().set(postPDF);
+          $('#fileUploadModifyIs').val("");
+          $('#addOpenModifyIs').modal('hide');
+          $('#addOpenModifyIs3').modal('show');
+
+        });
+
+      }else {
+        $('#addOpenModifyIs').modal('hide');
+        $('#addOpenModifyIs2').modal('show');
+      }
+
+
+    }
 
  /*======================= END Bachelor ModifyIs  ======================*/
 
@@ -141,7 +400,7 @@ $(document).ready(function(){
       var data = {
        textTopicBachelorEs:$('#textTopicBachelorEs').val(),
        textDetailBachelorEs:$('#textDetailBachelorEs').val()
-     
+
     };
 
     firebase.database().ref('website').child('course').child('bachelor').child('year2555').update(data);
@@ -343,7 +602,7 @@ $(document).ready(function(){
        $('#btUploadImageBachelorIc').hide();
      });
  }
- 
+
    /*======================= End Bachelor Edit Image  ======================*/
 
    /*------------------------ End Bachelor Ic (2555) -----------------------------------*/
@@ -652,8 +911,106 @@ $(document).ready(function(){
        $('#btUploadPdfBachelor').hide();
      });
    }
-   
+
 
   /*------------------------ End Dowload Bachelor (2555) -----------------------------------*/
+
+  $('#headDownload').hide();
+  $('#tableDownload').hide();
+
+
+  /*------------------------  Dowload (2555) -----------------------------------*/
+
+
+  $('#Download').on('click',function(){
+
+
+    $('#iconSuggestion').attr("class","fa fa-check text-info");
+
+    $('#headDownload').show();
+    $('#tableDownload').show();
+
+  });
+
+  var rootRefExpert = topicRef.child("course").child('bachelor').child('year2555').child('filePDF').child('Download');
+
+   rootRefExpert.on("child_added",snap => {
+     var snapkey = snap.key;
+     var detail = snap.child('topic').val();
+
+     $('#Download_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                               "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+                               "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                               " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+   });
+
+   $('#Download_work').on('click','.btn-delete-expert',function(){
+     var id = $(this).closest('tr').attr("id");
+     rootRefExpert.child(id).remove().then(function(){
+         $('#deleteProfileModal').modal('show');
+     });
+       $(this).closest('tr').remove();
+   });
+
+   $('#Download_work').on('click','.btn-edit-expert',function(){
+     var id = $(this).closest('tr').attr("id");
+     var detail = $(this).closest('tr').find('.txtdetail').text();
+     $('#detailExpert').val(detail);
+     $('#editExpertModal').modal('show');
+   });
+
+
+  $('#btOpenModalDownload').on('click',function(e){
+       e.preventDefault();
+         $('#addDownload').modal('show');
+     });
+
+     $('#btUploadDownload').hide();
+
+     $('#fileUploadDownload').on('change',function(event){
+       selectedFile = event.target.files[0];
+
+       $('#btUploadDownload').show();
+     });
+
+     $('#btUploadDownload').on('click',function(){
+       uploadDownload();
+     });
+
+     function uploadDownload(){
+       var filename= selectedFile.name;
+       var filesurename = filename.split(".")[1];
+       if(filesurename == "PDF" || filesurename == "pdf"){
+         var storageRef = firebase.storage().ref('/CoursePDF/bachelor2555/' + filename);
+         var uplodadTask = storageRef.put(selectedFile);
+
+         uplodadTask.on('state_changed',function(sanpshot){
+
+         },function(error){
+
+         },function(){
+           var downloadURL = uplodadTask.snapshot.downloadURL;
+           var updates = {};
+           var postPDF = {
+             file:downloadURL,
+             topic:$('#TopicDownload').val()
+           };
+
+           firebase.database().ref('website').child("course").child('bachelor').child('year2555').child('filePDF').child('Download').push().set(postPDF);
+           $('#fileUploadDownload').val("");
+           $('#addDownload').modal('hide');
+           $('#addDownload3').modal('show')
+
+         });
+
+       }else {
+         $('#addDownload').modal('hide');
+         $('#addDownload2').modal('show');
+       }
+
+
+     }
+
+       /*------------------------ End Dowload (2555) -----------------------------------*/
 
 })
