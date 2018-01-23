@@ -2,9 +2,10 @@ $(document).ready(function(){
 
  var Auth = firebase.auth();
  var dbRef = firebase.database();
+ var topicRef = dbRef.ref('website')
  var auth = null;
  var selectedFile;
-  var indexSelect;
+ var indexSelect;
 
 
 /*------------------------ select page -----------------------------------*/
@@ -40,7 +41,103 @@ $(document).ready(function(){
         $('#addStudyplan').modal('show');
     });
 
+    $('#fileUploadStudyplan').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadStudyplan').on('click',function(){
+      uploadStudyplan();
+    });
+
+    function uploadStudyplan(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelorIc2560/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicStudyplan').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('yearIc2560').child('filePDF').child('openCourses').push().set(postPDF);
+          $('#fileUploadStudyplan').val("");
+          $('#addStudyplan').modal('hide');
+          $('#addStudyplan3').modal('show');
+
+        });
+
+      }else {
+        $('#addStudyplan').modal('hide');
+        $('#addStudyplan2').modal('show');
+      }
+
+
+    }
+
  /*======================= END Bachelor Studyplan  ======================*/
+
+ /*------------------------ Bachelor Qualifications (2560) -----------------------------------*/
+
+ $('#btIcModifyQualifications').on('click',function(e){
+      e.preventDefault();
+        $('#addOpenModifyQualifications').modal('show');
+    });
+
+    $('#fileUploadModifyQualifications').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadModifyQualifications').on('click',function(){
+      uploadQualifications();
+    });
+
+    function uploadQualifications(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelorIc2560/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicQualifications').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('yearIc2560').child('filePDF').child('Qualifications').push().set(postPDF);
+          $('#fileUploadModifyQualifications').val("");
+          $('#addOpenModifyQualifications').modal('hide');
+          $('#addOpenModifyQualifications3').modal('show');
+
+        });
+
+      }else {
+        $('#addOpenModifyQualifications').modal('hide');
+        $('#addOpenModifyQualifications2').modal('show');
+      }
+
+
+    }
+
+ /*======================= END Bachelor Qualifications  ======================*/
+
 
 
 /*------------------------ Ic textDetailtitle (2560) -----------------------------------*/
@@ -87,7 +184,7 @@ document.getElementById("textDetailsubtitle").disabled = true;
       var data = {
        textTopicBachelorEs:$('#textDetailtitle').val(),
        textDetailBachelorEs:$('#textDetailsubtitle').val()
-     
+
     };
 
     firebase.database().ref('website').child('course').child('bachelor').child('yearIc2560').update(data);
@@ -157,7 +254,7 @@ document.getElementById("textDetailsubtitle").disabled = true;
       var data = {
        textTopicSubjects:$('#textTopicSubjects').val(),
        textDetailSubjects:$('#textDetailSubjects').val()
-     
+
     };
 
     firebase.database().ref('website').child('course').child('bachelor').child('yearIc2560').update(data);
@@ -210,7 +307,7 @@ document.getElementById("textDetailsubtitle").disabled = true;
        var downloadURL = uplodadTask.snapshot.downloadURL;
        var updates = {};
        var postImage = {
-         imageBachelorEs:downloadURL
+         imageIc1:downloadURL
        };
        var deleteRef;
        var deleteImageProfile = firebase.database().ref('website').child("course").child('bachelor').child('yearIc2560').child('imageIc1');
@@ -223,7 +320,7 @@ document.getElementById("textDetailsubtitle").disabled = true;
        });
        firebase.database().ref('website').child("course").child('bachelor').child('yearIc2560').update(postImage);
        $('#fileUploadImageTopic1').val("");
-       $('#btBachelorEs').hide();
+       $('#btUploadImageTopic1').hide();
      });
  }
 
@@ -332,7 +429,7 @@ document.getElementById("textDetailsubtitle").disabled = true;
 
   var dbImage = dbRef.ref("website").child('course').child('bachelor').child('yearIc2560').child('imageIc2');
   dbImage.on('value',snap => {
-   $('#imgTopic2').attr("src",snap.val());
+   $('#imgTopIc2').attr("src",snap.val());
  });
 
   $('#btIcSaveQualifications').hide();
@@ -362,7 +459,7 @@ document.getElementById("textDetailsubtitle").disabled = true;
        var downloadURL = uplodadTask.snapshot.downloadURL;
        var updates = {};
        var postImage = {
-         imageBachelorBida:downloadURL
+         imageIc2:downloadURL
        };
        var deleteRef;
        var deleteImageProfile = firebase.database().ref('website').child("course").child('bachelor').child('yearIc2560').child('imageIc2');
@@ -378,7 +475,7 @@ document.getElementById("textDetailsubtitle").disabled = true;
        $('#btUploadImageTopic2').hide();
      });
  }
- 
+
    /*======================= End Bachelor Edit Image  ======================*/
 
 /*======================= END Ic Topics 2 (2560) ======================*/
@@ -694,8 +791,105 @@ document.getElementById("textDetailsubtitle").disabled = true;
        $('#btUploadPdfBachelor').hide();
      });
    }
-   
+
 
   /*------------------------ End Dowload Bachelor (2555) -----------------------------------*/
+
+  $('#headDownload').hide();
+  $('#tableDownload').hide();
+
+  /*------------------------  Dowload (2555) -----------------------------------*/
+
+
+  $('#Download').on('click',function(){
+
+
+    $('#iconSuggestion').attr("class","fa fa-check text-info");
+
+    $('#headDownload').show();
+    $('#tableDownload').show();
+
+  });
+
+  var rootRefExpert = topicRef.child("course").child('bachelor').child('yearIc2560').child('filePDF').child('Download');
+
+   rootRefExpert.on("child_added",snap => {
+     var snapkey = snap.key;
+     var detail = snap.child('topic').val();
+
+     $('#Download_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                               "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+                               "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                               " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+   });
+
+   $('#Download_work').on('click','.btn-delete-expert',function(){
+     var id = $(this).closest('tr').attr("id");
+     rootRefExpert.child(id).remove().then(function(){
+         $('#deleteProfileModal').modal('show');
+     });
+       $(this).closest('tr').remove();
+   });
+
+   $('#Download_work').on('click','.btn-edit-expert',function(){
+     var id = $(this).closest('tr').attr("id");
+     var detail = $(this).closest('tr').find('.txtdetail').text();
+     $('#detailExpert').val(detail);
+     $('#editExpertModal').modal('show');
+   });
+
+
+  $('#btOpenModalDownload').on('click',function(e){
+       e.preventDefault();
+         $('#addDownload').modal('show');
+     });
+
+     $('#btUploadDownload').hide();
+
+     $('#fileUploadDownload').on('change',function(event){
+       selectedFile = event.target.files[0];
+
+       $('#btUploadDownload').show();
+     });
+
+     $('#btUploadDownload').on('click',function(){
+       uploadDownload();
+     });
+
+     function uploadDownload(){
+       var filename= selectedFile.name;
+       var filesurename = filename.split(".")[1];
+       if(filesurename == "PDF" || filesurename == "pdf"){
+         var storageRef = firebase.storage().ref('/CoursePDF/bachelorIc2560/' + filename);
+         var uplodadTask = storageRef.put(selectedFile);
+
+         uplodadTask.on('state_changed',function(sanpshot){
+
+         },function(error){
+
+         },function(){
+           var downloadURL = uplodadTask.snapshot.downloadURL;
+           var updates = {};
+           var postPDF = {
+             file:downloadURL,
+             topic:$('#TopicDownload').val()
+           };
+
+           firebase.database().ref('website').child("course").child('bachelor').child('yearIc2560').child('filePDF').child('Download').push().set(postPDF);
+           $('#fileUploadDownload').val("");
+           $('#addDownload').modal('hide');
+           $('#addDownload3').modal('show')
+
+         });
+
+       }else {
+         $('#addDownload').modal('hide');
+         $('#addDownload2').modal('show');
+       }
+
+
+     }
+
+       /*------------------------ End Dowload (2555) -----------------------------------*/
 
 })

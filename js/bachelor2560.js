@@ -2,7 +2,7 @@ $(document).ready(function(){
 
  var Auth = firebase.auth();
  var dbRef = firebase.database();
-  var topicRef = dbRef.ref('website')
+ var topicRef = dbRef.ref('website')
  var auth = null;
  var selectedFile;
  var indexSelect;
@@ -204,17 +204,50 @@ $(document).ready(function(){
         $('#addOpenModifyBida').modal('show');
     });
 
- /*======================= END Bachelor ModifyIc  ======================*/
+    $('#fileUploadModifyBida').on('change',function(event){
+      selectedFile = event.target.files[0];
 
-
- /*------------------------ Bachelor ModifyMis (2560) -----------------------------------*/
-
- $('#btBachelorModifyMis').on('click',function(e){
-      e.preventDefault();
-        $('#addOpenModifyMis').modal('show');
     });
 
- /*======================= END Bachelor ModifyMis  ======================*/
+    $('#btUploadModifyBida').on('click',function(){
+      uploadModifyBi();
+    });
+
+    function uploadModifyBi(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2560/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicModifyBi').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2560').child('filePDF').child('Bi').push().set(postPDF);
+          $('#fileUploadModifyBida').val("");
+          $('#addOpenModifyBida').modal('hide');
+          $('#addOpenModifyBida3').modal('show');
+
+        });
+
+      }else {
+        $('#addOpenModifyBida').modal('hide');
+        $('#addOpenModifyBida2').modal('show');
+      }
+
+
+    }
+
+ /*======================= END Bachelor ModifyIc  ======================*/
 
 
   /*------------------------ Bachelor ModifyIs (2560) -----------------------------------*/
@@ -223,6 +256,49 @@ $(document).ready(function(){
       e.preventDefault();
         $('#addOpenModifyIs').modal('show');
     });
+
+    $('#fileUploadModifyIs').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+    });
+
+    $('#btUploadModifyIs').on('click',function(){
+      uploadModifyIs();
+    });
+
+    function uploadModifyIs(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "PDF" || filesurename == "pdf"){
+        var storageRef = firebase.storage().ref('/CoursePDF/bachelor2560/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var postPDF = {
+            file:downloadURL,
+            topic:$('#TopicModifyIs').val()
+          };
+
+          firebase.database().ref('website').child("course").child('bachelor').child('year2560').child('filePDF').child('Is').push().set(postPDF);
+          $('#fileUploadModifyIs').val("");
+          $('#addOpenModifyIs').modal('hide');
+          $('#addOpenModifyIs3').modal('show');
+
+        });
+
+      }else {
+        $('#addOpenModifyIs').modal('hide');
+        $('#addOpenModifyIs2').modal('show');
+      }
+
+
+    }
 
  /*======================= END Bachelor ModifyIs  ======================*/
 
