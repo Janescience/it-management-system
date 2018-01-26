@@ -10,6 +10,8 @@
 <link href="../assets/plugins/c3-master/c3.min.css" rel="stylesheet">
 <!-- Custom CSS -->
 <link href="css/style.css" rel="stylesheet">
+<link href="css/upload.css" rel="stylesheet">
+
 <!-- You can change the theme colors from here -->
 <link href="css/colors/blue.css" id="theme" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -17,8 +19,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
+
 <link href="../css/upload.css" rel="stylesheet">
-
-
-
-  <script  src="../js/test.js"></script>

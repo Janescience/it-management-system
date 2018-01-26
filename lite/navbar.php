@@ -44,7 +44,7 @@
                             <div hidden class="dropdown-menu dropdown-menu-right mailbox scale-up show">
                                 <ul>
                                     <li>
-                                        <div class="drop-title">Notifications</div>
+                                        <div class="drop-title">การแจ้งเตือน</div>
                                     </li>
                                     <li style="overflow: visible;">
                                         <div class="slimScrollDiv" style="position: relative; overflow-x: visible; overflow-y: hidden; width: auto; height: 250px;">
@@ -56,7 +56,7 @@
                                       </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>ดูการแจ้งเตือนทั้งหมด</strong> <i class="fa fa-angle-right"></i> </a>
                                     </li>
                                 </ul>
                             </div>
@@ -65,21 +65,21 @@
                 <!-- Profile -->
                 <!-- ============================================================== -->
                 <li id="profileNavbar" class="nav-item dropdown show">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img id="userImageProfile"  src="../assets/images/users/user.png" class="profile-pic m-r-10" /><label id="nameUser" class="hidden-xs-down">name - surename</label></a>
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img id="userImageProfile"  src="../assets/images/users/user.png" class="profile-pic m-r-10" /><label id="nameUser" class="hidden-xs-down">ชื่อ - นามสกุล</label></a>
                       <div hidden class="dropdown-menu dropdown-menu-right scale-up show">
                                   <ul class="dropdown-user">
                                       <li>
                                           <div class="dw-user-box">
                                               <div class="u-img"><img id="userImage" src="../assets/images/users/user.png" alt="user"></div>
                                               <div class="u-text">
-                                                  <h4 id="userProfile">name - surename</h4>
-                                                  <p class="text-muted" id="emailUser">e-mail</p>
-                                                  <a href="pages-profile.php" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                                  <h4 id="userProfile">ชื่อ - นามสกุล</h4>
+                                                  <p class="text-muted" id="emailUser">อีเมลล์</p>
+                                                  <a href="pages-profile.php" class="btn btn-rounded btn-danger btn-sm">โปรไฟล์</a></div>
                                           </div>
                                       </li>
 
                                       <li role="separator" class="divider"></li>
-                                      <li id="btLogout"><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                      <li id="btLogout"><a href="#"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
                                   </ul>
                       </div>
                 </li>
@@ -93,21 +93,20 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li > <a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Main</span></a>
+                <li > <a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">เมนูหลัก</span></a>
                   <ul aria-expanded="true" class="collapse in">
-                               <li ><a id="indexPage" href="index.php">Home</a></li>
-                               <li><a href="about.php">About</a></li>
-                               <li><a href="course.php">Course</a></li>
-                               <li><a href="student.php">Student</a></li>
+                               <li ><a id="indexPage" href="index.php">หน้าแรก</a></li>
+                               <li><a href="about.php">เกี่ยวกับสขา</a></li>
+                               <li><a href="course.php">หลักสูตร</a></li>
+                               <li><a href="student.php">นักศึกษา</a></li>
                            </ul></li>
-                <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a>
+                <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">ข้อมูลส่วนตัว</span></a>
                 </li>
-                <li id="manageUserMenu"> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">Manage Users</span></a>
+                <li id="manageUserMenu"> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">จัดการสมาชิกในระบบ</span></a>
                 </li>
-                <li id="historyMenu"> <a class="waves-effect waves-dark" href="history.php" aria-expanded="false"><i class="mdi mdi-history"></i><span class="hide-menu">History</span></a>
+                <li id="historyMenu"> <a class="waves-effect waves-dark" href="history.php" aria-expanded="false"><i class="mdi mdi-history"></i><span class="hide-menu">ประวัติ</span></a>
                 </li>
-                <li id="manageWebsiteMenu"> <a class="waves-effect waves-dark" href="mange-website.php" aria-expanded="false"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">Manage Website</span></a>
-                </li>
+
 
             </ul>
         </nav>
@@ -126,11 +125,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="messageModalLabel">Sign-out ?</h4>
+        <h4 class="modal-title" id="messageModalLabel">ต้องการออกจากระบบ ?</h4>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        <button id="confirmLogout"type="button" class="btn btn-info">OK</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+        <button id="confirmLogout"type="button" class="btn btn-info">ตกลง</button>
       </div>
     </div>
   </div>
