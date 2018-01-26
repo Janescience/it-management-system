@@ -75,13 +75,13 @@ $(document).ready(function(){
  var selectedIndex;
  var selectedFileEdit;
  var selectImageCourse;
- var selectImageInfo;
+ var selectImageInfoBachelor,selectImageInfoGraduate,selectedInforBachelorEdit;
  var indexSelect;
  var indexSelectCourse;
  var indexSelectInfoLevel;
  var indexSelectLevel;
  var idHeader;
- var clickBtEditHeader = 0;
+ var clickBtEditHeader = 0,clickBtEditInfoBachelor=0;
 
 
 <!--============================== ส่วนหัว ===================================-->
@@ -119,7 +119,7 @@ $('#list_header').on('click','.btn-edit-header',function(){
 $('#list_header').on('click','.btn-delete-header',function(){
   var id = $(this).closest('tr').attr("id");
   dbHeader.child(id).remove().then(function(){
-      $('#deleteHeaderModal').modal('show');
+      $('#deleteModal').modal('show');
   });
     $(this).closest('tr').remove();
 });
@@ -393,416 +393,201 @@ function uploadImageCourse(){
 
 
 <!--=============================== ข่าวสาร =================================-->
-$('#btInfoUploadImg').hide();
-$('#btInfoCancelUploadImg').hide();
-$('#btInfoSave').hide();
-$('#btInfoCancel').hide();
-$('#btLoadingInfo').hide();
-
-$('#btInfoEdit').on('click',function(){
-  $('#btInfoEdit').hide();
-  $('#btInfoSave').show();
-  $('#btInfoCancel').show();
-  document.getElementById("textTopicInfo").disabled = false;
-  document.getElementById("textLinkInfo").disabled = false;
+$('#btOpenModalBachelor').on('click',function(){
+  $('#addInfoBachelorModal').modal('show');
 });
 
-$('#btInfoCancel').on('click',function(){
-  document.getElementById("textTopicInfo").disabled = true;
-  document.getElementById("textLinkInfo").disabled = true;
-  $('#btInfoEdit').show();
-  $('#btInfoSave').hide();
-  $('#btInfoCancel').hide();
+$('#btOpenModalGraduate').on('click',function(){
+  $('#addInfoGraduateModal').modal('show');
 });
 
-$('#fileUploadImageInfo').on('change',function(event){
-  selectImageInfo = event.target.files[0];
-  $('#btInfoUploadImg').show();
-  $('#btInfoCancelUploadImg').show();
+$('#fileUploadImageInfoBachelorAdd').on('change',function(event){
+  selectImageInfoBachelor = event.target.files[0];
 });
 
-$('#btInfoCancelUploadImg').on('click',function(){
-  $('#fileUploadImageInfo').val("");
-  $('#fileUploadImageInfo').show();
-  $('#btInfoUploadImg').hide();
-  $('#btInfoCancelUploadImg').hide();
+$('#fileUploadImageInfoGraduateAdd').on('change',function(event){
+  selectImageInfoGraduate = event.target.files[0];
+});
+
+$('#btInfoBachelorAdd').on('click',function(){
+
+  $('#addInfoBachelorModal').modal('hide');
+
+  var filename = selectImageInfoBachelor.name;
+  var storageRef = firebase.storage().ref('/InfoImage/' + filename);
+  var uplodadTask = storageRef.put(selectImageInfoBachelor);
+
+  uplodadTask.on('state_changed',function(sanpshot){
+
+  },function(error){
+
+  },function(){
+
+    var downloadURL = uplodadTask.snapshot.downloadURL;
+
+    var postInfoBachelor = {
+      photo:downloadURL,
+      topic:$('#textTopicInfoBachelorAdd').val(),
+      url:$('#textLinkInfoBachelorAdd').val()
+    };
+
+    firebase.database().ref('website/index/info/infobachelor').push().set(postInfoBachelor);
+
+    for(var i = 0;i< clickBtEditInfoBachelor;i++){
+      $('#list_info_bachelor tr:last').remove();
+    }
+  });
+});
+
+var dbInfoBachelor =   firebase.database().ref('website/index/info/infobachelor');
+
+dbInfoBachelor.on('child_added',snap=>{
+  var photo = snap.child('photo').val();
+  var topic = snap.child('topic').val();
+  var url = snap.child('url').val();
+
+  $('#list_info_bachelor').append("<tr id='"+snap.key+"'><td><img class='"+'img-info-bachelor'+"'src='"+photo+"' width='"+'120px'+"' style='"+'border-radius:10px'+"'></td>"+
+                                  "<td class='"+'txttopic'+"'>"+topic+"</td><td ><a class='"+'txturl'+"' href='"+url+"'>"+'click me'+"</a></td>"+
+                                  "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-info-bachelor'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                  " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-info-bachelor'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+
+$('#loaderInforBachelor').hide();
+});
+
+var idInfoBachelor;
+
+$('#list_info_bachelor').on('click','.btn-edit-info-bachelor',function(){
+  idInfoBachelor = $(this).closest('tr').attr('id');
+  var photo = $(this).closest('tr').find(".img-info-bachelor").attr("src");
+  var topic =  $(this).closest('tr').find(".txttopic").text();
+  var url =  $(this).closest('tr').find(".txturl").attr("href");
+  $('#imgInfoBachelorShow').attr("src",photo);
+  $('#textTopicInfoBachelorEdit').val(topic);
+  $('#textLinkInfoBachelorEdit').val(url);
+  $('#editInfoBachelorModal').modal('show');
+});
+
+$('#list_info_bachelor').on('click','.btn-delete-info-bachelor',function(){
+  var id = $(this).closest('tr').attr('id');
+  dbInfoBachelor.child(id).remove().then(function(){
+      $('#deleteModal').modal('show');
+  });
+    $(this).closest('tr').remove();
+});
+
+$('#btInfoBachelorEdit').on('click',function(){
+  clickBtEditInfoBachelor= clickBtEditInfoBachelor+1;
+  $('#btInfoBachelorEdit').hide();
+  $('#btCloseInfoBachelorEdit').hide();
+  $('#btLoadingInfoBachelorEdit').removeAttr("hidden");
+  editInfoBachelor();
+});
+
+$('#fileUploadImageInfoBachelorEdit').on('change',function(event){
+  selectedInforBachelorEdit = event.target.files[0];
+});
+
+function editInfoBachelor(){
+  var filename= selectedInforBachelorEdit.name;
+  var storageRef = firebase.storage().ref('/InfoImage/' + filename);
+  var uplodadTask = storageRef.put(selectedInforBachelorEdit);
+
+  uplodadTask.on('state_changed',function(sanpshot){
+
+  },function(error){
+
+  },function(){
+    var downloadURL = uplodadTask.snapshot.downloadURL;
+    var updateInfoBachelor = {
+      photo:downloadURL,
+      topic:  $('#textTopicInfoBachelorEdit').val(),
+      url:  $('#textLinkInfoBachelorEdit').val(),
+
+    };
+    var deleteRef;
+    var deleteImageInfoBachelor = firebase.database().ref('website/index/info/infobachelor').child(idInfoBachelor).child('photo');
+    deleteImageInfoBachelor.on('value',snap => {
+      deleteRef = firebase.storage().refFromURL(snap.val());
+    });
+    deleteRef.delete().then(function() {
+    }).catch(function(error) {
+
+    });
+    firebase.database().ref('website/index/info/infobachelor').child(idInfoBachelor).update(updateInfoBachelor);
+    $('#fileUploadImageInfoBachelorEdit').val("");
+    $('.img-show').removeAttr("src");
+    $('#textTopicInfoBachelorEdit').val("");
+    $('#textLinkInfoBachelorEdit').val("");
+
+
+    $('#btLoadingInfoBachelorEdit').attr("hidden","true");
+    $('#btInfoBachelorEdit').show();
+    $('#btCloseInfoBachelorEdit').show();
+    $('#editInfoBachelorModal').modal('hide');
+
+      $('#list_info_bachelor').empty();
+
+      dbInfoBachelor.on('child_added',snap=>{
+        var photo = snap.child('photo').val();
+        var topic = snap.child('topic').val();
+        var url = snap.child('url').val();
+
+        $('#list_info_bachelor').append("<tr id='"+snap.key+"'><td><img class='"+'img-info-bachelor'+"'src='"+photo+"' width='"+'120px'+"' style='"+'border-radius:10px'+"'></td>"+
+                                        "<td class='"+'txttopic'+"'>"+topic+"</td><td ><a class='"+'txturl'+"' href='"+url+"'>"+'click me'+"</a></td>"+
+                                        "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-info-bachelor'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                        " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-info-bachelor'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+      });
+  });
+};
+
+
+$('#btInfoGraduateAdd').on('click',function(){
+
+  $('#addInfoGraduateModal').modal('hide');
+
+  var filename = selectImageInfoGraduate.name;
+  var storageRef = firebase.storage().ref('/InfoImage/' + filename);
+  var uplodadTask = storageRef.put(selectImageInfoGraduate);
+
+  uplodadTask.on('state_changed',function(sanpshot){
+
+  },function(error){
+
+  },function(){
+
+    var downloadURL = uplodadTask.snapshot.downloadURL;
+
+    var postInfoGraduate = {
+      photo:downloadURL,
+      topic:$('#textTopicInfoGraduateAdd').val(),
+      url:$('#textLinkInfoGraduateAdd').val()
+    };
+
+    firebase.database().ref('website/index/info/infograduate').push().set(postInfoGraduate);
+
+  });
+});
+
+var dbInfoGraduate =   firebase.database().ref('website/index/info/infograduate');
+
+dbInfoGraduate.on('child_added',snap=>{
+
+  var photo = snap.child('photo').val();
+  var topic = snap.child('topic').val();
+  var url = snap.child('url').val();
+
+  $('#list_info_graduate').append("<tr id='"+snap.key+"'><td><img src='"+photo+"' width='"+'120px'+"' style='"+'border-radius:10px'+"'></td>"+
+                                  "<td class='"+'txttopic'+"'>"+topic+"</td><td class='"+'txturl'+"'><a href='"+url+"'>"+'click me'+"</a></td>"+
+                                  "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-info-bachelor'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                  " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-info-bachelor'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+
+$('#loaderInforGraduate').hide();
+
 });
 
 
- indexSelectCourse = document.getElementById("selectCourse").selectedIndex;
- indexSelectInfoLevel = document.getElementById("selectInfoLevel").selectedIndex;
- indexSelectLevel = document.getElementById("selectLevel").selectedIndex;
 
- if(indexSelectInfoLevel==0){
-   var dbInfoBachelor = dbRef.ref('website/index/info/infobachelor');
-   if(indexSelectLevel==0){
-     dbInfoBachelor.child('topic_first').on('value',snap => {
-       $('#textTopicInfo').val(snap.val());
-     });
-     dbInfoBachelor.child('link_first').on('value',snap => {
-       $('#textLinkInfo').val(snap.val());
-     });
-     dbInfoBachelor.child('img_first').on('value',snap => {
-       $('#imgInfo').attr("src",snap.val());
-     });
-   }else if(indexSelectLevel==1){
-     dbInfoBachelor.child('topic_second').on('value',snap => {
-       $('#textTopicInfo').val(snap.val());
-     });
-     dbInfoBachelor.child('link_second').on('value',snap => {
-       $('#textLinkInfo').val(snap.val());
-     });
-     dbInfoBachelor.child('img_second').on('value',snap => {
-       $('#imgInfo').attr("src",snap.val());
-     });
-   }else if(indexSelectLevel==2){
-     dbInfoBachelor.child('topic_third').on('value',snap => {
-       $('#textTopicInfo').val(snap.val());
-     });
-     dbInfoBachelor.child('link_third').on('value',snap => {
-       $('#textLinkInfo').val(snap.val());
-     });
-     dbInfoBachelor.child('img_third').on('value',snap => {
-       $('#imgInfo').attr("src",snap.val());
-     });
-   }
- }else if(indexSelectInfoLevel==1){
-   var dbInfoGraduate = dbRef.ref('website/index/info/infograduate');
-   if(indexSelectLevel==0){
-     dbInfoGraduate.child('topic_first').on('value',snap => {
-       $('#textTopicInfo').val(snap.val());
-     });
-     dbInfoGraduate.child('link_first').on('value',snap => {
-       $('#textLinkInfo').val(snap.val());
-     });
-     dbInfoGraduate.child('img_first').on('value',snap => {
-       $('#imgInfo').attr("src",snap.val());
-     });
-   }else if(indexSelectLevel==1){
-     dbInfoGraduate.child('topic_second').on('value',snap => {
-       $('#textTopicInfo').val(snap.val());
-     });
-     dbInfoGraduate.child('link_second').on('value',snap => {
-       $('#textLinkInfo').val(snap.val());
-     });
-     dbInfoGraduate.child('img_second').on('value',snap => {
-       $('#imgInfo').attr("src",snap.val());
-     });
-   }else if(indexSelectLevel==2){
-     dbInfoGraduate.child('topic_third').on('value',snap => {
-       $('#textTopicInfo').val(snap.val());
-     });
-     dbInfoGraduate.child('link_third').on('value',snap => {
-       $('#textLinkInfo').val(snap.val());
-     });
-     dbInfoGraduate.child('img_third').on('value',snap => {
-       $('#imgInfo').attr("src",snap.val());
-     });
-   }
- }
 
- $('#selectInfoLevel').on('change',function(){
-   indexSelectInfoLevel = document.getElementById("selectInfoLevel").selectedIndex;
-   if(indexSelectInfoLevel==0){
-     var dbInfoBachelor = dbRef.ref('website/index/info/infobachelor');
-     if(indexSelectLevel==0){
-       dbInfoBachelor.child('topic_first').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('link_first').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('img_first').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }else if(indexSelectLevel==1){
-       dbInfoBachelor.child('topic_second').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('link_second').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('img_second').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }else if(indexSelectLevel==2){
-       dbInfoBachelor.child('topic_third').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('link_third').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('img_third').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }
-   }else if(indexSelectInfoLevel==1){
-     var dbInfoGraduate = dbRef.ref('website/index/info/infograduate');
-     if(indexSelectLevel==0){
-       dbInfoGraduate.child('topic_first').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('link_first').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('img_first').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }else if(indexSelectLevel==1){
-       dbInfoGraduate.child('topic_second').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('link_second').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('img_second').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }else if(indexSelectLevel==2){
-       dbInfoGraduate.child('topic_third').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('link_third').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('img_third').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }
-   }
- });
-
- $('#selectLevel').on('change',function(){
-   indexSelectLevel = document.getElementById("selectLevel").selectedIndex;
-   if(indexSelectInfoLevel==0){
-     var dbInfoBachelor = dbRef.ref('website/index/info/infobachelor');
-     if(indexSelectLevel==0){
-       dbInfoBachelor.child('topic_first').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('link_first').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('img_first').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }else if(indexSelectLevel==1){
-       dbInfoBachelor.child('topic_second').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('link_second').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('img_second').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }else if(indexSelectLevel==2){
-       dbInfoBachelor.child('topic_third').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('link_third').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoBachelor.child('img_third').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }
-   }else if(indexSelectInfoLevel==1){
-     var dbInfoGraduate = dbRef.ref('website/index/info/infograduate');
-     if(indexSelectLevel==0){
-       dbInfoGraduate.child('topic_first').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('link_first').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('img_first').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }else if(indexSelectLevel==1){
-       dbInfoGraduate.child('topic_second').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('link_second').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('img_second').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }else if(indexSelectLevel==2){
-       dbInfoGraduate.child('topic_third').on('value',snap => {
-         $('#textTopicInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('link_third').on('value',snap => {
-         $('#textLinkInfo').val(snap.val());
-       });
-       dbInfoGraduate.child('img_third').on('value',snap => {
-         $('#imgInfo').attr("src",snap.val());
-       });
-     }
-   }
- });
-
- $('#btInfoSave').on('click',function(){
-   var updateTopic={};
-   var updateLink={};
-   var dbInfo = firebase.database().ref('website/index/info');
-
-   var postData = {
-     topic_first:$('#textTopicInfo').val(),
-     topic_second:$('#textTopicInfo').val(),
-     topic_third:$('#textTopicInfo').val(),
-     link_first:$('#textLinkInfo').val(),
-     link_second:$('#textLinkInfo').val(),
-     link_third:$('#textLinkInfo').val()
-   };
-
-   if(indexSelectInfoLevel==0){
-     var dbInfoBachelor = dbInfo.child('infobachelor');
-     if(indexSelectLevel==0){
-       updateTopic['topic_first'] = postData.topic_first;
-       updateLink['link_first'] = postData.link_first;
-       dbInfoBachelor.update(updateTopic);
-       dbInfoBachelor.update(updateLink);
-     }else if(indexSelectLevel==1){
-       updateTopic['topic_second'] = postData.topic_second;
-       updateLink['link_second'] = postData.link_second;
-       dbInfoBachelor.update(updateTopic);
-       dbInfoBachelor.update(updateLink);
-     }else if(indexSelectLevel==2){
-       updateTopic['topic_third'] = postData.topic_third;
-       updateLink['link_third'] = postData.link_third;
-       dbInfoBachelor.update(updateTopic);
-       dbInfoBachelor.update(updateLink);
-     }
-   }else if(indexSelectInfoLevel==1){
-     var dbInfoGraduate = dbInfo.child('infograduate');
-     if(indexSelectLevel==0){
-       updateTopic['topic_first'] = postData.topic_first;
-       updateLink['link_first'] = postData.link_first;
-       dbInfoGraduate.update(updateTopic);
-       dbInfoGraduate.update(updateLink);
-     }else if(indexSelectLevel==1){
-       updateTopic['topic_second'] = postData.topic_second;
-       updateLink['link_second'] = postData.link_second;
-       dbInfoGraduate.update(updateTopic);
-       dbInfoGraduate.update(updateLink);
-     }else if(indexSelectLevel==2){
-       updateTopic['topic_third'] = postData.topic_third;
-       updateLink['link_third'] = postData.link_third;
-       dbInfoGraduate.update(updateTopic);
-       dbInfoGraduate.update(updateLink);
-     }
-   }
-
-   $('#btInfoEdit').show();
-   $('#btInfoSave').hide();
-   $('#btInfoCancel').hide();
-   document.getElementById("textTopicInfo").disabled = true;
-   document.getElementById("textLinkInfo").disabled = true;
- });
-
- $('#btInfoUploadImg').on('click',function(){
-   $('#btInfoUploadImg').hide();
-   $('#btInfoCancelUploadImg').hide();
-   $('#btLoadingInfo').show();
-   uploadImageInfo();
- });
-
- function uploadImageInfo(){
-   var filename= selectImageInfo.name;
-   var storageRef = firebase.storage().ref('/InfoImage/' + filename);
-   var uplodadTask = storageRef.put(selectImageInfo);
-
-   uplodadTask.on('state_changed',function(sanpshot){
-
-   },function(error){
-
-   },function(){
-     var downloadURL = uplodadTask.snapshot.downloadURL;
-     var update = {};
-     var postData = {
-       img_first:downloadURL,
-       img_second:downloadURL,
-       img_third:downloadURL
-     };
-     var deleteRefInfo;
-     var dbRefInfo = firebase.database().ref('website/index/info');
-
-     if(indexSelectInfoLevel==0){
-       var dbInfoBachelor = dbRefInfo.child('infobachelor');
-       if(indexSelectLevel==0){
-         var dbImgFirst = dbInfoBachelor.child('img_first');
-           dbImgFirst.on('value',snap => {
-             deleteRefInfo = firebase.storage().refFromURL(snap.val());
-           });
-       }else if(indexSelectLevel==1){
-         var dbImgSecond = dbInfoBachelor.child('img_second');
-           dbImgSecond.on('value',snap => {
-             deleteRefInfo = firebase.storage().refFromURL(snap.val());
-           });
-       }else if(indexSelectLevel==2){
-         var dbImgThird = dbInfoBachelor.child('img_third');
-           dbImgThird.on('value',snap => {
-             deleteRefInfo = firebase.storage().refFromURL(snap.val());
-           });
-       }
-     }else if(indexSelectInfoLevel==1){
-       var dbInfoGraduate = dbRefInfo.child('infograduate');
-       if(indexSelectLevel==0){
-         var dbImgFirst = dbInfoGraduate.child('img_first');
-           dbImgFirst.on('value',snap => {
-             deleteRefInfo = firebase.storage().refFromURL(snap.val());
-           });
-       }else if(indexSelectLevel==1){
-         var dbImgSecond = dbInfoGraduate.child('img_second');
-           dbImgSecond.on('value',snap => {
-             deleteRefInfo = firebase.storage().refFromURL(snap.val());
-           });
-       }else if(indexSelectLevel==2){
-         var dbImgThird = dbInfoGraduate.child('img_third');
-           dbImgThird.on('value',snap => {
-             deleteRefInfo = firebase.storage().refFromURL(snap.val());
-           });
-       }
-     }
-
-     deleteRefInfo.delete().then(function() {
-     }).catch(function(error) {
-
-     });
-
-     if(indexSelectInfoLevel==0){
-       var dbInfoBachelor = dbRefInfo.child('infobachelor');
-       if(indexSelectLevel==0){
-         update['img_first'] = postData.img_first;
-         dbInfoBachelor.update(update);
-       }else if(indexSelectLevel==1){
-         update['img_second'] = postData.img_second;
-         dbInfoBachelor.update(update);
-       }else if(indexSelectLevel==2){
-         update['img_third'] = postData.img_third;
-         dbInfoBachelor.update(update);
-       }
-     }else if(indexSelectInfoLevel==1){
-       var dbInfoGraduate = dbRefInfo.child('infograduate');
-       if(indexSelectLevel==0){
-         update['img_first'] = postData.img_first;
-         dbInfoGraduate.update(update);
-       }else if(indexSelectLevel==1){
-         update['img_second'] = postData.img_second;
-         dbInfoGraduate.update(update);
-       }else if(indexSelectLevel==2){
-         update['img_third'] = postData.img_third;
-         dbInfoGraduate.update(update);
-       }
-     }
-     $('#fileUploadImageInfo').val("");
-     $('#btInfoUploadImg').hide();
-     $('#btInfoCancelUploadImg').hide();
-     $('#btLoadingInfo').hide();
-   });
- }
 
    /*------------------------ End -----------------------------------*/
 

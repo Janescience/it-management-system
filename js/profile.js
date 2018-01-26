@@ -336,10 +336,11 @@ $('#btOpenModalExp').on('click',function(){
     var degree = snap.child("degree").val();
     var faculty = snap.child("faculty").val();
     var university = snap.child("university").val();
+    var status = snap.child("status").val();
     var year = snap.child("year").val();
 
-    $('#list_his_education').append("<tr id='"+snap.key+"' ><td><input type='"+'checkbox'+"'  class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
-                              "<label for='"+'md_checkbox'+"'></label></td>"+"<td class='"+'txtdegree'+"'>" + degree + "</td>" +
+    $('#list_his_education').append("<tr id='"+snap.key+"' ><td><input type='"+'checkbox'+"' id='"+'checkbox'+snap.key+"' class='"+'filled-in chk-col-red checkbox'+"'"+status+" >"+
+                              "<label for='"+'checkbox'+snap.key+"'></label></td>"+"<td class='"+'txtdegree'+"'>" + degree + "</td>" +
                               "<td class='"+'txtfaculty'+"'>" + faculty + "</td>" + "<td class='"+'txtuniversity'+"'>" + university + "</td>" + "<td class='"+'txtyear'+"'>" + year + "</td>"+
                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>"
@@ -348,6 +349,24 @@ $('#btOpenModalExp').on('click',function(){
   });
 
 
+
+  $('#list_his_education').on('click','.filled-in',function(){
+    var id = $(this).closest('tr').attr("id");
+    var check = $(this).closest('input[type=checkbox]').prop('checked');
+    var status;
+
+    if(check){
+      status="checked";
+    }else{
+      status="check";
+    }
+
+    var dbStatus = {
+      status:status
+    };
+
+    rootRefEducation.child(id).update(dbStatus);
+  });
 
   $('#list_his_education').on('click','.btn-delete-education',function(){
     var id = $(this).closest('tr').attr("id");
@@ -390,8 +409,8 @@ $('#btOpenModalExp').on('click',function(){
           var university = snap.child("university").val();
           var year = snap.child("year").val();
 
-          $('#list_his_education').append("<tr id='"+snap.key +"' ><td><input type='"+'checkbox'+"'  class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
-                                    "<label for='"+'md_checkbox'+"'></label></td>"+"<td class='"+'txtdegree'+"'>" + degree + "</td>" +
+          $('#list_his_education').append("<tr id='"+snap.key +"' ><td><input type='"+'checkbox'+"' id='"+'checkbox'+snap.key+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                                    "<label for='"+'checkbox'+snap.key+"'></label></td>"+"<td class='"+'txtdegree'+"'>" + degree + "</td>" +
                                     "<td class='"+'txtfaculty'+"'>" + faculty + "</td>" + "<td class='"+'txtuniversity'+"'>" + university + "</td>" + "<td class='"+'txtyear'+"'>" + year + "</td>"+
                                    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-education'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>"
@@ -409,8 +428,8 @@ $('#btOpenModalExp').on('click',function(){
     var snapkey = snap.key;
     var detail = snap.child('detail').val();
 
-    $('#list_expertise').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
-                              "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+    $('#list_expertise').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+snap.key+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                              "<label for='"+snap.key+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
                               "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                               " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
   });
