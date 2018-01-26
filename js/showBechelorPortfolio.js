@@ -13,6 +13,8 @@ $(document).ready(function(){
   var  currentStatus;
   var clickBtEditPort = 0;
 
+  var showStatus="";
+
 
 
 // ========================================= Set initial Bechelor Portfolio Modal =========================================
@@ -96,13 +98,69 @@ $(document).ready(function(){
       var Picture = snap.child('port_image').val();
 
 
-      $('#list_BechelorPortfolio').append("<tr  id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_BecPort'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
-                                "<label for='"+'md_checkbox_BecPort'+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
-                                + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"'  width='"+'60'+"' height='"+'60'+"'></td>"+
+      $('#list_BechelorPortfolio').append("<tr  id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_'+snap.key+"' class='"+'filled-in chk-col-red chk-select-port'+"' >"+
+                                "<label for='"+'md_checkbox_'+snap.key+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
+                                + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 25px'+"' width='"+'100'+"' height='"+'100'+"'></td>"+
                                "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
 // ========================================= End Code =============================================================================
+
+// ========================================= Checked Portfolio =====================================================================
+
+$('#list_BechelorPortfolio').on('click','.chk-select-port',function(e){
+
+  showStatus = $('#md_checkbox_'+snap.key).val();
+
+  if ($('#md_checkbox_'+snap.key).val()) {
+
+  }
+
+  if ($("#md_checkbox_"+snap.key).prop("checked") == true) {
+      showStatus = "Show"
+
+  }else if ($("#BechelorPortfolioHallOfFame").prop("checked") == false){
+      showStatus = "Not Show"
+  }
+
+  var stat = {
+   port_show_status:showStatus
+ };
+
+ portfolioRef.child(snap.key).update(stat).then(function(){
+  console.log("Add show Status Saved:");
+ });
+
+  // alert(snap.key);
+  // alert(showStatus);
+
+  // var Name = $(this).closest('tr').find('.txtName').text();
+  // var Detail = $(this).closest('tr').find('.txtDetail').text();
+  // var Type = $(this).closest('tr').find('.txtType').text();
+  // alert(chk);
+  // alert(Name);
+  // alert(Detail);
+  // alert(Type);
+
+
+  // idPort = $(this).closest('tr').attr("id");
+  // var id = $(this).closest('tr').attr("id");
+
+  // var Status = $(this).closest('tr').find('.txtStatus').text();
+  // // var Status = $(this).closest('tr').find('.txtStatus').attr( 'checked', 'checked' )
+  // var Year = $(this).closest('tr').find('.txtYear').text();
+  // var Picture = $(this).closest('tr').find(".txtPicture").attr("src");
+  //
+  // currentPicture = Picture;
+  // // currentStatus  = Status;
+
+
+
+
+
+  });
+// ========================================= End Code =============================================================================
+
 // ========================================= Delete Portfolio =====================================================================
 
 $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
