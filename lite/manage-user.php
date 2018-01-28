@@ -55,8 +55,8 @@
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Manage User</a></li>
-                            <li class="breadcrumb-item active">Users</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">จัดการสมาชิกในระบบ</a></li>
+                            <li class="breadcrumb-item active">จัดการ</li>
                         </ol>
                     </div>
                 </div>
@@ -78,6 +78,7 @@
                           <div class="col-md-4">
 
                           <div class="form-group">
+                            <h1 class="text-left">คณาจารย์</h1>
                             <span class="counter pull-right"></span>
                               <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-search"></i></div>
@@ -98,21 +99,21 @@
                                     <table class="table text-center results table-hover" >
                                         <thead >
                                             <tr >
-                                              <th class="text-center">Profile</th>
-                                                <th class="text-center">Name-Surname</th>
-                                                <th class="text-center">E-mail</th>
-                                                <th class="text-center">Telephone</th>
-                                                <th class="text-center">Role</th>
-                                                <th class="text-center">Actions</th>
+                                              <th class="text-center">รูปภาพ</th>
+                                                <th class="text-center">ชื่อ-นามสกุล</th>
+                                                <th class="text-center">อีเมลล์</th>
+                                                <th class="text-center">หมายเลขโทรศัพท์</th>
+                                                <th class="text-center">บทบาท</th>
+                                                <th class="text-center">จัดการ</th>
                                             </tr>
                                             <tr class="warning no-result">
-                                              <td colspan="6"><i class="fa fa-warning"></i> No result</td>
+                                              <td colspan="6"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                             </tr>
                                             <tr id="loaderUser">
-                                              <td colspan="6"><img src="../images/ajax-loader.gif">  Loading...</td>
+                                              <td colspan="6"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
                                             </tr>
                                         </thead>
-                                        <tbody id="list_user">
+                                        <tbody id="list_teacher">
 
                                         </tbody>
                                     </table>
@@ -122,6 +123,120 @@
                             </div>
                       </div>
                     </div>
+
+                    <div class="col-md-12">
+                      <div class="card">
+                        <div class="card-block">
+                          <div class="row">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+
+                          </div>
+                        <div class="card-block">
+                          <div class="col-md-5">
+
+                          <div class="form-group">
+                            <h1 class="text-left">เจ้าหน้าที่บริหารงานทั่วไป</h1>
+                            <span class="counter pull-right"></span>
+                              <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-search"></i></div>
+                                <input id="searchStaff" type="text"  class="form-control" >
+                              </div>
+                            </div>
+                          </div>
+                          <h4 class="text-black card-title"></h4>
+
+                      </div>
+
+                              <form class="form-horizontal form-material ">
+                                <div class="table-responsive">
+                                    <table class="table text-center results table-hover" >
+                                        <thead >
+                                            <tr >
+                                              <th class="text-center">รูปภาพ</th>
+                                                <th class="text-center">ชื่อ-นามสกุล</th>
+                                                <th class="text-center">อีเมลล์</th>
+                                                <th class="text-center">หมายเลขโทรศัพท์</th>
+                                                <th class="text-center">บทบาท</th>
+                                                <th class="text-center">จัดการ</th>
+                                            </tr>
+                                            <tr class="warning no-result">
+                                              <td colspan="6"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
+                                            </tr>
+                                            <tr id="loaderStaff">
+                                              <td colspan="6"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="list_staff">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                              </form>
+
+                            </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                      <div class="card">
+                        <div class="card-block">
+                          <div class="row">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+
+                          </div>
+                        <div class="card-block">
+                          <div class="col-md-4">
+
+                          <div class="form-group">
+                            <h1 class="text-left">ผู้ช่วยสอนและวิจัย</h1>
+                            <span class="counter pull-right"></span>
+                              <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-search"></i></div>
+                                <input id="searchTa" type="text"  class="form-control" >
+                              </div>
+                            </div>
+                          </div>
+                          <h4 class="text-black card-title"></h4>
+                      </div>
+
+                              <form class="form-horizontal form-material ">
+                                <div class="table-responsive">
+                                    <table class="table text-center results table-hover" >
+                                        <thead >
+                                            <tr >
+                                              <th class="text-center">รูปภาพ</th>
+                                                <th class="text-center">ชื่อ-นามสกุล</th>
+                                                <th class="text-center">อีเมลล์</th>
+                                                <th class="text-center">หมายเลขโทรศัพท์</th>
+                                                <th class="text-center">บทบาท</th>
+                                                <th class="text-center">จัดการ</th>
+                                            </tr>
+                                            <tr class="warning no-result">
+                                              <td colspan="6"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
+                                            </tr>
+                                            <tr id="loaderTa">
+                                              <td colspan="6"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="list_ta">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                              </form>
+
+                            </div>
+                      </div>
+                    </div>
+
+
                 </div>
             </div>
             <footer class="footer">
@@ -166,7 +281,7 @@
       <div class="modal-dialog modal-md">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="messageModalLabel">Create User</h4>
+            <h4 class="modal-title" id="messageModalLabel">เพิ่มผู้ใช้งาน</h4>
           </div>
             <br>
          <!-- Column -->
@@ -175,7 +290,7 @@
 
           <form class="form-horizontal">
             <div class="form-group">
-              <label for="nameCreateUser">Profile Image</label>
+              <label for="nameCreateUser">รูปภาพประจำตัว</label>
                   <div class="input-group">
                   <div class="input-group-addon"><i class="ti-image"></i></div>
                   <input class="form-control" type="file" id="fileUploadImageCreateUser"><hr>
@@ -183,7 +298,7 @@
             </div>
 
             <div class="form-group">
-              <label for="nameCreateUser">Full Name</label>
+              <label for="nameCreateUser">ชื่อ - นามสกุล</label>
                   <div class="input-group">
                   <div class="input-group-addon"><i class="ti-user"></i></div>
                   <input id="nameCreateUser" type="text" class="form-control">
@@ -191,7 +306,7 @@
             </div>
 
             <div class="form-group">
-              <label for="emailCreateUser" >Email</label>
+              <label for="emailCreateUser" >อีเมล์</label>
                   <div class="input-group">
                   <div class="input-group-addon"><i class="ti-email"></i></div>
                   <input id="emailCreateUser" type="email"  class="form-control " >
@@ -199,7 +314,7 @@
             </div>
 
             <div class="form-group">
-              <label for="passwordCreateUser">Password</label>
+              <label for="passwordCreateUser">รหัสผ่าน</label>
               <div class="input-group">
                 <div class="input-group-addon"><i class="ti-lock"></i></div>
                   <input id="passwordCreateUser" type="password"  class="form-control ">
@@ -207,14 +322,14 @@
             </div>
 
             <div class="form-group">
-                <label for="phoneCreateUser">Phone No</label>
+                <label for="phoneCreateUser">หมายเลขโทรศัพท์</label>
                 <div class="input-group">
                   <div class="input-group-addon"><i class="ti-mobile"></i></div>
                     <input id="phoneCreateUser" type="text"  class="form-control">
                 </div>
             </div>
             <div class="form-group">
-                <label >Select Rank</label>
+                <label >เลือกบทบาท</label>
                     <select id="rankCreateUser" class="form-control form-control-line">
                         <option>คณาจารย์และบุคลากร</option>
                         <option>เจ้าหน้าที่บริหารงานทั่วไป</option>
@@ -225,8 +340,8 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button id="btCreateUser" type="submit" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> Submit</button>
-      <button   type="submit" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
+      <button id="btCreateUser" type="submit" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> บันทึก</button>
+      <button   type="submit" class="btn btn-inverse" data-dismiss="modal">ยกเลิก</button>
     </div>
     </div>
   </div>

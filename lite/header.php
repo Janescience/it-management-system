@@ -18,6 +18,6 @@
 <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
+<link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
 
 <link href="../css/upload.css" rel="stylesheet">

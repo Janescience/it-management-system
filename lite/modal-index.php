@@ -164,6 +164,50 @@
 
 <!--=====================================================================================================-->
 
+<!--==================================== Edit Infor Graduate ====================================================-->
+
+<div class="modal fade" id="editInfoGraduateModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">ข่าวสารระดับบัณฑิตศึกษา (แก้ไข)</h4>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title" >รูปภาพปัจจุบัน</h5><br>
+
+        <center>
+        <img id="imgInfoGraduateShow" width="200px" style="border-radius:10px;">
+        </center>
+        <div class="col-md-12">
+            <div class="form-group text-center">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <span class="btn btn-secondary btn-file">
+                            เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadImageInfoGraduateEdit" >
+                        </span>
+                    </span>
+                    <input type="text" class="form-control" readonly>
+                </div>
+                <br><img class="img-show "/>
+            </div>
+        </div>
+
+        <h5 class="modal-title" >หัวข้อ</h5>
+        <textarea class="form-control" rows="2" id="textTopicInfoGraduateEdit"></textarea>
+        <h5 class="modal-title" >ลิงค์</h5>
+          <textarea class="form-control" type="text" rows="3"   id="textLinkInfoGraduateEdit"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button hidden id="btLoadingInfoGraduateEdit" class="right-side-toggle waves-effect waves-light btn-secondary btn btn-circle btn-sm pull-right m-l-10"><i class="fa fa-circle-o-notch"></i></button>
+        <button id="btInfoGraduateEdit" type="button" class="btn btn-success "><i class="fa fa-check"></i> บันทึก</button>
+        <button id="btCloseInfoGraduateEdit" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--=====================================================================================================-->
+
 <!--==================================== Edit Header ====================================================-->
 
 <div class="modal fade" id="editHeaderModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
