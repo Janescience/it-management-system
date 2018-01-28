@@ -46,17 +46,63 @@ $(document).ready(function(){
 
 
   if(key != sessionStorage.getItem("userId")){
-
-    $('#list_user').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
+    if(level == "คณาจารย์และบุคลากร"){
+    $('#list_teacher').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
         "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td><td><span class='"+'label label-success'+"'>"+level+"</span></td>"+
         "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
         " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
-
+      }
   }
   $('#loaderUser').hide();
  });
 
-$('#list_user').on('click','.btn-edit-user',function(){
+  var rootRefStaff = dbRef.ref().child("users");
+ rootRefStaff.on("child_added",snap => {
+
+   var key = snap.key;
+   var level = snap.child("level").val();
+   var email = snap.child("email").val();
+   var phone = snap.child("telephone").val();
+   var image = snap.child("image").val();
+   var name = snap.child("name").val();
+   var office = snap.child("office").val();
+
+
+ if(key != sessionStorage.getItem("userId")){
+   if(level == "เจ้าหน้าที่บริหารงานทั่วไป"){
+   $('#list_staff').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
+       "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td><td><span class='"+'label label-success'+"'>"+level+"</span></td>"+
+       "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+       " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+     }
+ }
+ $('#loaderStaff').hide();
+});
+
+var rootRefTa = dbRef.ref().child("users");
+rootRefTa.on("child_added",snap => {
+
+ var key = snap.key;
+ var level = snap.child("level").val();
+ var email = snap.child("email").val();
+ var phone = snap.child("telephone").val();
+ var image = snap.child("image").val();
+ var name = snap.child("name").val();
+ var office = snap.child("office").val();
+
+
+if(key != sessionStorage.getItem("userId")){
+ if(level == "ผู้ช่วยสอนและวิจัย"){
+ $('#list_ta').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
+     "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td><td><span class='"+'label label-success'+"'>"+level+"</span></td>"+
+     "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+     " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+   }
+}
+$('#loaderTa').hide();
+});
+
+$('#list_teacher').on('click','.btn-edit-user',function(){
   var image = $(this).closest('tr').find(".avatar").attr("src");
   var name =  $(this).closest('tr').find(".txtname").text();
   var email =  $(this).closest('tr').find(".txtemail").text();

@@ -81,7 +81,7 @@ $(document).ready(function(){
  var indexSelectInfoLevel;
  var indexSelectLevel;
  var idHeader;
- var clickBtEditHeader = 0,clickBtEditInfoBachelor=0;
+ var clickBtEditHeader = 0,clickBtEditInfoBachelor=0,clickBtEditInfoGraduate=0;
 
 
 <!--============================== ส่วนหัว ===================================-->
@@ -576,14 +576,101 @@ dbInfoGraduate.on('child_added',snap=>{
   var topic = snap.child('topic').val();
   var url = snap.child('url').val();
 
-  $('#list_info_graduate').append("<tr id='"+snap.key+"'><td><img src='"+photo+"' width='"+'120px'+"' style='"+'border-radius:10px'+"'></td>"+
-                                  "<td class='"+'txttopic'+"'>"+topic+"</td><td class='"+'txturl'+"'><a href='"+url+"'>"+'click me'+"</a></td>"+
-                                  "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-info-bachelor'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
-                                  " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-info-bachelor'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+  $('#list_info_graduate').append("<tr id='"+snap.key+"'><td><img src='"+photo+"' class='"+'img-info-graduate'+"' width='"+'120px'+"' style='"+'border-radius:10px'+"'></td>"+
+                                  "<td class='"+'txttopic'+"'>"+topic+"</td><td ><a class='"+'txturl'+"' href='"+url+"'>"+'click me'+"</a></td>"+
+                                  "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-info-graduate'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                  " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-info-graduate'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
 $('#loaderInforGraduate').hide();
 
 });
+
+
+var idInfoGraduate;
+
+$('#list_info_graduate').on('click','.btn-edit-info-graduate',function(){
+  idInfoGraduate = $(this).closest('tr').attr('id');
+  var photo = $(this).closest('tr').find(".img-info-graduate").attr("src");
+  var topic =  $(this).closest('tr').find(".txttopic").text();
+  var url =  $(this).closest('tr').find(".txturl").attr("href");
+  $('#imgInfoGraduateShow').attr("src",photo);
+  $('#textTopicInfoGraduateEdit').val(topic);
+  $('#textLinkInfoGraduateEdit').val(url);
+  $('#editInfoGraduateModal').modal('show');
+});
+
+$('#list_info_graduate').on('click','.btn-delete-info-graduate',function(){
+  var id = $(this).closest('tr').attr('id');
+  dbInfoGraduate.child(id).remove().then(function(){
+      $('#deleteModal').modal('show');
+  });
+    $(this).closest('tr').remove();
+});
+
+$('#btInfoGraduateEdit').on('click',function(){
+  clickBtEditInfoGraduate= clickBtEditInfoGraduate+1;
+  $('#btInfoGraduateEdit').hide();
+  $('#btCloseInfoGraduateEdit').hide();
+  $('#btLoadingInfoGraduateEdit').removeAttr("hidden");
+  editInfoGraduate();
+});
+
+$('#fileUploadImageInfoGraduateEdit').on('change',function(event){
+  selectedInforGraduateEdit = event.target.files[0];
+});
+
+function editInfoGraduate(){
+  var filename= selectedInforGraduateEdit.name;
+  var storageRef = firebase.storage().ref('/InfoImage/' + filename);
+  var uplodadTask = storageRef.put(selectedInforGraduateEdit);
+
+  uplodadTask.on('state_changed',function(sanpshot){
+
+  },function(error){
+
+  },function(){
+    var downloadURL = uplodadTask.snapshot.downloadURL;
+    var updateInfoGraduate = {
+      photo:downloadURL,
+      topic:  $('#textTopicInfoGraduateEdit').val(),
+      url:  $('#textLinkInfoGraduateEdit').val(),
+
+    };
+    var deleteRef;
+    var deleteImageInfoGraduate = firebase.database().ref('website/index/info/infograduate').child(idInfoGraduate).child('photo');
+    deleteImageInfoGraduate.on('value',snap => {
+      deleteRef = firebase.storage().refFromURL(snap.val());
+    });
+    deleteRef.delete().then(function() {
+    }).catch(function(error) {
+
+    });
+    firebase.database().ref('website/index/info/infograduate').child(idInfoGraduate).update(updateInfoGraduate);
+    $('#fileUploadImageInfoGraduateEdit').val("");
+    $('.img-show').removeAttr("src");
+    $('#textTopicInfoGraduateEdit').val("");
+    $('#textLinkInfoGraduateEdit').val("");
+
+
+    $('#btLoadingInfoGraduateEdit').attr("hidden","true");
+    $('#btInfoGraduateEdit').show();
+    $('#btCloseInfoGraduateEdit').show();
+    $('#editInfoGraduateModal').modal('hide');
+
+      $('#list_info_graduate').empty();
+
+      dbInfoGraduate.on('child_added',snap=>{
+        var photo = snap.child('photo').val();
+        var topic = snap.child('topic').val();
+        var url = snap.child('url').val();
+
+        $('#list_info_graduate').append("<tr id='"+snap.key+"'><td><img class='"+'img-info-graduate'+"'src='"+photo+"' width='"+'120px'+"' style='"+'border-radius:10px'+"'></td>"+
+                                        "<td class='"+'txttopic'+"'>"+topic+"</td><td ><a class='"+'txturl'+"' href='"+url+"'>"+'click me'+"</a></td>"+
+                                        "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-info-graduate'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                        " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-info-graduate'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+      });
+  });
+};
 
 
 

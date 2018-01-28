@@ -40,11 +40,7 @@
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Profile</h3>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Profile</li>
-                        </ol>
+                        <h3 class="text-themecolor m-b-0 m-t-0">ข้อมูลส่วนตัว</h3>
                     </div>
                 </div>
                 <!-- Row -->
@@ -55,9 +51,9 @@
                       <div class="card">
                           <!-- Nav tabs -->
                           <ul class="nav nav-tabs profile-tab" role="tablist">
-                              <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-user"></i></span><span class="hidden-xs-down">Profile</span></a> </li>
-                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#history" role="tab"><span class="hidden-sm-up"><i class="ti-comment-alt"></i></span><span class="hidden-xs-down">History | Working</span></a> </li>
-                              <li hidden id="tabOfficeHour" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab"><span class="hidden-sm-up"><i class="ti-calendar"></i></span><span class="hidden-xs-down">Office Hour</span></a> </li>
+                              <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-user"></i></span><span class="hidden-xs-down">ข้อมูลส่วนตัว</span></a> </li>
+                              <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#history" role="tab"><span class="hidden-sm-up"><i class="ti-comment-alt"></i></span><span class="hidden-xs-down">ประวัติและผลงาน</span></a> </li>
+                              <li hidden id="tabOfficeHour" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#office" role="tab"><span class="hidden-sm-up"><i class="ti-calendar"></i></span><span class="hidden-xs-down">ตารางการทำงาน</span></a> </li>
                           </ul>
                           <!-- Tab panes -->
                           <div class="tab-content tabcontent-border">
@@ -78,7 +74,7 @@
                                             <div class="hovereffect" id="hoverProfile">
                                          <img  id="imageProfile" src="../assets/images/users/user.png" class="avatar" style="border:8px solid #BDBDBD;"/>
                                               <div class="overlay">
-                                            <a class="info" id="changePictureProfile" href="javascript:void(0)"><i class="fa fa-image"></i> change</a>
+                                            <a class="info" id="changePictureProfile" href="javascript:void(0)"><i class="fa fa-image"></i> เปลี่ยนรูปภาพ</a>
 
                                             </div>
                                           </div>
@@ -93,14 +89,14 @@
 
                                             </div>
                                           </div>
-                                          <button id="btUploadImageProfile" type="button" class="btn btn-success "><i class="fa fa-check"></i> Submit</button>
-                                          <button hidden id="cancelUpload" type="button" class="btn btn-danger "><i class="fa fa-close"></i> Cancel</button>
+                                          <button id="btUploadImageProfile" type="button" class="btn btn-success "><i class="fa fa-check"></i> บันทึก</button>
+                                          <button hidden id="cancelUpload" type="button" class="btn btn-danger "><i class="fa fa-close"></i> ยกเลิก</button>
 
 
 
                                         <div class="form-group">
                                           <div class="btn-group m-t-10">
-                                            <button type="button" class="btn btn-secondary" id="showStatus" >Status</button>
+                                            <button type="button" class="btn btn-secondary" id="showStatus" >สถานะ</button>
                                             <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
@@ -108,22 +104,22 @@
                                                 <a class="dropdown-item" href="javascript:void(0)" id="available">
                                                   <svg width="30" height="30"  >
                                                       <circle  cx="15" cy="15" r="5"  fill="#00ff00" stroke-width="3"/>
-                                                  </svg>Available
+                                                  </svg>สามารถเข้าพบได้
                                                 </a>
                                                 <a class="dropdown-item" href="javascript:void(0)" id="notintheoffice">
                                                   <svg width="30" height="30" id="svg" >
                                                       <circle  cx="15" cy="15" r="5"  fill="#0099ff" stroke-width="3"/>
-                                                  </svg>Not in the office
+                                                  </svg>ไม่อยู่
                                                 </a>
                                                 <a class="dropdown-item" href="javascript:void(0)" id="beback">
                                                   <svg width="30" height="30" id="svg" >
                                                     <circle  cx="15" cy="15" r="5"  fill="#ffcc00" stroke-width="3"/>
-                                                  </svg>Be back
+                                                  </svg>กรุณารอสักครู่
                                                </a>
                                                 <a class="dropdown-item" href="javascript:void(0)" id="dontdisturb">
                                                   <svg width="30" height="30" id="svg" >
                                                     <circle  cx="15" cy="15" r="5"  fill="#ff3300" stroke-width="3"/>
-                                                  </svg>Don't Disturb
+                                                  </svg>ห้ามรบกวน
                                                 </a>
                                             </div>
                                         </div>
@@ -137,14 +133,14 @@
                                             <div class="card">
                                               <div class="card-block">
                                               <div class="form-group">
-                                                <label for="nameProfile">Full Name</label>
+                                                <label for="nameProfile">ชื่อ - นามสกุล</label>
                                                     <div class="input-group">
                                                     <div class="input-group-addon"><i class="ti-user"></i></div>
                                                     <input id="nameProfile" type="text" class="form-control" disabled="true">
                                                   </div>
                                               </div>
                                               <div class="form-group">
-                                                <label for="emailCreateUser" >Email</label>
+                                                <label for="emailCreateUser" >อีเมล์</label>
                                                     <div class="input-group">
                                                     <div class="input-group-addon"><i class="ti-email"></i></div>
                                                     <input id="emailProfile" type="email"  class="form-control" disabled="true">
@@ -152,7 +148,7 @@
                                               </div>
 
                                               <div class="form-group">
-                                                  <label for="phoneCreateUser">Phone No</label>
+                                                  <label for="phoneCreateUser">เบอร์โทรศัพท์</label>
                                                   <div class="input-group">
                                                     <div class="input-group-addon"><i class="ti-mobile"></i></div>
                                                       <input id="phoneProfile" type="text"  class="form-control" disabled="true">
@@ -161,12 +157,12 @@
 
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <button id="btUpdateProfile"class="btn btn-info waves-effect waves-ligh"><i class="ti ti-pencil-alt"></i>  Update Profile</button>
-                                                        <button id="btUpdatePassword"class="btn btn-danger waves-effect waves-ligh"><i class="ti ti-lock"></i>  Change Password</button>
+                                                        <button id="btUpdateProfile"class="btn btn-info waves-effect waves-ligh"><i class="ti ti-pencil-alt"></i>  แก้ไขข้อมูลส่วนตัว</button>
+                                                        <button id="btUpdatePassword"class="btn btn-danger waves-effect waves-ligh"><i class="ti ti-lock"></i>  เปลี่ยนรหัสผ่าน</button>
 
                                                         <button id="btLoadingProfile" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
-                                                        <button id="btSubmitUpdateProfile" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
-                                                        <button id="btCancelUpdateProfile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
+                                                        <button id="btSubmitUpdateProfile" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> บันทึก</button>
+                                                        <button id="btCancelUpdateProfile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> ยกเลิก</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -188,9 +184,9 @@
                                     <div class="card">
                                       <!-- Nav tabs -->
                                       <ul class="nav nav-tabs profile-tab " role="tablist">
-                                          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#hisEducation" role="tab"><span class="hidden-sm-up"><i class="ti-ruler-pencil"></i></span><span class="hidden-xs-down">History Education</span></a> </li>
-                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#hisWork" role="tab"><span class="hidden-sm-up"><i class="ti-briefcase"></i></span><span class="hidden-xs-down">History Work</span></a> </li>
-                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academic" role="tab"><span class="hidden-sm-up"><i class="ti-cup"></i></span><span class="hidden-xs-down">Academic Work</span></a> </li>
+                                          <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#hisEducation" role="tab"><span class="hidden-sm-up"><i class="ti-ruler-pencil"></i></span><span class="hidden-xs-down">ประวัติการศึกษา</span></a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#hisWork" role="tab"><span class="hidden-sm-up"><i class="ti-briefcase"></i></span><span class="hidden-xs-down">ประวัติการทำงาน</span></a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academic" role="tab"><span class="hidden-sm-up"><i class="ti-cup"></i></span><span class="hidden-xs-down">ผลงานวิชาการ</span></a> </li>
                                       </ul>
                                       <!-- Tab panes -->
                                       <div class="tab-content">
@@ -198,7 +194,7 @@
                                             <div class="card-block ">
 
                                                 <div class="card-block bg-info">
-                                                  <h4 class="text-white card-title"><span class="hidden-sm-up"><h5  class="text-white card-title">Education</h5></span><span class="hidden-xs-down">History Education</span></h4>
+                                                  <h4 class="text-white card-title"><span class="hidden-sm-up"><h5  class="text-white card-title">ประวัติกรศึกษา</h5></span><span class="hidden-xs-down">ประวัติการศึกษา</span></h4>
                                                         <div class="message-box contact-box">
                                                         <h2 class="add-ct-btn">
                                                           <button type="button" id="btOpenModalEdu" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
@@ -212,12 +208,12 @@
                                                           <table id="tableHisEdu" class="table text-center color-bordered-table success-bordered-table">
                                                               <thead >
                                                                   <tr >
-                                                                      <th class="text-center">Show</th>
-                                                                      <th class="text-center">Degree</th>
-                                                                      <th class="text-center">Faculty</th>
-                                                                      <th class="text-center">University</th>
-                                                                      <th class="text-center">Graduation</th>
-                                                                      <th class="text-center">Actions</th>
+                                                                      <th class="text-center">แสดง</th>
+                                                                      <th class="text-center">ปริญญา</th>
+                                                                      <th class="text-center">สาขาวิชา</th>
+                                                                      <th class="text-center">มหาวิทยลัย</th>
+                                                                      <th class="text-center">ปีที่จบการศึกษา</th>
+                                                                      <th class="text-center">จัดการ</th>
                                                                   </tr>
                                                               </thead>
                                                               <tbody id="list_his_education" class="list_his_education">
@@ -228,7 +224,7 @@
                                                     </form>
                                                   <br>
                                                   <div class="card-block bg-info">
-                                                    <h4 class="text-white card-title"> Expertise </h4>
+                                                    <h4 class="text-white card-title"> ความเชี่ยวชาญ </h4>
                                                     <div class="message-box contact-box">
                                                     <h2 class="add-ct-btn">
                                                       <button type="button" id="btOpenModalExpert" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
@@ -240,9 +236,9 @@
                                                             <table class="table text-center color-bordered-table success-bordered-table">
                                                                 <thead >
                                                                     <tr >
-                                                                        <th class="text-center">Show</th>
-                                                                        <th class="text-center">Detail</th>
-                                                                        <th class="text-center">Manage</th>
+                                                                        <th class="text-center">แสดง</th>
+                                                                        <th class="text-center">รายละเอียด</th>
+                                                                        <th class="text-center">จัดการ</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="list_expertise">
@@ -255,7 +251,7 @@
                                           <div class="tab-pane" id="hisWork" role="tabpanel">
                                               <div class="card-block ">
                                                 <div class="card-block bg-info">
-                                                  <h4 class="text-white card-title">History Work</h4>
+                                                  <h4 class="text-white card-title">ประวัติการทำงาน</h4>
                                                     <div class="message-box contact-box">
                                                         <h2 class="add-ct-btn">
                                                           <button type="button" id="btOpenModalWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
@@ -267,11 +263,11 @@
                                                         <table class="table text-center color-bordered-table success-bordered-table">
                                                             <thead >
                                                                 <tr >
-                                                                    <th class="text-center">Show</th>
-                                                                    <th class="text-center">Time Length</th>
-                                                                    <th class="text-center">Workplace</th>
-                                                                    <th class="text-center">Work Details</th>
-                                                                    <th class="text-center">Manage</th>
+                                                                    <th class="text-center">แสดง</th>
+                                                                    <th class="text-center">ระยะเวลา</th>
+                                                                    <th class="text-center">สถานที่ทำงาน</th>
+                                                                    <th class="text-center">รายละเอีดยงาน</th>
+                                                                    <th class="text-center">จัดการ</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="list_his_work">
@@ -281,7 +277,7 @@
                                                     </div>
                                                   </form>
                                                   <div class="card-block bg-info">
-                                                    <h4 class="text-white card-title">Experience</h4>
+                                                    <h4 class="text-white card-title">ประสบการณ์</h4>
                                                       <div class="message-box contact-box">
                                                           <h2 class="add-ct-btn">
                                                             <button type="button" id="btOpenModalExp" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
@@ -293,11 +289,11 @@
                                                         <table class="table text-center color-bordered-table success-bordered-table">
                                                             <thead >
                                                                 <tr >
-                                                                    <th class="text-center">Show</th>
-                                                                    <th class="text-center">Experience</th>
-                                                                    <th class="text-center">Time Length</th>
-                                                                    <th class="text-center">Details</th>
-                                                                    <th class="text-center">Manage</th>
+                                                                    <th class="text-center">แสดง</th>
+                                                                    <th class="text-center">ประสบการณ์</th>
+                                                                    <th class="text-center">ระยะเวลา</th>
+                                                                    <th class="text-center">รายละเอียด</th>
+                                                                    <th class="text-center">จัดการ</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="list_exp">
@@ -308,27 +304,24 @@
                                                   </form>
                                               </div>
                                           </div>
-                                          <div class="tab-pane" id="academic" role="tabpanel">
+
+                                  <div class="tab-pane" id="academic" role="tabpanel">
 
                                     <div class="card-block">
                                       <div class="row">
-                                          <div class="col-md-6">
-                                            <ul class="list-icons">
-                                            <li id="research" ><a href="javascript:void(0)"><i id="iconResearch" class="fa fa-chevron-right"></i> Complete Certified Research</a></li>
-                                            <li id="interJourInDatabase"><a href="javascript:void(0)"><i id="iconInterJourInDatabase" class="fa fa-chevron-right"></i>International journals are available in international databases.</a></li>
-                                            <li id="nationWork"><a href="javascript:void(0)"><i id="iconNationWork" class="fa fa-chevron-right"></i>National Award Winners</a></li>
-                                            <li id="interWork" ><a href="javascript:void(0)"><i id="iconInterWork" class="fa fa-chevron-right"></i>International Award Winners</a></li>
-                                            </ul>
-                                         </div>
-                                      <div class="col-md-6">
-                                            <ul class="list-icons">
-                                            <li id="nationMeet"><a href="javascript:void(0)"><i id="iconNationMeet" class="fa fa-chevron-right"></i> National Conference</a></li>
-                                            <li id="interMeet"><a href="javascript:void(0)"><i id="iconInterMeet" class="fa fa-chevron-right"></i> International Conference</a></li>
-                                            <li id="nationJour"><a href="javascript:void(0)"><i id="iconNationJour" class="fa fa-chevron-right"></i> National Journal</a></li>
-                                            <li id="interJourNotDatabase"><a href="javascript:void(0)"><i id="iconInterJourNotDatabase" class="fa fa-chevron-right"></i> International journals not in the international database.</a></li>
-                                            </ul>
+                                        <div class="card-block">
+                                          <h3 class="text-left">ประเภทผลงาน (กรุณาเลือก)</h3>
+                                        <select id="selectAcdemicWork" class="form-control">
+                                          <option>ผลงานที่ได้รับรางวัลระดับนานาชาติ</option>
+                                          <option>ผลงานที่ได้รับรางวัลระดับชาติ</option>
+                                          <option>วารสารระดับชาติ</option>
+                                          <option>วารสารระดับนานาชาติที่ไม่อยู่ในฐานข้อมูลสากล</option>
+                                          <option>วารสารระดับนานาชาติที่อยู่ในฐานข้อมูลสากล</option>
+                                          <option>การประชุมระดับชาติ</option>
+                                          <option>การประชุมระดับนานาชาติ</option>
+                                        </select>
                                       </div>
-                                    </div>
+                                      </div>
                                   </div>
 
                                   <div id="headInterWork" class="card-block bg-info">
@@ -348,8 +341,10 @@
                                                       <th class="text-center">แสดง</th>
                                                       <th class="text-center">ชื่อรางวัล</th>
                                                       <th class="text-center">ชื่อผลงาน</th>
+                                                      <th class="text-center">รายละเอียด</th>
                                                       <th class="text-center">หน่วยงานที่ได้รับรางวัล</th>
-                                                      <th class="text-center">ค่าภาระงานที่ได้รับ</th>
+                                                      <th class="text-center">วันที่</th>
+                                                      <th class="text-center">จัดการ</th>
                                                   </tr>
                                               </thead>
                                               <tbody id="list_inter_work">
@@ -363,7 +358,7 @@
                                       <h4 class="text-white card-title">วารสารระดับชาติ</h4>
                                         <div class="message-box contact-box">
                                             <h2 class="add-ct-btn">
-                                              <button type="button" id="btOpenModalNationJour" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                              <button type="button" id="btOpenModalNationJournal" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                             </h2>
                                         </div>
                                       </div>
@@ -374,9 +369,13 @@
                                                     <tr >
                                                         <th class="text-center">แสดง</th>
                                                         <th class="text-center">ชื่อบทความ</th>
+                                                        <th class="text-center">สถานะผู้เขียนบทความ</th>
+                                                          <th class="text-center">รหัส-ชื่อโครงการวิจัย</th>
                                                         <th class="text-center">ชื่อวารสาร</th>
                                                         <th class="text-center">ประเภทบทความ</th>
                                                         <th class="text-center">ปีที่พิมพ์</th>
+                                                        <th class="text-center">ฉบับที่</th>
+                                                        <th class="text-center">จัดการ</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="list_nation_jour">
@@ -390,7 +389,7 @@
                                         <h4 class="text-white card-title">วารสารระดับนานาชาติที่ไม่อยู่ในฐานข้อมูลสากล</h4>
                                           <div class="message-box contact-box">
                                               <h2 class="add-ct-btn">
-                                                <button type="button" id="btOpenModalInterJourNotDatabase" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                <button type="button" id="btOpenModalInterJournalNotDatabase" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                               </h2>
                                           </div>
                                         </div>
@@ -399,11 +398,15 @@
                                               <table id="tableInterJourNotDatabase" class="table text-center color-bordered-table success-bordered-table">
                                                   <thead >
                                                       <tr >
-                                                          <th class="text-center">แสดง</th>
-                                                          <th class="text-center">ชื่อบทความ</th>
-                                                          <th class="text-center">ชื่อวารสาร</th>
-                                                          <th class="text-center">ประเภทบทความ</th>
-                                                          <th class="text-center">ปีที่พิมพ์</th>
+                                                        <th class="text-center">แสดง</th>
+                                                        <th class="text-center">ชื่อบทความ</th>
+                                                        <th class="text-center">สถานะผู้เขียนบทความ</th>
+                                                          <th class="text-center">รหัส-ชื่อโครงการวิจัย</th>
+                                                        <th class="text-center">ชื่อวารสาร</th>
+                                                        <th class="text-center">ประเภทบทความ</th>
+                                                        <th class="text-center">ปีที่พิมพ์</th>
+                                                        <th class="text-center">ฉบับที่</th>
+                                                        <th class="text-center">จัดการ</th>
                                                       </tr>
                                                   </thead>
                                                   <tbody id="list_inter_jour_not_database">
@@ -412,6 +415,38 @@
                                               </table>
                                           </div>
                                         </form>
+
+                                        <div id="headInterJourInDatabase" class="card-block bg-info">
+
+                                          <h4 class="text-white card-title">วารสารระดับนานาชาติที่อยู่ในฐานข้อมูลสากล</h4>
+                                            <div class="message-box contact-box">
+                                                <h2 class="add-ct-btn">
+                                                  <button type="button" id="btOpenModalInterJournalInDatabase" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                </h2>
+                                            </div>
+                                          </div>
+                                          <form class="form-horizontal form-material ">
+                                            <div class="table-responsive">
+                                                <table id="tableInterJourInDatabase" class="table text-center color-bordered-table success-bordered-table">
+                                                    <thead >
+                                                        <tr >
+                                                          <th class="text-center">แสดง</th>
+                                                          <th class="text-center">ชื่อบทความ</th>
+                                                          <th class="text-center">สถานะผู้เขียนบทความ</th>
+                                                          <th class="text-center">รหัส-ชื่อโครงการวิจัย</th>
+                                                          <th class="text-center">ชื่อวารสาร</th>
+                                                          <th class="text-center">ประเภทบทความ</th>
+                                                          <th class="text-center">ปีที่พิมพ์</th>
+                                                          <th class="text-center">ฉบับที่</th>
+                                                          <th class="text-center">จัดการ</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="list_inter_jour_in_database">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                          </form>
 
                                         <div id="headNationWork" class="card-block bg-info">
                                           <h4 class="text-white card-title">ผลงานที่ได้รับรางวัลระดับชาติ</h4>
@@ -429,8 +464,10 @@
                                                           <th class="text-center">แสดง</th>
                                                           <th class="text-center">ชื่อรางวัล</th>
                                                           <th class="text-center">ชื่อผลงาน</th>
+                                                          <th class="text-center">รายละเอียด</th>
                                                           <th class="text-center">หน่วยงานที่ได้รับรางวัล</th>
-                                                          <th class="text-center">ค่าภาระงานที่ได้รับ</th>
+                                                          <th class="text-center">วันที่</th>
+                                                            <th class="text-center">จัดการ</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="list_nation_work">
@@ -439,6 +476,78 @@
                                                 </table>
                                             </div>
                                           </form>
+
+
+                                          <div id="headNationConference" class="card-block bg-info">
+                                            <h4 class="text-white card-title">การประชุมระดับชาติ</h4>
+                                              <div class="message-box contact-box">
+                                                  <h2 class="add-ct-btn">
+                                                    <button type="button" id="btOpenModalNationConference" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                  </h2>
+                                              </div>
+                                            </div>
+                                            <form class="form-horizontal form-material ">
+                                              <div class="table-responsive">
+                                                  <table id="tableNationConference" class="table text-center color-bordered-table success-bordered-table">
+                                                      <thead >
+                                                          <tr >
+                                                            <th class="text-center">แสดง</th>
+                                                            <th class="text-center">ประเภทบทความ</th>
+                                                            <th class="text-center">ชื่อไทย</th>
+                                                            <th class="text-center">ชื่ออังกฤษ</th>
+                                                            <th class="text-center">ปีที่พิมพ์</th>
+                                                            <th class="text-center">รหัส-ชื่อโครงการวิจัย</th>
+                                                            <th class="text-center">ชื่อการประชุม</th>
+                                                            <th class="text-center">วันที่เริ่มต้น</th>
+                                                            <th class="text-center">วันที่สิ้นสุด</th>
+                                                            <th class="text-center">สถานที่จัดงาน</th>
+                                                            <th class="text-center">ประเทศ</th>
+                                                            <th class="text-center">จัดการ</th>
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody id="list_nation_conference">
+
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                            </form>
+
+                                            <div id="headInterConference" class="card-block bg-info">
+                                              <h4 class="text-white card-title">การประชุมระดับนานาชาติ</h4>
+                                                <div class="message-box contact-box">
+                                                    <h2 class="add-ct-btn">
+                                                      <button type="button" id="btOpenModalInterConference" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                    </h2>
+                                                </div>
+                                              </div>
+                                              <form class="form-horizontal form-material ">
+                                                <div class="table-responsive">
+                                                    <table id="tableInterConference" class="table text-center color-bordered-table success-bordered-table">
+                                                        <thead >
+                                                            <tr >
+                                                              <th class="text-center">แสดง</th>
+                                                              <th class="text-center">ประเภทบทความ</th>
+                                                              <th class="text-center">ชื่อไทย</th>
+                                                              <th class="text-center">ชื่ออังกฤษ</th>
+                                                              <th class="text-center">ปีที่พิมพ์</th>
+                                                              <th class="text-center">รหัส-ชื่อโครงการวิจัย</th>
+                                                              <th class="text-center">ชื่อการประชุม</th>
+                                                              <th class="text-center">วันที่เริ่มต้น</th>
+                                                              <th class="text-center">วันที่สิ้นสุด</th>
+                                                              <th class="text-center">สถานที่จัดงาน</th>
+                                                              <th class="text-center">ประเทศ</th>
+                                                              <th class="text-center">จัดการ</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="list_inter_conference">
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                              </form>
+
+
+
 
                                           </div>
                                       </div>
