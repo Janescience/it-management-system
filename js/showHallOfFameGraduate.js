@@ -97,18 +97,17 @@ $(document).ready(function(){
       var Picture = snap.child('port_image').val();
       var showStatus = snap.child('port_show_status').val();
 
-
-      $('#list_GraduatePortfolio').append("<tr  id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_'+snap.key+"' class='"+'filled-in chk-col-red chk-select-port checkbox'+"'"+showStatus+">"+
-                                "<label for='"+'md_checkbox_'+snap.key+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
-                                + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 25px'+"' width='"+'100'+"' height='"+'100'+"'></td>"+
-                               "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
-                               " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
-
+      if(Status == "Hall Of Fame"){
+        $('#list_GraduateHallOfFame').append("<tr  id='"+snap.key+"'><td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
+                                  + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 25px'+"' width='"+'100'+"' height='"+'100'+"'></td>"+
+                                 "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                 " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+                               }
 // ========================================= End Code =============================================================================
 
 // ========================================= Checked Portfolio =====================================================================
 
-$('#list_GraduatePortfolio').on('click','.chk-select-port',function(e){
+$('#list_GraduateHallOfFame').on('click','.chk-select-port',function(e){
 
   var id = $(this).closest('tr').attr("id");
   var check = $(this).closest('input[type=checkbox]').prop('checked');
@@ -130,7 +129,7 @@ $('#list_GraduatePortfolio').on('click','.chk-select-port',function(e){
 
 // ========================================= Delete Portfolio =====================================================================
 
-$('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
+$('#list_GraduateHallOfFame').on('click','.btn-delete-port',function(){
   var id = $(this).closest('tr').attr("id");
   rootRef.child(id).remove().then(function(){
       $('#deletePortModal').modal('show');
@@ -142,7 +141,7 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
 // ========================================= Edit Graduate Portfolio ==============================================================
 
 
-   $('#list_GraduatePortfolio').on('click','.btn-edit-port',function(e){
+   $('#list_GraduateHallOfFame').on('click','.btn-edit-port',function(e){
 
      idPort = $(this).closest('tr').attr("id");
      var id = $(this).closest('tr').attr("id");
@@ -252,12 +251,12 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
           var Picture = snap.child('port_image').val();
           var showStatus = snap.child('port_show_status').val();
 
-
-          $('#list_GraduatePortfolio').append("<tr  id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_'+snap.key+"' class='"+'filled-in chk-col-red chk-select-port checkbox'+"'"+showStatus+">"+
-                                    "<label for='"+'md_checkbox_'+snap.key+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
-                                    + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 25px'+"' width='"+'100'+"' height='"+'100'+"'></td>"+
-                                   "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
-                                   " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+          if(Status == "Hall Of Fame"){
+            $('#list_GraduateHallOfFame').append("<tr  id='"+snap.key+"'><td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
+                                      + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 25px'+"' width='"+'100'+"' height='"+'100'+"'></td>"+
+                                     "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                     " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+                                   }
         });
 
 
