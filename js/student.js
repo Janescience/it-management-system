@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	var selectedFile;
 	var txt = "";
 
@@ -11,6 +10,13 @@ $(document).ready(function(){
 	var GroupGraId = "";
 	var clickBtEditGraPortGroup = 0;
 
+	var NameGraduateAct;
+	// var GraduateActivityImage = [];
+	// var GraduateActivityVideo = [];
+
+	var NameBechelorAct;
+	// var BechelorActivityImage = [];
+	// var BechelorActivityVideo = [];
 	// ========================================= Get Bechelor Portfolio Type From Database =========================================
 
 	var dbRef = firebase.database();
@@ -100,7 +106,17 @@ $(document).ready(function(){
 
 	$('#btAddBechelorActivity').on('click',function(e){
   		e.preventDefault();
+
+			$('#BechelorActivityName').val("");
+			$('#BechelorActivityDetail').val("");
+			$('#BechelorActivityImage').val("");
+			$('#BechelorActivityVideo').val("");
+			$('#BechelorActivityDateFrom').val("");
+			$('#BechelorActivityDateTo').val("");
+
    			$('#addBechelorActivity').modal('show');
+
+
 		});
 		// ========================================= End Code =====================================================================
 
@@ -137,6 +153,14 @@ $(document).ready(function(){
 
 	$('#btAddGraduateActivity').on('click',function(e){
   		e.preventDefault();
+
+			$('#GraduateActivityName').val("");
+			$('#GraduateActivityDetail').val("");
+			$('#GraduateActivityImage').val("");
+			$('#GraduateActivityVideo').val("");
+			$('#GraduateActivityDateFrom').val("");
+			$('#GraduateActivityDateTo').val("");
+
    			$('#addGraduateActivity').modal('show');
 		});
 		// ========================================= End Code =====================================================================
@@ -225,7 +249,6 @@ $(document).ready(function(){
 
 			});
 			// ========================================= End Code =====================================================================
-
 
 		// ========================================= Add Graduate Portfolio Group =========================================
 
@@ -317,9 +340,27 @@ $(document).ready(function(){
 			  		location.href = "showBechelorPortfolio.php";
 					});
 
+				$('#btShowBechelorActivity').on('click',function(e){
+			  		location.href = "showBechelorActivity.php";
+					});
+
 				$('#btShowGraduatePortfolio').on('click',function(e){
 			  		location.href = "showGraduatePortfolio.php";
 					});
+
+					$('#btShowGraduateActivity').on('click',function(e){
+				  		location.href = "showGraduateActivity.php";
+						});
+
+				$('#btAddBechelorHall').on('click',function(e){
+			  		location.href = "showHallOfFameBechelor.php";
+					});
+
+				$('#btAddGraduateHall').on('click',function(e){
+			  		location.href = "showHallOfFameGraduate.php";
+					});
+
+
 				// ========================================= Get Bechelor Portfolio Type Dropdown =========================================
 
 				select = document.getElementById('BechelorPortfolioGroup');
@@ -460,7 +501,7 @@ $(document).ready(function(){
 						});
 
 					});
-				// ========================================= End Add Graduate Portfolio Type =========================================
+			// ================================================================= End Code =================================================================
 
 			// ========================================= Bechelor Portfolio Script =========================================
 
@@ -469,7 +510,7 @@ $(document).ready(function(){
 
 			});
 			// ================================================================= End Code =================================================================
-			// <!-- <=========================================================== BechelorPortfolioPicture ===========================================================> -->
+			// <!-- <=========================================================== Bechelor Portfolio Picture ===========================================================> -->
 
 			$('#BechelorPortfolioPicture').on('change',function(){
 				var x = document.getElementById("BechelorPortfolioPicture");
@@ -500,8 +541,8 @@ $(document).ready(function(){
 				document.getElementById("BechelorDemo").innerHTML = txt;
 				});
 				// ================================================================= End Code =================================================================
-				// ================================================================= Bechelor Portfolio Button Action =================================================================
 
+				// ================================================================= Bechelor Portfolio Button Action =================================================================
 
 			$('#btSubmitBechelorPortfolio').on('click',function(){
 
@@ -536,7 +577,7 @@ $(document).ready(function(){
 	 			    port_status:Status,
 	 					port_years:$('#BechelorPortfolioYear').val(),
 	 					port_image:downloadURL,
-						port_show_status:"Not Show"
+						port_show_status:"checked"
 	 			  };
 
 					firebase.database().ref('website/student').child('bechelor').child('portfolio').push().set(data).then(function(){
@@ -557,21 +598,127 @@ $(document).ready(function(){
 
 			$('#btCloseBechelorPortfolio').on('click',function(){
 
-				txt = "";
-				$('#addBechelorPortfolio').modal('hide');
-
-					$('#BechelorPortfolioName').val("");
-					$('#BechelorPortfolioDetail').val("");
-					$('#BechelorPortfolioGroup').val("");
-					$("#BechelorPortfolioHallOfFame").prop('checked', false);
-					$('#BechelorPortfolioYear').val("");
-					$('#BechelorPortfolioPicture').val("");
-					document.getElementById("BechelorDemo").innerHTML = txt;
+				// txt = "";
+				// $('#addBechelorPortfolio').modal('hide');
+        //
+				// 	$('#BechelorPortfolioName').val("");
+				// 	$('#BechelorPortfolioDetail').val("");
+				// 	$('#BechelorPortfolioGroup').val("");
+				// 	$("#BechelorPortfolioHallOfFame").prop('checked', false);
+				// 	$('#BechelorPortfolioYear').val("");
+				// 	$('#BechelorPortfolioPicture').val("");
+				// 	document.getElementById("BechelorDemo").innerHTML = txt;
 			});
 
 			// ================================================================= End Code =================================================================
+			// ================================================================= Bechelor Activity Upload Script =================================================================
+			  document.getElementById("BechelorActivityImage").addEventListener('change', function(p){
+			    document.getElementById("BechelorActivityVideo").addEventListener('change', function(v){
+
+			      $('#btSubmitBechelorActivity').on('click',function(){
+
+			        var data = {
+			        activity_name:$('#BechelorActivityName').val(),
+			        activity_detail:$('#BechelorActivityDetail').val(),
+			        // activity_image:"-",
+			        // activity_video:"-",
+			        activity_start:$('#BechelorActivityDateFrom').val(),
+			        activity_end:$('#BechelorActivityDateTo').val(),
+							activity_show_status:"checked"
+
+			      };
+			      NameBechelorAct = $("#BechelorActivityName").val();
 
 
+			      firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).set(data).then(function(){
+			       console.log("Bechelor Activity Saved:");
+			      });
+
+
+			      for (var i = 0; i < p.target.files.length; i++) {
+			          var imageFile = p.target.files[i];
+			          uploadImageAsPromise(imageFile);
+			      }
+
+			      for (var i = 0; i < v.target.files.length; i++) {
+			          var videoFile = v.target.files[i];
+
+			          uploadVideoAsPromise(videoFile);
+			      }
+
+			  //Handle waiting to upload each file using promise
+			  function uploadImageAsPromise (imageFile) {
+			      return new Promise(function (resolve, reject) {
+
+			          var storageImagesRef = firebase.storage().ref("/Activity/Bechelor/Image/"+NameBechelorAct+"/"+imageFile.name);
+			          // var storageRef = firebase.storage().ref("/Activity/"+imageFile.name);
+
+			          var ImagesTask = storageImagesRef.put(imageFile);
+
+
+
+			          ImagesTask.on('state_changed',function(snapshot){
+
+			          },function(error){
+
+			          },function(){
+
+			            var downloadImageURL = ImagesTask.snapshot.downloadURL;
+									// alert(NameBechelorAct);
+
+			          //   qActImage = {
+			          //     activity_image:BechelorActivityImage
+			          // };
+								// firebase.database().ref('website/student').child('bechelor').child('activity').child('image').push().set(downloadImageURL);
+			          firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).child('activity_image').push().child('images').set(downloadImageURL).then(function(){
+			           console.log("Bechelor Activity Images Saved:");
+			          });
+			      });
+			  });
+
+			}
+
+
+
+
+			function uploadVideoAsPromise (videoFile) {
+			        return new Promise(function (resolve, reject) {
+			            // var storageRef = firebase.storage().ref("/Activity/Bechelor/Image/"+imageFile.name);
+			            var storageVideosRef = firebase.storage().ref("/Activity/Bechelor/Video/"+NameBechelorAct+"/"+videoFile.name);
+
+			            var VideosTask = storageVideosRef.put(videoFile);
+
+			            VideosTask.on('state_changed',function(snapshot){
+
+			            },function(error){
+
+			            },function(){
+			              var downloadVideoURL = VideosTask.snapshot.downloadURL;
+
+			              // BechelorActivityVideo.push(downloadVideoURL);
+                  //
+			            //   qActVideo = {
+			            //     activity_video:BechelorActivityVideo
+			            // };
+			            firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).child('activity_video').push().child('videos').set(downloadVideoURL).then(function(){
+			             console.log("Bechelor Activity Video Saved:");
+			            });
+			        });
+			    });
+			}
+
+			$('#addBechelorActivity').modal('hide');
+
+			  // $('#BechelorActivityName').val("");
+			  $('#BechelorActivityDetail').val("");
+			  $('#BechelorActivityImage').val("");
+			  $('#BechelorActivityVideo').val("");
+			  $('#BechelorActivityDateFrom').val("");
+			  $('#BechelorActivityDateTo').val("");
+			});
+			});
+			});
+			// ================================================================= End Code =================================================================
 		// ================================================================= Graduate Portfolio Script =================================================================
 
 		$('#GraduatePortfolioPicture').on('change',function(event){
@@ -580,7 +727,7 @@ $(document).ready(function(){
 		});
 		// ================================================================= End Code =================================================================
 
-		// <!-- <=========================================================== GraduatePortfolioPicture ===========================================================> -->
+		// <!-- <=========================================================== Graduate Portfolio Picture ===========================================================> -->
 		$('#GraduatePortfolioPicture').on('change',function(){
 			var x = document.getElementById("GraduatePortfolioPicture");
 			var txt = "";
@@ -610,7 +757,12 @@ $(document).ready(function(){
 			}
 			document.getElementById("GraduateDemo").innerHTML = txt;
 			});
+			// ================================================================= End Code =================================================================
 
+			// ================================================================= Graduate Portfolio Script =================================================================
+			// ================================================================= End Code =================================================================
+
+			// ================================================================= Graduate Portfolio Button Action =================================================================
 
 		$('#btSubmitGraduatePortfolio').on('click',function(){
 
@@ -644,24 +796,28 @@ $(document).ready(function(){
 					port_type:$('#GraduatePortfolioGroup').val(),
 					port_status:Status,
 					port_years:$('#GraduatePortfolioYear').val(),
-					port_image:downloadURL
+					port_image:downloadURL,
+					port_show_status:"checked"
 				};
 
 				firebase.database().ref('website/student').child('graduate').child('portfolio').push().set(data).then(function(){
 				 console.log("Graduate portfolio Saved:");
 				});
 
-				txt = "";
-
-				$('#GraduatePortfolioName').val("");
-				$('#GraduatePortfolioDetail').val("");
-				$('#GraduatePortfolioGroup').val("");
-				$("#GraduatePortfolioHallOfFame").prop('checked', false);
-				$('#GraduatePortfolioYear').val("");
-				$('#GraduatePortfolioPicture').val("");
-				document.getElementById("GraduateDemo").innerHTML = txt;
+				// txt = "";
+        //
+				// $('#GraduatePortfolioName').val("");
+				// $('#GraduatePortfolioDetail').val("");
+				// $('#GraduatePortfolioGroup').val("");
+				// $("#GraduatePortfolioHallOfFame").prop('checked', false);
+				// $('#GraduatePortfolioYear').val("");
+				// $('#GraduatePortfolioPicture').val("");
+				// document.getElementById("GraduateDemo").innerHTML = txt;
 			});
 		});
+		// ================================================================= End Code =================================================================
+
+		// ================================================================= Cancel Graduate Portfolio Script =================================================================
 
 		$('#btCloseGraduatePortfolio').on('click',function(){
 
@@ -679,106 +835,116 @@ $(document).ready(function(){
 
 		});
 		// ================================================================= End Code =================================================================
-		// ================================================================= Graduate Activity Upload Script =================================================================
-
-			document.getElementById("GraduateActivityImage").addEventListener('change', function(e){
-					//Get files
-					$('#btSubmitGraduateActivity').on('click',function(){
-
-
-					for (var i = 0; i < e.target.files.length; i++) {
-							var imageFile = e.target.files[i];
-							uploadImageAsPromise(imageFile);
-					}
-
-				});
-			});
-
-			//Handle waiting to upload each file using promise
-			function uploadImageAsPromise (imageFile) {
-					return new Promise(function (resolve, reject) {
-							var storageRef = firebase.storage().ref("/Activity/Graduate/Image/"+imageFile.name);
-
-							//Upload file
-							var task = storageRef.put(imageFile);
-
-							task.on('state_changed',function(sanpshot){
-
-							},function(error){
-
-							},function(){
-								var downloadImageURL = task.snapshot.downloadURL;
-
-								firebase.database().ref('website/student').child('bechelor').child('activity').child('image').push().set(downloadImageURL);
-					});
-			});
-		}
-
-			document.getElementById("GraduateActivityVideo").addEventListener('change', function(e){
-					//Get files
-					for (var i = 0; i < e.target.files.length; i++) {
-							var videoFile = e.target.files[i];
-
-							uploadVideoAsPromise(videoFile);
-					}
-			});
-
-			//Handle waiting to upload each file using promise
-			function uploadVideoAsPromise (videoFile) {
-					return new Promise(function (resolve, reject) {
-							var storageRef = firebase.storage().ref("/Activity/Graduate/Video/"+videoFile.name);
-
-							//Upload file
-							var task = storageRef.put(videoFile);
-
-
-
-					});
-			};
-
-			$('#btSubmitGraduateActivity').on('click',function(){
-
-				$('#addGraduateActivity').modal('hide');
-
-				var filename= selectedFile.name;
-				var storageRef = firebase.storage().ref('/Activity/Graduate/' + filename);
-				var uplodadTask = storageRef.put(selectedFile);
-
-
-
-				 uplodadTask.on('state_changed',function(sanpshot){
-
-				 },function(error){
-
-				 },function(){
-					 var downloadURL = uplodadTask.snapshot.downloadURL;
-					 var updates = {};
-
-					 var data = {
-						activity_name:$('#GraduateActivityName').val(),
-						activity_detail:$('#GraduateActivityDetail').val(),
-						activity_image:downloadImageURL,
-						activity_video:downloadVideoURL,
-						activity_start:$('#GraduateActivityDateFrom').val(),
-						activity_end:$('#GraduateActivityDateTo').val()
-					};
-
-					firebase.database().ref('website/student').child('graduate').child('activity').push().set(data).then(function(){
-					 console.log("Graduate Activity Saved:");
-					});
-
-					txt = "";
-
-					$('#GraduateActivityName').val("");
-					$('#GraduateActivityDetail').val("");
-					$('#GraduateActivityImage').val("");
-					$('#GraduateActivityVideo').val("");
-					$('#GraduateActivityDateFrom').val("");
-					$('#GraduateActivityDateTo').val("");
-				});
-			});
 
 		// ================================================================= End Code =================================================================
+		// ================================================================= Graduate Activity Upload Script =================================================================
+		document.getElementById("GraduateActivityImage").addEventListener('change', function(p){
+		  document.getElementById("GraduateActivityVideo").addEventListener('change', function(v){
+
+		    $('#btSubmitGraduateActivity').on('click',function(){
+
+		      var data = {
+		      activity_name:$('#GraduateActivityName').val(),
+		      activity_detail:$('#GraduateActivityDetail').val(),
+		      // activity_image:"-",
+		      // activity_video:"-",
+		      activity_start:$('#GraduateActivityDateFrom').val(),
+		      activity_end:$('#GraduateActivityDateTo').val(),
+		      activity_show_status:"checked"
+
+		    };
+		    NameGraduateAct = $("#GraduateActivityName").val();
+
+
+		    firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).set(data).then(function(){
+		     console.log("Graduate Activity Saved:");
+		    });
+
+
+		    for (var i = 0; i < p.target.files.length; i++) {
+		        var imageFile = p.target.files[i];
+		        uploadImageAsPromise(imageFile);
+		    }
+
+		    for (var i = 0; i < v.target.files.length; i++) {
+		        var videoFile = v.target.files[i];
+
+		        uploadVideoAsPromise(videoFile);
+		    }
+
+		//Handle waiting to upload each file using promise
+		function uploadImageAsPromise (imageFile) {
+		    return new Promise(function (resolve, reject) {
+
+		        var storageImagesRef = firebase.storage().ref("/Activity/Graduate/Image/"+NameGraduateAct+"/"+imageFile.name);
+		        // var storageRef = firebase.storage().ref("/Activity/"+imageFile.name);
+
+		        var ImagesTask = storageImagesRef.put(imageFile);
+
+
+
+		        ImagesTask.on('state_changed',function(snapshot){
+
+		        },function(error){
+
+		        },function(){
+
+		          var downloadImageURL = ImagesTask.snapshot.downloadURL;
+		          // alert(NameGraduateAct);
+
+		        //   qActImage = {
+		        //     activity_image:GraduateActivityImage
+		        // };
+		        // firebase.database().ref('website/student').child('graduate').child('activity').child('image').push().set(downloadImageURL);
+		        firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_image').push().child('images').set(downloadImageURL).then(function(){
+		         console.log("Graduate Activity Images Saved:");
+		        });
+		    });
+		});
+
+		}
+
+
+
+
+		function uploadVideoAsPromise (videoFile) {
+		      return new Promise(function (resolve, reject) {
+		          // var storageRef = firebase.storage().ref("/Activity/Graduate/Image/"+imageFile.name);
+		          var storageVideosRef = firebase.storage().ref("/Activity/Graduate/Video/"+NameGraduateAct+"/"+videoFile.name);
+
+		          var VideosTask = storageVideosRef.put(videoFile);
+
+		          VideosTask.on('state_changed',function(snapshot){
+
+		          },function(error){
+
+		          },function(){
+		            var downloadVideoURL = VideosTask.snapshot.downloadURL;
+
+		            // GraduateActivityVideo.push(downloadVideoURL);
+		          //
+		          //   qActVideo = {
+		          //     activity_video:GraduateActivityVideo
+		          // };
+		          firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_video').push().child('videos').set(downloadVideoURL).then(function(){
+		           console.log("Graduate Activity Video Saved:");
+		          });
+		      });
+		  });
+		}
+
+		$('#addGraduateActivity').modal('hide');
+
+		// $('#GraduateActivityName').val("");
+		$('#GraduateActivityDetail').val("");
+		$('#GraduateActivityImage').val("");
+		$('#GraduateActivityVideo').val("");
+		$('#GraduateActivityDateFrom').val("");
+		$('#GraduateActivityDateTo').val("");
+		});
+	});
+});
+	// ================================================================= End Code =================================================================
 
 
  });

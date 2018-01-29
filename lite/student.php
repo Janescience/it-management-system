@@ -95,7 +95,7 @@
 
                                 <form action="/action_page.php">
                                 <button type="button" id="btAddBechelorPortfolio" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มผลงาน</button>
-                                <button type="button" id="btShowBechelorPortfolio" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-hand-o-right"></i>  ดูผลงาน  <i class="ti ti-medall"></i></button>
+                                <button type="button" id="btShowBechelorPortfolio" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-hand-o-right"></i>  จัดการผลงาน  <i class="ti ti-medall"></i></button>
                                 </form>
 
                                 </div>
@@ -114,6 +114,7 @@
                                 <form action="/action_page.php">
 
                                 <button type="submit" id="btAddBechelorActivity" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มกิจกรรม</button>
+                                <button type="button" id="btShowBechelorActivity" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-hand-o-right"></i>  จัดการกิจกรรม  <i class="fa fa-bullhorn"></i></button>
 
                                 </form>
 
@@ -163,7 +164,7 @@
                                 <form action="/action_page.php">
 
                                 <button type="submit" id="btAddGraduatePortfolio" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มผลงาน</button>
-                                <button type="button" id="btShowGraduatePortfolio" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-hand-o-right"></i>  ดูผลงาน  <i class="ti ti-medall"></i></button>
+                                <button type="button" id="btShowGraduatePortfolio" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-hand-o-right"></i>  จัดการผลงาน  <i class="ti ti-medall"></i></button>
                                 </form>
 
                                 </div>
@@ -182,6 +183,7 @@
                                 <form action="/action_page.php">
 
                                 <button type="submit" id="btAddGraduateActivity" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มกิจกรรม</button>
+                                <button type="button" id="btShowGraduateActivity" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-hand-o-right"></i>  จัดการกิจกรรม  <i class="fa fa-bullhorn"></i></button>
                                 </form>
 
                                 </div>
@@ -325,7 +327,7 @@
               <label class="col-md-12">วิดีโอ<label style="color:red;">(ถ้ามี)</label></label>
               <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-video-camera"></i></div>
-              <input type="file"class="form-control form-control-line" id="BechelorActivityImage" accept="video/*" multiple="5" name="video" value="">
+              <input type="file"class="form-control form-control-line" id="BechelorActivityVideo" accept="video/*" multiple="5" name="video" value="">
               </div>
             </div>
 

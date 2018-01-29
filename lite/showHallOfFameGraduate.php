@@ -61,10 +61,10 @@
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h2 class="text-themecolor">Graduate Portfolio <h5 class="text-themecolor">Graduate Degree</h5></h2>
+                        <h2 class="text-themecolor">Hall of Fame<h5 class="text-themecolor">Graduate Degree</h5></h2>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Student</a></li>
-                            <li class="breadcrumb-item active">Show Graduate Portfolio</li>
+                            <li class="breadcrumb-item active">Show Graduate's Hall of Fame</li>
                         </ol>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     <div class="col-lg-12">
                       <div class="card">
                           <div class="card-block">
-                            <h1 class="w3-animate-right">Portfolio</h1>
+                            <h1 class="w3-animate-right">Hall of Fame</h1>
                             <h4>Graduate Degrees</h4>
                                 <hr/><br/>
 
@@ -99,7 +99,7 @@
 
                               <div class="card-block bg-info">
 
-                                <h4 class="text-white card-title">Portfolio</h4>
+                                <h4 class="text-white card-title">Hall of Fame</h4>
                                 <div class="message-box contact-box">
 
 
@@ -113,7 +113,6 @@
                                     <!-- color-bordered-table success-bordered-table -->
                                       <thead >
                                           <tr >
-                                              <th class="text-center">Show</th>
                                               <th class="text-center">Portfolio Name</th>
                                               <th class="text-center">Portfolio Detail</th>
                                               <th class="text-center">Portfolio Type</th>
@@ -127,7 +126,7 @@
                                             <td colspan="8"><i class="fa fa-warning"></i> No result</td>
                                           </tr>
                                       </thead>
-                                      <tbody id="list_GraduatePortfolio">
+                                      <tbody id="list_GraduateHallOfFame">
 
                                       </tbody>
                                   </table>
@@ -201,7 +200,7 @@
                           <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
                             <input type="checkbox" id="GraduatePortfolioGeneral" class="chk-col-grey" checked disabled>
                             <label for="GraduatePortfolioGeneral">ผลงานทั่วไป</label>
-                            <input type="checkbox" id="GraduatePortfolioHallOfFame" class="chk-col-grey" >
+                            <input type="checkbox" id="GraduatePortfolioHallOfFame" class="chk-col-grey"  disabled>
                             <label for="GraduatePortfolioHallOfFame">Hall of Fame</label>
                           </div>
                         </div>
@@ -236,9 +235,9 @@
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
     </div>
-    <?php include('modal-showBechelorPort.php')?>
+    <?php include('modal-showGraduatePort.php')?>
     <?php include('import-javascript.php')?>
-    <script src="../js/showGraduatePortfolio.js"></script>
+    <script src="../js/showHallOfFameGraduate.js"></script>
 
 </body>
 
