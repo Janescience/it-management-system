@@ -38,7 +38,7 @@ $('#CancelEditGraduateActivityVideo').hide();
 
 // ========================================= End Code =====================================================================
 
-// ========================================= Get Graduate Portfolio Type Dropdown =========================================
+// ========================================= Get Graduate Activity Dropdown =========================================
 
   select = document.getElementById('selectActivity');
 
@@ -56,8 +56,9 @@ $('#CancelEditGraduateActivityVideo').hide();
     });
 
 
-// ========================================= End Graduate Portfolio Type =========================================
+// ========================================= End Graduate Activity Type =========================================
 
+// ========================================= Put Graduate Activity To Input =========================================
   $('#selectActivity').on('change',function(){
    actName = $(this).children(":selected").attr("id");
    $('#ActvImage').empty();
@@ -69,7 +70,7 @@ $('#CancelEditGraduateActivityVideo').hide();
    $('#GraduateActivityDetail').prop('disabled', true);
    $('#GraduateActivityDateFrom').prop('disabled', true);
    $('#GraduateActivityDateTo').prop('disabled', true);
-   $('#ShowActivityStatus').prop('disabled', true);
+   $('#ShowActivityStatus').prop('disabled', false);
 
    $('#SaveEditGraduateActivity').hide();
    $('#CancelEditGraduateActivity').hide();
@@ -134,6 +135,9 @@ $('#CancelEditGraduateActivityVideo').hide();
    });
   });
 
+// ========================================= End Put Graduate Activity To Input =========================================
+
+// =========================================  Edit Text Graduate Activity Button =========================================
   $('#EditGraduateActivity').on('click',function(e){
       e.preventDefault();
 
@@ -141,7 +145,6 @@ $('#CancelEditGraduateActivityVideo').hide();
       $('#GraduateActivityDetail').prop('disabled', false);
       $('#GraduateActivityDateFrom').prop('disabled', false);
       $('#GraduateActivityDateTo').prop('disabled', false);
-      $('#ShowActivityStatus').prop('disabled', false);
       $('#selectActivity').prop('disabled', true);
 
 
@@ -150,6 +153,10 @@ $('#CancelEditGraduateActivityVideo').hide();
       $('#CancelEditGraduateActivity').show();
     });
 
+// ========================================= End Edit Text Graduate Activity Button =========================================
+
+// =========================================  Cancel Edit Text Graduate Activity Button =========================================
+
   $('#CancelEditGraduateActivity').on('click',function(e){
       e.preventDefault();
 
@@ -157,7 +164,6 @@ $('#CancelEditGraduateActivityVideo').hide();
       $('#GraduateActivityDetail').prop('disabled', true);
       $('#GraduateActivityDateFrom').prop('disabled', true);
       $('#GraduateActivityDateTo').prop('disabled', true);
-      $('#ShowActivityStatus').prop('disabled', true);
       $('#selectActivity').prop('disabled', false);
 
 
@@ -166,7 +172,9 @@ $('#CancelEditGraduateActivityVideo').hide();
       $('#EditGraduateActivity').show();
 
     });
+// ========================================= End  Cancel Edit Text Graduate Activity Button =========================================
 
+// ========================================= Save Edit Text Graduate Activity Button =========================================
   $('#SaveEditGraduateActivity').on('click',function(e){
       e.preventDefault();
 
@@ -187,7 +195,6 @@ $('#CancelEditGraduateActivityVideo').hide();
       $('#GraduateActivityDetail').prop('disabled', true);
       $('#GraduateActivityDateFrom').prop('disabled', true);
       $('#GraduateActivityDateTo').prop('disabled', true);
-      $('#ShowActivityStatus').prop('disabled', true);
       $('#selectActivity').prop('disabled', false);
 
 
@@ -208,6 +215,11 @@ $('#CancelEditGraduateActivityVideo').hide();
           });
     });
 
+  // ========================================= End Save Edit Text Graduate Activity Button =========================================
+
+
+  // =========================================  Edit Image Graduate Activity Button =========================================
+
     $('#EditGraduateActivityImage').on('click',function(e){
         e.preventDefault();
 
@@ -220,6 +232,9 @@ $('#CancelEditGraduateActivityVideo').hide();
         $('#CancelEditGraduateActivityImage').show();
       });
 
+  // ========================================= End Edit Image Graduate Activity Button =========================================
+
+  // ========================================= Cancel Edit Image Graduate Activity Button =========================================
     $('#CancelEditGraduateActivityImage').on('click',function(e){
         e.preventDefault();
 
@@ -231,8 +246,9 @@ $('#CancelEditGraduateActivityVideo').hide();
         $('#EditGraduateActivityImage').show();
 
       });
+  // ========================================= End Cancel Edit Image Graduate Activity Button =========================================
 
-
+  // ========================================= Save Edit Image Graduate Activity Button =========================================
   document.getElementById("GraduateActivityImage").addEventListener('change', function(p){
     $('#SaveEditGraduateActivityImage').on('click',function(e){
         e.preventDefault();
@@ -284,6 +300,10 @@ $('#CancelEditGraduateActivityVideo').hide();
         });
       });
 
+  // ========================================= End Save Edit Image Graduate Activity Button =========================================
+
+  // =========================================  Edit Video Graduate Activity Button =========================================
+
     $('#EditGraduateActivityVideo').on('click',function(e){
         e.preventDefault();
 
@@ -296,6 +316,10 @@ $('#CancelEditGraduateActivityVideo').hide();
         $('#CancelEditGraduateActivityVideo').show();
       });
 
+  // ========================================= End Edit Video Graduate Activity Button =========================================
+
+  // ========================================= Cancel Edit Video Graduate Activity Button =========================================
+
   $('#CancelEditGraduateActivityVideo').on('click',function(e){
       e.preventDefault();
 
@@ -307,6 +331,10 @@ $('#CancelEditGraduateActivityVideo').hide();
       $('#EditGraduateActivityVideo').show();
 
     });
+
+  // ========================================= End Cancel Edit Video Graduate Activity Button =========================================
+
+  // ========================================= Save Edit Video Graduate Activity Button =========================================
 
   document.getElementById("GraduateActivityVideo").addEventListener('change', function(v){
     $('#SaveEditGraduateActivityVideo').on('click',function(e){
@@ -361,6 +389,10 @@ $('#CancelEditGraduateActivityVideo').hide();
         });
       });
 
+  // ========================================= End Save Edit Video Graduate Activity Button =========================================
+
+  // =========================================  Delete Graduate Activity Button =========================================
+
     $('#DeleteGraduateActivity').on('click',function(e){
         e.preventDefault();
 
@@ -380,6 +412,8 @@ $('#CancelEditGraduateActivityVideo').hide();
 
             });
       });
+  // ========================================= End Delete Graduate Activity Button =========================================
+
 });
 
 

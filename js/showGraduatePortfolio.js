@@ -13,8 +13,9 @@ $(document).ready(function(){
   var  currentStatus;
   var clickBtEditPort = 0;
 
-
-
+  var GraTypeEdit = "";
+	var GroupGraId = "";
+	var clickBtEditGraPortGroup = 0;
 
 // ========================================= Set initial Graduate Portfolio Modal =========================================
   txt = "";
@@ -26,65 +27,183 @@ $(document).ready(function(){
   $('#GraduatePortfolioPicture').val("");
   // document.getElementById("GraduateDemo").innerHTML = txt;
 // ========================================= End Code =====================================================================
-// ========================================= Set Button Add Graduate Portfolio type =========================================
 
-  $('#AddGraduatePortfolioType').hide();
-  $('#SaveGraduatePortfolioGroup').hide();
-  $('#CancelAddGraduatePortfolioGroup').hide();
+// ========================================= Get Graduate Portfolio Type From Database =========================================
 
-  $('#CancelAddGraduatePortfolioGroup').on('click',function(e){
-      $('#AddGraduatePortfolioType').hide();
-      $('#CancelAddGraduatePortfolioGroup').hide();
-      $('#SaveGraduatePortfolioGroup').hide();
-      $('#AddGraduatePortfolioGroup').show();
+var dbRef = firebase.database();
+var GraduatePortfolioGroupRef = dbRef.ref("website/student/portfolioGroup/graduate");
+var GraduateRootRef = GraduatePortfolioGroupRef;
+// ========================================= End Code =====================================================================
 
-    });
+// ========================================= Set initial Graduate Portfolio Type =========================================
+$('#AddGraduatePortfolioType').hide();
+$('#EditGraduatePortfolioType').hide();
+$('#SaveAddGraduatePortfolioGroup').hide();
+$('#CancelAddGraduatePortfolioGroup').hide();
 
-    $('#AddGraduatePortfolioGroup').on('click',function(e){
-        $('#AddGraduatePortfolioType').show();
-        $('#CancelAddGraduatePortfolioGroup').show();
-        $('#SaveGraduatePortfolioGroup').show();
-        $('#AddGraduatePortfolioGroup').hide();
+$('#SaveEditGraduatePortfolioGroup').hide();
+$('#CancelEditGraduatePortfolioGroup').hide();
+// ========================================= End Code =====================================================================
 
+// ========================================= Add Graduate Portfolio Group =========================================
+
+$('#AddGraduatePortfolioGroup').on('click',function(e){
+    $('#AddGraduatePortfolioType').show();
+    $('#CancelAddGraduatePortfolioGroup').show();
+    $('#SaveAddGraduatePortfolioGroup').show();
+    $('#AddGraduatePortfolioGroup').hide();
+    $('#EditGraduatePortfolioGroup').hide();
+    $('#DeleteGraduatePortfolioGroup').hide();
+
+  });
+// ========================================= End Code =====================================================================
+
+// ========================================= Cancel Add Graduate Portfolio Group =========================================
+
+$('#CancelAddGraduatePortfolioGroup').on('click',function(e){
+$('#AddGraduatePortfolioType').hide();
+$('#CancelAddGraduatePortfolioGroup').hide();
+$('#SaveAddGraduatePortfolioGroup').hide();
+$('#AddGraduatePortfolioGroup').show();
+$('#EditGraduatePortfolioGroup').show();
+$('#DeleteGraduatePortfolioGroup').show();
+
+});
+// ========================================= End Code =====================================================================
+
+// ========================================= Edit Graduate Portfolio Group =========================================
+
+$('#EditGraduatePortfolioGroup').on('click',function(e){
+  $('#EditGraduatePortfolioType').show();
+  $('#SaveEditGraduatePortfolioGroup').show();
+  $('#CancelEditGraduatePortfolioGroup').show();
+  $('#AddGraduatePortfolioGroup').hide();
+  $('#EditGraduatePortfolioGroup').hide();
+  $('#DeleteGraduatePortfolioGroup').hide();
+
+  $('#GraduatePortfolioGroup').val("");
+
+  $('#GraduatePortfolioGroup').on('change',function(){
+  GroupGraId = $(this).children(":selected").attr("id");
+    // alert(GroupBecId);
+  GraTypeEdit = $("#GraduatePortfolioGroup option:selected" ).text();
+  // alert($("#BechelorPortfolioGroup option:selected" ).text());
+  $('#EditGraduatePortfolioType').val(GraTypeEdit);
+  });
+
+});
+// ========================================= End Code =====================================================================
+
+// ========================================= Delete Graduate Portfolio Group =========================================
+
+$('#GraduatePortfolioGroup').on('change',function(){
+GroupGraId = $(this).children(":selected").attr("id");
+
+
+$('#DeleteGraduatePortfolioGroup').on('click',function(){
+  // GroupGraId = $(this).children(":selected").attr("id");
+  clickBtEditGraPortGroup = clickBtEditGraPortGroup+1;
+
+  GraduateRootRef.child(GroupGraId).remove().then(function(){
+      $('#deletePortModal').modal('show');
+
+      $('#GraduatePortfolioGroup').empty();
+
+      GraduateRootRef.on("child_added",snap => {
+        var Type = snap.child('port_GroupType').val();
+
+        $('#GraduatePortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
+
+        $('#GraduatePortfolioGroup').val("");
       });
+  });
+    $(this).children(":selected").remove();
+});
+});
+// ========================================= End Code =====================================================================
+// ========================================= Cancel Edits Graduate Portfolio Group =========================================
 
+$('#CancelEditGraduatePortfolioGroup').on('click',function(e){
+  $('#EditGraduatePortfolioType').hide();
+  $('#SaveEditGraduatePortfolioGroup').hide();
+  $('#CancelEditGraduatePortfolioGroup').hide();
+  $('#AddGraduatePortfolioGroup').show();
+  $('#EditGraduatePortfolioGroup').show();
+  $('#DeleteGraduatePortfolioGroup').show();
+
+});
 // ========================================= End Code =====================================================================
 // ========================================= Add Graduate Portfolio Type =========================================
-  $('#SaveGraduatePortfolioGroup').on('click',function(e){
+$('#SaveAddGraduatePortfolioGroup').on('click',function(e){
 
-       var data = {
-        port_GroupType:$('#AddGraduatePortfolioType').val(),
-      };
+     var data = {
+      port_GroupType:$('#AddGraduatePortfolioType').val(),
+    };
 
-      firebase.database().ref('website/student').child('portfolioGroup').child('graduate').push().set(data).then(function(){
-       console.log("Graduate portfolio Group Saved:");
-      });
-
-      $('#AddGraduatePortfolioType').val("");
-      $('#AddGraduatePortfolioType').hide();
-      $('#CancelAddGraduatePortfolioGroup').hide();
-      $('#SaveGraduatePortfolioGroup').hide();
-      $('#AddGraduatePortfolioGroup').show();
-
-
+    firebase.database().ref('website/student').child('portfolioGroup').child('graduate').push().set(data).then(function(){
+     console.log("Graduate portfolio Group Saved:");
     });
+
+    $('#AddGraduatePortfolioType').val("");
+    $('#AddGraduatePortfolioType').hide();
+    $('#CancelAddGraduatePortfolioGroup').hide();
+    $('#SaveAddGraduatePortfolioGroup').hide();
+    $('#AddGraduatePortfolioGroup').show();
+    $('#EditGraduatePortfolioGroup').show();
+    $('#DeleteGraduatePortfolioGroup').show();
+
+    for(var i = 0;i< clickBtEditGraPortGroup;i++){
+      $('#GraduatePortfolioGroup option:last').remove();
+    }
+
+  });
 // ========================================= End Add Graduate Portfolio Type =========================================
-// ========================================= Get Graduate Portfolio Type Dropdown =========================================
 
-// var Auth = firebase.auth();
-  var portfolioGroupRef = dbRef.ref("website/student/portfolioGroup/graduate");
-  var rootGroupRef = portfolioGroupRef;
+// ========================================= Edit Graduate Portfolio Type =========================================
 
-  select = document.getElementById('GraduatePortfolioGroup');
+$('#SaveEditGraduatePortfolioGroup').on('click',function(e){
 
-    rootGroupRef.on("child_added",snap => {
+  clickBtEditGraPortGroup = clickBtEditGraPortGroup+1;
+
+  var dataUpdateGraduatePortGroup = {
+    port_GroupType:$('#EditGraduatePortfolioType').val()
+  };
+
+  GraduateRootRef.child(GroupGraId).update(dataUpdateGraduatePortGroup);
+
+    $('#EditGraduatePortfolioType').val("");
+    $('#EditGraduatePortfolioType').hide();
+    $('#SaveEditGraduatePortfolioGroup').hide();
+    $('#CancelEditGraduatePortfolioGroup').hide();
+    $('#AddGraduatePortfolioGroup').show();
+    $('#EditGraduatePortfolioGroup').show();
+    $('#DeleteGraduatePortfolioGroup').show();
+
+    $('#GraduatePortfolioGroup').empty();
+
+    GraduateRootRef.on("child_added",snap => {
       var Type = snap.child('port_GroupType').val();
 
-      $('#GraduatePortfolioGroup').append("<option>"+ Type +"</option>");
+      $('#GraduatePortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
 
+      $('#GraduatePortfolioGroup').val("");
     });
 
+  });
+// ================================================================= End Code =================================================================
+// ========================================= Get Graduate Portfolio Type Dropdown =========================================
+
+select = document.getElementById('GraduatePortfolioGroup');
+
+  GraduateRootRef.on("child_added",snap => {
+    var Type = snap.child('port_GroupType').val();
+
+    $('#GraduatePortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
+
+    $('#GraduatePortfolioGroup').val("");
+  });
 // ========================================= End Graduate Portfolio Type =========================================
+
 
 // ========================================= Get Graduate Portfolio Table  =========================================
 

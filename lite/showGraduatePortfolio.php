@@ -173,25 +173,25 @@
                         <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-trophy"></i></div>
                         <select id="GraduatePortfolioGroup" class="form-control form-control-line">
-                          <!-- <option>การประกวดทั่วไป</option>
-                          <option>การออกแบบเว็บไซต์(Website)</option>
-                          <option>แอนิเมชั่น(Animation)</option>
-                          <option>หนังสืออิเล็กทรอนิกส์(E-Book)</option>
-                          <option>ภาพยนตร์สั้น</option>
-                          <option>เรื่องสั้น</option>
-                          <option>การอบรม</option>
-                          <option>อื่นๆ</option> -->
                       </select>
                     </div><br/>
 
                       <div class="">
                         <input id="AddGraduatePortfolioType" type="text"  class="form-control form-control-line">
+                        <input id="EditGraduatePortfolioType" type="text"  class="form-control form-control-line">
                       </div><br/>
+
                       <div align="right" class="">
-                        <button id="AddGraduatePortfolioGroup" class="btn btn-info"><i class="fa fa-plus"></i>   เพิ่มประเภทผลงาน</button>
-                        <button id="SaveGraduatePortfolioGroup" class="btn btn-success">   ตกลง</button>
+                        <button id="AddGraduatePortfolioGroup" class="btn btn-info"><i class="fa fa-plus"></i>   เพิ่ม</button>
+                        <button id="EditGraduatePortfolioGroup" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i>   แก้ไข</button>
+                        <button id="DeleteGraduatePortfolioGroup" class="btn btn-danger"><i class="fa fa-minus"></i>   ลบ</button>
+                        <button id="SaveAddGraduatePortfolioGroup" class="btn btn-success">   ตกลง</button>
                         <button id="CancelAddGraduatePortfolioGroup" class="btn btn-danger">   ยกเลิก</button>
+
+                        <button id="SaveEditGraduatePortfolioGroup" class="btn btn-success editType" >   ตกลง</button>
+                        <button id="CancelEditGraduatePortfolioGroup" class="btn btn-danger">   ยกเลิก</button>
                       </div>
+
                   </div>
 
                   <div class="form-group">
@@ -219,14 +219,14 @@
 
                   <div class="form-group">
                     <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
-                        <img id="GraduatePortfolioPicturePreview" width="70" height="70" ><br/>
                         <input type="file" id="GraduatePortfolioPicture" class="form-control" >
-                        <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="GraduatePortfolioPicture"> -->
+                          <p id="GraduateDemo"></p>
+                        <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button id="btSubmitEditGraduatePortfolio" type="submit" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
-                  <button id="btCloseEditGraduatePortfolio" type="reset" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
+                  <button id="btSubmitGraduatePortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
                 </div>
                 <!-- </form> -->
               </div>

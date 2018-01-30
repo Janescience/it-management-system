@@ -73,7 +73,6 @@ $(document).ready(function(){
 	$('#CancelEditGraduatePortfolioGroup').hide();
 	// ========================================= End Code =====================================================================
 
-
 	// ========================================= Add Bechelor Portfolio  =========================================
 	$('#btAddBechelorPortfolio').on('click',function(e){
   		e.preventDefault();
@@ -101,6 +100,156 @@ $(document).ready(function(){
 
 		});
 		// ========================================= End Code =====================================================================
+		// ========================================= Add Bechelor Portfolio Group =========================================
+		$('#AddBechelorPortfolioGroup').on('click',function(e){
+				$('#AddBechelorPortfolioType').show();
+				$('#CancelAddBechelorPortfolioGroup').show();
+				$('#SaveAddBechelorPortfolioGroup').show();
+				$('#AddBechelorPortfolioGroup').hide();
+				$('#EditBechelorPortfolioGroup').hide();
+				$('#DeleteBechelorPortfolioGroup').hide();
+
+			});
+	// ========================================= End Code =====================================================================
+
+	// ========================================= Cancel Add Bechelor Portfolio Group =========================================
+
+	$('#CancelAddBechelorPortfolioGroup').on('click',function(e){
+		$('#AddBechelorPortfolioType').hide();
+		$('#CancelAddBechelorPortfolioGroup').hide();
+		$('#SaveAddBechelorPortfolioGroup').hide();
+		$('#AddBechelorPortfolioGroup').show();
+		$('#EditBechelorPortfolioGroup').show();
+		$('#DeleteBechelorPortfolioGroup').show();
+
+	});
+	// ========================================= End Code =====================================================================
+
+	// ========================================= Edit Bechelor Portfolio Group =========================================
+	$('#EditBechelorPortfolioGroup').on('click',function(e){
+			$('#EditBechelorPortfolioType').show();
+			$('#SaveEditBechelorPortfolioGroup').show();
+			$('#CancelEditBechelorPortfolioGroup').show();
+			$('#AddBechelorPortfolioGroup').hide();
+			$('#EditBechelorPortfolioGroup').hide();
+			$('#DeleteBechelorPortfolioGroup').hide();
+
+
+			$('#BechelorPortfolioGroup').on('change',function(){
+			GroupBecId = $(this).children(":selected").attr("id");
+				// alert(GroupBecId);
+			BecTypeEdit = $("#BechelorPortfolioGroup option:selected" ).text();
+			// alert($("#BechelorPortfolioGroup option:selected" ).text());
+			$('#EditBechelorPortfolioType').val(BecTypeEdit);
+			});
+
+		});
+		// ========================================= End Code =====================================================================
+
+		// ========================================= Delete Bechelor Portfolio Group =========================================
+
+		$('#BechelorPortfolioGroup').on('change',function(){
+		GroupBecId = $(this).children(":selected").attr("id");
+
+		$('#DeleteBechelorPortfolioGroup').on('click',function(){
+			// GroupGraId = $(this).children(":selected").attr("id");
+			clickBtEditBecPortGroup = clickBtEditBecPortGroup+1;
+
+			BechelorRootRef.child(GroupBecId).remove().then(function(){
+					$('#deletePortModal').modal('show');
+
+					$('#BechelorPortfolioGroup').empty();
+
+					BechelorRootRef.on("child_added",snap => {
+						var Type = snap.child('port_GroupType').val();
+
+						$('#BechelorPortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
+
+						$('#BechelorPortfolioGroup').val("");
+
+					});
+			});
+				$(this).children(":selected").remove();
+		});
+	});
+
+		// ========================================= End Code =====================================================================
+
+		// ========================================= Cancel Edits Bechelor Portfolio Group =========================================
+
+		$('#CancelEditBechelorPortfolioGroup').on('click',function(e){
+			$('#EditBechelorPortfolioType').hide();
+			$('#SaveEditBechelorPortfolioGroup').hide();
+			$('#CancelEditBechelorPortfolioGroup').hide();
+			$('#AddBechelorPortfolioGroup').show();
+			$('#EditBechelorPortfolioGroup').show();
+			$('#DeleteBechelorPortfolioGroup').show();
+
+		});
+		// ========================================= End Code =====================================================================
+
+		// ========================================= Add Bechelor Portfolio Type =========================================
+		$('#SaveAddBechelorPortfolioGroup').on('click',function(e){
+
+				 var data = {
+ 			    port_GroupType:$('#AddBechelorPortfolioType').val(),
+ 			  };
+
+				firebase.database().ref('website/student').child('portfolioGroup').child('bechelor').push().set(data).then(function(){
+			 	 console.log("Bechelor portfolio Group Saved:");
+			  });
+
+				$('#AddBechelorPortfolioType').val("");
+				$('#AddBechelorPortfolioType').hide();
+				$('#CancelAddBechelorPortfolioGroup').hide();
+				$('#SaveAddBechelorPortfolioGroup').hide();
+				$('#AddBechelorPortfolioGroup').show();
+				$('#EditBechelorPortfolioGroup').show();
+				$('#DeleteBechelorPortfolioGroup').show();
+
+				for(var i = 0;i< clickBtEditBecPortGroup;i++){
+	        $('#BechelorPortfolioGroup option:last').remove();
+	      }
+
+
+			});
+		// ========================================= End Add Bechelor Portfolio Type =========================================
+
+		// ========================================= Edit Bechelor Portfolio Type =========================================
+
+		$('#SaveEditBechelorPortfolioGroup').on('click',function(e){
+
+			clickBtEditBecPortGroup = clickBtEditBecPortGroup+1;
+			// var RefBechelorPortGroup = dbRef.ref("website/student/portfolioGroup/bechelor");
+			// var rootBechelorPortGroupRef = RefBechelorPortGroup;
+
+			var dataUpdateBechelorPortGroup = {
+				port_GroupType:$('#EditBechelorPortfolioType').val()
+			};
+
+			BechelorRootRef.child(GroupBecId).update(dataUpdateBechelorPortGroup);
+
+				$('#EditBechelorPortfolioType').val("");
+				$('#EditBechelorPortfolioType').hide();
+				$('#SaveEditBechelorPortfolioGroup').hide();
+				$('#CancelEditBechelorPortfolioGroup').hide();
+				$('#AddBechelorPortfolioGroup').show();
+				$('#EditBechelorPortfolioGroup').show();
+				$('#DeleteBechelorPortfolioGroup').show();
+
+				$('#BechelorPortfolioGroup').empty();
+
+				BechelorRootRef.on("child_added",snap => {
+					var Type = snap.child('port_GroupType').val();
+
+					$('#BechelorPortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
+
+					$('#BechelorPortfolioGroup').val("");
+
+				});
+
+			});
+		// ========================================= End Add Bechelor Portfolio Type =========================================
 
 		// ========================================= Add Bechelor Activity Modal Show  =========================================
 
@@ -149,6 +298,93 @@ $(document).ready(function(){
 
 		});
 		// ========================================= End Code =====================================================================
+		// ========================================= Add Graduate Portfolio Group =========================================
+
+		$('#AddGraduatePortfolioGroup').on('click',function(e){
+				$('#AddGraduatePortfolioType').show();
+				$('#CancelAddGraduatePortfolioGroup').show();
+				$('#SaveAddGraduatePortfolioGroup').show();
+				$('#AddGraduatePortfolioGroup').hide();
+				$('#EditGraduatePortfolioGroup').hide();
+				$('#DeleteGraduatePortfolioGroup').hide();
+
+			});
+	// ========================================= End Code =====================================================================
+
+	// ========================================= Cancel Add Graduate Portfolio Group =========================================
+
+	$('#CancelAddGraduatePortfolioGroup').on('click',function(e){
+		$('#AddGraduatePortfolioType').hide();
+		$('#CancelAddGraduatePortfolioGroup').hide();
+		$('#SaveAddGraduatePortfolioGroup').hide();
+		$('#AddGraduatePortfolioGroup').show();
+		$('#EditGraduatePortfolioGroup').show();
+		$('#DeleteGraduatePortfolioGroup').show();
+
+	});
+	// ========================================= End Code =====================================================================
+
+	// ========================================= Edit Graduate Portfolio Group =========================================
+
+	$('#EditGraduatePortfolioGroup').on('click',function(e){
+			$('#EditGraduatePortfolioType').show();
+			$('#SaveEditGraduatePortfolioGroup').show();
+			$('#CancelEditGraduatePortfolioGroup').show();
+			$('#AddGraduatePortfolioGroup').hide();
+			$('#EditGraduatePortfolioGroup').hide();
+			$('#DeleteGraduatePortfolioGroup').hide();
+
+
+			$('#GraduatePortfolioGroup').on('change',function(){
+			GroupGraId = $(this).children(":selected").attr("id");
+				// alert(GroupBecId);
+			GraTypeEdit = $("#GraduatePortfolioGroup option:selected" ).text();
+			// alert($("#BechelorPortfolioGroup option:selected" ).text());
+			$('#EditGraduatePortfolioType').val(GraTypeEdit);
+			});
+
+		});
+		// ========================================= End Code =====================================================================
+
+		// ========================================= Delete Graduate Portfolio Group =========================================
+
+		$('#GraduatePortfolioGroup').on('change',function(){
+		GroupGraId = $(this).children(":selected").attr("id");
+
+
+		$('#DeleteGraduatePortfolioGroup').on('click',function(){
+			// GroupGraId = $(this).children(":selected").attr("id");
+			clickBtEditGraPortGroup = clickBtEditGraPortGroup+1;
+
+		  GraduateRootRef.child(GroupGraId).remove().then(function(){
+		      $('#deletePortModal').modal('show');
+
+					$('#GraduatePortfolioGroup').empty();
+
+					GraduateRootRef.on("child_added",snap => {
+						var Type = snap.child('port_GroupType').val();
+
+						$('#GraduatePortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
+
+						$('#GraduatePortfolioGroup').val("");
+					});
+		  });
+		    $(this).children(":selected").remove();
+		});
+	});
+		// ========================================= End Code =====================================================================
+		// ========================================= Cancel Edits Graduate Portfolio Group =========================================
+
+		$('#CancelEditGraduatePortfolioGroup').on('click',function(e){
+			$('#EditGraduatePortfolioType').hide();
+			$('#SaveEditGraduatePortfolioGroup').hide();
+			$('#CancelEditGraduatePortfolioGroup').hide();
+			$('#AddGraduatePortfolioGroup').show();
+			$('#EditGraduatePortfolioGroup').show();
+			$('#DeleteGraduatePortfolioGroup').show();
+
+		});
+		// ========================================= End Code =====================================================================
 		// ========================================= Add Graduate Activity Modal Show =========================================
 
 	$('#btAddGraduateActivity').on('click',function(e){
@@ -165,107 +401,71 @@ $(document).ready(function(){
 		});
 		// ========================================= End Code =====================================================================
 
-	// ========================================= Add Bechelor Portfolio Group =========================================
-	$('#AddBechelorPortfolioGroup').on('click',function(e){
-			$('#AddBechelorPortfolioType').show();
-			$('#CancelAddBechelorPortfolioGroup').show();
-			$('#SaveAddBechelorPortfolioGroup').show();
-			$('#AddBechelorPortfolioGroup').hide();
-			$('#EditBechelorPortfolioGroup').hide();
-			$('#DeleteBechelorPortfolioGroup').hide();
+	// ========================================= Go To Anypage =========================================
+		$('#btShowBechelorPortfolio').on('click',function(e){
+	  		location.href = "showBechelorPortfolio.php";
+			});
 
-		});
-		// ========================================= End Code =====================================================================
+		$('#btShowBechelorActivity').on('click',function(e){
+	  		location.href = "showBechelorActivity.php";
+			});
 
-		// ========================================= Cancel Add Bechelor Portfolio Group =========================================
+		$('#btShowGraduatePortfolio').on('click',function(e){
+	  		location.href = "showGraduatePortfolio.php";
+			});
 
-		$('#CancelAddBechelorPortfolioGroup').on('click',function(e){
-			$('#AddBechelorPortfolioType').hide();
-			$('#CancelAddBechelorPortfolioGroup').hide();
-			$('#SaveAddBechelorPortfolioGroup').hide();
-			$('#AddBechelorPortfolioGroup').show();
-			$('#EditBechelorPortfolioGroup').show();
-			$('#DeleteBechelorPortfolioGroup').show();
-
-		});
-		// ========================================= End Code =====================================================================
-
-		// ========================================= Edit Bechelor Portfolio Group =========================================
-		$('#EditBechelorPortfolioGroup').on('click',function(e){
-				$('#EditBechelorPortfolioType').show();
-				$('#SaveEditBechelorPortfolioGroup').show();
-				$('#CancelEditBechelorPortfolioGroup').show();
-				$('#AddBechelorPortfolioGroup').hide();
-				$('#EditBechelorPortfolioGroup').hide();
-				$('#DeleteBechelorPortfolioGroup').hide();
-
-
-				$('#BechelorPortfolioGroup').on('change',function(){
-				GroupBecId = $(this).children(":selected").attr("id");
-					// alert(GroupBecId);
-				BecTypeEdit = $("#BechelorPortfolioGroup option:selected" ).text();
-				// alert($("#BechelorPortfolioGroup option:selected" ).text());
-				$('#EditBechelorPortfolioType').val(BecTypeEdit);
+			$('#btShowGraduateActivity').on('click',function(e){
+		  		location.href = "showGraduateActivity.php";
 				});
 
-			});
-			// ========================================= End Code =====================================================================
-
-			// ========================================= Delete BechelorBechelorio Group =========================================
-
-			$('#BechelorPortfolioGroup').on('change',function(){
-			GroupBecId = $(this).children(":selected").attr("id");
+		$('#btAddBechelorHall').on('click',function(e){
+	  		location.href = "showHallOfFameBechelor.php";
 			});
 
-			$('#DeleteBechelorPortfolioGroup').on('click',function(){
-				// GroupGraId = $(this).children(":selected").attr("id");
-				clickBtEditBecPortGroup = clickBtEditBecPortGroup+1;
-
-				BechelorRootRef.child(GroupBecId).remove().then(function(){
-						$('#deletePortModal').modal('show');
-
-						$('#BechelorPortfolioGroup').empty();
-
-						BechelorRootRef.on("child_added",snap => {
-							var Type = snap.child('port_GroupType').val();
-
-							$('#BechelorPortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
-
-						});
-				});
-					$(this).children(":selected").remove();
+		$('#btAddGraduateHall').on('click',function(e){
+	  		location.href = "showHallOfFameGraduate.php";
 			});
-			// ========================================= End Code =====================================================================
+	// ========================================= End Code =====================================================================
 
-			// ========================================= Cancel Edits Bechelor Portfolio Group =========================================
+		// ========================================= Get Bechelor Portfolio Type Dropdown =========================================
 
-			$('#CancelEditBechelorPortfolioGroup').on('click',function(e){
-				$('#EditBechelorPortfolioType').hide();
-				$('#SaveEditBechelorPortfolioGroup').hide();
-				$('#CancelEditBechelorPortfolioGroup').hide();
-				$('#AddBechelorPortfolioGroup').show();
-				$('#EditBechelorPortfolioGroup').show();
-				$('#DeleteBechelorPortfolioGroup').show();
+		select = document.getElementById('BechelorPortfolioGroup');
+
+			BechelorRootRef.on("child_added",snap => {
+				var Type = snap.child('port_GroupType').val();
+
+				$('#BechelorPortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
+
+				$('#BechelorPortfolioGroup').val("");
+
 
 			});
-			// ========================================= End Code =====================================================================
+		// ========================================= End Bechelor Portfolio Type =========================================
+		// ========================================= Get Graduate Portfolio Type Dropdown =========================================
 
-		// ========================================= Add Graduate Portfolio Group =========================================
+		select = document.getElementById('GraduatePortfolioGroup');
 
-		$('#AddGraduatePortfolioGroup').on('click',function(e){
-				$('#AddGraduatePortfolioType').show();
-				$('#CancelAddGraduatePortfolioGroup').show();
-				$('#SaveAddGraduatePortfolioGroup').show();
-				$('#AddGraduatePortfolioGroup').hide();
-				$('#EditGraduatePortfolioGroup').hide();
-				$('#DeleteGraduatePortfolioGroup').hide();
+			GraduateRootRef.on("child_added",snap => {
+				var Type = snap.child('port_GroupType').val();
 
+				$('#GraduatePortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
+
+				$('#GraduatePortfolioGroup').val("");
 			});
-			// ========================================= End Code =====================================================================
+		// ========================================= End Graduate Portfolio Type =========================================
 
-			// ========================================= Cancel Add Graduate Portfolio Group =========================================
+		// ========================================= Add Graduate Portfolio Type =========================================
+		$('#SaveAddGraduatePortfolioGroup').on('click',function(e){
 
-			$('#CancelAddGraduatePortfolioGroup').on('click',function(e){
+				 var data = {
+ 			    port_GroupType:$('#AddGraduatePortfolioType').val(),
+ 			  };
+
+				firebase.database().ref('website/student').child('portfolioGroup').child('graduate').push().set(data).then(function(){
+			 	 console.log("Graduate portfolio Group Saved:");
+			  });
+
+				$('#AddGraduatePortfolioType').val("");
 				$('#AddGraduatePortfolioType').hide();
 				$('#CancelAddGraduatePortfolioGroup').hide();
 				$('#SaveAddGraduatePortfolioGroup').hide();
@@ -273,276 +473,86 @@ $(document).ready(function(){
 				$('#EditGraduatePortfolioGroup').show();
 				$('#DeleteGraduatePortfolioGroup').show();
 
-			});
-			// ========================================= End Code =====================================================================
-
-			// ========================================= Edit Graduate Portfolio Group =========================================
-
-			$('#EditGraduatePortfolioGroup').on('click',function(e){
-					$('#EditGraduatePortfolioType').show();
-					$('#SaveEditGraduatePortfolioGroup').show();
-					$('#CancelEditGraduatePortfolioGroup').show();
-					$('#AddGraduatePortfolioGroup').hide();
-					$('#EditGraduatePortfolioGroup').hide();
-					$('#DeleteGraduatePortfolioGroup').hide();
-
-
-					$('#GraduatePortfolioGroup').on('change',function(){
-					GroupGraId = $(this).children(":selected").attr("id");
-						// alert(GroupBecId);
-					GraTypeEdit = $("#GraduatePortfolioGroup option:selected" ).text();
-					// alert($("#BechelorPortfolioGroup option:selected" ).text());
-					$('#EditGraduatePortfolioType').val(GraTypeEdit);
-					});
-
-				});
-				// ========================================= End Code =====================================================================
-
-				// ========================================= Delete Graduate Portfolio Group =========================================
-
-				$('#GraduatePortfolioGroup').on('change',function(){
-				GroupGraId = $(this).children(":selected").attr("id");
-				});
-
-				$('#DeleteGraduatePortfolioGroup').on('click',function(){
-					// GroupGraId = $(this).children(":selected").attr("id");
-					clickBtEditGraPortGroup = clickBtEditGraPortGroup+1;
-
-				  GraduateRootRef.child(GroupGraId).remove().then(function(){
-				      $('#deletePortModal').modal('show');
-
-							$('#GraduatePortfolioGroup').empty();
-
-							GraduateRootRef.on("child_added",snap => {
-								var Type = snap.child('port_GroupType').val();
-
-								$('#GraduatePortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
-
-							});
-				  });
-				    $(this).children(":selected").remove();
-				});
-				// ========================================= End Code =====================================================================
-				// ========================================= Cancel Edits Graduate Portfolio Group =========================================
-
-				$('#CancelEditGraduatePortfolioGroup').on('click',function(e){
-					$('#EditGraduatePortfolioType').hide();
-					$('#SaveEditGraduatePortfolioGroup').hide();
-					$('#CancelEditGraduatePortfolioGroup').hide();
-					$('#AddGraduatePortfolioGroup').show();
-					$('#EditGraduatePortfolioGroup').show();
-					$('#DeleteGraduatePortfolioGroup').show();
-
-				});
-				// ========================================= End Code =====================================================================
-
-				$('#btShowBechelorPortfolio').on('click',function(e){
-			  		location.href = "showBechelorPortfolio.php";
-					});
-
-				$('#btShowBechelorActivity').on('click',function(e){
-			  		location.href = "showBechelorActivity.php";
-					});
-
-				$('#btShowGraduatePortfolio').on('click',function(e){
-			  		location.href = "showGraduatePortfolio.php";
-					});
-
-					$('#btShowGraduateActivity').on('click',function(e){
-				  		location.href = "showGraduateActivity.php";
-						});
-
-				$('#btAddBechelorHall').on('click',function(e){
-			  		location.href = "showHallOfFameBechelor.php";
-					});
-
-				$('#btAddGraduateHall').on('click',function(e){
-			  		location.href = "showHallOfFameGraduate.php";
-					});
-
-
-				// ========================================= Get Bechelor Portfolio Type Dropdown =========================================
-
-				select = document.getElementById('BechelorPortfolioGroup');
-
-					BechelorRootRef.on("child_added",snap => {
-						var Type = snap.child('port_GroupType').val();
-
-						$('#BechelorPortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
-
-					});
-				// ========================================= End Bechelor Portfolio Type =========================================
-				// ========================================= Get Graduate Portfolio Type Dropdown =========================================
-
-				select = document.getElementById('GraduatePortfolioGroup');
-
-					GraduateRootRef.on("child_added",snap => {
-						var Type = snap.child('port_GroupType').val();
-
-						$('#GraduatePortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
-
-					});
-				// ========================================= End Bechelor Portfolio Type =========================================
-
-				// ========================================= Add Bechelor Portfolio Type =========================================
-				$('#SaveAddBechelorPortfolioGroup').on('click',function(e){
-
-						 var data = {
-		 			    port_GroupType:$('#AddBechelorPortfolioType').val(),
-		 			  };
-
-						firebase.database().ref('website/student').child('portfolioGroup').child('bechelor').push().set(data).then(function(){
-					 	 console.log("Bechelor portfolio Group Saved:");
-					  });
-
-						$('#AddBechelorPortfolioType').val("");
-						$('#AddBechelorPortfolioType').hide();
-						$('#CancelAddBechelorPortfolioGroup').hide();
-						$('#SaveAddBechelorPortfolioGroup').hide();
-						$('#AddBechelorPortfolioGroup').show();
-						$('#EditBechelorPortfolioGroup').show();
-						$('#DeleteBechelorPortfolioGroup').show();
-
-						for(var i = 0;i< clickBtEditBecPortGroup;i++){
-			        $('#BechelorPortfolioGroup option:last').remove();
-			      }
-
-
-					});
-				// ========================================= End Add Bechelor Portfolio Type =========================================
-
-				// ========================================= Edit Bechelor Portfolio Type =========================================
-
-				$('#SaveEditBechelorPortfolioGroup').on('click',function(e){
-
-					clickBtEditBecPortGroup = clickBtEditBecPortGroup+1;
-					// var RefBechelorPortGroup = dbRef.ref("website/student/portfolioGroup/bechelor");
-					// var rootBechelorPortGroupRef = RefBechelorPortGroup;
-
-					var dataUpdateBechelorPortGroup = {
-						port_GroupType:$('#EditBechelorPortfolioType').val()
-					};
-
-					BechelorRootRef.child(GroupBecId).update(dataUpdateBechelorPortGroup);
-
-						$('#EditBechelorPortfolioType').val("");
-						$('#EditBechelorPortfolioType').hide();
-						$('#SaveEditBechelorPortfolioGroup').hide();
-						$('#CancelEditBechelorPortfolioGroup').hide();
-						$('#AddBechelorPortfolioGroup').show();
-						$('#EditBechelorPortfolioGroup').show();
-						$('#DeleteBechelorPortfolioGroup').show();
-
-						$('#BechelorPortfolioGroup').empty();
-
-						BechelorRootRef.on("child_added",snap => {
-							var Type = snap.child('port_GroupType').val();
-
-							$('#BechelorPortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
-
-						});
-
-					});
-				// ========================================= End Add Bechelor Portfolio Type =========================================
-
-				// ========================================= Add Graduate Portfolio Type =========================================
-				$('#SaveAddGraduatePortfolioGroup').on('click',function(e){
-
-						 var data = {
-		 			    port_GroupType:$('#AddGraduatePortfolioType').val(),
-		 			  };
-
-						firebase.database().ref('website/student').child('portfolioGroup').child('graduate').push().set(data).then(function(){
-					 	 console.log("Graduate portfolio Group Saved:");
-					  });
-
-						$('#AddGraduatePortfolioType').val("");
-						$('#AddGraduatePortfolioType').hide();
-						$('#CancelAddGraduatePortfolioGroup').hide();
-						$('#SaveAddGraduatePortfolioGroup').hide();
-						$('#AddGraduatePortfolioGroup').show();
-						$('#EditGraduatePortfolioGroup').show();
-						$('#DeleteGraduatePortfolioGroup').show();
-
-						for(var i = 0;i< clickBtEditGraPortGroup;i++){
-			        $('#GraduatePortfolioGroup option:last').remove();
-			      }
-
-					});
-				// ========================================= End Add Graduate Portfolio Type =========================================
-
-				// ========================================= Edit Graduate Portfolio Type =========================================
-
-				$('#SaveEditGraduatePortfolioGroup').on('click',function(e){
-
-					clickBtEditGraPortGroup = clickBtEditGraPortGroup+1;
-
-					var dataUpdateGraduatePortGroup = {
-						port_GroupType:$('#EditGraduatePortfolioType').val()
-					};
-
-					GraduateRootRef.child(GroupGraId).update(dataUpdateGraduatePortGroup);
-
-						$('#EditGraduatePortfolioType').val("");
-						$('#EditGraduatePortfolioType').hide();
-						$('#SaveEditGraduatePortfolioGroup').hide();
-						$('#CancelEditGraduatePortfolioGroup').hide();
-						$('#AddGraduatePortfolioGroup').show();
-						$('#EditGraduatePortfolioGroup').show();
-						$('#DeleteGraduatePortfolioGroup').show();
-
-						$('#GraduatePortfolioGroup').empty();
-
-						GraduateRootRef.on("child_added",snap => {
-							var Type = snap.child('port_GroupType').val();
-
-							$('#GraduatePortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
-
-						});
-
-					});
-			// ================================================================= End Code =================================================================
-
-			// ========================================= Bechelor Portfolio Script =========================================
-
-			$('#BechelorPortfolioPicture').on('change',function(event){
-				selectedFile = event.target.files[0];
+				for(var i = 0;i< clickBtEditGraPortGroup;i++){
+	        $('#GraduatePortfolioGroup option:last').remove();
+	      }
 
 			});
-			// ================================================================= End Code =================================================================
-			// <!-- <=========================================================== Bechelor Portfolio Picture ===========================================================> -->
+		// ========================================= End Add Graduate Portfolio Type =========================================
 
-			$('#BechelorPortfolioPicture').on('change',function(){
-				var x = document.getElementById("BechelorPortfolioPicture");
-				if ('files' in x) {
-						if (x.files.length == 0) {
-								txt = "เพิ่มไฟล์รูปภาพ";
-						} else {
-								for (var i = 0; i < x.files.length; i++) {
-										// txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-										var file = x.files[i];
-										if ('name' in file) {
-												txt += "<strong> File " + (i+1)+ ". </strong>" + "name: " + file.name + "<br>";
-										}
-										if ('size' in file) {
-												txt += "size: " + file.size + " bytes <br>";
-										}
+		// ========================================= Edit Graduate Portfolio Type =========================================
+
+		$('#SaveEditGraduatePortfolioGroup').on('click',function(e){
+
+			clickBtEditGraPortGroup = clickBtEditGraPortGroup+1;
+
+			var dataUpdateGraduatePortGroup = {
+				port_GroupType:$('#EditGraduatePortfolioType').val()
+			};
+
+			GraduateRootRef.child(GroupGraId).update(dataUpdateGraduatePortGroup);
+
+				$('#EditGraduatePortfolioType').val("");
+				$('#EditGraduatePortfolioType').hide();
+				$('#SaveEditGraduatePortfolioGroup').hide();
+				$('#CancelEditGraduatePortfolioGroup').hide();
+				$('#AddGraduatePortfolioGroup').show();
+				$('#EditGraduatePortfolioGroup').show();
+				$('#DeleteGraduatePortfolioGroup').show();
+
+				$('#GraduatePortfolioGroup').empty();
+
+				GraduateRootRef.on("child_added",snap => {
+					var Type = snap.child('port_GroupType').val();
+
+					$('#GraduatePortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
+
+					$('#GraduatePortfolioGroup').val("");
+				});
+
+			});
+	// ================================================================= End Code =================================================================
+
+	// ========================================= Bechelor Portfolio Script =========================================
+
+	$('#BechelorPortfolioPicture').on('change',function(event){
+		selectedFile = event.target.files[0];
+
+	});
+	// ================================================================= End Code =================================================================
+	// <!-- <=========================================================== Bechelor Portfolio Picture ===========================================================> -->
+
+	$('#BechelorPortfolioPicture').on('change',function(){
+		var x = document.getElementById("BechelorPortfolioPicture");
+		if ('files' in x) {
+				if (x.files.length == 0) {
+						txt = "เพิ่มไฟล์รูปภาพ";
+				} else {
+						for (var i = 0; i < x.files.length; i++) {
+								// txt += "<br><strong>" + (i+1) + ". file</strong><br>";
+								var file = x.files[i];
+								if ('name' in file) {
+										txt += "<strong> File " + (i+1)+ ". </strong>" + "name: " + file.name + "<br>";
+								}
+								if ('size' in file) {
+										txt += "size: " + file.size + " bytes <br>";
 								}
 						}
 				}
-				else {
-						if (x.value == "") {
-								txt += "เพิ่มไฟล์รูปภาพ";
-						} else {
-								txt += "The files property is not supported by your browser!";
-								txt  += "<br>The path of the selected file: " + x.value;
-						}
+		}
+		else {
+				if (x.value == "") {
+						txt += "เพิ่มไฟล์รูปภาพ";
+				} else {
+						txt += "The files property is not supported by your browser!";
+						txt  += "<br>The path of the selected file: " + x.value;
 				}
-				document.getElementById("BechelorDemo").innerHTML = txt;
-				});
-				// ================================================================= End Code =================================================================
+		}
+		document.getElementById("BechelorDemo").innerHTML = txt;
+		});
+		// ================================================================= End Code =================================================================
 
-				// ================================================================= Bechelor Portfolio Button Action =================================================================
+		// ================================================================= Bechelor Portfolio Button Action =================================================================
 
 			$('#btSubmitBechelorPortfolio').on('click',function(){
 
@@ -677,10 +687,6 @@ $(document).ready(function(){
 			  });
 
 			}
-
-
-
-
 			function uploadVideoAsPromise (videoFile) {
 			        return new Promise(function (resolve, reject) {
 			            // var storageRef = firebase.storage().ref("/Activity/Bechelor/Image/"+imageFile.name);
@@ -710,11 +716,11 @@ $(document).ready(function(){
 			$('#addBechelorActivity').modal('hide');
 
 			  // $('#BechelorActivityName').val("");
-			  $('#BechelorActivityDetail').val("");
+			  // $('#BechelorActivityDetail').val("");
 			  $('#BechelorActivityImage').val("");
 			  $('#BechelorActivityVideo').val("");
-			  $('#BechelorActivityDateFrom').val("");
-			  $('#BechelorActivityDateTo').val("");
+			  // $('#BechelorActivityDateFrom').val("");
+			  // $('#BechelorActivityDateTo').val("");
 			});
 			});
 			});
@@ -780,8 +786,6 @@ $(document).ready(function(){
 			{
 				Status = "General"
 			}
-
-
 			 uplodadTask.on('state_changed',function(sanpshot){
 
 			 },function(error){
@@ -855,7 +859,6 @@ $(document).ready(function(){
 		    };
 		    NameGraduateAct = $("#GraduateActivityName").val();
 
-
 		    firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).set(data).then(function(){
 		     console.log("Graduate Activity Saved:");
 		    });
@@ -871,7 +874,6 @@ $(document).ready(function(){
 
 		        uploadVideoAsPromise(videoFile);
 		    }
-
 		//Handle waiting to upload each file using promise
 		function uploadImageAsPromise (imageFile) {
 		    return new Promise(function (resolve, reject) {
@@ -880,8 +882,6 @@ $(document).ready(function(){
 		        // var storageRef = firebase.storage().ref("/Activity/"+imageFile.name);
 
 		        var ImagesTask = storageImagesRef.put(imageFile);
-
-
 
 		        ImagesTask.on('state_changed',function(snapshot){
 
@@ -903,10 +903,6 @@ $(document).ready(function(){
 		});
 
 		}
-
-
-
-
 		function uploadVideoAsPromise (videoFile) {
 		      return new Promise(function (resolve, reject) {
 		          // var storageRef = firebase.storage().ref("/Activity/Graduate/Image/"+imageFile.name);
@@ -936,16 +932,15 @@ $(document).ready(function(){
 		$('#addGraduateActivity').modal('hide');
 
 		// $('#GraduateActivityName').val("");
-		$('#GraduateActivityDetail').val("");
+		// $('#GraduateActivityDetail').val("");
 		$('#GraduateActivityImage').val("");
 		$('#GraduateActivityVideo').val("");
-		$('#GraduateActivityDateFrom').val("");
-		$('#GraduateActivityDateTo').val("");
+		// $('#GraduateActivityDateFrom').val("");
+		// $('#GraduateActivityDateTo').val("");
 		});
 	});
 });
 	// ================================================================= End Code =================================================================
-
 
  });
  // <!-- <=========================================================== BechelorPortfolioYear ===========================================================> -->
@@ -961,7 +956,6 @@ $(document).ready(function(){
  }
  // <!-- <=================================================================== End Code ==================================================================> -->
 
-
  // <!-- <=========================================================== GraduatePortfolioYear ===========================================================> -->
 	var nowYear;
 	nowYear = new Date().getFullYear();
@@ -976,6 +970,3 @@ $(document).ready(function(){
      select.appendChild(opt);
  }
  // <!-- <=================================================================== End Code ==================================================================> -->
-
-
- // <!-- <=========================================================== GraduateActivityDate ===========================================================> -->

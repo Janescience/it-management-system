@@ -142,96 +142,95 @@
           </div>
 
           <!-- Edit Bechelor Portfolio Modal -->
-          <div class="modal fade" id="editBechelorPortfolio" role="dialog" aria-labelledby="Message" aria-hidden="true">
-            <div class="modal-dialog modal-md">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title" id="messageModalLabel">ผลงานบัณฑิตศึกษา</h4>
-                  <h6 class="card-subtitle">ระดับบัณฑิตศึกษา</h6>
+        <div class="modal fade" id="editBechelorPortfolio" role="dialog" aria-labelledby="Message" aria-hidden="true">
+          <div class="modal-dialog modal-md">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="messageModalLabel">ผลงานนักศึกษา</h4>
+                <h6 class="card-subtitle">ระดับปริญญาตรี</h6>
+              </div>
+              <div class="modal-body">
+
+                <div class="form-group">
+                  <label class="col-md-12">ชื่อผลงาน</label>
+                      <div class="input-group">
+                      <div class="input-group-addon"><i class="mdi mdi-clipboard-text"></i></div>
+                        <input id="BechelorPortfolioName" type="text"  class="form-control form-control-line">
+                      </div>
                 </div>
-                 <!-- <form> -->
-                <div class="modal-body">
 
-                  <div class="form-group">
-                    <label class="col-md-12">ชื่อผลงาน</label>
-                        <div class="input-group">
-                        <div class="input-group-addon"><i class="mdi mdi-clipboard-text"></i></div>
-                          <input id="BechelorPortfolioName" type="text"  class="form-control form-control-line">
-                        </div>
-                  </div>
+                <div class="form-group">
+                  <label class="col-md-12">รายละเอียด</label>
+                      <div class="input-group">
+                      <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                        <textarea class="form-control" rows="3" id="BechelorPortfolioDetail" ></textarea>
+                      </div>
+                </div>
 
-                  <div class="form-group">
-                    <label class="col-md-12">รายละเอียด</label>
-                        <div class="input-group">
-                        <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                          <textarea class="form-control" rows="3" id="BechelorPortfolioDetail" ></textarea>
-                        </div>
-                  </div>
+                <div class="form-group">
+                  <label class="col-md-12">ประเภทผลงาน</label>
+                      <div class="input-group">
+                      <div class="input-group-addon"><i class="fa fa-trophy"></i></div>
+                      <select id="BechelorPortfolioGroup" name="BecPortfolioGroup" class="form-control form-control-line"></select>
 
-                  <div class="form-group">
-                    <label class="col-md-12">ประเภทผลงาน</label>
-                        <div class="input-group">
-                        <div class="input-group-addon"><i class="fa fa-trophy"></i></div>
-                        <select id="BechelorPortfolioGroup" class="form-control form-control-line">
-                          <!-- <option>การประกวดทั่วไป</option>
-                          <option>การออกแบบเว็บไซต์(Website)</option>
-                          <option>แอนิเมชั่น(Animation)</option>
-                          <option>หนังสืออิเล็กทรอนิกส์(E-Book)</option>
-                          <option>ภาพยนตร์สั้น</option>
-                          <option>เรื่องสั้น</option>
-                          <option>การอบรม</option>
-                          <option>อื่นๆ</option> -->
-                      </select>
+                  </div><br/>
+
+                    <div class="">
+                      <input id="AddBechelorPortfolioType" type="text"  class="form-control form-control-line">
+                      <input id="EditBechelorPortfolioType" type="text"  class="form-control form-control-line">
+
                     </div><br/>
+                    <div align="right" class="">
+                      <button id="AddBechelorPortfolioGroup" class="btn btn-info"><i class="fa fa-plus"></i>   เพิ่ม</button>
+                      <button id="EditBechelorPortfolioGroup" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i>   แก้ไข</button>
+                      <button id="DeleteBechelorPortfolioGroup" class="btn btn-danger"><i class="fa fa-minus"></i>   ลบ</button>
+                      <button id="SaveAddBechelorPortfolioGroup" class="btn btn-success" >   ตกลง</button>
+                      <button id="CancelAddBechelorPortfolioGroup" class="btn btn-danger">   ยกเลิก</button>
 
-                      <div class="">
-                        <input id="AddBechelorPortfolioType" type="text"  class="form-control form-control-line">
-                      </div><br/>
-                      <div align="right" class="">
-                        <button id="AddBechelorPortfolioGroup" class="btn btn-info"><i class="fa fa-plus"></i>   เพิ่มประเภทผลงาน</button>
-                        <button id="SaveBechelorPortfolioGroup" class="btn btn-success">   ตกลง</button>
-                        <button id="CancelAddBechelorPortfolioGroup" class="btn btn-danger">   ยกเลิก</button>
-                      </div>
-                  </div>
+                      <button id="SaveEditBechelorPortfolioGroup" class="btn btn-success editType" >   ตกลง</button>
+                      <button id="CancelEditBechelorPortfolioGroup" class="btn btn-danger">   ยกเลิก</button>
 
-                  <div class="form-group">
-                      <label class="col-md-12">Status</label>
-                      <div class="col-md-12">
-                        <div class="row">
-                          <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
-                            <input type="checkbox" id="BechelorPortfolioGeneral" class="chk-col-grey" checked disabled>
-                            <label for="BechelorPortfolioGeneral">ผลงานทั่วไป</label>
-                            <input type="checkbox" id="BechelorPortfolioHallOfFame" class="chk-col-grey" >
-                            <label for="BechelorPortfolioHallOfFame">Hall of Fame</label>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-12">ปีที่ได้รับรางวัล</label>
-                        <div class="input-group">
-                        <div class="input-group-addon"><i class="mdi mdi-calendar-check"></i></div>
-                        <select id="BechelorPortfolioYear"  class="form-control form-control-line"></select>
-                          <!-- <input id="GraduatePortfolioYear" type="text" pattern="(?:25|25)[0-9]{2}"  title="กรุณากรอกปีพ.ศ.ปีที่ได้รับรางวัล" class="form-control form-control-line"> -->
-                      </div>
                     </div>
 
-                  <div class="form-group">
-                    <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
-                        <img id="BechelorPortfolioPicturePreview" width="70" height="70" ><br/>
-                        <input type="file" id="BechelorPortfolioPicture" class="form-control" >
-                        <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-12">Status</label>
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
+                          <input type="checkbox" id="BechelorPortfolioGeneral" class="chk-col-grey" checked disabled>
+                          <label for="BechelorPortfolioGeneral">ผลงานทั่วไป</label>
+                          <input type="checkbox" id="BechelorPortfolioHallOfFame" class="chk-col-grey" >
+                          <label for="BechelorPortfolioHallOfFame">Hall of Fame</label>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-12">ปีที่ได้รับรางวัล</label>
+                      <div class="input-group">
+                      <div class="input-group-addon"><i class="mdi mdi-calendar-check"></i></div>
+                      <select id="BechelorPortfolioYear"  class="form-control form-control-line"></select>
+                        <!-- <input id="BechelorPortfolioYear" type="text" pattern="(?:25|25)[0-9]{2}" title="กรุณากรอกปีพ.ศ.ปีที่ได้รับรางวัล" class="form-control form-control-line"> -->
+                    </div>
                   </div>
+
+                <div class="form-group">
+                  <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
+                      <input type="file" id="BechelorPortfolioPicture" class="form-control" >
+                        <p id="BechelorDemo"></p>
+                      <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
                 </div>
-                <div class="modal-footer">
-                  <button id="btSubmitEditBechelorPortfolio" type="submit" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
-                  <button id="btCloseEditBechelorPortfolio" type="reset" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
-                </div>
-                <!-- </form> -->
+              </div>
+              <div class="modal-footer">
+                <button id="btSubmitBechelorPortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
+                <button id="btCloseBechelorPortfolio" type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
               </div>
             </div>
           </div>
+        </div>
       </div>
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
