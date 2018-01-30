@@ -33,7 +33,7 @@
               <div class="row text-center">
                   <div class="col-12 ">
                     <center class="m-t-5 ">
-                          <h4 class="card-title m-t-10">LOGIN</h4>
+                          <h4 class="card-title m-t-10">เข้าสู่ระบบ</h4>
                     </center>
                   <form>
                     <div class="input-group">
@@ -48,7 +48,7 @@
                   </form>
 
                   <div class="text-center">
-                    <button   class="btn btn-success" id="btLogin" >Sign-in</button>
+                    <button   class="btn btn-success" id="btLogin" >ตกลง</button>
                   </div>
 
               </div>

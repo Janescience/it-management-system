@@ -1,8 +1,7 @@
 
   <?php
   // $Token = $_POST["Token"];
-  $message = $_POST["topic"];
-
+  $message = $_GET["message"];
   $lineapi = "mz0dTbhLDkDQ7ypumci9q91nLzwIcVhCubtj0vi15dY"; // ใส่ token key ที่ได้มา
 	$mms =  trim($message); // ข้อความที่ต้องการส่ง
 	date_default_timezone_set("Asia/Bangkok");
@@ -26,8 +25,8 @@
 	}
 	else {
 	$result_ = json_decode($result, true);
-  echo "<script>alert('Send Notify Success')</script>";
-    echo "<script>window.location.href = 'send.php' </script>";
+
+    echo "<script>window.location.href = 'index.php' </script>";
 	   echo "status : ".$result_['status']; echo "message : ". $result_['message'];
         }
 	curl_close( $chOne );

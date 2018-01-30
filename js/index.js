@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+
+
   <!--===============================upload====================================-->
    var $dropzone = $('.image_picker'),
       $droptarget = $('.drop_target'),
@@ -82,6 +84,7 @@ $(document).ready(function(){
  var indexSelectLevel;
  var idHeader;
  var clickBtEditHeader = 0,clickBtEditInfoBachelor=0,clickBtEditInfoGraduate=0;
+ var page,topic,action;
 
 
 <!--============================== ส่วนหัว ===================================-->
@@ -192,7 +195,10 @@ function editHeader(){
                               " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-header'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
       });
-
+      page = $('#indexPage').text();
+      topic = $('#textTopicEdit').val();
+      action = "แก้ไขรูปภาพไสลด์";
+      pushHistory();
   });
 };
 
@@ -214,7 +220,6 @@ function editHeader(){
    $('#btClose').hide();
    $('#btLoading').show();
    addHerder();
-   pushHeaderHistory();
  });
 
  $('#btClearTextFile').on('click',function(){
@@ -225,6 +230,7 @@ function editHeader(){
 
 
  function addHerder(){
+
    var filename= selectedFile.name;
    var storageRef = firebase.storage().ref('/HeaderSlideImages/' + filename);
    var uplodadTask = storageRef.put(selectedFile);
@@ -252,11 +258,15 @@ function editHeader(){
      for(var i = 0;i< clickBtEditHeader;i++){
        $('#list_header tr:last').remove();
      }
+     page = $('#indexPage').text();
+     topic = $('#textTopic').val();
+     action = "เพิ่มรูปภาพไสลด์";
+     pushHistory();
    });
 
  }
 
- function pushHeaderHistory(){
+ function pushHistory(){
    var nameValue;
    var dateTimeCurrent = new Date();
 
@@ -268,14 +278,19 @@ function editHeader(){
    var dataHistory = {
      id:sessionStorage.getItem("userId"),
      name:nameValue,
-     page:$('#indexPage').text(),
-     topic:$('#selectHeaderSlide').val(),
+     page:page,
+     topic:topic,
+     action:action,
      date:dateTimeCurrent.toDateString(),
      time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
    };
 
    firebase.database().ref('history').push().set(dataHistory);
+
+   var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ "+"''"+topic+"''";
+  window.location.href = "notify.php?message=" + message;
  }
+
 <!--========================================================================-->
 
 
@@ -385,6 +400,10 @@ function uploadImageCourse(){
     $('#fileUploadImageCourse').val("");
     $('#btLoadingCourse').hide();
     $('#btCloseCourse').show();
+    page = $('#indexPage').text();
+    topic = $('#selectCourse').val();
+    action = "แก้ไขรูปภาพระดับการศึกษา";
+    pushHistory();
   });
 }
 <!--========================================================================-->
@@ -436,6 +455,10 @@ $('#btInfoBachelorAdd').on('click',function(){
     for(var i = 0;i< clickBtEditInfoBachelor;i++){
       $('#list_info_bachelor tr:last').remove();
     }
+    page = $('#indexPage').text();
+    topic = $('#textTopicInfoBachelorAdd').val();
+    action = "เพิ่มข่าวสารระดับปริญญาตรี";
+    pushHistory();
   });
 });
 
@@ -537,6 +560,10 @@ function editInfoBachelor(){
                                         "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-info-bachelor'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                         " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-info-bachelor'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
       });
+      page = $('#indexPage').text();
+      topic = $('#textTopicInfoBachelorEdit').val();
+      action = "แก้ไขข่าวสารระดับปริญญาตรี";
+      pushHistory();
   });
 };
 
@@ -564,7 +591,10 @@ $('#btInfoGraduateAdd').on('click',function(){
     };
 
     firebase.database().ref('website/index/info/infograduate').push().set(postInfoGraduate);
-
+    page = $('#indexPage').text();
+    topic = $('#textTopicInfoGraduateAdd').val();
+    action = "เพิ่มข่าวสารระดับบัณฑิตศึกษา";
+    pushHistory();
   });
 });
 
@@ -669,6 +699,11 @@ function editInfoGraduate(){
                                         "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-info-graduate'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                         " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-info-graduate'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
       });
+
+      page = $('#indexPage').text();
+      topic =  $('#textTopicInfoGraduateEdit').val();
+      action = "แก้ไขข่าวสารระดับบัณฑิตศึกษา";
+      pushHistory();
   });
 };
 

@@ -83,17 +83,18 @@
                                     <table id="tableHistory" class="table text-center results ">
                                         <thead >
                                             <tr >
-                                                <th class="text-center">Name - Surename</th>
-                                                <th class="text-center">Page</th>
-                                                <th class="text-center">Topic</th>
-                                                <th class="text-center">Date</th>
-                                                <th class="text-center">Time</th>
+                                                <th class="text-center">ชื่อ - นามสกุล</th>
+                                                <th class="text-center">สิ่งที่ทำ</th>
+                                                <th class="text-center">หน้า</th>
+                                                <th class="text-center">หัวข้อ</th>
+                                                <th class="text-center">วัน</th>
+                                                <th class="text-center">เวลา</th>
                                             </tr>
                                             <tr class="warning no-result">
-  <td colspan="5"><i class="fa fa-warning"></i> No result</td>
+  <td colspan="5"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
 </tr>
 <tr id="loaderHistory">
-  <td colspan="6"><img src="../images/ajax-loader.gif">  Loading...</td>
+  <td colspan="6"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
 </tr>
                                         </thead>
                                         <tbody id="list_history">

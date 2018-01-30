@@ -133,8 +133,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 var historyRef = dbRef.ref('history');
 
-var rootRefHistory = historyRef;
-
+var rootRefHistory = historyRef.limitToLast(3);
+var i=0;
   rootRefHistory.on("child_added",snap => {
     var id = snap.child('id').val();
     var name = snap.child('name').val();
@@ -143,10 +143,12 @@ var rootRefHistory = historyRef;
     var date = snap.child('date').val();
     var time = snap.child('time').val();
 if(id !=  sessionStorage.getItem("userId")){
+
     $('#notify').prepend("<a href='"+'#'+"'><div class='"+'btn btn-success btn-circle'+"'><i class='"+'fa fa-pencil'+"'></i></div>"+
                         " <div class='"+'mail-contnet'+"'><h5>"+ name +"</h5><span class='"+'mail-desc'+"'>"+page+ ":" +topic+"</span>"+
                         "<span class='"+'time'+"'>"+date+ "  "+time+"</span></div></a>");
-                      }
+
+}
 
   });
 
