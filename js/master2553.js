@@ -6,6 +6,9 @@ $(document).ready(function(){
  var auth = null;
  var selectedFile;
  var indexSelect;
+ var i = 0;
+ var j = 0;
+
 
 
 /*------------------------ select page -----------------------------------*/
@@ -85,167 +88,6 @@ $(document).ready(function(){
 
 
 
- /*------------------------  Modify Digital (2553) -----------------------------------*/
-
- $('#btModifyDigital').on('click',function(e){
-      e.preventDefault();
-        $('#addOpenModifyDigital').modal('show');
-    });
-
-    $('#fileUploadModifyDigital').on('change',function(event){
-      selectedFile = event.target.files[0];
-
-    });
-
-    $('#btUploadModifyDigital').on('click',function(){
-      uploaddigital();
-    });
-
-    function uploaddigital(){
-      var filename= selectedFile.name;
-      var filesurename = filename.split(".")[1];
-      if(filesurename == "PDF" || filesurename == "pdf"){
-        var storageRef = firebase.storage().ref('/CoursePDF/master2553/' + filename);
-        var uplodadTask = storageRef.put(selectedFile);
-
-        uplodadTask.on('state_changed',function(sanpshot){
-
-        },function(error){
-
-        },function(){
-          var downloadURL = uplodadTask.snapshot.downloadURL;
-          var updates = {};
-          var postPDF = {
-            file:downloadURL,
-            topic:$('#TopicDigital').val()
-          };
-
-          firebase.database().ref('website').child("course").child('master').child('year2553').child('filePDF').child('digital').push().set(postPDF);
-          $('#fileUploadModifyDigital').val("");
-          $('#addOpenModifyDigital').modal('hide');
-          $('#addOpenModifyDigital3').modal('show');
-
-        });
-
-      }else {
-        $('#addOpenModifyDigital').modal('hide');
-        $('#addOpenModifyDigital2').modal('show');
-      }
-
-
-    }
-
-
-
- /*======================= END Modify Digital  ======================*/
-
-
-  /*------------------------  Modify Enterprise (2553) -----------------------------------*/
-
- $('#btModifyEnterprise').on('click',function(e){
-      e.preventDefault();
-        $('#addOpenModifyEnterprise').modal('show');
-    });
-
-    $('#fileUploadModifyEnterprise').on('change',function(event){
-      selectedFile = event.target.files[0];
-
-    });
-
-    $('#btUploadModifyEnterprise').on('click',function(){
-      uploadEnterprise();
-    });
-
-    function uploadEnterprise(){
-      var filename= selectedFile.name;
-      var filesurename = filename.split(".")[1];
-      if(filesurename == "PDF" || filesurename == "pdf"){
-        var storageRef = firebase.storage().ref('/CoursePDF/master2553/' + filename);
-        var uplodadTask = storageRef.put(selectedFile);
-
-        uplodadTask.on('state_changed',function(sanpshot){
-
-        },function(error){
-
-        },function(){
-          var downloadURL = uplodadTask.snapshot.downloadURL;
-          var updates = {};
-          var postPDF = {
-            file:downloadURL,
-            topic:$('#TopicEnterprise').val()
-          };
-
-          firebase.database().ref('website').child("course").child('master').child('year2553').child('filePDF').child('enterprise').push().set(postPDF);
-          $('#fileUploadModifyEnterprise').val("");
-          $('#addOpenModifyEnterprise').modal('hide');
-          $('#addOpenModifyEnterprise3').modal('show');
-
-        });
-
-      }else {
-        $('#addOpenModifyEnterprise').modal('hide');
-        $('#addOpenModifyEnterprise2').modal('show');
-      }
-
-
-    }
-
- /*======================= END Enterprise Digital  ======================*/
-
-
-  /*------------------------  Modify Knowledge (2553) -----------------------------------*/
-
- $('#btModifyKnowledge').on('click',function(e){
-      e.preventDefault();
-        $('#addOpenModifyKnowledge').modal('show');
-    });
-
-    $('#fileUploadModifyKnowledge').on('change',function(event){
-      selectedFile = event.target.files[0];
-
-    });
-
-    $('#btUploadModifyKnowledge').on('click',function(){
-      uploadKnowledge();
-    });
-
-    function uploadKnowledge(){
-      var filename= selectedFile.name;
-      var filesurename = filename.split(".")[1];
-      if(filesurename == "PDF" || filesurename == "pdf"){
-        var storageRef = firebase.storage().ref('/CoursePDF/master2553/' + filename);
-        var uplodadTask = storageRef.put(selectedFile);
-
-        uplodadTask.on('state_changed',function(sanpshot){
-
-        },function(error){
-
-        },function(){
-          var downloadURL = uplodadTask.snapshot.downloadURL;
-          var updates = {};
-          var postPDF = {
-            file:downloadURL,
-            topic:$('#TopicKnowledge').val()
-          };
-
-          firebase.database().ref('website').child("course").child('master').child('year2553').child('filePDF').child('knowledge').push().set(postPDF);
-          $('#fileUploadModifyKnowledge').val("");
-          $('#addOpenModifyKnowledge').modal('hide');
-          $('#addOpenModifyKnowledge3').modal('show');
-
-        });
-
-      }else {
-        $('#addOpenModifyKnowledge').modal('hide');
-        $('#addOpenModifyKnowledge2').modal('show');
-      }
-
-
-    }
-
- /*======================= END Knowledge ======================*/
-
-
 
 
  /*------------------------ Master textDetailtitle (2553) -----------------------------------*/
@@ -317,365 +159,195 @@ document.getElementById("textDetailsubtitle").disabled = true;
  /*======================= END Master textDetailtitle (2553)  ======================*/
 
 
+ $('#headeditCourse').hide();
+ $('#tableeditCourse').hide();
 
- /*------------------------  Digital (2553) -----------------------------------*/
+ /*------------------------  editCourse (2560) -----------------------------------*/
 
-/*======================= Digital Edit Text ======================*/
 
-  document.getElementById("textTopicDigital").disabled = true;
-  document.getElementById("textDetailDigital").disabled = true;
-  $('#btSaveDigital').hide();
-  $('#btCancelDigital').hide();
+ $('#editCourse').on('click',function(){
 
-  var db = dbRef.ref('website/course').child('master').child('year2553').child('textTopicDigital');
-  db.on('value',snap => {
-    $('#textTopicDigital').val(snap.val());
-  });
-
-  var db = dbRef.ref('website/course').child('master').child('year2553').child('textDetailDigital');
-  db.on('value',snap => {
-    $('#textDetailDigital').val(snap.val());
-  });
-
-  $('#btEditDigital').on('click',function(){
-    EditMaster2553();
-  });
-
-  $('#btSaveDigital').on('click',function(){
-    SaveMaster2553();
-  });
-
-  $('#btCancelDigital').on('click',function(){
-    CancelEditMaster2553();
-  });
-
-  function EditMaster2553() {
-      document.getElementById("textTopicDigital").disabled = false;
-      document.getElementById("textDetailDigital").disabled = false;
-      $('#btSaveDigital').show();
-      $('#btCancelDigital').show();
-
+   if(i == 0){
+      $('#iconeditCourse').attr("class","fa fa-check text-info");
+      $('#headeditCourse').show();
+      $('#tableeditCourse').show();
+      i = 1;
+    }else{
+      $('#iconeditCourse').attr("class","fa fa-chevron-right");
+      $('#headeditCourse').hide();
+      $('#tableeditCourse').hide();
+      i = 0;
     }
 
-  function SaveMaster2553(){
-
-      var data = {
-       textTopicDigital:$('#textTopicDigital').val(),
-       textDetailDigital:$('#textDetailDigital').val()
-
-    };
-
-    firebase.database().ref('website').child('course').child('bachelor').child('yearIc2560').update(data);
-
-    $('#btSaveDigital').hide();
-    $('#btCancelDigital').hide();
-    document.getElementById("textTopicDigital").disabled = true;
-    document.getElementById("textDetailDigital").disabled = true;
-
-    }
-
-  function CancelEditMaster2553() {
-        document.getElementById("textTopicDigital").disabled = true;
-        document.getElementById("textDetailDigital").disabled = true;
-        $('#btSaveDigital').hide();
-        $('#btCancelDigital').hide();
-        document.getElementById("textTopicDigital").disabled = true;
-        document.getElementById("textDetailDigital").disabled = true;
-  }
-
-
-/*=======================  Edit Image ======================*/
-
- var dbImage = dbRef.ref("website").child('course').child('master').child('year2553').child('imageDigital');
- dbImage.on('value',snap => {
-   $('#imgDigital').attr("src",snap.val());
  });
 
- $('#btUploadImageDigital').hide();
 
- $('#fileUploadImageDigital').on('change',function(event){
-   selectedFile = event.target.files[0];
-   $('#btUploadImageDigital').show();
+
+ var rootRefExpert = topicRef.child("course").child('master').child('year2553').child('body');
+ var a=0;
+ rootRefExpert.on("child_added",snap => {
+   var snapkey = snap.key;
+   var img = snap.child('file').val();
+   var detail = snap.child('topic').val();
+   var detail2 = snap.child('topic2').val();
+
+   a=a+1;
+
+   $('#editCourse_work').append("<tr id='"+snap.key+"'><td><img src='"+ img +"' width='"+'150px'+"' style='"+'border-radius:10px'+"' class='"+'header-bg'+"'></td><td class='"+'txttopic'+"' width='"+'250px'+"'>" + detail + "</td><td class='"+'txtdetail'+"'>" + "<div class='"+'panel-heading'+"'>" +
+   "<h4 class='"+'panel-title'+"'>" + "<a data-toggle='"+'collapse'+"' data-parent='"+'#accordion'+"' href='"+'#'+'collapse'+ a +"'>ดูรายละเอียด</a>" + "</h4>" + "</div>" + "<div id='"+'collapse'+ a +"' class='"+'panel-collapse collapse'+"''>" + "<div class='"+'panel-body'+"'>" + detail2 + "</div>" + "</div>" + "</td>" +
+                             "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                             " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+
  });
 
- $('#btUploadImageDigital').on('click',function(event){
-   uploadImageDigital();
+
+
+
+ $('#editCourse_work').on('click','.btn-delete-expert',function(){
+   var id = $(this).closest('tr').attr("id");
+   rootRefExpert.child(id).remove().then(function(){
+       $('#deleteProfileModal').modal('show');
+   });
+     $(this).closest('tr').remove();
  });
 
- function uploadImageDigital(){
-   var filename= selectedFile.name;
+ $('#editCourse_work').on('click','.btn-edit-expert',function(){
+   idBody = $(this).closest('tr').attr("id");
+   var bg = $(this).closest('tr').find(".header-bg").attr("src");
+   var topic =  $(this).closest('tr').find(".txttopic").text();
+   var detail = $(this).closest('tr').find('.txtdetail').text();
+   $('#bgHeaderEdit').attr("src",bg);
+   $('#TopicExpert').val(topic);
+   $('#detailExpert').val(detail);
+   $('#editExpertModal').modal('show');
+ });
+
+ $('#btEditExpert').on('click',function(){
+   editHeader();
+ });
+
+ $('#fileUploadExpert').on('change',function(event){
+   selectedFileEdit = event.target.files[0];
+ });
+
+ function editHeader(){
+   var filename= selectedFileEdit.name;
    var storageRef = firebase.storage().ref('/CourseImage/Master/Master2553/' + filename);
-   var uplodadTask = storageRef.put(selectedFile);
+   var uplodadTask = storageRef.put(selectedFileEdit);
 
-     uplodadTask.on('state_changed',function(sanpshot){
+   uplodadTask.on('state_changed',function(sanpshot){
 
-     },function(error){
+   },function(error){
 
-     },function(){
-       var downloadURL = uplodadTask.snapshot.downloadURL;
-       var updates = {};
-       var postImage = {
-         imageDigital:downloadURL
-       };
-       var deleteRef;
-       var deleteImageProfile = firebase.database().ref('website').child("course").child('master').child('year2553').child('imageDigital');
-       deleteImageProfile.on('value',snap => {
-         deleteRef = firebase.storage().refFromURL(snap.val());
-       });
-       deleteRef.delete().then(function() {
-       }).catch(function(error) {
-
-       });
-       firebase.database().ref('website').child("course").child('master').child('year2553').update(postImage);
-       $('#fileUploadImageDigital').val("");
-       $('#btUploadImageDigital').hide();
+   },function(){
+     var downloadURL = uplodadTask.snapshot.downloadURL;
+     var updatebachelor = {
+       file:downloadURL,
+       topic:  $('#TopicExpert').val(),
+       topic2:  $('#detailExpert').val(),
+     };
+     var deleteRef;
+     var deleteImageProfile = firebase.database().ref('website/course/master/year2553/body').child(idBody).child('file');
+     deleteImageProfile.on('value',snap => {
+       deleteRef = firebase.storage().refFromURL(snap.val());
      });
- }
+     deleteRef.delete().then(function() {
+     }).catch(function(error) {
 
-/*======================= End  Edit Image ======================*/
-
-/*======================= End Digital (2553) ======================*/
-
-
-
-/*------------------------  Enterprise (2553) -----------------------------------*/
-
-/*======================= Enterprise Edit Text ======================*/
-
-  document.getElementById("textTopicEnterprise").disabled = true;
-  document.getElementById("textDetailEnterprise").disabled = true;
-  $('#btSaveEnterprise').hide();
-  $('#btCancelEnterprise').hide();
-
-  var db = dbRef.ref('website/course').child('master').child('year2553').child('textTopicEnterprise');
-  db.on('value',snap => {
-    $('#textTopicEnterprise').val(snap.val());
-  });
-
-  var db = dbRef.ref('website/course').child('master').child('year2553').child('textDetailEnterprise');
-  db.on('value',snap => {
-    $('#textDetailEnterprise').val(snap.val());
-  });
-
-  $('#btEditEnterprise').on('click',function(){
-    EditEnterprise2553();
-  });
-
-  $('#btSaveEnterprise').on('click',function(){
-    SaveEnterprise2553();
-  });
-
-  $('#btCancelEnterprise').on('click',function(){
-    CancelEditEnterprise2553();
-  });
-
-  function EditEnterprise2553() {
-      document.getElementById("textTopicEnterprise").disabled = false;
-      document.getElementById("textDetailEnterprise").disabled = false;
-      $('#btSaveEnterprise').show();
-      $('#btCancelEnterprise').show();
-
-    }
-
-  function SaveEnterprise2553(){
-
-      var data = {
-       textTopicDigital:$('#textTopicEnterprise').val(),
-       textDetailDigital:$('#textDetailEnterprise').val()
-
-    };
-
-    firebase.database().ref('website').child('course').child('bachelor').child('yearIc2560').update(data);
-
-    $('#btSaveDigital').hide();
-    $('#btCancelDigital').hide();
-    document.getElementById("textTopicEnterprise").disabled = true;
-    document.getElementById("textDetailEnterprise").disabled = true;
-
-    }
-
-  function CancelEditEnterprise2553() {
-
-        $('#btSaveEnterprise').hide();
-        $('#btCancelEnterprise').hide();
-        document.getElementById("textTopicEnterprise").disabled = true;
-        document.getElementById("textDetailEnterprise").disabled = true;
-  }
-
-
-/*=======================  Edit Image ======================*/
-
- var dbImage = dbRef.ref("website").child('course').child('master').child('year2553').child('imageEnterprise');
- dbImage.on('value',snap => {
-   $('#imgEnterprise').attr("src",snap.val());
- });
-
- $('#btUploadImageEnterprise').hide();
-
- $('#fileUploadImageEnterprise').on('change',function(event){
-   selectedFile = event.target.files[0];
-   $('#btUploadImageEnterprise').show();
- });
-
- $('#btUploadImageEnterprise').on('click',function(event){
-   uploadImageEnterprise();
- });
-
- function uploadImageEnterprise(){
-   var filename= selectedFile.name;
-   var storageRef = firebase.storage().ref('/CourseImage/Master/Master2553/' + filename);
-   var uplodadTask = storageRef.put(selectedFile);
-
-     uplodadTask.on('state_changed',function(sanpshot){
-
-     },function(error){
-
-     },function(){
-       var downloadURL = uplodadTask.snapshot.downloadURL;
-       var updates = {};
-       var postImage = {
-         imageEnterprise:downloadURL
-       };
-       var deleteRef;
-       var deleteImageProfile = firebase.database().ref('website').child("course").child('master').child('year2553').child('imageEnterprise');
-       deleteImageProfile.on('value',snap => {
-         deleteRef = firebase.storage().refFromURL(snap.val());
-       });
-       deleteRef.delete().then(function() {
-       }).catch(function(error) {
-
-       });
-       firebase.database().ref('website').child("course").child('master').child('year2553').update(postImage);
-       $('#fileUploadImageEnterprise').val("");
-       $('#btUploadImageEnterprise').hide();
      });
- }
-
-/*======================= End  Edit Image ======================*/
-
-/*======================= End Enterprise (2553) ======================*/
-
+     firebase.database().ref('website/course/master/year2553/body').child(idBody).update(updatebachelor);
+     $('#fileUploadExpert').val("");
+     $('#TopicExpert').val("");
+     $('#detailExpert').val("");
 
 
-/*------------------------  Knowledge (2553) -----------------------------------*/
+       $('#list_header').empty();
 
-/*======================= Knowledge Edit Text ======================*/
+       var a=0;
+       rootRefExpert.on("child_added",snap => {
+         var snapkey = snap.key;
+         var img = snap.child('file').val();
+         var detail = snap.child('topic').val();
+         var detail2 = snap.child('topic2').val();
 
-  document.getElementById("textTopicKnowledge").disabled = true;
-  document.getElementById("textDetailKnowledge").disabled = true;
-  $('#btSaveKnowledge').hide();
-  $('#btCancelKnowledge').hide();
+         a=a+1;
 
-  var db = dbRef.ref('website/course').child('master').child('year2553').child('textTopicKnowledge');
-  db.on('value',snap => {
-    $('#textTopicKnowledge').val(snap.val());
-  });
+         $('#Suggestion_work').append("<tr id='"+snap.key+"'><td><img src='"+ img +"' width='"+'150px'+"' style='"+'border-radius:10px'+"' class='"+'header-bg'+"'></td><td class='"+'txttopic'+"' width='"+'250px'+"'>" + detail + "</td><td class='"+'txtdetail'+"'>" + "<div class='"+'panel-heading'+"'>" +
+         "<h4 class='"+'panel-title'+"'>" + "<a data-toggle='"+'collapse'+"' data-parent='"+'#accordion'+"' href='"+'#'+'collapse'+ a +"'>ดูรายละเอียด</a>" + "</h4>" + "</div>" + "<div id='"+'collapse'+ a +"' class='"+'panel-collapse collapse'+"''>" + "<div class='"+'panel-body'+"'>" + detail2 + "</div>" + "</div>" + "</td>" +
+                                   "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                   " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
-  var db = dbRef.ref('website/course').child('master').child('year2553').child('textDetailKnowledge');
-  db.on('value',snap => {
-    $('#textDetailKnowledge').val(snap.val());
-  });
+       });
 
-  $('#btEditKnowledge').on('click',function(){
-    EditKnowledge2553();
-  });
+       $('#addEditExpert2').modal('show');
 
-  $('#btSaveKnowledge').on('click',function(){
-    SaveKnowledge2553();
-  });
+   });
+ };
 
-  $('#btCancelKnowledge').on('click',function(){
-    CancelEditKnowledge2553();
-  });
 
-  function EditKnowledge2553() {
-      document.getElementById("textTopicKnowledge").disabled = false;
-      document.getElementById("textDetailKnowledge").disabled = false;
-      $('#btSaveKnowledge').show();
-      $('#btCancelKnowledge').show();
+ $('#btOpenModaleditCourse').on('click',function(e){
+      e.preventDefault();
+        $('#addeditCourse').modal('show');
+    });
+
+    $('#btUploadeditCourse').hide();
+
+    $('#fileUploadeditCourse').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+      $('#btUploadeditCourse').show();
+    });
+
+    $('#btUploadeditCourse').on('click',function(){
+      uploadeditCourse();
+    });
+
+    function uploadeditCourse(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "jpg" || filesurename == "JPG" || filesurename == "png" || filesurename == "PNG"){
+        var storageRef = firebase.storage().ref('/Course/CourseImage/Master/Master2553/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var post = {
+            file:downloadURL,
+            topic:$('#TopiceditCourse').val(),
+            topic2:$('#TopiceditCourse2').val()
+
+          };
+
+          firebase.database().ref('website').child("course").child('master').child('year2553').child('body').push().set(post);
+          $('#fileUploadeditCourse').val("");
+          $('#addeditCourse').modal('hide');
+          $('#addeditCourse3').modal('show')
+
+        });
+
+      }else {
+        $('#addeditCourse').modal('hide');
+        $('#addeditCourse2').modal('show');
+      }
+
 
     }
 
-  function SaveKnowledge2553(){
-
-      var data = {
-       textTopicDigital:$('#textTopicKnowledge').val(),
-       textDetailDigital:$('#textDetailKnowledge').val()
-
-    };
-
-    firebase.database().ref('website').child('course').child('bachelor').child('yearIc2560').update(data);
-
-    $('#btSaveKnowledge').hide();
-    $('#btCancelKnowledge').hide();
-    document.getElementById("textTopicKnowledge").disabled = true;
-    document.getElementById("textDetailKnowledge").disabled = true;
-
-    }
-
-  function CancelEditKnowledge2553() {
-        document.getElementById("textTopicKnowledge").disabled = true;
-        document.getElementById("textDetailKnowledge").disabled = true;
-        $('#btSaveKnowledge').hide();
-        $('#btCancelKnowledge').hide();
-        document.getElementById("textTopicKnowledge").disabled = true;
-        document.getElementById("textDetailKnowledge").disabled = true;
-  }
+      /*------------------------ End  editCourse (2560) -----------------------------------*/
 
 
-/*=======================  Edit Image ======================*/
-
- var dbImage = dbRef.ref("website").child('course').child('master').child('year2553').child('imageKnowledge');
- dbImage.on('value',snap => {
-   $('#imgKnowledge').attr("src",snap.val());
- });
-
- $('#btUploadImageKnowledge').hide();
-
- $('#fileUploadImageKnowledge').on('change',function(event){
-   selectedFile = event.target.files[0];
-   $('#btUploadImageKnowledge').show();
- });
-
- $('#btUploadImageKnowledge').on('click',function(event){
-   uploadImageKnowledge();
- });
-
- function uploadImageKnowledge(){
-   var filename= selectedFile.name;
-   var storageRef = firebase.storage().ref('/CourseImage/Master/Master2553/' + filename);
-   var uplodadTask = storageRef.put(selectedFile);
-
-     uplodadTask.on('state_changed',function(sanpshot){
-
-     },function(error){
-
-     },function(){
-       var downloadURL = uplodadTask.snapshot.downloadURL;
-       var updates = {};
-       var postImage = {
-         imageEnterprise:downloadURL
-       };
-       var deleteRef;
-       var deleteImageProfile = firebase.database().ref('website').child("course").child('master').child('year2553').child('imageKnowledge');
-       deleteImageProfile.on('value',snap => {
-         deleteRef = firebase.storage().refFromURL(snap.val());
-       });
-       deleteRef.delete().then(function() {
-       }).catch(function(error) {
-
-       });
-       firebase.database().ref('website').child("course").child('master').child('year2553').update(postImage);
-       $('#fileUploadImageKnowledge').val("");
-       $('#btUploadImageKnowledge').hide();
-     });
- }
-
-/*======================= End  Edit Image ======================*/
-
-/*======================= End Enterprise (2553) ======================*/
 
 
+
+
+
+
+ /*------------------------  Dowload Suggestion (2560) -----------------------------------*/
 $('#headSuggestion').hide();
 $('#tableSuggestion').hide();
 $('#headEducation').hide();

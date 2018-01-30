@@ -2,9 +2,12 @@ $(document).ready(function(){
 
  var Auth = firebase.auth();
  var dbRef = firebase.database();
+ var topicRef = dbRef.ref('website')
  var auth = null;
  var selectedFile;
  var indexSelect;
+ var i = 0;
+ var j = 0;
 
 
 /*------------------------ select page -----------------------------------*/
@@ -96,7 +99,7 @@ document.getElementById("textDetailtitle").disabled = true;
 
       var data = {
        textTopicBachelorEs:$('#textDetailtitle').val(),
-           
+
     };
 
     firebase.database().ref('website').child('course').child('doctorate').child('year2558').child('TitleDegree').child('Topic').update(data);
@@ -118,402 +121,497 @@ document.getElementById("textDetailtitle").disabled = true;
  /*======================= END Master textDetailtitle (2558)  ======================*/
 
 
- /*------------------------  Topic1 (2558) -----------------------------------*/
+ $('#headeditCourse').hide();
+ $('#tableeditCourse').hide();
 
-/*======================= Topic1 Edit Text ======================*/
 
-  
-  document.getElementById("textCouresTileThai1").disabled = true;
-  document.getElementById("textCouresTileEnglish1").disabled = true;
-  document.getElementById("textDegreeTileFullNameThai").disabled = true;
-  document.getElementById("textDegreeTileFullNameEnglish").disabled = true;
-  document.getElementById("textDegreeTileInitialsThai").disabled = true;
-  document.getElementById("textDegreeTileInitialsEnglish").disabled = true;
-  
-  $('#btSaveTopic1').hide();
-  $('#btCancelTopic1').hide();
+ /*------------------------  editCourse (2560) -----------------------------------*/
 
- 
 
-   var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('Coursetitle').child('thai');
-  db.on('value',snap => {
-    $('#textCouresTileThai1').val(snap.val());
-  });
+ $('#editCourse').on('click',function(){
 
-   var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('Coursetitle').child('English');
-  db.on('value',snap => {
-    $('#textCouresTileEnglish1').val(snap.val());
-  });
-
-  var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('DegreeTitle').child('FullName').child('thai');
-  db.on('value',snap => {
-    $('#textDegreeTileFullNameThai').val(snap.val());
-  });
-
-   var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('DegreeTitle').child('FullName').child('English');
-  db.on('value',snap => {
-    $('#textDegreeTileFullNameEnglish').val(snap.val());
-  });
-
-  var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('DegreeTitle').child('Intials').child('thai');
-  db.on('value',snap => {
-    $('#textDegreeTileInitialsThai').val(snap.val());
-  });
-
-   var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('DegreeTitle').child('Intials').child('English');
-  db.on('value',snap => {
-    $('#textDegreeTileInitialsEnglish').val(snap.val());
-  });
-
- 
-
-  $('#btEditTopic1').on('click',function(){
-    EditMaster2558();
-  });
-
-  $('#btSaveTopic1').on('click',function(){
-    SaveMaster2558();
-  });
-
-  $('#btCancelTopic1').on('click',function(){
-    CancelEditMaster2558();
-  });
-
-  function EditMaster2558() {
-     
-      document.getElementById("textCouresTileThai1").disabled = false;
-      document.getElementById("textCouresTileEnglish1").disabled = false;
-      document.getElementById("textDegreeTileFullNameThai").disabled = false;
-      document.getElementById("textDegreeTileFullNameEnglish").disabled = false;
-      document.getElementById("textDegreeTileInitialsThai").disabled = false;
-      document.getElementById("textDegreeTileInitialsEnglish").disabled = false;
-      $('#btSaveTopic1').show();
-      $('#btCancelTopic1').show();
-
+   if(i == 0){
+      $('#iconeditCourse').attr("class","fa fa-check text-info");
+      $('#headeditCourse').show();
+      $('#tableeditCourse').show();
+      i = 1;
+    }else{
+      $('#iconeditCourse').attr("class","fa fa-chevron-right");
+      $('#headeditCourse').hide();
+      $('#tableeditCourse').hide();
+      i = 0;
     }
 
-  function SaveMaster2558(){
-
-    
-
-    var data2 = {  
-       textCouresTileThai1:$('#textCouresTileThai1').val(), 
-    };
-
-    var data3 = {         
-       textCouresTileEnglish1:$('#textCouresTileEnglish1').val(),       
-    };
-
-    var data4 = {                
-       textDegreeTileFullNameThai:$('#textDegreeTileFullNameThai').val(),  
-    };
-
-    var data5 = {         
-       textDegreeTileFullNameEnglish:$('#textDegreeTileFullNameEnglish').val(),
-    };
-
-    var data6 = {         
-       textDegreeTileInitialsThai:$('#textDegreeTileInitialsThai').val(),  
-    };
-
-    var data7 = {         
-       textDegreeTileInitialsEnglish:$('#textDegreeTileInitialsEnglish').val()  
-    };
-
-    
-    firebase.database().ref('website').child('course').child('doctorate').child('year2558').child('Coursetitle').child('thai').update(data2);
-    firebase.database().ref('website').child('course').child('doctorate').child('year2558').child('Coursetitle').child('English').update(data3);
-    firebase.database().ref('website').child('course').child('doctorate').child('year2558').child('DegreeTitle').child('FullName').child('thai').update(data4);
-   	firebase.database().ref('website').child('course').child('doctorate').child('year2558').child('DegreeTitle').child('FullName').child('English').update(data5);
-   	firebase.database().ref('website').child('course').child('doctorate').child('year2558').child('DegreeTitle').child('Intials').child('thai').update(data6);
-   	firebase.database().ref('website').child('course').child('doctorate').child('year2558').child('DegreeTitle').child('Intials').child('English').update(data7);
-
-    $('#btSaveTopic1').hide();
-    $('#btCancelTopic1').hide();
-   
-    document.getElementById("textCouresTileThai1").disabled = true;
- 	  document.getElementById("textCouresTileEnglish1").disabled = true;
-  	document.getElementById("textDegreeTileFullNameThai").disabled = true;
-  	document.getElementById("textDegreeTileFullNameEnglish").disabled = true;
-  	document.getElementById("textDegreeTileInitialsThai").disabled = true;
-  	document.getElementById("textDegreeTileInitialsEnglish").disabled = true;
-
-   
-    }
-
-  function CancelEditMaster2558() {
-      
-        $('#btSaveTopic1').hide();
-        $('#btCancelTopic1').hide();
-    
-    document.getElementById("textCouresTileThai1").disabled = true;
- 	  document.getElementById("textCouresTileEnglish1").disabled = true;
-  	document.getElementById("textDegreeTileFullNameThai").disabled = true;
-  	document.getElementById("textDegreeTileFullNameEnglish").disabled = true;
-  	document.getElementById("textDegreeTileInitialsThai").disabled = true;
-  	document.getElementById("textDegreeTileInitialsEnglish").disabled = true;
-  }
-
-
-
-/*=======================  Edit Image ======================*/
-
- var dbImage = dbRef.ref("website").child('course').child('doctorate').child('year2558').child('image1');
- dbImage.on('value',snap => {
-   $('#imgTopic1').attr("src",snap.val());
  });
 
- $('#btUploadImageTopic1').hide();
 
- $('#fileUploadImageTopic1').on('change',function(event){
-   selectedFile = event.target.files[0];
-   $('#btUploadImageTopic1').show();
+
+ var rootRefExpert = topicRef.child("course").child('doctorate').child('year2558').child('body');
+ var a=0;
+ rootRefExpert.on("child_added",snap => {
+   var snapkey = snap.key;
+   var img = snap.child('file').val();
+   var detail = snap.child('topic').val();
+   var detail2 = snap.child('topic2').val();
+
+   a=a+1;
+
+   $('#editCourse_work').append("<tr id='"+snap.key+"'><td><img src='"+ img +"' width='"+'150px'+"' style='"+'border-radius:10px'+"' class='"+'header-bg'+"'></td><td class='"+'txttopic'+"' width='"+'250px'+"'>" + detail + "</td><td class='"+'txtdetail'+"'>" + "<div class='"+'panel-heading'+"'>" +
+   "<h4 class='"+'panel-title'+"'>" + "<a data-toggle='"+'collapse'+"' data-parent='"+'#accordion'+"' href='"+'#'+'collapse'+ a +"'>ดูรายละเอียด</a>" + "</h4>" + "</div>" + "<div id='"+'collapse'+ a +"' class='"+'panel-collapse collapse'+"''>" + "<div class='"+'panel-body'+"'>" + detail2 + "</div>" + "</div>" + "</td>" +
+                             "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                             " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+
  });
 
- $('#btUploadImageTopic1').on('click',function(event){
-   uploadImageTopic1();
+
+
+
+ $('#editCourse_work').on('click','.btn-delete-expert',function(){
+   var id = $(this).closest('tr').attr("id");
+   rootRefExpert.child(id).remove().then(function(){
+       $('#deleteProfileModal').modal('show');
+   });
+     $(this).closest('tr').remove();
  });
 
- function uploadImageTopic1(){
-   var filename= selectedFile.name;
-   var storageRef = firebase.storage().ref('/CourseImage/Master/Master2558/' + filename);
-   var uplodadTask = storageRef.put(selectedFile);
+ $('#editCourse_work').on('click','.btn-edit-expert',function(){
+   idBody = $(this).closest('tr').attr("id");
+   var bg = $(this).closest('tr').find(".header-bg").attr("src");
+   var topic =  $(this).closest('tr').find(".txttopic").text();
+   var detail = $(this).closest('tr').find('.txtdetail').text();
+   $('#bgHeaderEdit').attr("src",bg);
+   $('#TopicExpert').val(topic);
+   $('#detailExpert').val(detail);
+   $('#editExpertModal').modal('show');
+ });
 
-     uplodadTask.on('state_changed',function(sanpshot){
+ $('#btEditExpert').on('click',function(){
+   editHeader();
+ });
 
-     },function(error){
+ $('#fileUploadExpert').on('change',function(event){
+   selectedFileEdit = event.target.files[0];
+ });
 
-     },function(){
-       var downloadURL = uplodadTask.snapshot.downloadURL;
-       var updates = {};
-       var postImage = {
-         imageDigital:downloadURL
-       };
-       var deleteRef;
-       var deleteImageProfile = firebase.database().ref('website').child("course").child('doctorate').child('year2558').child('image1');
-       deleteImageProfile.on('value',snap => {
-         deleteRef = firebase.storage().refFromURL(snap.val());
-       });
-       deleteRef.delete().then(function() {
-       }).catch(function(error) {
+ function editHeader(){
+   var filename= selectedFileEdit.name;
+   var storageRef = firebase.storage().ref('/CourseImage/Doctorate/2558/' + filename);
+   var uplodadTask = storageRef.put(selectedFileEdit);
 
-       });
-       firebase.database().ref('website').child("course").child('doctorate').child('year2558').update(postImage);
-       $('#fileUploadImageTopic1').val("");
-       $('#btUploadImageTopic1').hide();
+   uplodadTask.on('state_changed',function(sanpshot){
+
+   },function(error){
+
+   },function(){
+     var downloadURL = uplodadTask.snapshot.downloadURL;
+     var updatebachelor = {
+       file:downloadURL,
+       topic:  $('#TopicExpert').val(),
+       topic2:  $('#detailExpert').val(),
+     };
+     var deleteRef;
+     var deleteImageProfile = firebase.database().ref('website/course/doctorate/year2558/body').child(idBody).child('file');
+     deleteImageProfile.on('value',snap => {
+       deleteRef = firebase.storage().refFromURL(snap.val());
      });
- }
+     deleteRef.delete().then(function() {
+     }).catch(function(error) {
 
-/*======================= End  Edit Image ======================*/
-
-/*======================= End Topic (2558) ======================*/
-
-
-/*------------------------  Topic2 (2558) -----------------------------------*/
-
-/*======================= Topic2 Edit Text ======================*/
-
-
-document.getElementById("textMasterDegreeDetail1").disabled = true;
-document.getElementById("textMasterDegreeDetail2").disabled = true;
-document.getElementById("textMasterDegreePlan1Topic").disabled = true;
-document.getElementById("textMasterDegreePlan1Detail").disabled = true;
-document.getElementById("textMasterDegreePlan2Topic").disabled = true;
-document.getElementById("textMasterDegreePlan2Detail").disabled = true;
-document.getElementById("textMasterDegreePlan2Detail2").disabled = true;
-document.getElementById("textMasterDegreePlan2Detail3").disabled = true;
-
-$('#btSaveTopic2').hide();
-$('#btCancelTopic2').hide();
-
-   var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('MasterDegree').child('Plan1').child('Topic');
-  db.on('value',snap => {
-    $('#textMasterDegreeDetail1').val(snap.val());
-  });
-
-   var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('MasterDegree').child('Plan1').child('Detail1');
-  db.on('value',snap => {
-    $('#textMasterDegreeDetail2').val(snap.val());
-  });
-
-  var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('MasterDegree').child('Plan1').child('Detail2');
-  db.on('value',snap => {
-    $('#textMasterDegreePlan1Topic').val(snap.val());
-  });
-
-   var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('MasterDegree').child('Plan1').child('Detail3');
-  db.on('value',snap => {
-    $('#textMasterDegreePlan1Detail').val(snap.val());
-  });
-
-  var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('MasterDegree').child('Plan2').child('Topic');
-  db.on('value',snap => {
-    $('#textMasterDegreePlan2Topic').val(snap.val());
-  });
-
-   var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('MasterDegree').child('Plan2').child('Detail1');
-  db.on('value',snap => {
-    $('#textMasterDegreePlan2Detail').val(snap.val());
-  });
-
-  var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('MasterDegree').child('Plan2').child('Detail2');
-  db.on('value',snap => {
-    $('#textMasterDegreePlan2Detail2').val(snap.val());
-  });
-
-  var db = dbRef.ref('website/course').child('doctorate').child('year2558').child('MasterDegree').child('Plan2').child('Detail3');
-  db.on('value',snap => {
-    $('#textMasterDegreePlan2Detail3').val(snap.val());
-  });
-
-  $('#btEditTopic2').on('click',function(){
-    EditMasterDegree();
-  });
-
-  $('#btSaveTopic2').on('click',function(){
-    SaveMasterDegree();
-  });
-
-  $('#btCancelTopic2').on('click',function(){
-    CancelMasterDegree();
-  });
-
-  function EditMasterDegree() {
-      document.getElementById("textMasterDegreeTopic").disabled = false;
-      document.getElementById("textMasterDegreeDetail1").disabled = false;
-      document.getElementById("textMasterDegreeDetail2").disabled = false;
-      document.getElementById("textMasterDegreePlan1Topic").disabled = false;
-      document.getElementById("textMasterDegreePlan1Detail").disabled = false;
-      document.getElementById("textMasterDegreePlan2Topic").disabled = false;
-      document.getElementById("textMasterDegreePlan2Detail").disabled = false; 
-      $('#btSaveTopic2').show();
-      $('#btCancelTopic2').show();
-
-    }
-
-  function SaveMasterDegree(){
-
-      var data1 = {
-       Topic:$('#textMasterDegreeTopic').val(),
-  
-    };
-
-    var data2 = {
-       Detail1:$('#textMasterDegreeDetail1').val(),
-  
-    };
-
-    var data3 = {
-       Detail2:$('#textMasterDegreeDetail2').val(),
-  
-    };
-
-    var data4 = {
-       Topic:$('#textMasterDegreePlan1Topic').val(),
-  
-    };
-
-    var data5 = {
-       Detail:$('#textMasterDegreePlan1Detail').val(),
-  
-    };
-
-    var data6 = {
-       Topic:$('#textMasterDegreePlan2Topic').val(),
-  
-    };
-
-    var data7 = {
-       Detail:$('#textMasterDegreePlan2Detail').val(),
-  
-    };
-
-    firebase.database().ref('website').child('course').child('master').child('year2558').child('DegreeTitle').child('MasterDegree ').update(data1);
-    firebase.database().ref('website').child('course').child('master').child('year2558').child('DegreeTitle').child('MasterDegree ').update(data2);
-    firebase.database().ref('website').child('course').child('master').child('year2558').child('DegreeTitle').child('MasterDegree ').update(data3);
-    firebase.database().ref('website').child('course').child('master').child('year2558').child('DegreeTitle').child('MasterDegree ').child('Plan1').update(data4);
-    firebase.database().ref('website').child('course').child('master').child('year2558').child('DegreeTitle').child('MasterDegree ').child('Plan1').update(data5);
-    firebase.database().ref('website').child('course').child('master').child('year2558').child('DegreeTitle').child('MasterDegree ').child('Plan2').update(data6);
-    firebase.database().ref('website').child('course').child('master').child('year2558').child('DegreeTitle').child('MasterDegree ').child('Plan2').update(data7);
-
-    $('#btSaveTopic2').hide();
-    $('#btCancelTopic2').hide();
-    document.getElementById("textMasterDegreeTopic").disabled = true;
-    document.getElementById("textMasterDegreeDetail1").disabled = true;
-    document.getElementById("textMasterDegreeDetail2").disabled = true;
-    document.getElementById("textMasterDegreePlan1Topic").disabled = true;
-    document.getElementById("textMasterDegreePlan1Detail").disabled = true;
-    document.getElementById("textMasterDegreePlan2Topic").disabled = true;
-    document.getElementById("textMasterDegreePlan2Detail").disabled = true
-
-    }
-
-    function CancelMasterDegree() {
-        
-        $('#btSaveTopic2').hide();
-        $('#btCancelTopic2').hide();
-    document.getElementById("textMasterDegreeTopic").disabled = true;
-    document.getElementById("textMasterDegreeDetail1").disabled = true;
-    document.getElementById("textMasterDegreeDetail2").disabled = true;
-    document.getElementById("textMasterDegreePlan1Topic").disabled = true;
-    document.getElementById("textMasterDegreePlan1Detail").disabled = true;
-    document.getElementById("textMasterDegreePlan2Topic").disabled = true;
-    document.getElementById("textMasterDegreePlan2Detail").disabled = true
-  }
-
-
- 
-/*=======================  Edit Image ======================*/
-
- var dbImage = dbRef.ref("website").child('course').child('doctorate').child('year2558').child('image2');
- dbImage.on('value',snap => {
-   $('#imgTopic2').attr("src",snap.val());
- });
-
- $('#btUploadImageTopic2').hide();
-
- $('#fileUploadImageTopic2').on('change',function(event){
-   selectedFile = event.target.files[0];
-   $('#btUploadImageTopic2').show();
- });
-
- $('#btUploadImageTopic2').on('click',function(event){
-   uploadImageTopic2();
- });
-
- function uploadImageTopic2(){
-   var filename= selectedFile.name;
-   var storageRef = firebase.storage().ref('/CourseImage/Master/Master2558/' + filename);
-   var uplodadTask = storageRef.put(selectedFile);
-
-     uplodadTask.on('state_changed',function(sanpshot){
-
-     },function(error){
-
-     },function(){
-       var downloadURL = uplodadTask.snapshot.downloadURL;
-       var updates = {};
-       var postImage = {
-         imageDigital:downloadURL
-       };
-       var deleteRef;
-       var deleteImageProfile = firebase.database().ref('website').child("course").child('master').child('year2553').child('image2');
-       deleteImageProfile.on('value',snap => {
-         deleteRef = firebase.storage().refFromURL(snap.val());
-       });
-       deleteRef.delete().then(function() {
-       }).catch(function(error) {
-
-       });
-       firebase.database().ref('website').child("course").child('master').child('year2558').update(postImage);
-       $('#fileUploadImageTopic2').val("");
-       $('#btUploadImageTopic2').hide();
      });
- }
+     firebase.database().ref('website/course/doctorate/year2558/body').child(idBody).update(updatebachelor);
+     $('#fileUploadExpert').val("");
+     $('#TopicExpert').val("");
+     $('#detailExpert').val("");
 
-/*======================= End  Edit Image ======================*/
 
-/*======================= End Topic 2 (2558) ======================*/
+       $('#list_header').empty();
+
+       var a=0;
+       rootRefExpert.on("child_added",snap => {
+         var snapkey = snap.key;
+         var img = snap.child('file').val();
+         var detail = snap.child('topic').val();
+         var detail2 = snap.child('topic2').val();
+
+         a=a+1;
+
+         $('#Suggestion_work').append("<tr id='"+snap.key+"'><td><img src='"+ img +"' width='"+'150px'+"' style='"+'border-radius:10px'+"' class='"+'header-bg'+"'></td><td class='"+'txttopic'+"' width='"+'250px'+"'>" + detail + "</td><td class='"+'txtdetail'+"'>" + "<div class='"+'panel-heading'+"'>" +
+         "<h4 class='"+'panel-title'+"'>" + "<a data-toggle='"+'collapse'+"' data-parent='"+'#accordion'+"' href='"+'#'+'collapse'+ a +"'>ดูรายละเอียด</a>" + "</h4>" + "</div>" + "<div id='"+'collapse'+ a +"' class='"+'panel-collapse collapse'+"''>" + "<div class='"+'panel-body'+"'>" + detail2 + "</div>" + "</div>" + "</td>" +
+                                   "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                   " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+
+       });
+
+       $('#addEditExpert2').modal('show');
+
+   });
+ };
+
+
+ $('#btOpenModaleditCourse').on('click',function(e){
+      e.preventDefault();
+        $('#addeditCourse').modal('show');
+    });
+
+    $('#btUploadeditCourse').hide();
+
+    $('#fileUploadeditCourse').on('change',function(event){
+      selectedFile = event.target.files[0];
+
+      $('#btUploadeditCourse').show();
+    });
+
+    $('#btUploadeditCourse').on('click',function(){
+      uploadeditCourse();
+    });
+
+    function uploadeditCourse(){
+      var filename= selectedFile.name;
+      var filesurename = filename.split(".")[1];
+      if(filesurename == "jpg" || filesurename == "JPG" || filesurename == "png" || filesurename == "PNG"){
+        var storageRef = firebase.storage().ref('/Course/CourseImage/Doctorate/2558/' + filename);
+        var uplodadTask = storageRef.put(selectedFile);
+
+        uplodadTask.on('state_changed',function(sanpshot){
+
+        },function(error){
+
+        },function(){
+          var downloadURL = uplodadTask.snapshot.downloadURL;
+          var updates = {};
+          var post = {
+            file:downloadURL,
+            topic:$('#TopiceditCourse').val(),
+            topic2:$('#TopiceditCourse2').val()
+
+          };
+
+          firebase.database().ref('website').child("course").child('doctorate').child('year2558').child('body').push().set(post);
+          $('#fileUploadeditCourse').val("");
+          $('#addeditCourse').modal('hide');
+          $('#addeditCourse3').modal('show')
+
+        });
+
+      }else {
+        $('#addeditCourse').modal('hide');
+        $('#addeditCourse2').modal('show');
+      }
+
+
+    }
+
+      /*------------------------ End  editCourse (2560) -----------------------------------*/
+
+      /*------------------------  Dowload Suggestion (2560) -----------------------------------*/
+     $('#headSuggestion').hide();
+     $('#tableSuggestion').hide();
+     $('#headEducation').hide();
+     $('#tableEducation').hide();
+     $('#headCourse').hide();
+     $('#tableCourse').hide();
+
+
+     /*------------------------  Dowload Suggestion (2560) -----------------------------------*/
+
+
+     $('#Suggestion').on('click',function(){
+
+       $('#iconEducation').attr("class","fa fa-chevron-right");
+       $('#iconSuggestion').attr("class","fa fa-check text-info");
+       $('#iconCourse').attr("class","fa fa-chevron-right");
+       $('#iconLearning').attr("class","fa fa-chevron-right");
+
+       $('#headSuggestion').show();
+       $('#tableSuggestion').show();
+       $('#headEducation').hide();
+       $('#tableEducation').hide();
+       $('#headCourse').hide();
+       $('#tableCourse').hide();
+       $('#headLearning').hide();
+       $('#tableLearning').hide();
+
+     });
+
+
+
+     var rootRefExpert = topicRef.child("course").child('master').child('year2553').child('filePDF').child('suggestion');
+
+     rootRefExpert.on("child_added",snap => {
+       var snapkey = snap.key;
+       var detail = snap.child('topic').val();
+
+       $('#Suggestion_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                                 "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+                                 "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                 " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+     });
+
+     $('#Suggestion_work').on('click','.btn-delete-expert',function(){
+       var id = $(this).closest('tr').attr("id");
+       rootRefExpert.child(id).remove().then(function(){
+           $('#deleteProfileModal').modal('show');
+       });
+         $(this).closest('tr').remove();
+     });
+
+     $('#Suggestion_work').on('click','.btn-edit-expert',function(){
+       var id = $(this).closest('tr').attr("id");
+       var detail = $(this).closest('tr').find('.txtdetail').text();
+       $('#detailExpert').val(detail);
+       $('#editExpertModal').modal('show');
+     });
+
+
+     $('#btOpenModalSuggestion').on('click',function(e){
+          e.preventDefault();
+            $('#addSuggestion').modal('show');
+        });
+
+        $('#btUploadSuggestion').hide();
+
+        $('#fileUploadSuggestion').on('change',function(event){
+          selectedFile = event.target.files[0];
+
+          $('#btUploadSuggestion').show();
+        });
+
+        $('#btUploadSuggestion').on('click',function(){
+          uploadSuggestion();
+        });
+
+        function uploadSuggestion(){
+          var filename= selectedFile.name;
+          var filesurename = filename.split(".")[1];
+          if(filesurename == "PDF" || filesurename == "pdf"){
+            var storageRef = firebase.storage().ref('/CoursePDF/master2553/' + filename);
+            var uplodadTask = storageRef.put(selectedFile);
+
+            uplodadTask.on('state_changed',function(sanpshot){
+
+            },function(error){
+
+            },function(){
+              var downloadURL = uplodadTask.snapshot.downloadURL;
+              var updates = {};
+              var postPDF = {
+                file:downloadURL,
+                topic:$('#TopicSuggestion').val()
+              };
+
+              firebase.database().ref('website').child("course").child('master').child('year2553').child('filePDF').child('suggestion').push().set(postPDF);
+              $('#fileUploadSuggestion').val("");
+              $('#addSuggestion').modal('hide');
+              $('#addSuggestion3').modal('show')
+
+            });
+
+          }else {
+            $('#addSuggestion').modal('hide');
+            $('#addSuggestion2').modal('show');
+          }
+
+
+        }
+
+          /*------------------------ End Dowload Suggestion (2560) -----------------------------------*/
+
+     /*------------------------  Dowload Education (2560) -----------------------------------*/
+
+     $('#Education').on('click',function(){
+       $('#iconEducation').attr("class","fa fa-check text-info");
+       $('#iconSuggestion').attr("class","fa fa-chevron-right");
+       $('#iconCourse').attr("class","fa fa-chevron-right");
+       $('#iconLearning').attr("class","fa fa-chevron-right");
+
+       $('#headEducation').show();
+       $('#tableEducation').show();
+       $('#headSuggestion').hide();
+       $('#tableSuggestion').hide();
+       $('#headCourse').hide();
+       $('#tableCourse').hide();
+       $('#headLearning').hide();
+       $('#tableLearning').hide();
+     ;
+     });
+
+     var rootRefExpert2 = topicRef.child("course").child('master').child('year2553').child('filePDF').child('education');
+
+     rootRefExpert2.on("child_added",snap => {
+       var snapkey = snap.key;
+       var detail = snap.child('topic').val();
+
+       $('#Education_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                                 "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+                                 "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                 " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+     });
+
+     $('#Education_work').on('click','.btn-delete-expert',function(){
+       var id = $(this).closest('tr').attr("id");
+       rootRefExpert2.child(id).remove().then(function(){
+           $('#deleteModal2').modal('show');
+       });
+         $(this).closest('tr').remove();
+     });
+
+     $('#Education_work').on('click','.btn-edit-expert',function(){
+       var id = $(this).closest('tr').attr("id");
+       var detail = $(this).closest('tr').find('.txtdetail').text();
+       $('#detailExpert2').val(detail);
+       $('#editExpertModal2').modal('show');
+     });
+
+
+     $('#btOpenModalEducation').on('click',function(e){
+          e.preventDefault();
+            $('#addEducation').modal('show');
+        });
+
+        $('#btUploadEducation').hide();
+
+        $('#fileUploadEducation').on('change',function(event){
+          selectedFile = event.target.files[0];
+          $('#btUploadEducation').show();
+        });
+
+        $('#btUploadEducation').on('click',function(){
+          uploadEducation();
+        });
+
+        function uploadEducation(){
+          var filename= selectedFile.name;
+          var filesurename = filename.split(".")[1];
+          if(filesurename == "PDF" || filesurename == "pdf"){
+            var storageRef = firebase.storage().ref('/CoursePDF/master2553/' + filename);
+            var uplodadTask = storageRef.put(selectedFile);
+
+            uplodadTask.on('state_changed',function(sanpshot){
+
+            },function(error){
+
+            },function(){
+              var downloadURL = uplodadTask.snapshot.downloadURL;
+              var updates = {};
+              var postPDF = {
+                file:downloadURL,
+                topic:$('#TopicEducation').val()
+              };
+
+              firebase.database().ref('website').child("course").child('master').child('year2553').child('filePDF').child('education').push().set(postPDF);
+              $('#fileUploadEducation').val("");
+              $('#addEducation').modal('hide');
+              $('#addEducation3').modal('show');
+
+            });
+
+          }else {
+            $('#addEducation').modal('hide');
+            $('#addEducation2').modal('show');
+          }
+
+
+        }
+
+        /*------------------------ End Dowload Education (2560) -----------------------------------*/
+
+          /*------------------------  Dowload Course (2560) -----------------------------------*/
+
+     $('#Course').on('click',function(){
+       $('#iconSuggestion').attr("class","fa fa-chevron-right");
+       $('#iconEducation').attr("class","fa fa-chevron-right");
+       $('#iconCourse').attr("class","fa fa-check text-info");
+       $('#iconLearning').attr("class","fa fa-chevron-right");
+
+       $('#headCourse').show();
+       $('#tableCourse').show();
+       $('#headSuggestion').hide();
+       $('#tableSuggestion').hide();
+       $('#headEducation').hide();
+       $('#tableEducation').hide();
+       $('#headLearning').hide();
+       $('#tableLearning').hide();
+     });
+
+     var rootRefExpert3 = topicRef.child("course").child('master').child('year2553').child('filePDF').child('course');
+
+     rootRefExpert3.on("child_added",snap => {
+       var snapkey = snap.key;
+       var detail = snap.child('topic').val();
+
+       $('#Course_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox'+"' class='"+'filled-in chk-col-red'+"' checked='"+'true'+"'>"+
+                                 "<label for='"+'md_checkbox'+"'></label></td><td class='"+'txtdetail'+"'>" + detail + "</td>" +
+                                 "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                 " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+     });
+
+     $('#Course_work').on('click','.btn-delete-expert',function(){
+       var id = $(this).closest('tr').attr("id");
+       rootRefExpert3.child(id).remove().then(function(){
+           $('#deleteModal3').modal('show');
+       });
+         $(this).closest('tr').remove();
+     });
+
+     $('#Course_work').on('click','.btn-edit-expert',function(){
+       var id = $(this).closest('tr').attr("id");
+       var detail = $(this).closest('tr').find('.txtdetail').text();
+       $('#detailExpert3').val(detail);
+       $('#editExpertModal3').modal('show');
+     });
+
+
+     $('#btOpenModalCourse').on('click',function(e){
+          e.preventDefault();
+            $('#addCourse').modal('show');
+        });
+
+        $('#btUploadCourse').hide();
+
+        $('#fileUploadCourse').on('change',function(event){
+          selectedFile = event.target.files[0];
+          $('#btUploadCourse').show();
+        });
+
+        $('#btUploadCourse').on('click',function(){
+          uploadCourse();
+        });
+
+        function uploadCourse(){
+          var filename= selectedFile.name;
+          var filesurename = filename.split(".")[1];
+          if(filesurename == "PDF" || filesurename == "pdf"){
+            var storageRef = firebase.storage().ref('/CoursePDF/master2553/' + filename);
+            var uplodadTask = storageRef.put(selectedFile);
+
+            uplodadTask.on('state_changed',function(sanpshot){
+
+            },function(error){
+
+            },function(){
+              var downloadURL = uplodadTask.snapshot.downloadURL;
+              var updates = {};
+              var postPDF = {
+                file:downloadURL,
+                topic:$('#TopicCourse').val()
+              };
+
+              firebase.database().ref('website').child("course").child('master').child('year2553').child('filePDF').child('course').push().set(postPDF);
+              $('#fileUploadCourse').val("");
+              $('#addCourse').modal('hide');
+              $('#addCourse3').modal('show');
+
+            });
+
+          }else {
+            $('#addCourse').modal('hide');
+            $('#addCourse2').modal('show');
+          }
+
+
+        }
+
+        /*------------------------ End Dowload Course (2560) -----------------------------------*/
 
 
 })

@@ -252,387 +252,204 @@
               </div>
 
 
-              <!-- Start Page Content 1 -->
 
-                <div class="row">
-                      <div class="col-lg-5">
-                            <div class="card">
+
+              <!-- Start Page editCourse-->
+
+              <div class="row">
+                  <div class="col-lg-12">
+                              <div class="card">
                                 <div class="card-block">
+                                    <h4 class="card-title">หลักสูตร</h4>
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                        <ul class="list-icons">
+                                        <li id="editCourse" ><a href="javascript:void(0)"><i id="iconeditCourse" class="fa fa-chevron-right"></i> รายละเอียดหลักสูตร </a></li>
 
-                                <img id="imgBachelorEs" alt="Mountain View" style="width:100%">
+                                        </ul>
+                                     </div>
 
                                 </div>
-                            </div>
-                        </div>
 
+                                <!-- Start Page editCourse 1-->
 
-                    <div class="col-lg-7">
-                        <div class="card">
-                            <div class="card-block">
-                                <h4 class="card-title">ส่วนที่ 1</h4>
+                                <div id="headeditCourse" class="card-block bg-info">
 
-                                <div class="setting image_picker">
-                                  <h2>Image</h2>
-                                  <div class="settings_wrap">
-                                    <label class="drop_target">
-                                      <div class="image_preview"></div>
-                                      <input  class="upload" id="fileUploadImageBachelorEs" type="file"/>
-                                    </label>
-                                    <div class="settings_actions vertical"><a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i> Choose from Uploads</a><a class="disabled" data-action="remove_current_image"><i class="fa fa-ban"></i> Remove Current Image</a></div>
-
+                                  <h4 class="text-white card-title"></h4>
+                                    <div class="message-box contact-box">
+                                        <h2 class="add-ct-btn">
+                                          <button type="button" id="btOpenModaleditCourse" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                        </h2>
+                                    </div>
                                   </div>
-                                </div>
+                                  <form class="form-horizontal form-material ">
+                                    <div class="table-responsive">
+                                        <table id="tableeditCourse" class="table text-center color-bordered-table success-bordered-table">
+                                            <thead >
+                                                <tr >
+                                                    <th class="text-center">รูป</th>
+                                                    <th class="text-center">ชื่อหัวข้อ</th>
+                                                    <th class="text-center">ข้อมูล</th>
+                                                    <th class="text-center">แก้ไข</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="editCourse_work">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                  </form>
+
+                                  <!-- Modal  editCourse 2-->
+
+                                  <div class="modal fade" id="editExpertModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h4 class="modal-title">แก้ไขข้อมูล</h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                          <center>
+                                          <img width="250px" id="bgHeaderEdit" style="border-radius:10px"></center><br>
+
+                                          <div id="textSuggestion" class="form-group">
+                                            <label for="facultyHisEdu" >ชื่อหลักสูตร</label>
+                                                <div class="input-group">
+                                                <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                                                <input id="TopicExpert" type="text"  class="form-control" >
+                                              </div>
+                                          </div>
+                                          <div id="textSuggestion" class="form-group">
+                                            <label for="facultyHisEdu" >ข้อมูล</label>
+                                                <div class="input-group">
+                                                <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                                                <textarea id="detailExpert" type="text"  class="form-control" rows="5"></textarea>
+                                              </div>
+                                          </div>
+                                          <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadExpert">
+
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button id="btEditExpert" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> ตกลง</button>
+                                          <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
 
 
+                                          <!-- Modal edit editCourse2 -->
+                                                <div class="modal fade" id="addEditExpert2" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm">
+                                                        <div class="modal-content">
+                                                          <div class="modal-header">
+                                                              <h4 class="modal-title"></h4>
 
-                                <input type="text" class="form-control form-control-line" id="textTopicBachelorEs">
-                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelorEs" >
+                                                          </div>
 
-                                </textarea>
-                                <p></p>
+                                                            <div class="modal-body">
+                                                                <h8 class="card-subtitle">แก้ไขข้อมูลเสร็จสิ้น</h8>
+                                                            </div>
+                                                                <div class="modal-footer">
 
-                                <button id="btUploadImageBachelorEs" class="btn btn-success waves-effect waves-light m-r-10">ตกลง</button>
+                                                                    <button id="btCloseEditExpert" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                                                                </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
 
-                                <button type="button" id="btBachelorEditEs"  class="btn btn-outline-secondary">แก้ไข <i class="fa fa-edit"></i></button>
+                                  <!-- Modal editCourse -->
+                      <div class="modal fade" id="addeditCourse" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title">เพิ่มรายละเอียดหลักสูตร</h4>
 
-                                <button type="button" id="btBachelorModifyEs"  class="btn btn-outline-secondary">แก้ไขรายละเอียด <i class="fa fa-edit"></i></button>
-
-                                <input type="submit" class="btn btn-success " value="บันทึก" id="btBachelorSaveEs">
-                                <input type="reset" class="btn btn-danger  " value="ยกเลิก" id="btBachelorCancelEs">
-
-
-
-
-                                </div>
                             </div>
+
+                            <div class="modal-body">
+                              <div id="textSuggestion" class="form-group">
+                                <label for="facultyHisEdu" >ชื่อหลักสูตร</label>
+                                    <div class="input-group">
+                                    <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                                    <input id="TopiceditCourse" type="text"  class="form-control" >
+                                  </div>
+                              </div>
+                              <div id="texteditCourse" class="form-group">
+                                <label for="facultyHisEdu" >ข้อมูล</label>
+                                    <div class="input-group">
+                                    <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+                                    <textarea id="TopiceditCourse2" type="text"  class="form-control" rows="5"></textarea>
+                                  </div>
+                              </div>
+                              <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadeditCourse">
+
+                            </div>
+                            <div class="modal-footer">
+                              <button id="btUploadeditCourse" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i>   ตกลง</button>
+
+                              <button id="btCloseeditCourse" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                            </div>
+                          </div>
                         </div>
-                    </div>
+                      </div>
 
-                    <!-- Modal Es -->
-    <div class="modal fade" id="addOpenModifyEs" role="dialog" aria-labelledby="Message" aria-hidden="true">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="messageOpenCourses">อัพโหลด PDF</h4>
-            <h6 class="card-subtitle">ข้อมูล กลุ่มวิชาซอฟต์แวร์วิสาหกิจ</h6>
-
-          </div>
-          <div class="modal-body">
-
-            <div id="textEducation" class="form-group">
-              <label for="facultyHisEdu" >ชื่อหัวข้อ</label>
-                  <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                  <input id="TopicModifyEs" type="text"  class="form-control" >
-                </div>
-            </div>
-
-            <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadModifyEs">
-
-          </div>
-          <div class="modal-footer">
-            <button id="btUploadModifyEs" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i>ตกลง</button>
-
-            <button id="btCloseModifyEs" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal Es -->
-      <div class="modal fade" id="addOpenModifyEs2" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                      <!-- Modal Suggestion2 -->
+          <div class="modal fade" id="addeditCourse2" role="dialog" aria-labelledby="Message" aria-hidden="true">
             <div class="modal-dialog modal-sm">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                    <h4 class="modal-title">เกิดข้อพลาด</h4>
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">เกิดข้อพลาด</h4>
 
-                  </div>
+                </div>
 
-                  <div class="modal-body">
-                    <h8 class="card-subtitle">กรุณาใส่ไฟล์ PDF</h8>
-                  </div>
-                  <div class="modal-footer">
+                <div class="modal-body">
+                  <h8 class="card-subtitle">กรุณาใส่ไฟล์ JPG หรือ PNG</h8>
+                </div>
+                <div class="modal-footer">
 
-                      <button id="btCloseModifyEs" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                  </div>
+                  <button id="btCloseeditCourse" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                 </div>
               </div>
             </div>
-
-            <!-- Modal Es -->
-                  <div class="modal fade" id="addOpenModifyEs3" role="dialog" aria-labelledby="Message" aria-hidden="true">
-                      <div class="modal-dialog modal-sm">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"></h4>
-
-                            </div>
-
-                              <div class="modal-body">
-                                  <h8 class="card-subtitle">เพิ่มข้อมูลเสร็จสิ้น</h8>
-                              </div>
-                                  <div class="modal-footer">
-
-                                      <button id="btCloseModifyEs" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                                  </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- END Page Content 1 -->
-
-                    <!-- Start Page Content 2 -->
-
-                    <div class="row">
-                  <div class="col-lg-5">
-                            <div class="card">
-                                <div class="card-block">
-
-                                <img id="imgBachelorBida" alt="Mountain View" style="width:100%">
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    <div class="col-lg-7">
-                        <div class="card">
-                            <div class="card-block">
-                                <h4 class="card-title">ส่วนที่ 2</h4>
-
-                                <div class="setting image_picker">
-                                  <h2>Image</h2>
-                                  <div class="settings_wrap">
-                                    <label class="drop_target">
-                                      <div class="image_preview"></div>
-                                      <input  class="upload" id="fileUploadImageBachelorBida" type="file"/>
-                                    </label>
-                                    <div class="settings_actions vertical"><a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i> Choose from Uploads</a><a class="disabled" data-action="remove_current_image"><i class="fa fa-ban"></i> Remove Current Image</a></div>
-
-                                  </div>
-                                </div>
-
-
-
-                                <input type="text" class="form-control form-control-line" id="textTopicBachelorBida">
-                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelorBida" >
-
-                                </textarea>
-                                <p></p>
-
-
-                                <button id="btUploadImageBachelorBida" class="btn btn-success waves-effect waves-light m-r-10">ตกลง</button>
-
-                                <button type="button" id="btBachelorEditBida"  class="btn btn-outline-secondary">แก้ไข <i class="fa fa-edit"></i></button>
-                                <button type="button" id="btBachelorModifyBida"  class="btn btn-outline-secondary">แก้ไขรายละเอียด <i class="fa fa-edit"></i></button>
-
-                                  <input type="submit" class="btn btn-success " value="บันทึก" id="btBachelorSaveBida">
-                                  <input type="reset" class="btn btn-danger  " value="ยกเลิก" id="btBachelorCancelBida">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                     <!-- Modal Studyplan -->
-    <div class="modal fade" id="addOpenModifyBida" role="dialog" aria-labelledby="Message" aria-hidden="true">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="messageOpenCourses">อัพโหลด PDF</h4>
-            <h6 class="card-subtitle">ข้อมูล กลุ่มวิชาธุรกิจอัจฉริยะและการวิเคราะห์ข้อมูล</h6>
-
           </div>
-          <div class="modal-body">
 
-            <div id="textEducation" class="form-group">
-              <label for="facultyHisEdu" >ชื่อหัวข้อ</label>
-                  <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                  <input id="TopicModifyBi" type="text"  class="form-control" >
-                </div>
-            </div>
+          <!-- Modal Suggestion3 -->
+<div class="modal fade" id="addeditCourse3" role="dialog" aria-labelledby="Message" aria-hidden="true">
+<div class="modal-dialog modal-sm">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"></h4>
 
-            <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadModifyBida">
-
-          </div>
-          <div class="modal-footer">
-            <button id="btUploadModifyBida" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i>   ตกลง</button>
-
-            <button id="btCloseModifyBida" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- Modal Bi -->
-      <div class="modal fade" id="addOpenModifyBida2" role="dialog" aria-labelledby="Message" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                    <h4 class="modal-title">เกิดข้อพลาด</h4>
-
-                  </div>
-
-                  <div class="modal-body">
-                    <h8 class="card-subtitle">กรุณาใส่ไฟล์ PDF</h8>
-                  </div>
-                  <div class="modal-footer">
-
-                      <button id="btCloseModifyBi" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Modal Bi -->
-                  <div class="modal fade" id="addOpenModifyBida3" role="dialog" aria-labelledby="Message" aria-hidden="true">
-                      <div class="modal-dialog modal-sm">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"></h4>
-
-                            </div>
-
-                              <div class="modal-body">
-                                  <h8 class="card-subtitle">เพิ่มข้อมูลเสร็จสิ้น</h8>
-                              </div>
-                                  <div class="modal-footer">
-
-                                      <button id="btCloseModifyBi" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                                  </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- END Page Content 2 -->
-
-
-
-                    <!-- Start Page Content 3 -->
-
-                    <div class="row">
-                  <div class="col-lg-5">
-                            <div class="card">
-                                <div class="card-block">
-
-                                <img id="imgBachelorIs" alt="Mountain View" style="width:100%">
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    <div class="col-lg-7">
-                        <div class="card">
-                            <div class="card-block">
-                                <h4 class="card-title">ส่วนที่ 3</h4>
-
-                                <div class="setting image_picker">
-                                  <h2>Image</h2>
-                                  <div class="settings_wrap">
-                                    <label class="drop_target">
-                                      <div class="image_preview"></div>
-                                      <input  class="upload" id="fileUploadImageBachelorIs" type="file"/>
-                                    </label>
-                                    <div class="settings_actions vertical"><a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i> Choose from Uploads</a><a class="disabled" data-action="remove_current_image"><i class="fa fa-ban"></i> Remove Current Image</a></div>
-
-                                  </div>
-                                </div>
-
-
-                                <input type="text" class="form-control form-control-line" id="textTopicBachelorIs">
-                                <textarea class="form-control" rows="6" cols="75" id="textDetailBachelorIs" >
-
-                                </textarea>
-                                <p></p>
-
-
-                                <button id="btUploadImageBachelorIs" class="btn btn-success waves-effect waves-light m-r-10">ตกลง</button>
-
-                                <button type="button" id="btBachelorEditIs"  class="btn btn-outline-secondary">แก้ไข <i class="fa fa-edit"></i></button>
-                                <button type="button" id="btBachelorModifyIs"  class="btn btn-outline-secondary">แก้ไขรายละเอียด <i class="fa fa-edit"></i></button>
-
-                                  <input type="submit" class="btn btn-success " value="บันทึก" id="btBachelorSaveIs">
-                                  <input type="reset" class="btn btn-danger  " value="ยกเลิก" id="btBachelorCancelIs">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal Studyplan -->
-    <div class="modal fade" id="addOpenModifyIs" role="dialog" aria-labelledby="Message" aria-hidden="true">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="messageOpenCourses">อัพโหลด PDF</h4>
-            <h6 class="card-subtitle">ข้อมูล กลุ่มวิชาสารสนเทศศึกษา</h6>
-
-          </div>
-          <div class="modal-body">
-
-            <div id="textEducation" class="form-group">
-              <label for="facultyHisEdu" >ชื่อหัวข้อ</label>
-                  <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                  <input id="TopicModifyIs" type="text"  class="form-control" >
-                </div>
-            </div>
-
-            <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadModifyIs">
-
-          </div>
-          <div class="modal-footer">
-            <button id="btUploadModifyIs" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i>   ตกลง</button>
-
-            <button id="btCloseModifyIs" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-          </div>
-        </div>
-      </div>
+    <div class="modal-body">
+      <h8 class="card-subtitle">เพิ่มข้อมูลเสร็จสิ้น</h8>
     </div>
+    <div class="modal-footer">
 
-    <!-- Modal Is -->
-      <div class="modal fade" id="addOpenModifyIs2" role="dialog" aria-labelledby="Message" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                    <h4 class="modal-title">เกิดข้อพลาด</h4>
+      <button id="btCloseeditCourse" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+    </div>
+  </div>
+</div>
+</div>
 
-                  </div>
 
-                  <div class="modal-body">
-                    <h8 class="card-subtitle">กรุณาใส่ไฟล์ PDF</h8>
-                  </div>
-                  <div class="modal-footer">
 
-                      <button id="btCloseModifyIs" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+
+
+                              </div>
+                              </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <!-- Modal Is -->
-                  <div class="modal fade" id="addOpenModifyIs3" role="dialog" aria-labelledby="Message" aria-hidden="true">
-                      <div class="modal-dialog modal-sm">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"></h4>
 
-                            </div>
 
-                              <div class="modal-body">
-                                  <h8 class="card-subtitle">เพิ่มข้อมูลเสร็จสิ้น</h8>
-                              </div>
-                                  <div class="modal-footer">
 
-                                      <button id="btCloseModifyIs" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                                  </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- END Page Content 3 -->
+
 
                     <!-- Start Page Download -->
 
