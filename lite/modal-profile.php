@@ -26,6 +26,55 @@
 
 <!--===========================================================================================================-->
 
+<!--==================================== Subject ====================================================-->
+
+<div class="modal fade" id="addSubjectModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" >วิชาที่สอน (เพิ่ม)</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="card">
+          <div class="card-block">
+          <div class="form-group">
+            <label for="facultyHisEdu" >ชื่อวิชา</label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="ti-marker"></i></div>
+                <input id="nameSubjectAdd" type="email"  class="form-control" >
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="universityHisEdu">รหัสวิชา</label>
+              <div class="input-group">
+                <div class="input-group-addon"><i class="ti-key"></i></div>
+                  <input id="codeSubjectAdd" type="text"  class="form-control" >
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="yearHisEdu">หน่วยกิต</label>
+              <div class="input-group">
+                <div class="input-group-addon"><i class="ti-ruler-alt-2"></i></div>
+                  <input id="creditSubjectAdd" type="text"  class="form-control" >
+              </div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button id="btAddSubject" class="btn btn-success" data-dismiss="modal"><i class="fa fa-check"></i> บันทึก</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--===========================================================================================================-->
+
 <!--==================================== Change Password ====================================================-->
 
 <div class="modal fade" id="changePassModal" role="dialog" aria-labelledby="Message" aria-hidden="true">

@@ -247,6 +247,29 @@ if(indexSelectAcademicWork == 0){
  });
 
 
+$('#btOpenModalSubjectAdd').on('click',function(){
+  $('#addSubjectModal').modal('show');
+});
+
+$('#btAddSubject').on('click',function(){
+  var dataSubject = {
+    subject:$('#nameSubjectAdd').val(),
+    code:$('#codeSubjectAdd').val(),
+    credit:$('#creditSubjectAdd').val()
+  }
+  usersRef.child(sessionStorage.getItem("userId")).child('subject').push().set(dataSubject);
+});
+
+var roofSubject = usersRef.child(sessionStorage.getItem("userId")).child('subject');
+roofSubject.on('child_added',snap=>{
+  var subject = snap.child('subject').val();
+  var code = snap.child('code').val();
+  var credit = snap.child('credit').val();
+
+  $('#list_subject').append("<tr id='"+snap.key+"'><td>"+subject+"</td><td>"+code+"</td><td>"+credit+"</td></tr>");
+
+});
+
 
 <!--=========================== Add And Edit Inter Work =============================-->
 

@@ -13,12 +13,13 @@ $(document).ready(function(){
 
     rootRef.on("child_added",snap => {
       var name = snap.child('name').val();
+      var action = snap.child('action').val();
       var page = snap.child('page').val();
       var topic = snap.child('topic').val();
       var date = snap.child('date').val();
       var time = snap.child('time').val();
 
-      $('#list_history').append("<tr><td>" + name + "</td>" + "<td>" + page + "</td>" + "<td>" + topic + "</td>"+ "<td>" + date + "</td>"+ "<td>" + time + "</td>"+
+      $('#list_history').prepend("<tr><td>" + name + "</td><td>" + action + "</td><td>" + page + "</td><td>" + topic + "</td><td>" + date + "</td><td>" + time + "</td>"+
                                "</tr>");
                                $('#loaderHistory').hide();
       key = snap.key;

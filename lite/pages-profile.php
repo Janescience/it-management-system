@@ -327,11 +327,13 @@
                                   <div id="headInterWork" class="card-block bg-info">
 
                                     <h4 class="text-white card-title">ผลงานที่ได้รับรางวัลระดับนานาชาติ</h4>
+
                                       <div class="message-box contact-box">
                                           <h2 class="add-ct-btn">
                                             <button type="button" id="btOpenModalInterWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                           </h2>
                                       </div>
+
                                     </div>
                                     <form class="form-horizontal form-material ">
                                       <div class="table-responsive">
@@ -560,6 +562,12 @@
 
                                 <div class="card-block">
                                   <div class="card">
+                                    <ul class="nav nav-tabs profile-tab" role="tablist">
+                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#freetime" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-calendar"></i></span><span class="hidden-xs-down">ตารางการเข้าพบ</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#subject" role="tab"><span class="hidden-sm-up"><i class="ti-comment-alt"></i></span><span class="hidden-xs-down">วิชาที่สอน</span></a> </li>
+                                    </ul>
+                                    <div class="tab-content tabcontent-border">
+                                        <div class="tab-pane active" id="freetime" role="tabpanel" aria-expanded="true">
                                     <div class="card-block">
                                       <div class="table-responsive">
                                     <table class="table table-bordered text-center" >
@@ -582,6 +590,35 @@
                                     </table>
                                   </div>
                                   </div>
+                                </div>
+                                <div class="tab-pane " id="subject" role="tabpanel" aria-expanded="true">
+                            <div class="card-block">
+                              <br>
+                              <div id="headSubject" class="card-block ">
+                                  <div class="message-box contact-box">
+                                      <h2 class="add-ct-btn">
+                                        <button type="button" id="btOpenModalSubjectAdd" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                      </h2>
+                                  </div>
+                                </div>
+                              <div class="table-responsive">
+                            <table class="table  text-center" >
+                              <thead >
+
+                                <th class="text-center">ชื่อวิชา</th>
+                                <th class="text-center">รหัสวิชา</th>
+                                <th class="text-center">หน่วยกิต</th>
+
+
+                              </thead>
+                              <tbody id="list_subject" disabled="true">
+
+                              <tbody>
+                            </table>
+                          </div>
+                          </div>
+                        </div>
+                              </div>
                                   </div>
                                 </div>
 

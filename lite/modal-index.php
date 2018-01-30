@@ -3,12 +3,13 @@
 
 <div class="modal fade" id="addHeaderModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
   <div class="modal-dialog modal-md">
+
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="messageModalLabel">เพิ่มรูปภาพไสลด์</h4>
       </div>
       <div class="modal-body">
-        <h5 class="modal-title" >รูปภาพ</h5>
+        <h5 class="modal-title">รูปภาพ</h5>
         <div  class="setting image_picker">
           <div class="settings_wrap">
             <label class="drop_target">
@@ -29,13 +30,16 @@
           <input class="form-control" type="text"   id="textButton">
       </div>
       <div class="modal-footer">
+
         <button id="btLoading" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
-        <button id="btUploadImageHeader" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> บันทึก</button>
+        <button id="btUploadImageHeader" type="submit" class="btn btn-outline-success "><i class="fa fa-check"></i> บันทึก</button>
         <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+
       </div>
     </div>
   </div>
 </div>
+
 <!--=====================================================================================================-->
 
 <!--==================================== Add Infor Bachelor ====================================================-->
@@ -249,7 +253,7 @@
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="messageModalLabel">จัดการหลักสูตรที่เปิดสอน</h4>
+        <h4 class="modal-title" id="titleCourse">จัดการหลักสูตรที่เปิดสอน</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -284,7 +288,7 @@
         <h4 class="modal-title" id="messagePassModal">ลบสำเร็จ</h4>
       </div>
       <div class="modal-footer">
-        <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">ปิด</button>
       </div>
     </div>
   </div>
