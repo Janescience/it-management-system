@@ -38,7 +38,7 @@ $('#CancelEditBechelorActivityVideo').hide();
 
 // ========================================= End Code =====================================================================
 
-// ========================================= Get Bechelor Portfolio Type Dropdown =========================================
+// ========================================= Get Bechelor Activity Dropdown =========================================
 
   select = document.getElementById('selectActivity');
 
@@ -56,8 +56,9 @@ $('#CancelEditBechelorActivityVideo').hide();
     });
 
 
-// ========================================= End Bechelor Portfolio Type =========================================
+// ========================================= End Bechelor Activity Type =========================================
 
+// ========================================= Put Bechelor Activity To Input =========================================
   $('#selectActivity').on('change',function(){
    actName = $(this).children(":selected").attr("id");
    $('#ActvImage').empty();
@@ -69,7 +70,7 @@ $('#CancelEditBechelorActivityVideo').hide();
    $('#BechelorActivityDetail').prop('disabled', true);
    $('#BechelorActivityDateFrom').prop('disabled', true);
    $('#BechelorActivityDateTo').prop('disabled', true);
-   $('#ShowActivityStatus').prop('disabled', true);
+   $('#ShowActivityStatus').prop('disabled', false);
 
    $('#SaveEditBechelorActivity').hide();
    $('#CancelEditBechelorActivity').hide();
@@ -134,6 +135,9 @@ $('#CancelEditBechelorActivityVideo').hide();
    });
   });
 
+// ========================================= End Put Bechelor Activity To Input =========================================
+
+// =========================================  Edit Text Bechelor Activity Button =========================================
   $('#EditBechelorActivity').on('click',function(e){
       e.preventDefault();
 
@@ -141,7 +145,6 @@ $('#CancelEditBechelorActivityVideo').hide();
       $('#BechelorActivityDetail').prop('disabled', false);
       $('#BechelorActivityDateFrom').prop('disabled', false);
       $('#BechelorActivityDateTo').prop('disabled', false);
-      $('#ShowActivityStatus').prop('disabled', false);
       $('#selectActivity').prop('disabled', true);
 
 
@@ -150,6 +153,10 @@ $('#CancelEditBechelorActivityVideo').hide();
       $('#CancelEditBechelorActivity').show();
     });
 
+// ========================================= End Edit Text Bechelor Activity Button =========================================
+
+// =========================================  Cancel Edit Text Bechelor Activity Button =========================================
+
   $('#CancelEditBechelorActivity').on('click',function(e){
       e.preventDefault();
 
@@ -157,7 +164,6 @@ $('#CancelEditBechelorActivityVideo').hide();
       $('#BechelorActivityDetail').prop('disabled', true);
       $('#BechelorActivityDateFrom').prop('disabled', true);
       $('#BechelorActivityDateTo').prop('disabled', true);
-      $('#ShowActivityStatus').prop('disabled', true);
       $('#selectActivity').prop('disabled', false);
 
 
@@ -166,7 +172,9 @@ $('#CancelEditBechelorActivityVideo').hide();
       $('#EditBechelorActivity').show();
 
     });
+// ========================================= End  Cancel Edit Text Bechelor Activity Button =========================================
 
+// ========================================= Save Edit Text Bechelor Activity Button =========================================
   $('#SaveEditBechelorActivity').on('click',function(e){
       e.preventDefault();
 
@@ -187,7 +195,6 @@ $('#CancelEditBechelorActivityVideo').hide();
       $('#BechelorActivityDetail').prop('disabled', true);
       $('#BechelorActivityDateFrom').prop('disabled', true);
       $('#BechelorActivityDateTo').prop('disabled', true);
-      $('#ShowActivityStatus').prop('disabled', true);
       $('#selectActivity').prop('disabled', false);
 
 
@@ -208,6 +215,11 @@ $('#CancelEditBechelorActivityVideo').hide();
           });
     });
 
+  // ========================================= End Save Edit Text Bechelor Activity Button =========================================
+
+
+  // =========================================  Edit Image Bechelor Activity Button =========================================
+
     $('#EditBechelorActivityImage').on('click',function(e){
         e.preventDefault();
 
@@ -220,6 +232,9 @@ $('#CancelEditBechelorActivityVideo').hide();
         $('#CancelEditBechelorActivityImage').show();
       });
 
+  // ========================================= End Edit Image Bechelor Activity Button =========================================
+
+  // ========================================= Cancel Edit Image Bechelor Activity Button =========================================
     $('#CancelEditBechelorActivityImage').on('click',function(e){
         e.preventDefault();
 
@@ -231,8 +246,9 @@ $('#CancelEditBechelorActivityVideo').hide();
         $('#EditBechelorActivityImage').show();
 
       });
+  // ========================================= End Cancel Edit Image Bechelor Activity Button =========================================
 
-
+  // ========================================= Save Edit Image Bechelor Activity Button =========================================
   document.getElementById("BechelorActivityImage").addEventListener('change', function(p){
     $('#SaveEditBechelorActivityImage').on('click',function(e){
         e.preventDefault();
@@ -284,6 +300,10 @@ $('#CancelEditBechelorActivityVideo').hide();
         });
       });
 
+  // ========================================= End Save Edit Image Bechelor Activity Button =========================================
+
+  // =========================================  Edit Video Bechelor Activity Button =========================================
+
     $('#EditBechelorActivityVideo').on('click',function(e){
         e.preventDefault();
 
@@ -296,6 +316,10 @@ $('#CancelEditBechelorActivityVideo').hide();
         $('#CancelEditBechelorActivityVideo').show();
       });
 
+  // ========================================= End Edit Video Bechelor Activity Button =========================================
+
+  // ========================================= Cancel Edit Video Bechelor Activity Button =========================================
+
   $('#CancelEditBechelorActivityVideo').on('click',function(e){
       e.preventDefault();
 
@@ -307,6 +331,10 @@ $('#CancelEditBechelorActivityVideo').hide();
       $('#EditBechelorActivityVideo').show();
 
     });
+
+  // ========================================= End Cancel Edit Video Bechelor Activity Button =========================================
+
+  // ========================================= Save Edit Video Bechelor Activity Button =========================================
 
   document.getElementById("BechelorActivityVideo").addEventListener('change', function(v){
     $('#SaveEditBechelorActivityVideo').on('click',function(e){
@@ -361,6 +389,10 @@ $('#CancelEditBechelorActivityVideo').hide();
         });
       });
 
+  // ========================================= End Save Edit Video Bechelor Activity Button =========================================
+
+  // =========================================  Delete Bechelor Activity Button =========================================
+
     $('#DeleteBechelorActivity').on('click',function(e){
         e.preventDefault();
 
@@ -380,6 +412,8 @@ $('#CancelEditBechelorActivityVideo').hide();
 
             });
       });
+  // ========================================= End Delete Bechelor Activity Button =========================================
+
 });
 
 
