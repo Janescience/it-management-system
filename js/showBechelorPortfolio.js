@@ -34,7 +34,7 @@ $(document).ready(function(){
 // ========================================= Get Bechelor Portfolio Type From Database =========================================
 
 var dbRef = firebase.database();
-var BechelorPortfolioGroupRef = dbRef.ref("website/student/portfolioGroup/bechelor");
+var BechelorPortfolioGroupRef = dbRef.ref("website/student/bechelor/portfolioGroup");
 var BechelorRootRef = BechelorPortfolioGroupRef;
 // ========================================= End Code =====================================================================
 
@@ -61,26 +61,7 @@ var BechelorRootRef = BechelorPortfolioGroupRef;
       });
 
 // ========================================= End Code =====================================================================
-// ========================================= Add Bechelor Portfolio Type =========================================
-  $('#SaveBechelorPortfolioGroup').on('click',function(e){
 
-       var data = {
-        port_GroupType:$('#AddBechelorPortfolioType').val(),
-      };
-
-      firebase.database().ref('website/student').child('portfolioGroup').child('bechelor').push().set(data).then(function(){
-       console.log("Bechelor portfolio Group Saved:");
-      });
-
-      $('#AddBechelorPortfolioType').val("");
-      $('#AddBechelorPortfolioType').hide();
-      $('#CancelAddBechelorPortfolioGroup').hide();
-      $('#SaveBechelorPortfolioGroup').hide();
-      $('#AddBechelorPortfolioGroup').show();
-
-
-    });
-// ========================================= End Add Bechelor Portfolio Type =========================================
 // ========================================= Get Bechelor Portfolio Type Dropdown =========================================
 
 select = document.getElementById('BechelorPortfolioGroup');
@@ -136,11 +117,13 @@ $('#btAddBechelorPortfolio').on('click',function(e){
   // ========================================= Add Bechelor Portfolio Group =========================================
 	$('#AddBechelorPortfolioGroup').on('click',function(e){
 			$('#AddBechelorPortfolioType').show();
+      $('#AddBechelorPortfolioType').val("");
 			$('#CancelAddBechelorPortfolioGroup').show();
 			$('#SaveAddBechelorPortfolioGroup').show();
 			$('#AddBechelorPortfolioGroup').hide();
 			$('#EditBechelorPortfolioGroup').hide();
 			$('#DeleteBechelorPortfolioGroup').hide();
+      $('#BechelorPortfolioGroup').val("");
 
 		});
 		// ========================================= End Code =====================================================================
@@ -149,18 +132,22 @@ $('#btAddBechelorPortfolio').on('click',function(e){
 
 		$('#CancelAddBechelorPortfolioGroup').on('click',function(e){
 			$('#AddBechelorPortfolioType').hide();
+      $('#AddBechelorPortfolioType').val("");
 			$('#CancelAddBechelorPortfolioGroup').hide();
 			$('#SaveAddBechelorPortfolioGroup').hide();
 			$('#AddBechelorPortfolioGroup').show();
 			$('#EditBechelorPortfolioGroup').show();
 			$('#DeleteBechelorPortfolioGroup').show();
+      $('#BechelorPortfolioGroup').val("");
+
 
 		});
 		// ========================================= End Code =====================================================================
 
 		// ========================================= Edit Bechelor Portfolio Group =========================================
 		$('#EditBechelorPortfolioGroup').on('click',function(e){
-				$('#EditBechelorPortfolioType').show();
+				$('#EditBechelorPortfolioType').val("");
+        $('#EditBechelorPortfolioType').show();
 				$('#SaveEditBechelorPortfolioGroup').show();
 				$('#CancelEditBechelorPortfolioGroup').show();
 				$('#AddBechelorPortfolioGroup').hide();
@@ -214,11 +201,13 @@ $('#btAddBechelorPortfolio').on('click',function(e){
 
 	$('#CancelEditBechelorPortfolioGroup').on('click',function(e){
 		$('#EditBechelorPortfolioType').hide();
+    $('#EditBechelorPortfolioType').val("");
 		$('#SaveEditBechelorPortfolioGroup').hide();
 		$('#CancelEditBechelorPortfolioGroup').hide();
 		$('#AddBechelorPortfolioGroup').show();
 		$('#EditBechelorPortfolioGroup').show();
 		$('#DeleteBechelorPortfolioGroup').show();
+    $('#BechelorPortfolioGroup').val("");
 
 	});
 	// ========================================= End Code =====================================================================
@@ -229,7 +218,7 @@ $('#btAddBechelorPortfolio').on('click',function(e){
         port_GroupType:$('#AddBechelorPortfolioType').val(),
       };
 
-      firebase.database().ref('website/student').child('portfolioGroup').child('bechelor').push().set(data).then(function(){
+      firebase.database().ref('website/student').child('bechelor').child('portfolioGroup').push().set(data).then(function(){
        console.log("Bechelor portfolio Group Saved:");
       });
 
