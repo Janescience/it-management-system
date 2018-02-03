@@ -329,6 +329,11 @@
                                     <h4 class="text-white card-title">ผลงานที่ได้รับรางวัลระดับนานาชาติ</h4>
 
                                       <div class="message-box contact-box">
+                                        <select id="selectWorkInterPrevious" class="form-control col-lg-6 ">
+                                          <option>ดูผลงานที่ได้รับรางวัลระดับนานาชาติย้อนหลัง</option>
+                                          <option>ย้อนหลัง 5 ปี</option>
+                                          <option>ย้อนหลัง 10 ปี</option>
+                                        </select>
                                           <h2 class="add-ct-btn">
                                             <button type="button" id="btOpenModalInterWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                           </h2>
@@ -359,6 +364,11 @@
                                     <div id="headNationJour" class="card-block bg-info">
                                       <h4 class="text-white card-title">วารสารระดับชาติ</h4>
                                         <div class="message-box contact-box">
+                                          <select id="selectJourNationPrevious" class="form-control col-lg-4 ">
+                                            <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                            <option>ย้อนหลัง 5 ปี</option>
+                                            <option>ย้อนหลัง 10 ปี</option>
+                                          </select>
                                             <h2 class="add-ct-btn">
                                               <button type="button" id="btOpenModalNationJournal" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                             </h2>
@@ -390,6 +400,11 @@
                                       <div id="headInterJourNotDatabase" class="card-block bg-info">
                                         <h4 class="text-white card-title">วารสารระดับนานาชาติที่ไม่อยู่ในฐานข้อมูลสากล</h4>
                                           <div class="message-box contact-box">
+                                            <select id="selectJourInterNotBasePrevious" class="form-control col-lg-6 ">
+                                              <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                              <option>ย้อนหลัง 5 ปี</option>
+                                              <option>ย้อนหลัง 10 ปี</option>
+                                            </select>
                                               <h2 class="add-ct-btn">
                                                 <button type="button" id="btOpenModalInterJournalNotDatabase" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                               </h2>
@@ -422,6 +437,11 @@
 
                                           <h4 class="text-white card-title">วารสารระดับนานาชาติที่อยู่ในฐานข้อมูลสากล</h4>
                                             <div class="message-box contact-box">
+                                              <select id="selectJourInterInBasePrevious" class="form-control col-lg-6 ">
+                                                <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                                <option>ย้อนหลัง 5 ปี</option>
+                                                <option>ย้อนหลัง 10 ปี</option>
+                                              </select>
                                                 <h2 class="add-ct-btn">
                                                   <button type="button" id="btOpenModalInterJournalInDatabase" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                                 </h2>
@@ -453,6 +473,11 @@
                                         <div id="headNationWork" class="card-block bg-info">
                                           <h4 class="text-white card-title">ผลงานที่ได้รับรางวัลระดับชาติ</h4>
                                             <div class="message-box contact-box">
+                                              <select id="selectWorkNationPrevious" class="form-control col-lg-6 ">
+                                                <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                                <option>ย้อนหลัง 5 ปี</option>
+                                                <option>ย้อนหลัง 10 ปี</option>
+                                              </select>
                                                 <h2 class="add-ct-btn">
                                                   <button type="button" id="btOpenModalNationWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                                 </h2>
@@ -483,6 +508,11 @@
                                           <div id="headNationConference" class="card-block bg-info">
                                             <h4 class="text-white card-title">การประชุมระดับชาติ</h4>
                                               <div class="message-box contact-box">
+                                                <select id="selectConferenceNationPrevious" class="form-control col-lg-6 ">
+                                                  <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                                  <option>ย้อนหลัง 5 ปี</option>
+                                                  <option>ย้อนหลัง 10 ปี</option>
+                                                </select>
                                                   <h2 class="add-ct-btn">
                                                     <button type="button" id="btOpenModalNationConference" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                                   </h2>
@@ -517,6 +547,11 @@
                                             <div id="headInterConference" class="card-block bg-info">
                                               <h4 class="text-white card-title">การประชุมระดับนานาชาติ</h4>
                                                 <div class="message-box contact-box">
+                                                  <select id="selectConferenceInterPrevious" class="form-control col-lg-6 ">
+                                                    <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                                    <option>ย้อนหลัง 5 ปี</option>
+                                                    <option>ย้อนหลัง 10 ปี</option>
+                                                  </select>
                                                     <h2 class="add-ct-btn">
                                                       <button type="button" id="btOpenModalInterConference" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                                     </h2>
@@ -604,14 +639,13 @@
                               <div class="table-responsive">
                             <table class="table  text-center" >
                               <thead >
-
-                                <th class="text-center">ชื่อวิชา</th>
+                                <th class="text-center">ภาคการศึกษา</th>
                                 <th class="text-center">รหัสวิชา</th>
+                                <th class="text-center">ชื่อวิชา</th>
                                 <th class="text-center">หน่วยกิต</th>
-
-
+                                <th class="text-center">จัดการ</th>
                               </thead>
-                              <tbody id="list_subject" disabled="true">
+                              <tbody id="list_subject">
 
                               <tbody>
                             </table>
@@ -638,59 +672,6 @@
         </div>
     </div>
 
-    <!--==================================== Add History Education ================================================-->
-
-    <div class="modal fade" id="addHisEduModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">History Education</h4>
-          </div>
-          <div class="modal-body">
-            <div id="degree" class="form-group">
-              <label for="degreeHisEdu">Degree</label>
-                  <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-bookmark-alt"></i></div>
-                  <select id="degreeHisEdu" class="form-control ">
-                    <option>Bachelor</option>
-                    <option>Master</option>
-                    <option>Doctorate</option>
-                  </select>
-                </div>
-            </div>
-            <div id="faculty" class="form-group">
-              <label for="facultyHisEdu" >Faculty</label>
-                  <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                  <input id="facultyHisEdu" type="email"  class="form-control" >
-                </div>
-            </div>
-
-            <div id="university" class="form-group">
-                <label for="universityHisEdu">University</label>
-                <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-flag-alt"></i></div>
-                    <input id="universityHisEdu" type="text"  class="form-control" >
-                </div>
-            </div>
-
-            <div id="year" class="form-group">
-                <label for="yearHisEdu">Graduation Year</label>
-                <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-calendar"></i></div>
-                    <input id="yearHisEdu" type="text"  class="form-control" >
-                </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button id="btSubmitEdu" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
-            <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--===========================================================================================================-->
 
     <?php include('modal-profile.php')?>
     <?php include('import-javascript.php')?>

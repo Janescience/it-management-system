@@ -70,16 +70,204 @@ $(document).ready(function(){
  var usersRef = dbRef.ref('users')
  var auth = null;
  var selectedFile;
- var indexSelectAcademicWork;
+ var indexSelectAcademicWork,indexSelectYearPrevious;
  var idEducation;
  var idExpert;
  var idWork,idExperience;
  var clickBtEditEdu = 0;
  var clickBtEditExpert = 0;
- var clickBtEditWork = 0,clickBtEditExperience = 0;
+ var clickBtEditWork = 0,clickBtEditExperience = 0,clickBtEditInterWork=0;
  var latitude;
  var longitude;
+ var dateTimeCurrent = new Date();
+ var date = dateTimeCurrent.toDateString();
+ var yearCurrent = date.split(" ")[3];
 
+ $('#selectWorkInterPrevious').on('change',function(){
+
+    var i = 0;
+   indexSelectYearPrevious = document.getElementById('selectWorkInterPrevious').selectedIndex ;
+
+   if(indexSelectYearPrevious == 0){
+
+     clickBtEditInterWork = clickBtEditInterWork+1;
+     var yearInterWork = usersRef.child(sessionStorage.getItem("userId")).child('academic_work').child('portfolio');
+
+     $('#list_inter_work').empty();
+    yearInterWork.on('child_added',snap=>{
+      var name_award = snap.child('name_award').val();
+      var name_work = snap.child('name_work').val();
+      var detail = snap.child('detail').val();
+      var department = snap.child('department').val();
+      var date = snap.child('date').val();
+      var status = snap.child('status').val();
+      var type = snap.child('type').val();
+      if(type == "inter_work"){
+      $('#list_inter_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'checkbox'+snap.key+"' class='"+'filled-in chk-col-red checkbox-inter-work'+"'"+status+" >"+
+                                "<label for='"+'checkbox'+snap.key+"'></label></td><td class='"+'txtnameaward'+"'>"+name_award+"</td><td class='"+'txtnamework'+"'>"+name_work+"</td>"+
+                                   "<td class='"+'txtdetail'+"' >"+detail+"</td><td class='"+'txtdepartment'+"'>"+department+"</td>"+
+                                   "<td class='"+'txtdate'+"'>"+date+"</td><td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-inter-work'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-inter-work'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+
+       }
+    });
+   }else if(indexSelectYearPrevious == 1){
+
+     var yearSum = yearCurrent-5;
+    clickBtEditInterWork = clickBtEditInterWork+1;
+     var yearInterWork = usersRef.child(sessionStorage.getItem("userId")).child('academic_work').child('portfolio');
+
+     $('#list_inter_work').empty();
+    yearInterWork.on('child_added',snap=>{
+      var name_award = snap.child('name_award').val();
+      var name_work = snap.child('name_work').val();
+      var detail = snap.child('detail').val();
+      var department = snap.child('department').val();
+      var date = snap.child('date').val();
+      var status = snap.child('status').val();
+      var type = snap.child('type').val();
+      var year = date.split("-")[2];
+
+      if(type == "inter_work"){
+        if(year >= yearSum){
+      $('#list_inter_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'checkbox'+snap.key+"' class='"+'filled-in chk-col-red checkbox-inter-work'+"'"+status+" >"+
+                                "<label for='"+'checkbox'+snap.key+"'></label></td><td class='"+'txtnameaward'+"'>"+name_award+"</td><td class='"+'txtnamework'+"'>"+name_work+"</td>"+
+                                   "<td class='"+'txtdetail'+"' >"+detail+"</td><td class='"+'txtdepartment'+"'>"+department+"</td>"+
+                                   "<td class='"+'txtdate'+"'>"+date+"</td><td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-inter-work'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-inter-work'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+
+       }
+     }
+
+    });
+
+   }else if(indexSelectYearPrevious == 2){
+
+    var yearSum = yearCurrent-10;
+    clickBtEditInterWork = clickBtEditInterWork+1;
+    var yearInterWork = usersRef.child(sessionStorage.getItem("userId")).child('academic_work').child('portfolio');
+
+    $('#list_inter_work').empty();
+   yearInterWork.on('child_added',snap=>{
+     var name_award = snap.child('name_award').val();
+     var name_work = snap.child('name_work').val();
+     var detail = snap.child('detail').val();
+     var department = snap.child('department').val();
+     var date = snap.child('date').val();
+     var status = snap.child('status').val();
+     var type = snap.child('type').val();
+     var year = date.split("-")[2];
+
+     if(type == "inter_work"){
+       if(year >= yearSum){
+     $('#list_inter_work').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'checkbox'+snap.key+"' class='"+'filled-in chk-col-red checkbox-inter-work'+"'"+status+" >"+
+                               "<label for='"+'checkbox'+snap.key+"'></label></td><td class='"+'txtnameaward'+"'>"+name_award+"</td><td class='"+'txtnamework'+"'>"+name_work+"</td>"+
+                                  "<td class='"+'txtdetail'+"' >"+detail+"</td><td class='"+'txtdepartment'+"'>"+department+"</td>"+
+                                  "<td class='"+'txtdate'+"'>"+date+"</td><td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-inter-work'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                   " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-inter-work'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+
+      }
+    }
+   });
+   }
+ });
+
+
+  $('#selectJourNationPrevious').on('change',function(){
+
+     var i = 0;
+    indexSelectYearPrevious = document.getElementById('selectJourNationPrevious').selectedIndex ;
+
+    if(indexSelectYearPrevious == 0){
+
+      clickBtEditNationJournal = clickBtEditNationJournal+1;
+      var dbNationJournal = usersRef.child(sessionStorage.getItem("userId")).child('academic_work').child('portfolio');
+      $('#list_nation_jour').empty();
+
+     dbNationJournal.on('child_added',snap=>{
+       var article = snap.child('article').val();
+       var status_author = snap.child('status_author').val();
+       var code_research = snap.child('code_research').val();
+       var name = snap.child('name').val();
+       var type_journal = snap.child('type_journal').val();
+       var year = snap.child('year').val();
+       var no = snap.child('no').val();
+       var type = snap.child('type').val();
+       var status = snap.child('status').val();
+
+       if(type == "nation_journal"){
+       $('#list_nation_jour').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'checkbox'+snap.key+"' class='"+'filled-in chk-col-red checkbox-nation-jour'+"'"+status+" >"+
+                                 "<label for='"+'checkbox'+snap.key+"'></label></td><td class='"+'txtarticle'+"'>"+article+"</td><td class='"+'txtstatusauthor'+"'>"+status_author+"</td>"+
+                                    "<td class='"+'txtcoderesearch'+"' >"+code_research+"</td><td class='"+'txtname'+"'>"+name+"</td>"+
+                                    "<td class='"+'txttypejournal'+"'>"+type_journal+"</td><td class='"+'txtyear'+"'>"+year+"</td><td class='"+'txtno'+"'>"+no+"</td>"+
+                                    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-nation-jour'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                     " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-nation-jour'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+        }
+     });
+    }else if(indexSelectYearPrevious == 1){
+
+      var yearSum = yearCurrent-5;
+     clickBtEditNationJournal = clickBtEditNationJournal+1;
+      var dbNationJournal = usersRef.child(sessionStorage.getItem("userId")).child('academic_work').child('portfolio');
+      $('#list_nation_jour').empty();
+
+     dbNationJournal.on('child_added',snap=>{
+       var article = snap.child('article').val();
+       var status_author = snap.child('status_author').val();
+       var code_research = snap.child('code_research').val();
+       var name = snap.child('name').val();
+       var type_journal = snap.child('type_journal').val();
+       var year = snap.child('year').val();
+       var no = snap.child('no').val();
+       var type = snap.child('type').val();
+       var status = snap.child('status').val();
+
+       if(type == "nation_journal"){
+         if(year >= yearSum){
+       $('#list_nation_jour').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'checkbox'+snap.key+"' class='"+'filled-in chk-col-red checkbox-nation-jour'+"'"+status+" >"+
+                                 "<label for='"+'checkbox'+snap.key+"'></label></td><td class='"+'txtarticle'+"'>"+article+"</td><td class='"+'txtstatusauthor'+"'>"+status_author+"</td>"+
+                                    "<td class='"+'txtcoderesearch'+"' >"+code_research+"</td><td class='"+'txtname'+"'>"+name+"</td>"+
+                                    "<td class='"+'txttypejournal'+"'>"+type_journal+"</td><td class='"+'txtyear'+"'>"+year+"</td><td class='"+'txtno'+"'>"+no+"</td>"+
+                                    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-nation-jour'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                     " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-nation-jour'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+        }
+      }
+     });
+
+    }else if(indexSelectYearPrevious == 2){
+
+     var yearSum = yearCurrent-10;
+     clickBtEditNationJournal = clickBtEditNationJournal+1;
+     var dbNationJournal = usersRef.child(sessionStorage.getItem("userId")).child('academic_work').child('portfolio');
+
+     $('#list_nation_jour').empty();
+
+    dbNationJournal.on('child_added',snap=>{
+      var article = snap.child('article').val();
+      var status_author = snap.child('status_author').val();
+      var code_research = snap.child('code_research').val();
+      var name = snap.child('name').val();
+      var type_journal = snap.child('type_journal').val();
+      var year = snap.child('year').val();
+      var no = snap.child('no').val();
+      var type = snap.child('type').val();
+      var status = snap.child('status').val();
+
+      if(type == "nation_journal"){
+        if(year >= yearSum){
+      $('#list_nation_jour').append("<tr id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'checkbox'+snap.key+"' class='"+'filled-in chk-col-red checkbox-nation-jour'+"'"+status+" >"+
+                                "<label for='"+'checkbox'+snap.key+"'></label></td><td class='"+'txtarticle'+"'>"+article+"</td><td class='"+'txtstatusauthor'+"'>"+status_author+"</td>"+
+                                   "<td class='"+'txtcoderesearch'+"' >"+code_research+"</td><td class='"+'txtname'+"'>"+name+"</td>"+
+                                   "<td class='"+'txttypejournal'+"'>"+type_journal+"</td><td class='"+'txtyear'+"'>"+year+"</td><td class='"+'txtno'+"'>"+no+"</td>"+
+                                   "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-nation-jour'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-nation-jour'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+       }
+     }
+    });
+
+    }
+
+  });
 
  $('#headNationJour').hide();
  $('#tableNationJour').hide();
@@ -251,30 +439,94 @@ $('#btOpenModalSubjectAdd').on('click',function(){
   $('#addSubjectModal').modal('show');
 });
 
+var idSubject;
+var clickBtEditSubject=0;
+
 $('#btAddSubject').on('click',function(){
   var dataSubject = {
+    semester:$('#semesterSubjectAdd').val(),
     subject:$('#nameSubjectAdd').val(),
     code:$('#codeSubjectAdd').val(),
     credit:$('#creditSubjectAdd').val()
   }
   usersRef.child(sessionStorage.getItem("userId")).child('subject').push().set(dataSubject);
+  for(i=0;i<clickBtEditSubject;i++){
+    $('#list_subject tr:last').remove();
+  }
+  $('#semesterSubjectAdd').val("");
+  $('#nameSubjectAdd').val("");
+  $('#codeSubjectAdd').val("");
+  $('#creditSubjectAdd').val("");
 });
 
 var roofSubject = usersRef.child(sessionStorage.getItem("userId")).child('subject');
 roofSubject.on('child_added',snap=>{
+  var semester = snap.child('semester').val();
   var subject = snap.child('subject').val();
   var code = snap.child('code').val();
   var credit = snap.child('credit').val();
 
-  $('#list_subject').append("<tr id='"+snap.key+"'><td>"+subject+"</td><td>"+code+"</td><td>"+credit+"</td></tr>");
+  $('#list_subject').append("<tr id='"+snap.key+"'><td class='"+'txtsemester'+"'>"+semester+"</td><td  class='"+'txtcode'+"' >"+code+"</td><td  class='"+'txtsubject'+"'>"+subject+"</td><td  class='"+'txtcredit'+"'>"+credit+"</td>"+
+                            "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-subject'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                            "<a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-subject'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
 });
+
+  $('#list_subject').on('click','.btn-edit-subject',function(){
+    idSubject = $(this).closest('tr').attr('id');
+    var semester = $(this).closest('tr').find('.txtsemester').text();
+    var  code = $(this).closest('tr').find('.txtcode').text();
+    var subject = $(this).closest('tr').find('.txtsubject').text();
+    var credit = $(this).closest('tr').find('.txtcredit').text();
+    $('#semesterSubjectEdit').val(semester);
+    $('#nameSubjectEdit').val(subject);
+    $('#codeSubjectEdit').val(code);
+    $('#creditSubjectEdit').val(credit);
+    $('#editSubjectModal').modal('show');
+  });
+
+  $('#list_inter_work').on('click','.btn-delete-subject',function(){
+    var id = $(this).closest('tr').attr("id");
+    roofSubject.child(id).remove().then(function(){
+        $('#deleteModal').modal('show');
+    });
+      $(this).closest('tr').remove();
+  });
+
+  $('#btEditSubject').on('click',function(){
+    clickBtEditSubject=clickBtEditSubject+1;
+    var updateSubject = {
+      semester:$('#semesterSubjectEdit').val(),
+      subject:$('#nameSubjectEdit').val(),
+      code:$('#codeSubjectEdit').val(),
+      credit:$('#creditSubjectEdit').val()
+    };
+
+    usersRef.child(sessionStorage.getItem("userId")).child('subject').child(idSubject).update(updateSubject);
+      $('#list_subject').empty();
+    roofSubject.on('child_added',snap=>{
+      var semester = snap.child('semester').val();
+      var subject = snap.child('subject').val();
+      var code = snap.child('code').val();
+      var credit = snap.child('credit').val();
+
+      $('#list_subject').append("<tr id='"+snap.key+"'><td class='"+'txtsemester'+"'>"+semester+"</td><td  class='"+'txtcode'+"' >"+code+"</td><td  class='"+'txtsubject'+"'>"+subject+"</td><td  class='"+'txtcredit'+"'>"+credit+"</td>"+
+                                "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-subject'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                                "<a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-subject'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+        });
+    $('#editSubjectModal').modal('hide');
+
+    $('#semesterSubjectEdit').val("");
+    $('#nameSubjectEdit').val("");
+    $('#codeSubjectEdit').val("");
+    $('#creditSubjectEdit').val("");
+
+  });
 
 
 <!--=========================== Add And Edit Inter Work =============================-->
 
 var idInterWork;
-var clickBtEditInterWork=0;
 var dbInterWork = usersRef.child(sessionStorage.getItem("userId")).child('academic_work').child('portfolio');
 
  $('#btEditInterWork').on('click',function(){
