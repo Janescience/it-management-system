@@ -26,7 +26,7 @@
 
 <!--===========================================================================================================-->
 
-<!--==================================== Subject ====================================================-->
+<!--==================================== Add Subject ====================================================-->
 
 <div class="modal fade" id="addSubjectModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
   <div class="modal-dialog modal-md">
@@ -38,19 +38,27 @@
 
         <div class="card">
           <div class="card-block">
+            <div class="form-group">
+              <label for="facultyHisEdu" >ภาคการศึกษา</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-marker"></i></div>
+                  <input id="semesterSubjectAdd" type="text"  class="form-control" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="universityHisEdu">รหัสวิชา</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-key"></i></div>
+                    <input id="codeSubjectAdd" type="text"  class="form-control" >
+                </div>
+            </div>
+
           <div class="form-group">
             <label for="facultyHisEdu" >ชื่อวิชา</label>
                 <div class="input-group">
                 <div class="input-group-addon"><i class="ti-marker"></i></div>
-                <input id="nameSubjectAdd" type="email"  class="form-control" >
-              </div>
-          </div>
-
-          <div class="form-group">
-              <label for="universityHisEdu">รหัสวิชา</label>
-              <div class="input-group">
-                <div class="input-group-addon"><i class="ti-key"></i></div>
-                  <input id="codeSubjectAdd" type="text"  class="form-control" >
+                <input id="nameSubjectAdd" type="text"  class="form-control" >
               </div>
           </div>
 
@@ -74,6 +82,65 @@
 </div>
 
 <!--===========================================================================================================-->
+
+
+<!--==================================== Add Subject ====================================================-->
+
+<div class="modal fade" id="editSubjectModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" >วิชาที่สอน (แก้ไข)</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="card">
+          <div class="card-block">
+            <div class="form-group">
+              <label for="facultyHisEdu" >ภาคการศึกษา</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-marker"></i></div>
+                  <input id="semesterSubjectEdit" type="text"  class="form-control" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="universityHisEdu">รหัสวิชา</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-key"></i></div>
+                    <input id="codeSubjectEdit" type="text"  class="form-control" >
+                </div>
+            </div>
+
+          <div class="form-group">
+            <label for="facultyHisEdu" >ชื่อวิชา</label>
+                <div class="input-group">
+                <div class="input-group-addon"><i class="ti-marker"></i></div>
+                <input id="nameSubjectEdit" type="text"  class="form-control" >
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="yearHisEdu">หน่วยกิต</label>
+              <div class="input-group">
+                <div class="input-group-addon"><i class="ti-ruler-alt-2"></i></div>
+                  <input id="creditSubjectEdit" type="text"  class="form-control" >
+              </div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button id="btEditSubject" class="btn btn-success" data-dismiss="modal"><i class="fa fa-check"></i> บันทึก</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--===========================================================================================================-->
+
 
 <!--==================================== Change Password ====================================================-->
 
@@ -118,6 +185,60 @@
 </div>
 
 <!--================================================================================================-->
+
+<!--==================================== Add History Education ================================================-->
+
+<div class="modal fade" id="addHisEduModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">History Education</h4>
+      </div>
+      <div class="modal-body">
+        <div id="degree" class="form-group">
+          <label for="degreeHisEdu">Degree</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-bookmark-alt"></i></div>
+              <select id="degreeHisEdu" class="form-control ">
+                <option>Bachelor</option>
+                <option>Master</option>
+                <option>Doctorate</option>
+              </select>
+            </div>
+        </div>
+        <div id="faculty" class="form-group">
+          <label for="facultyHisEdu" >Faculty</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
+              <input id="facultyHisEdu" type="email"  class="form-control" >
+            </div>
+        </div>
+
+        <div id="university" class="form-group">
+            <label for="universityHisEdu">University</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-flag-alt"></i></div>
+                <input id="universityHisEdu" type="text"  class="form-control" >
+            </div>
+        </div>
+
+        <div id="year" class="form-group">
+            <label for="yearHisEdu">Graduation Year</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                <input id="yearHisEdu" type="text"  class="form-control" >
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btSubmitEdu" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> Submit</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--===========================================================================================================-->
 
 <!--==================================== Edit History Education ================================================-->
 
