@@ -66,8 +66,12 @@
 
                                     <div class="card">
                                       <div class="card-block">
-                                      <button id="openMap" type="button" class="btn btn-circle btn-success waves-effect waves-ligh pull-right"><i class="fa fa-map-marker"></i></button>
-
+                                        <div  class="form-group pull-right">
+                                          <div class="demo-switch-title"><h4><i class="fa fa-map-marker"> </i> ตำแหน่ง</h4></div>
+                                          <div class="switch">
+                                              <label><input type="checkbox"  id="openMap"><span class="lever switch-col-blue"></span></label>
+                                          </div>
+                                        </div>
                                     </div>
 
                                         <center>
@@ -124,6 +128,9 @@
                                             </div>
                                         </div>
                                       </div>
+
+
+
                                     </center>
 
                                         </div>

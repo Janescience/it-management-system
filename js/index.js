@@ -288,6 +288,7 @@ function editHeader(){
    firebase.database().ref('history').push().set(dataHistory);
 
    var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ "+"''"+topic+"''";
+
   window.location.href = "notify.php?message=" + message;
  }
 
