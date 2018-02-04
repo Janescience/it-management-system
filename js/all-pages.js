@@ -109,6 +109,7 @@ $(document).ready(function(){
   };
   firebase.initializeApp(config);
 
+
 $('#notifyClick').on('click',function(){
 $('.dropdown-menu').removeAttr("hidden");
 });
@@ -120,6 +121,79 @@ var Auth = firebase.auth();
 var dbRef = firebase.database();
 var usersRef = dbRef.ref('users')
 var status;
+var mapShow;
+
+var dbShowMap = usersRef.child(sessionStorage.getItem("userId")).child("show_map");
+dbShowMap.on('value',snap=>{
+  mapShow = snap.val();
+  if(mapShow == "yes"){
+    var dateTimeUpdate = new Date();
+    $('#openMap').prop('checked',true);
+
+      if (navigator.geolocation){
+       navigator.geolocation.getCurrentPosition(showPosition);
+      }
+      else{
+       latitudeAndLongitude.innerHTML="Geolocation is not supported by this browser.";
+      }
+
+      function showPosition(position){
+         location.latitude=position.coords.latitude;
+         location.longitude=position.coords.longitude;
+         var geocoder = new google.maps.Geocoder();
+         var latLng = new google.maps.LatLng(location.latitude, location.longitude);
+
+         var initMap = function() {
+             var map = new google.maps.Map(document.getElementById('map'), {
+                 center: { lat: location.latitude, lng: location.longitude},
+                 scrollwheel: false,
+                 zoom: 20
+             });
+             var geocoder = new google.maps.Geocoder;
+             var infowindow = new google.maps.InfoWindow;
+             geocodeLatLng(geocoder, map, infowindow);
+
+
+             var positionMap ={
+               latitude:""+location.latitude+"",
+               longitude:""+location.longitude+"",
+               show_map:"yes",
+               show_map_time:dateTimeUpdate.toDateString()+"  "+dateTimeUpdate.getHours()+":"+dateTimeUpdate.getMinutes()
+
+             };
+
+
+             usersRef.child(sessionStorage.getItem("userId")).update(positionMap);
+         }
+
+         var geocodeLatLng = function(geocoder, map, infowindow) {
+           var input = ""+location.latitude+","+ location.longitude+"";
+           var latlngStr = input.split(',', 2);
+           var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+           geocoder.geocode({'location': latlng}, function(results, status) {
+             if (status === 'OK') {
+               if (results[0]) {
+                 map.setZoom(17);
+                 var marker = new google.maps.Marker({
+                   position: latlng,
+                   map: map
+                 });
+                 infowindow.setContent(results[0].formatted_address);
+                 infowindow.open(map, marker);
+               } else {
+                 window.alert('No results found');
+               }
+             } else {
+               window.alert('Geocoder failed due to: ' + status);
+             }
+           });
+         }
+         initMap();
+      } //showPositi
+  }else if(mapShow == "no"){
+    $('#openMap').prop('checked',false);
+  }
+});
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {

@@ -1724,6 +1724,10 @@ $('#cancelUpload').on('click',function(){
 
 
 $('#openMap').on('click',function(){
+  var dateTimeUpdate = new Date();
+
+  var showBoolean = $('#openMap').prop('checked');
+
   if (navigator.geolocation){
    navigator.geolocation.getCurrentPosition(showPosition);
   }
@@ -1747,10 +1751,21 @@ $('#openMap').on('click',function(){
          var infowindow = new google.maps.InfoWindow;
          geocodeLatLng(geocoder, map, infowindow);
 
+         if(showBoolean){
          var positionMap ={
            latitude:""+location.latitude+"",
-           longitude:""+location.longitude+""
+           longitude:""+location.longitude+"",
+           show_map:"yes",
+           show_map_time:dateTimeUpdate.toDateString()+"  "+dateTimeUpdate.getHours()+":"+dateTimeUpdate.getMinutes()
          };
+       }else{
+         var positionMap ={
+           latitude:"",
+           longitude:"",
+           show_map:"no",
+           show_map_time:dateTimeUpdate.toDateString()+"  "+dateTimeUpdate.getHours()+":"+dateTimeUpdate.getMinutes()
+         };
+       }
 
          usersRef.child(sessionStorage.getItem("userId")).update(positionMap);
      }
@@ -1780,8 +1795,9 @@ $('#openMap').on('click',function(){
      initMap();
   } //showPositi
 
-
+if(showBoolean){
   $('#mapModal').modal('show');
+}
 });
 
 
