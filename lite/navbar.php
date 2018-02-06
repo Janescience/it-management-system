@@ -97,7 +97,7 @@
                   <ul aria-expanded="true" class="collapse in">
                                <li ><a id="indexPage" href="index.php">หน้าแรก</a></li>
                                <li><a href="about.php">เกี่ยวกับสขา</a></li>
-                               <li><a href="course.php">หลักสูตร</a></li>
+                               <li><a href="courses.php">หลักสูตร</a></li>
                                <li><a href="student.php">นักศึกษา</a></li>
                            </ul></li>
                 <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">ข้อมูลส่วนตัว</span></a>
