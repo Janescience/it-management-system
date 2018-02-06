@@ -10,6 +10,7 @@ $(document).ready(function(){
   var selectedFile;
 
   var nameAct;
+
   // var clickBtEditAct = 0;
 
 
@@ -122,18 +123,129 @@ $('#CancelEditBechelorActivityVideo').hide();
      $('#BechelorActivityDateTo').val(snap.val());
    });
 
+    $('#ActvImage').empty();
+
    var dbImage = rootRef.child(actName).child('activity_image');
    dbImage.on('child_added',snap => {
-     var Image = snap.child('images').val();
-     $('#ActvImage').append("<img src='"+Image+"' style='"+'border-radius: 25px'+"' class='"+'col-md-2'+"' border='"+'2'+"'/>");
+      Image = snap.child('images').val();
+      key = snap.key;
+
+     $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
+             "<div  class='"+'el-card-item'+"'>"+
+                 "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 15px; height:120px'+"' alt='"+'user'+"'>"+
+                     "<div class='"+'el-overlay'+"'>"+
+                         "<ul id='"+key+"' class='"+'el-info'+"'>"+
+                             "<a class='"+'image-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
+                         "</ul>"+
+                     "</div>"+
+                 "</div>"+
+             "</div>"+
+     "</div>");
+
    });
- // width='"+'80'+"' height='"+'80'+"'
+
+   $('#ActvImage').on('click','.delete',function(e){
+
+
+     var id = $(this).closest('ul').attr("id");
+
+     var dbImage = rootRef.child(actName).child('activity_image').child(id).child('images');
+     dbImage.on('value',snap => {
+      currentPicture =  snap.val();
+     });
+
+     // alert(currentPicture);
+
+     var deleteRef;
+     deleteRef = firebase.storage().refFromURL(currentPicture);
+     deleteRef.delete().then(function() {
+     }).catch(function(error) {
+     });
+
+     rootRef.child(actName).child('activity_image').child(id).remove().then(function(){
+         $('#deletePortModal').modal('show');
+     });
+       // $(this).closest('ul').remove();
+
+       $('#ActvImage').empty();
+
+       var dbImage = rootRef.child(actName).child('activity_image');
+       dbImage.on('child_added',snap => {
+          Image = snap.child('images').val();
+          key = snap.key;
+
+          $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
+                  "<div  class='"+'el-card-item'+"'>"+
+                      "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 15px; height:120px'+"' alt='"+'user'+"'>"+
+                          "<div class='"+'el-overlay'+"'>"+
+                              "<ul id='"+key+"' class='"+'el-info'+"'>"+
+                              "<a class='"+'image-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
+                              "</ul>"+
+                          "</div>"+
+                      "</div>"+
+                  "</div>"+
+          "</div>");
+
+       });
+
+
+     });
+
    var dbVideo = rootRef.child(actName).child('activity_video');
    dbVideo.on('child_added',snap => {
      var Video = snap.child('videos').val();
-     $('#ActvVideo').append("<video width='"+'220'+"'  height='"+'140'+"' controls class='"+'col-md-2'+""+""+'inset'+"'><source src='"+Video+"' type='"+'video/WebM'+"'></video>");
+     key = snap.key;
+
+     $('#ActvVideo').append("<div  class='"+'col-lg-4 col-md-4 col-sm-6'+"'>"+
+                 "<video  style='"+'height:150px;margin-left:35px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
+                         "<ul id='"+key+"' class='"+'el-info'+"'>"+
+                             "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
+                         "</ul>"+
+                       "</div>");
    });
-  });
+
+   $('#ActvVideo').on('click','.delete',function(e){
+
+
+     var id = $(this).closest('ul').attr("id");
+
+     // alert(actName);
+
+     var dbVideo = rootRef.child(actName).child('activity_video').child(id).child('videos');
+     dbVideo.on('value',snap=> {
+      currentVideo =  snap.val();
+     });
+
+     var deleteRef;
+     deleteRef = firebase.storage().refFromURL(currentVideo);
+     deleteRef.delete().then(function() {
+     }).catch(function(error) {
+     });
+
+     rootRef.child(actName).child('activity_video').child(id).remove().then(function(){
+         $('#deletePortModal').modal('show');
+     });
+       // $(this).closest('ul').remove();
+
+       $('#ActvVideo').empty();
+
+       var dbVideo = rootRef.child(actName).child('activity_video');
+       dbVideo.on('child_added',snap => {
+          Video = snap.child('videos').val();
+          key = snap.key;
+
+          $('#ActvVideo').append("<div  class='"+'col-lg-4 col-md-4 col-sm-6'+"'>"+
+                      "<video  style='"+'height:150px;margin-left:35px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
+                              "<ul id='"+key+"' class='"+'el-info'+"'>"+
+                                  "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
+                              "</ul>"+
+                            "</div>");
+
+       });
+
+
+     });
+});
 
 // ========================================= End Put Bechelor Activity To Input =========================================
 
@@ -253,8 +365,7 @@ $('#CancelEditBechelorActivityVideo').hide();
     $('#SaveEditBechelorActivityImage').on('click',function(e){
         e.preventDefault();
 
-
-
+        // clickBtEditAct= clickBtEditAct+1;
 
                 for (var i = 0; i < p.target.files.length; i++) {
                     var imageFile = p.target.files[i];
@@ -297,6 +408,9 @@ $('#CancelEditBechelorActivityVideo').hide();
           $('#CancelEditBechelorActivityImage').hide();
           $('#EditBechelorActivityImage').show();
 
+          // for(var i = 0;i< clickBtEditAct;i++){
+          //   $('#list_expertise tr:last').remove();
+          // }
         });
       });
 

@@ -293,6 +293,8 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
      $('#GraduatePortfolioName').val(Name);
      $('#GraduatePortfolioDetail').val(Detail);
      $('#GraduatePortfolioGroup').val(Type);
+     $('#GraduatePortfolioPicture').val("");
+
      if(Status == "Hall Of Fame"){
        // $('#GraduatePortfolioHallOfFame').prop('checked',true);
        // $("#GraduatePortfolioHallOfFame").prop("checked") == true
@@ -305,9 +307,7 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
      // $('#GraduatePortfolioHallOfFame').prop("checked") == currentStatus;
      $('#GraduatePortfolioYear').val(Year);
      $('#GraduatePortfolioPicturePreview').attr('src',Picture);
-     $('#editGraduatePortfolio').modal('show');
-
-
+     $('#editGraduatePortfolio').modal("show");
 
      });
 
@@ -321,7 +321,7 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
 
        // <!-- <=========================================================== Save Edit Graduate Portfolio ===========================================================> -->
 
-     $('#btSubmitEditGraduatePortfolio').on('click',function(){
+     $('#btSubmitGraduatePortfolio').on('click',function(){
 
          clickBtEditPort= clickBtEditPort+1;
 

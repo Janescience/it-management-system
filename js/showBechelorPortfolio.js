@@ -364,7 +364,7 @@ $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
      // $('#BechelorPortfolioHallOfFame').prop("checked") == currentStatus;
      $('#BechelorPortfolioYear').val(Year);
      $('#BechelorPortfolioPicturePreview').attr('src',Picture);
-     $('#editBechelorPortfolio').modal('show');
+     $('#editBechelorPortfolio').modal("show");
 
 
 
@@ -380,7 +380,7 @@ $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
 
        // <!-- <=========================================================== Save Edit Bechelor Portfolio ===========================================================> -->
 
-     $('#btSubmitEditBechelorPortfolio').on('click',function(){
+     $('#btSubmitBechelorPortfolio').on('click',function(){
 
          clickBtEditPort= clickBtEditPort+1;
 
