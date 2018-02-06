@@ -22,6 +22,18 @@
     -moz-border-radius: 500px;
     }
 
+    
+    .results tr[visible='false'],
+    .no-result{
+      display:none;
+    }
+
+    .results tr[visible='true']{
+      display:table-row;
+    }
+
+
+
     </style>
 
 </head>
@@ -336,11 +348,19 @@
                                     <h4 class="text-white card-title">ผลงานที่ได้รับรางวัลระดับนานาชาติ</h4>
 
                                       <div class="message-box contact-box">
-                                        <select id="selectWorkInterPrevious" class="form-control col-lg-6 ">
+                                        <div class="row">
+                                          <span class="counter pull-right"></span>
+                                          <div class="input-group col-lg-5">
+                                            <div class="input-group-addon"><i class="ti-search"></i></div>
+                                            <input id="searchInterWork" type="text"  class="form-control" >
+                                          </div>
+                                        <select id="selectWorkInterPrevious" class="form-control col-lg-5 ">
                                           <option>ดูผลงานที่ได้รับรางวัลระดับนานาชาติย้อนหลัง</option>
                                           <option>ย้อนหลัง 5 ปี</option>
                                           <option>ย้อนหลัง 10 ปี</option>
                                         </select>
+
+                                      </div>
                                           <h2 class="add-ct-btn">
                                             <button type="button" id="btOpenModalInterWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                           </h2>
@@ -349,7 +369,7 @@
                                     </div>
                                     <form class="form-horizontal form-material ">
                                       <div class="table-responsive">
-                                          <table id="tableInterWork" class="table text-center color-bordered-table success-bordered-table">
+                                          <table id="tableInterWork" class="table text-center results color-bordered-table success-bordered-table">
                                               <thead >
                                                   <tr >
                                                       <th class="text-center">แสดง</th>
@@ -359,6 +379,9 @@
                                                       <th class="text-center">หน่วยงานที่ได้รับรางวัล</th>
                                                       <th class="text-center">วันที่</th>
                                                       <th class="text-center">จัดการ</th>
+                                                  </tr>
+                                                  <tr class="warning no-result">
+                                                    <td colspan="7"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                                   </tr>
                                               </thead>
                                               <tbody id="list_inter_work">
