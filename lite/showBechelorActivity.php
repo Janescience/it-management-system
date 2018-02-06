@@ -60,7 +60,7 @@
     <div class="page-wrapper">
         <div class="container-fluid">
             <div class="row page-titles">
-                <div class="col-md-5 col-8 align-self-center">
+                <div class="col-md-5 col-sm-8 align-self-center">
                     <h2 class="text-themecolor">Bechelor Activity <h5 class="text-themecolor">Bechelor Degree</h5></h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Student</a></li>
@@ -235,8 +235,11 @@
                                 <div class="card-block">
                                 <h4 class="card-title">ภาพกิจกรรมทั้งหมด</h4>
 
-                                  <div class="col-lg-12" align="center" id="ActvImage">
+                                <div  class="row el-element-overlay">
+                                  <div class="row" align="center" id="ActvImage">
                                   </div>
+                              </div>
+
                                 </div>
                             </div>
                           </div>
@@ -250,10 +253,10 @@
                           <div class="col-lg-10" id="viewActVideo">
                             <div class="card">
                                 <div class="card-block">
-                                <h4 class="card-title">วีดีโอทั้งหมด</h4>
+                                  <h4 class="card-title">วีดีโอทั้งหมด</h4>
 
-                                  <div class="col-lg-12" align="center" id="ActvVideo">
-                                  </div>
+                                    <div class="row" align="center" id="ActvVideo">
+                                    </div>
                                 </div>
                             </div>
                           </div>
