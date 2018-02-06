@@ -30,7 +30,7 @@ $('#btClose').on('click',function (e){
    e.preventDefault();
    if($('#email').val() != '' && $('#password').val() != ''){
 
-     $('#messageModalLabel').html("Please wait..."+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>' , ['center', 'info']));
+     $('#messageModalLabel').html("กำลังเข้าสู่ระบบ...  "+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>' , ['center', 'info']));
      $('#messageModal').modal('show');
 
      var data = {
@@ -52,10 +52,10 @@ $('#btClose').on('click',function (e){
           $('#messageModalLabel').html(spanText(error.code, ['danger']))
         });
    }else if($('#email').val() == '' || $('#password').val() == ''){
-     $('#messageModalLabel').html(spanText('login failed!' , ['danger']))
+     $('#messageModalLabel').html(spanText('ไม่สามารถเข้าสู่ระบบได้' , ['danger']))
      $('#messageModal').modal('show');
    }else{
-     $('#messageModalLabel').html(spanText('login failed!' , ['danger']))
+     $('#messageModalLabel').html(spanText('ไม่สามารถเข้าสู่ระบบได้' , ['danger']))
      $('#messageModal').modal('show');
    }
  });

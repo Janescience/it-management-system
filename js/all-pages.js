@@ -207,7 +207,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 var historyRef = dbRef.ref('history');
 
-var rootRefHistory = historyRef.limitToLast(3);
+var rootRefHistory = historyRef;
 var i=0;
   rootRefHistory.on("child_added",snap => {
     var id = snap.child('id').val();

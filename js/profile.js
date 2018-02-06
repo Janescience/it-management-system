@@ -1700,7 +1700,30 @@ $('#cancelUpload').on('click',function(){
      $(this).closest('td').attr('bgcolor',"#ebebe0");
    }else if(color == "#ebebe0"){
      $(this).closest('td').attr('bgcolor',"#40FF00");
+     var time = $(this).closest('table').find('th').eq($(this).index()).text();
+     var timeFirst = time.split("-")[0];
+     var timeHourFirst = timeFirst.split(":")[0];
+     var timeSecond = time.split("-")[1];
+     var timeHourSecond = timeFirst.split(":")[0];
+     var dateCurent = new Date();
+     var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+     var timeHourCurrent = dateCurent.getHours();
+     var dateClick = days[dateCurent.getDay()];
+
+     if(timeHourCurrent == timeHourFirst || timeHourCurrent == timeHourSecond ){
+       if(date == dateClick){
+       var officeUpdate = {
+         office:"border:8px solid #00ff00;"
+       };
+       usersRef.child(sessionStorage.getItem("userId")).update(officeUpdate);
+     }
+
+     }
    }
+
+
+
+
 
    var dataDay = {
      day:date,
@@ -1715,8 +1738,6 @@ $('#cancelUpload').on('click',function(){
    };
 
    usersRef.child(sessionStorage.getItem("userId")).child('office_hour').child(id).update(dataDay);
-
-   var time = $(this).closest('table').find('th').eq($(this).index()).text();
 
 
  });
