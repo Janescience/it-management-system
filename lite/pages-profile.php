@@ -66,7 +66,7 @@
 
                                     <div class="card">
                                       <div class="card-block">
-                                        <div  class="form-group pull-right">
+                                        <div  class="pull-right">
                                           <div class="demo-switch-title"><h4><i class="fa fa-map-marker"> </i> ตำแหน่ง</h4></div>
                                           <div class="switch">
                                               <label><input type="checkbox"  id="openMap"><span class="lever switch-col-blue"></span></label>
@@ -616,9 +616,9 @@
                                       <thead >
 
                                         <th ><h6>Date / Time</h6></th>
-                                        <th ><h6>08:30-09:00</h6></th>
-                                        <th><h6>09:00-10:00</h6></th>
-                                        <th><h6>10:00-11:00</h6></th>
+                                        <th ><h6>8:30-9:00</h6></th>
+                                        <th><h6>9:00-10:00</h6></th>
+                                        <th><h6>5:00-6:00</h6></th>
                                         <th><h6>11:00-12:00</h6></th>
                                         <th><h6>13:00-14:00</h6></th>
                                         <th><h6>14:00-15:00</h6></th>

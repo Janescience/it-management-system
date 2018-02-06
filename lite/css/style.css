@@ -119,7 +119,9 @@ h6,
 .btn,
 option,
 select,
-.form-control{
+.form-control
+,td
+,div{
   color: #455a64;
   font-family: "Prompt", sans-serif;
   font-weight: 400; }

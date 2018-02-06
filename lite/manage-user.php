@@ -253,7 +253,7 @@
             <h4 class="modal-title" id="messageModalWait">Message</h4>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
           </div>
         </div>
       </div>
@@ -265,10 +265,10 @@
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="messagePassModal">Delete Successfully</h4>
+            <h4 class="modal-title" id="messagePassModal">ลบสำเร็จ</h4>
           </div>
           <div class="modal-footer">
-            <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button id="btClose" class="btn btn-danger" data-dismiss="modal">ปิด</button>
           </div>
         </div>
       </div>
@@ -281,7 +281,7 @@
       <div class="modal-dialog modal-md">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="messageModalLabel">เพิ่มผู้ใช้งาน</h4>
+            <h4 class="modal-title" id="messageModalLabel">ผู้ใช้ในระบบ (เพิ่ม)</h4>
           </div>
             <br>
          <!-- Column -->
@@ -353,7 +353,7 @@
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="messageModalLabel">Create User</h4>
+        <h4 class="modal-title" id="messageModalLabel">ผู้ใช้ในระบบ (แก้ไข)</h4>
       </div>
         <br>
      <!-- Column -->
@@ -365,7 +365,7 @@
         <img id="imgShowEdit" width="150px" class="img-circle">
       </center>
         <div class="form-group">
-          <label for="nameCreateUser">Profile Image</label>
+          <label for="nameCreateUser">รูปภาพประจำตัว</label>
               <div class="input-group">
               <div class="input-group-addon"><i class="ti-image"></i></div>
               <input class="form-control" type="file" id="fileUploadImageCreateUser"><hr>
@@ -373,7 +373,7 @@
         </div>
 
         <div class="form-group">
-          <label for="nameCreateUser">Full Name</label>
+          <label for="nameCreateUser">ชื่อ - นามสกุล</label>
               <div class="input-group">
               <div class="input-group-addon"><i class="ti-user"></i></div>
               <input id="nameEditUser" type="text" class="form-control">
@@ -381,7 +381,7 @@
         </div>
 
         <div class="form-group">
-          <label for="emailCreateUser" >Email</label>
+          <label for="emailCreateUser" >อีเมล์</label>
               <div class="input-group">
               <div class="input-group-addon"><i class="ti-email"></i></div>
               <input id="emailEditUser" type="email"  class="form-control " >
@@ -390,7 +390,7 @@
 
 
         <div class="form-group">
-            <label for="phoneCreateUser">Phone No</label>
+            <label for="phoneCreateUser">เบอร์โทรศัพท์</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-mobile"></i></div>
                 <input id="phoneEditUser" type="text"  class="form-control">
@@ -400,8 +400,8 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button id="btEditUser" type="submit" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> Submit</button>
-  <button   type="submit" class="btn btn-inverse" data-dismiss="modal">Cancel</button>
+  <button id="btEditUser" type="submit" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> บันทึก</button>
+  <button   type="submit" class="btn btn-inverse" data-dismiss="modal">ยกเลิก</button>
 </div>
 </div>
 </div>
