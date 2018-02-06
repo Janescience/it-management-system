@@ -1,4 +1,4 @@
-btSubmitBechelorPortfolio$(document).ready(function(){
+$(document).ready(function(){
 	var selectedFile;
 	var txt = "";
 
