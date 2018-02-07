@@ -403,35 +403,22 @@
                 <!-- Start Page Content  -->
 
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-block">
-                                <h4 class="card-title">แผนการศึกษา หลักสูตรวิทยาการสารสนเทศบัณฑิต</h4>
+                                <h4 class="card-title">แผนการศึกษา</h4>
 
                                 <h6 class="card-subtitle" id="TitleAddStudyplan"> </h6>
 
 
-                                <button id="btAddStudyplan" type="submit" class="btn btn-success waves-effect waves-light m-r-10">ดูรายละเอียด</button>
+                                <button id="btAddStudyplan" type="submit" class="btn btn-success waves-effect waves-light m-r-10">เพิ่มรายละเอียด</button>
 
 
                                 </div>
                             </div>
                 </div>
 
-                <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-block">
-                                <h4 class="card-title">วิชาที่เปิดสอน ระดับปริญญาตรี</h4>
 
-                                <h6 class="card-subtitle" id="TitleAddOpenCourses"> </h6>
-
-
-                                <button id="btAddOpenCourses" type="submit" class="btn waves-effect waves-light btn-primary m-r-10">รายวิชาที่เปิดสอน</button>
-
-
-                                </div>
-                            </div>
-                </div>
 
 
               </div>
@@ -525,100 +512,7 @@
                       </div>
                   </div>
 
-                  <!-- Modal Courses -->
-                  <div class="modal fade" id="addOpenCourses" role="dialog" aria-labelledby="Message" aria-hidden="true">
-                    <div class="modal-dialog modal-md">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title" id="messageOpenCourses">อัพโหลด PDF</h4>
-                          <h6 class="card-subtitle">วิชาที่เปิดสอน ระดับปริญญาตรี</h6>
 
-                        </div>
-                        <div class="modal-body">
-
-                          <div class="modal-body">
-                              <h6 class="card-subtitle">หลักสูตร</h6>
-                              <p>
-                                  <div class="input-group">
-                                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                                  <input id="AddTypeCourseOpenCourses" type="text"  class="form-control" >
-                                </div>
-                          </div>
-
-                          <div class="modal-body">
-                              <h6 class="card-subtitle">ชื่อกลุ่มวิชา</h6>
-                              <p>
-                                  <div class="input-group">
-                                  <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                                  <input id="TopicSuggestionOpenCourses" type="text"  class="form-control" >
-                                </div>
-                          </div>
-
-                            <div class="modal-body">
-                                <h6 class="card-subtitle">ชื่อหัวข้อ</h6>
-                                <p>
-                                    <div class="input-group">
-                                    <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                                    <input id="TopicOpenCourses" type="text"  class="form-control" >
-                                  </div>
-                            </div>
-
-                          <div class="modal-body">
-                            <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadOpenCourses">
-                          </div>
-
-
-                        </div>
-                        <div class="modal-footer">
-                          <button id="btUploadOpenCourses" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> ตกลง</button>
-
-                          <button id="btCloseOpenCourses" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Modal Courses2 -->
-                    <div class="modal fade" id="addOpenCourses2" role="dialog" aria-labelledby="Message" aria-hidden="true">
-                          <div class="modal-dialog modal-sm">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                  <h4 class="modal-title">เกิดข้อพลาด</h4>
-
-                                </div>
-
-                                <div class="modal-body">
-                                  <h8 class="card-subtitle">กรุณาใส่ไฟล์ PDF</h8>
-                                </div>
-                                <div class="modal-footer">
-
-                                    <button id="btCloseOpenCourses" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <!-- Modal Courses3 -->
-                                <div class="modal fade" id="addOpenCourses3" role="dialog" aria-labelledby="Message" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                              <h4 class="modal-title"></h4>
-
-                                          </div>
-
-                                            <div class="modal-body">
-                                                <h8 class="card-subtitle">เพิ่มข้อมูลเสร็จสิ้น</h8>
-                                            </div>
-                                                <div class="modal-footer">
-
-                                                    <button id="btCloseOpenCourses" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                                                </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                  <!-- END Modal Courses3 -->
 
 
 
@@ -722,10 +616,13 @@
                                   <div class="modal-body">
                                       <h6 class="card-subtitle">เลือกประเภทเอกสาร</h6>
                                             <select id="typeDownload" name="BecPortfolioGroup" class="form-control form-control-line">
-                                              <option value="โครงสร้างหลักสูตรระดับมหาบัณฑิต">โครงสร้างหลักสูตรระดับมหาบัณฑิต</option>
-                                              <option value="ขั้นตอนและแบบฟอร์มการสอบโครงร่างวิทยานิพนธ์">ขั้นตอนและแบบฟอร์มการสอบโครงร่างวิทยานิพนธ์</option>
-                                              <option value="ดาวน์โหลดแบบฟอร์มอื่นๆ">ดาวน์โหลดแบบฟอร์มอื่นๆ</option>
+                                              <option value="แบบฟอร์มอื่นๆ">แบบฟอร์มอื่นๆ</option>
                                               <option value="เอกสารหลักสูตร">เอกสารหลักสูตร</option>
+                                              <option value="แผนการเรียน สาขาวิชาเทคโนโลยีสารสนเทศ">แผนการเรียน สาขาวิชาเทคโนโลยีสารสนเทศ</option>
+                                              <option value="ขั้นตอนและแบบฟอร์มการสอบโครงร่างวิทยานิพนธ์">ขั้นตอนและแบบฟอร์มการสอบโครงร่างวิทยานิพนธ์</option>
+                                              <option value="โครงสร้างหลักสูตรระดับมหาบัณฑิต">โครงสร้างหลักสูตรระดับมหาบัณฑิต</option>
+
+
                                             </select>
 
                                   </div>
@@ -788,6 +685,19 @@
           <div class="modal-footer">
 
             <button id="btCloseEditDownload" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="messagePassModal">ลบสำเร็จ</h4>
+          </div>
+          <div class="modal-footer">
+            <button id="btClose" class="btn btn-danger" data-dismiss="modal">ปิด</button>
           </div>
         </div>
       </div>

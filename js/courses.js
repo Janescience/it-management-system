@@ -84,7 +84,7 @@ $(document).ready(function(){
           TypeCourseStudyplan = $("#AddTypeCourseStudyplan").val();
           TopicNameCouresStudyplan = $('#TopicSuggestionStudyplan').val();
 
-          firebase.database().ref('website/course/AddStudyplan').child(TypeCourseStudyplan).child(TopicNameCouresStudyplan).push().set(postPDF);
+          firebase.database().ref('website/course/AddStudyplan').child(TypeCourseStudyplan).child(TopicNameCouresStudyplan).child('Studyplan').set(postPDF);
           $('#fileUploadStudyplan').val("");
           $('#addStudyplan').modal('hide');
           $('#addStudyplan3').modal('show');
@@ -100,73 +100,6 @@ $(document).ready(function(){
     }
 
  /*======================= END Bachelor Studyplan  ======================*/
-
-
-
- /*------------------------ Bachelor OpenCourses (2555) -----------------------------------*/
-
- $('#btAddOpenCourses').on('click',function(e){
-      e.preventDefault();
-        $('#addOpenCourses').modal('show');
-
-        TypeCourseOpenCourses = $("#SelectTypeCourse").val();
-        $('#AddTypeCourseOpenCourses').val(TypeCourseOpenCourses);
-
-        TypeCourseOpenCourses2 = $("#SelectAddCourses").val();
-        $('#TopicSuggestionOpenCourses').val(TypeCourseOpenCourses2);
-
-        document.getElementById("AddTypeCourseOpenCourses").disabled = true;
-        document.getElementById("TopicSuggestionOpenCourses").disabled = true;
-    });
-
-    $('#fileUploadOpenCourses').on('change',function(event){
-      selectedFile = event.target.files[0];
-
-    });
-
-    $('#btUploadOpenCourses').on('click',function(){
-      uploadOpenCourses();
-    });
-
-    function uploadOpenCourses(){
-      var filename= selectedFile.name;
-      var filesurename = filename.split(".")[1];
-      if(filesurename == "PDF" || filesurename == "pdf"){
-        var storageRef = firebase.storage().ref('/CoursePDF/' + filename);
-        var uplodadTask = storageRef.put(selectedFile);
-
-        uplodadTask.on('state_changed',function(sanpshot){
-
-        },function(error){
-
-        },function(){
-          var downloadURL = uplodadTask.snapshot.downloadURL;
-          var updates = {};
-          var postPDF = {
-            file:downloadURL,
-            topic:$('#TopicOpenCourses').val()
-          };
-
-          TypeCourseStudyplan = $("#AddTypeCourseOpenCourses").val();
-          TopicNameCouresStudyplan = $('#TopicSuggestionOpenCourses').val();
-
-          firebase.database().ref('website/course/AddOpenCourses').child(TypeCourseStudyplan).child(TopicNameCouresStudyplan).push().set(postPDF);
-          $('#fileUploadOpenCourses').val("");
-          $('#addOpenCourses').modal('hide');
-          $('#addOpenCourses3').modal('show');
-
-        });
-
-      }else {
-        $('#addOpenCourses').modal('hide');
-        $('#addOpenCourses2').modal('show');
-      }
-
-
-    }
-
- /*======================= END Bachelor OpenCourses  ======================*/
-
 
 
 
@@ -226,7 +159,7 @@ AddCoursesRootRef.on("child_added",snap => {
        var filename= selectedFile.name;
        var filesurename = filename.split(".")[1];
        if(filesurename == "jpg" || filesurename == "JPG" || filesurename == "png" || filesurename == "PNG"){
-         var storageRef = firebase.storage().ref('/CoursePDF/bachelor2555/' + filename);
+         var storageRef = firebase.storage().ref('/CourseImage/' + filename);
          var uplodadTask = storageRef.put(selectedFile);
 
          uplodadTask.on('state_changed',function(sanpshot){
@@ -247,9 +180,10 @@ AddCoursesRootRef.on("child_added",snap => {
            };
 
 
-           TopicNameCoures = $("#TopicNameEditCourse").val();
+           TopicNameCoures = $("#typeCourse").val();
+           TopicNameEditCourseCoures = $("#TopicNameEditCourse").val();
 
-           firebase.database().ref('website/course/AddCourses').child(TopicNameCoures).push().set(post);
+           firebase.database().ref('website/course/AddCourses').child(TopicNameCoures).child(TopicNameEditCourseCoures).push().set(post);
            $('#fileUploadEdetailCourse').val("");
            $('#EditCourse').modal('hide');
            $('#addSuggestion3').modal('show')
@@ -287,6 +221,8 @@ AddCoursesRootRef.on("child_added",snap => {
     }
 
  });
+
+
 
  $('#SelectAddCourses').on('change',function(){
 
@@ -351,6 +287,22 @@ AddCoursesRootRef.on("child_added",snap => {
                                   $('#loaderHeader2').hide();
                                  });
 
+                                 $('#Suggestion_work').on('click','.btn-delete-expert',function(){
+                                   var id = $(this).closest('tr').attr("id");
+                                   ViewCoursesDb.child(id).remove().then(function(){
+                                       $('#deleteModal').modal('show');
+                                   });
+                                     $(this).closest('tr').remove();
+                                 });
+
+                                 $('#AddDownload_work').on('click','.btn-delete-expert',function(){
+                                   var id = $(this).closest('tr').attr("id");
+                                   ViewDowloadCoursesDb.child(id).remove().then(function(){
+                                       $('#deleteModal').modal('show');
+                                   });
+                                     $(this).closest('tr').remove();
+                                 });
+
                              });
 
 
@@ -372,13 +324,8 @@ AddCoursesRootRef.on("child_added",snap => {
    $(this).closest('td').find('.icon2-1').removeAttr('hidden');
  });
 
- $('#Suggestion_work').on('click','.btn-delete-expert',function(){
-   var id = $(this).closest('tr').attr("id");
-   rootRefExpert.child(id).remove().then(function(){
-       $('#deleteProfileModal').modal('show');
-   });
-     $(this).closest('tr').remove();
- });
+
+
 
  $('#Suggestion_work').on('click','.btn-edit-expert',function(){
    idBody = $(this).closest('tr').attr("id");
@@ -394,6 +341,8 @@ AddCoursesRootRef.on("child_added",snap => {
    $('#detailExpert2').val(detail2);
    $('#editExpertModal').modal('show');
  });
+
+
 
  $('#btEditExpert').on('click',function(){
    editExpert();
@@ -422,19 +371,21 @@ AddCoursesRootRef.on("child_added",snap => {
        detail2:  $('#detailExpert2').val(),
      };
 
-     editNameCoures = $("#SelecAddCourses").val();
+     var Type = $("#SelectTypeCourse").val();
+     var View= $("#SelectAddCourses").val();
+
      $('#Suggestion_work').empty();
      var deleteRef2;
-     var deleteImageProfile2 = firebase.database().ref("website/course/AddCourses").child(editNameCoures).child(idBody).child('file');
+     var deleteImageProfile2 = firebase.database().ref("website/course/AddCourses").child(Type).child(View).child(idBody).child('file');
 
      deleteImageProfile2.on('value',snap => {
        deleteRef2 = firebase.storage().refFromURL(snap.val());
      });
-     deleteRef.delete().then(function() {
+     deleteRef2.delete().then(function() {
      }).catch(function(error) {
 
      });
-     firebase.database().ref("website/course/AddCourses").child(editNameCoures).child(idBody).update(updatebachelor);
+     firebase.database().ref("website/course/AddCourses").child(Type).child(View).child(idBody).update(updatebachelor);
      $('#fileUploadExpert').val("");
      $('#TopicExpert').val("");
      $('#TopicExpert2').val("");
