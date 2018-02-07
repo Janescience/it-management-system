@@ -236,8 +236,10 @@
                                 <h4 class="card-title">ภาพกิจกรรมทั้งหมด</h4>
 
                                 <div  class="row el-element-overlay">
+                                  <div class="card-block">
                                   <div class="row" align="center" id="ActvImage">
                                   </div>
+                                </div>
                               </div>
 
                                 </div>
@@ -254,7 +256,6 @@
                             <div class="card">
                                 <div class="card-block">
                                   <h4 class="card-title">วีดีโอทั้งหมด</h4>
-
                                     <div class="row" align="center" id="ActvVideo">
                                     </div>
                                 </div>

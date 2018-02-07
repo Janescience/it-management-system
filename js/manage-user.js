@@ -128,7 +128,7 @@ $('#list_teacher').on('click','.btn-edit-user',function(){
  $('#btCreateUser').on('click',function(e){
    e.preventDefault();
    $('#addUserModal').modal('hide');
-   $('#messageModalWait').html("Processing...  "+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>', ['center', 'info']));
+   $('#messageModalWait').html("กำลังบันทึกข้อมูล...  "+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>', ['center', 'info']));
     $('#waitModal').modal('show');
 
     var filename= selectedFile.name;
@@ -231,7 +231,7 @@ $('#list_teacher').on('click','.btn-edit-user',function(){
                           $('#passwordCreateUser').val("");
                           $('#fileUploadImageCreateUser').val("");
                         })
-                     $('#messageModalWait').html(spanText('Success!', ['center', 'success']))
+                     $('#messageModalWait').html(spanText('บันทึกข้อมูลสำเร็จ', ['center', 'success']))
 
                      setTimeout(function() {
                         $('#waitModal').modal('hide');
@@ -245,7 +245,7 @@ $('#list_teacher').on('click','.btn-edit-user',function(){
                     });
                   }else {
                   //password and confirm password didn't match
-                  $('#messageModalLabel').html(spanText("Create user failed!", ['danger']))
+                  $('#messageModalLabel').html(spanText("ไม่สามารถเพิ่มผู้ใช้ได้", ['danger']))
               }
           });
        });
