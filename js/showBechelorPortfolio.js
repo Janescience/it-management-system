@@ -288,7 +288,7 @@ $('#btAddBechelorPortfolio').on('click',function(e){
 
       $('#list_BechelorPortfolio').append("<tr  id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_'+snap.key+"' class='"+'filled-in chk-col-red chk-select-port checkbox'+"'"+showStatus+">"+
                                 "<label for='"+'md_checkbox_'+snap.key+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
-                                + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 25px'+"' width='"+'100'+"' height='"+'100'+"'></td>"+
+                                + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 10px'+"' width='"+'100'+"' ></td>"+
                                "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 

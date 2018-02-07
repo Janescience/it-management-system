@@ -132,7 +132,7 @@ $('#CancelEditBechelorActivityVideo').hide();
 
      $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
              "<div  class='"+'el-card-item'+"'>"+
-                 "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 15px; height:120px'+"' alt='"+'user'+"'>"+
+                 "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 10px;'+"' width='"+'100px'+"' alt='"+'user'+"'>"+
                      "<div class='"+'el-overlay'+"'>"+
                          "<ul id='"+key+"' class='"+'el-info'+"'>"+
                              "<a class='"+'image-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
@@ -196,8 +196,8 @@ $('#CancelEditBechelorActivityVideo').hide();
      var Video = snap.child('videos').val();
      key = snap.key;
 
-     $('#ActvVideo').append("<div  class='"+'col-lg-4 col-md-4 col-sm-6'+"'>"+
-                 "<video  style='"+'height:150px;margin-left:35px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
+     $('#ActvVideo').append("<div  class='"+'col-lg-3 col-md-3 col-sm-6'+"'>"+
+                 "<video   style='"+'border-radius: 10px;'+"' width='"+'300px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
                          "<ul id='"+key+"' class='"+'el-info'+"'>"+
                              "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
                          "</ul>"+
