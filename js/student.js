@@ -440,13 +440,7 @@ $(document).ready(function(){
 		  		location.href = "showGraduateActivity.php";
 				});
 
-		$('#btAddBechelorHall').on('click',function(e){
-	  		location.href = "showHallOfFameBechelor.php";
-			});
 
-		$('#btAddGraduateHall').on('click',function(e){
-	  		location.href = "showHallOfFameGraduate.php";
-			});
 	// ========================================= End Code =====================================================================
 
 		// ========================================= Get Bechelor Portfolio Type Dropdown =========================================
@@ -587,11 +581,11 @@ $(document).ready(function(){
 
 
 				if ($("#BechelorPortfolioHallOfFame").prop("checked") == true) {
-					 Status = "Hall Of Fame"
+					 Status = "ผลงานดีเด่น"
 
 				}else if ($("#BechelorPortfolioHallOfFame").prop("checked") == false)
 				{
-					Status = "General"
+					Status = "ผลงานทั่วไป"
 				}
 
 			 	 uplodadTask.on('state_changed',function(sanpshot){
@@ -802,11 +796,11 @@ $(document).ready(function(){
 			var Status;
 
 			if ($("#GraduatePortfolioHallOfFame").prop("checked") == true) {
-				 Status = "Hall Of Fame"
+				 Status = "ผลงานดีเด่น"
 
 			}else if ($("#GraduatePortfolioHallOfFame").prop("checked") == false)
 			{
-				Status = "General"
+				Status = "ผลงานทั่วไป"
 			}
 			 uplodadTask.on('state_changed',function(sanpshot){
 

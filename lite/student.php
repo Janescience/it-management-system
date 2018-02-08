@@ -12,23 +12,6 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="css/animate.css">
 
-      <!-- date picker -->
-      <!-- <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
-      <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
-      <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-      <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-      <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" /> -->
-
-    <!-- Include Required Prerequisites
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-
-    Include Date Range Picker
-    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" /> -->
-
-
      <?php  include('header.php') ?>
 
 </head>
@@ -68,24 +51,8 @@
           </div>
           <div class="card-body">
               <div class="row">
-                <div class="col-lg-4">
-                            <div class="card" style="margin-top: 20px;margin-left: 25px;margin-bottom: 20px;">
-                                <div class="card-block">
-                                    <i class="fa fa-fort-awesome fa-5x" aria-hidden="true"></i>
-                                <h4 class="card-title">Hall of Fame</h4>
 
-                                <!-- <h6 class="card-subtitle">ระดับปริญญาตรี</h6> -->
-
-                                <form action="/action_page.php">
-
-                                <button type="button" id="btAddBechelorHall" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-thumbs-up"></i>  ดูผลงานดีเด่นของนักศึกษา</button>
-                                </form>
-
-                                </div>
-                            </div>
-                </div>
-
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                             <div class="card" style="margin-top: 20px;margin-bottom: 20px;">
                                 <div class="card-block">
                                     <i class="fa fa-trophy fa-5x" aria-hidden="true"></i>
@@ -102,7 +69,7 @@
                             </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                             <div class="card" style="margin-top: 20px;margin-right: 25px;margin-bottom: 20px;">
                                 <div class="card-block">
                                     <i class="fa fa-camera-retro fa-5x" aria-hidden="true"></i>
@@ -136,24 +103,8 @@
               </div>
               <div class="card-body">
                 <div class="row">
-                  <div class="col-lg-4">
-                            <div class="card" style="margin-top: 20px;margin-left: 25px;margin-bottom: 20px;">
-                                <div class="card-block">
-                                    <i class="fa fa-fort-awesome fa-5x" aria-hidden="true"></i>
-                                <h4 class="card-title">Hall of Fame</h4>
 
-                                <!-- <h6 class="card-subtitle">ระดับปริญญาตรี</h6> -->
-
-                                <form action="/action_page.php">
-
-                                <button type="button" id="btAddGraduateHall" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-thumbs-up"></i>  ดููผลงานดีเด่นของบัณฑิตศึกษา</button>
-                                </form>
-
-                                </div>
-                            </div>
-                </div>
-
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                             <div class="card" style="margin-top: 20px;margin-bottom: 20px;">
                                 <div class="card-block">
                                     <i class="fa fa-trophy fa-5x" aria-hidden="true"></i>
@@ -171,7 +122,7 @@
                             </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                             <div class="card" style="margin-top: 20px;margin-right: 25px;margin-bottom: 20px;">
                                 <div class="card-block">
                                     <i class="fa fa-camera-retro fa-5x" aria-hidden="true"></i>
@@ -259,7 +210,7 @@
                       <input type="checkbox" id="BechelorPortfolioGeneral" class="chk-col-grey" checked disabled>
                       <label for="BechelorPortfolioGeneral">ผลงานทั่วไป</label>
                       <input type="checkbox" id="BechelorPortfolioHallOfFame" class="chk-col-grey" >
-                      <label for="BechelorPortfolioHallOfFame">Hall of Fame</label>
+                      <label for="BechelorPortfolioHallOfFame">ผลงานดีเด่น</label>
                     </div>
                   </div>
                 </div>
@@ -419,7 +370,7 @@
                         <input type="checkbox" id="GraduatePortfolioGeneral" class="chk-col-grey" checked disabled>
                         <label for="GraduatePortfolioGeneral">ผลงานทั่วไป</label>
                         <input type="checkbox" id="GraduatePortfolioHallOfFame" class="chk-col-grey" >
-                        <label for="GraduatePortfolioHallOfFame">Hall of Fame</label>
+                        <label for="GraduatePortfolioHallOfFame">ผลงานดีเด่น</label>
                       </div>
                     </div>
                   </div>
