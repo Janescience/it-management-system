@@ -1,8 +1,8 @@
 $(document).ready(function(){
-
  var Auth = firebase.auth();
  var dbRef = firebase.database();
  var topicRef = dbRef.ref('website')
+ var usersRef = dbRef.ref('users')
  var idBody;
  var idCourses;
  var auth = null;
@@ -10,8 +10,17 @@ $(document).ready(function(){
  var indexSelect;
  var i = 0;
  var j = 0;
+ var page;
+ var topic;
+ var action;
 
- /*------------------------ select page -----------------------------------*/
+  $('#loaderHeader').hide();
+  $('#loaderHeader2').hide();
+
+
+
+
+ /*======================= select page ======================*/
 
  $('#selectHeaderSlide').on('change',function(){
   indexSelect = document.getElementById("selectHeaderSlide").selectedIndex;
@@ -34,10 +43,10 @@ $(document).ready(function(){
   }
 });
 
+/*======================= END select page ======================*/
 
-/*------------------------ End select page -----------------------------------*/
 
- /*------------------------ Bachelor Studyplan (2555) -----------------------------------*/
+/*=======================  Add Studyplan  ======================*/
 
  $('#btAddStudyplan').on('click',function(e){
       e.preventDefault();
@@ -89,6 +98,11 @@ $(document).ready(function(){
           $('#addStudyplan').modal('hide');
           $('#addStudyplan3').modal('show');
 
+          page = $('#coursePage').text();
+          topic = $('#TopicStudyplan').val();
+          action = "ได้ทำการแก้ไขแผนการศึกษา " + TopicNameCouresStudyplan + " ในหน้า ";
+          pushHistory();
+
         });
 
       }else {
@@ -99,12 +113,10 @@ $(document).ready(function(){
 
     }
 
- /*======================= END Bachelor Studyplan  ======================*/
+ /*======================= END Add Studyplan  ======================*/
 
 
-
-
- /*======================= View  course Option ======================*/
+ /*======================= View course Option ======================*/
 
 $('#SelectTypeCourse').on('change',function(){
   var TypeCourse = $("#SelectTypeCourse").val();
@@ -129,14 +141,9 @@ AddCoursesRootRef.on("child_added",snap => {
 });
 
 
+/*======================= End  View  course Option  ======================*/
 
-
-
-
-
-  /*======================= End  View  course Option  ======================*/
-
-    /*=======================  Add  course Option  ======================*/
+/*=======================  Add course Option  ======================*/
   $('#btAddDeitlCourses').on('click',function(e){
          e.preventDefault();
          $('#EditCourse').modal('show');
@@ -153,6 +160,10 @@ AddCoursesRootRef.on("child_added",snap => {
 
      $('#btUploadEditCourse').on('click',function(){
        uploadEditCourse();
+     });
+
+     $('#btCloseEditCourse').on('click',function(){
+       document.getElementById("fileUploadEdetailCourse").value = "";
      });
 
      function uploadEditCourse(){
@@ -186,8 +197,12 @@ AddCoursesRootRef.on("child_added",snap => {
            firebase.database().ref('website/course/AddCourses').child(TopicNameCoures).child(TopicNameEditCourseCoures).push().set(post);
            $('#fileUploadEdetailCourse').val("");
            $('#EditCourse').modal('hide');
-           $('#addSuggestion3').modal('show')
+           $('#addSuggestion3').modal('show');
 
+           page = $('#coursePage').text();
+           topic = $('#TopicNameEditCourse').val();
+           action = "ได้ทำการเพิ่มหลักสูตรการศึกษาในระดับ " + TopicNameCoures + " ในหน้า ";
+           pushHistory();
          });
 
        }else {
@@ -198,29 +213,14 @@ AddCoursesRootRef.on("child_added",snap => {
 
      }
 
-  /*======================= add Edit course  ======================*/
-
-  /*======================= end add Edit course  ======================*/
 
 
- /*------------------------  Dowload Suggestion (2560) -----------------------------------*/
+  /*======================= end course Option ======================*/
 
 
- $('#Suggestion').on('click',function(){
+/*======================= add Suggestion  ======================*/
 
-   if(i == 0){
-      $('#iconSuggestion').attr("class","fa fa-check text-info");
-      $('#headSuggestion').show();
-      $('#tableSuggestion').show();
-      i = 1;
-    }else{
-      $('#iconSuggestion').attr("class","fa fa-chevron-right");
-      $('#headSuggestion').hide();
-      $('#tableSuggestion').hide();
-      i = 0;
-    }
-
- });
+ 
 
 
 
@@ -266,7 +266,7 @@ AddCoursesRootRef.on("child_added",snap => {
 
                              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
-                             $('#loaderHeader').hide();
+
 
                            });
 
@@ -284,23 +284,34 @@ AddCoursesRootRef.on("child_added",snap => {
 
                                  "<td>"+
                                  " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
-                                  $('#loaderHeader2').hide();
+
                                  });
 
                                  $('#Suggestion_work').on('click','.btn-delete-expert',function(){
                                    var id = $(this).closest('tr').attr("id");
                                    ViewCoursesDb.child(id).remove().then(function(){
-                                       $('#deleteModal').modal('show');
+
                                    });
                                      $(this).closest('tr').remove();
+                                     page = $('#coursePage').text();
+                                     topic = $('#SelectAddCourses').val();
+                                     action = "ได้ทำการลบกลุ่มวิชา " + " ในหน้า ";
+                                     pushHistory();
+
                                  });
 
                                  $('#AddDownload_work').on('click','.btn-delete-expert',function(){
                                    var id = $(this).closest('tr').attr("id");
+
                                    ViewDowloadCoursesDb.child(id).remove().then(function(){
-                                       $('#deleteModal').modal('show');
                                    });
+
                                      $(this).closest('tr').remove();
+                                     page = $('#coursePage').text();
+                                     topic = $('#SelectAddCourses').val();
+                                     action = "ได้ทำการลบหัวข้อการดาวน์โหลด " + " ในหน้า ";
+                                     pushHistory();
+
                                  });
 
                              });
@@ -334,15 +345,13 @@ AddCoursesRootRef.on("child_added",snap => {
    var topic2 =  $(this).closest('tr').find(".txttopic2").text();
    var detail = $(this).closest('tr').find('.txtdetail').text();
    var detail2 = $(this).closest('tr').find('.txtdetail2').text();
-   $('#bgHeaderEdit').attr("src",bg);
-   $('#TopicExpert').val(topic);
-   $('#TopicExpert2').val(topic2);
-   $('#detailExpert').val(detail);
-   $('#detailExpert2').val(detail2);
-   $('#editExpertModal').modal('show');
+    $('#bgHeaderEdit').attr("src",bg);
+    $('#TopicExpert').val(topic);
+    $('#TopicExpert2').val(topic2);
+    $('#detailExpert').val(detail);
+    $('#detailExpert2').val(detail2);
+    $('#editExpertModal').modal('show');
  });
-
-
 
  $('#btEditExpert').on('click',function(){
    editExpert();
@@ -381,11 +390,18 @@ AddCoursesRootRef.on("child_added",snap => {
      deleteImageProfile2.on('value',snap => {
        deleteRef2 = firebase.storage().refFromURL(snap.val());
      });
+
      deleteRef2.delete().then(function() {
      }).catch(function(error) {
 
      });
      firebase.database().ref("website/course/AddCourses").child(Type).child(View).child(idBody).update(updatebachelor);
+
+     page = $('#coursePage').text();
+     topic = $('#TopicExpert').val();
+     action = "ได้ทำการแก้ไขข้อมูลกลุ่มวิชาใน " + View + " ในหน้า ";
+     pushHistory();
+
      $('#fileUploadExpert').val("");
      $('#TopicExpert').val("");
      $('#TopicExpert2').val("");
@@ -393,7 +409,7 @@ AddCoursesRootRef.on("child_added",snap => {
      $('#detailExpert2').val("");
 
 
-       $('#list_header').empty();
+       $('#Suggestion_work').empty();
 
        var a=0;
        rootRefExpert.on("child_added",snap => {
@@ -419,11 +435,7 @@ AddCoursesRootRef.on("child_added",snap => {
 
                                    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
-                                   $('#loaderHeader').hide();
       });
-
-
-
 
        $('#addEditExpert2').modal('show');
 
@@ -455,6 +467,11 @@ AddCoursesRootRef.on("child_added",snap => {
 
     $('#btUploadSuggestion').on('click',function(){
       uploadSuggestion();
+      page = $('#courses').text();
+      topic = $('#TopicEditDownload').val();
+      var TopicCourse = $('#AddTypeCourse2').val();
+      action = "ได้ทำการเพิ่มข้อมูลกลุ่มวิชาใน" + TopicCourse;
+      pushHistory();
     });
 
     function uploadSuggestion(){
@@ -499,16 +516,12 @@ AddCoursesRootRef.on("child_added",snap => {
 
 
     }
-
-      /*------------------------ End Dowload Suggestion (2560) -----------------------------------*/
-
+/*======================= End add Suggestion  ======================*/
 
 
 
 
-
-
-       /*------------------------  Dowload Course -----------------------------------*/
+/*======================= add Dowload  ======================*/
 
        $('#btOpenModalEditDownload').on('click',function(e){
             e.preventDefault();
@@ -535,6 +548,7 @@ AddCoursesRootRef.on("child_added",snap => {
 
           $('#btUploadEditDownload').on('click',function(){
             uploadEditDownload();
+
           });
 
           function uploadEditDownload(){
@@ -567,6 +581,11 @@ AddCoursesRootRef.on("child_added",snap => {
                 $('#editDowload').modal('hide');
                 $('#addSuggestion3').modal('show');
 
+                page = $('#coursePage').text();
+                topic = $('#TopicEditDownload').val();
+                action = "เพิ่มข้อมูลดาวน์โหลด PDF " + TopicNameDownload + " ในหน้า ";
+                pushHistory();
+
               });
 
             }else {
@@ -574,10 +593,41 @@ AddCoursesRootRef.on("child_added",snap => {
               $('#addSuggestion2').modal('show');
             }
 
-
           }
 
+/*======================= End add Dowload  ======================*/
 
 
-        /*------------------------  END Dowload Course -----------------------------------*/
+
+/*======================= History ======================*/
+
+function pushHistory(){
+   var nameValue;
+   var dateTimeCurrent = new Date();
+
+   var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
+   nameHistory.on('value',snap => {
+     nameValue = snap.val();
+   });
+
+   var dataHistory = {
+     id:sessionStorage.getItem("userId"),
+     name:nameValue,
+     page:page,
+     topic:topic,
+     action:action,
+     date:dateTimeCurrent.toDateString(),
+     time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
+   };
+
+   firebase.database().ref('history').push().set(dataHistory);
+
+   var message =  nameValue+" "+action+"''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
+   var txtPage = page;
+
+  window.location.href = "notify.php?message=" + message + "&page="+ txtPage;
+ }
+
+
+/*======================= END History ======================*/
 })
