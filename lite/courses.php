@@ -206,7 +206,7 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button id="btUploadEditCourse" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i>   ตกลง</button>
+                  <button id="btUploadEditCourse" type="button" class="btn btn-success"><i class="fa fa-check"></i>   ตกลง</button>
                   <button id="btCloseEditCourse" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                 </div>
               </div>
@@ -279,7 +279,7 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button id="btEditExpert" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> ตกลง</button>
+                                            <button id="btEditExpert" type="button" class="btn btn-success"><i class="fa fa-check"></i> ตกลง</button>
                                             <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                                         </div>
                                       </div>
@@ -386,7 +386,7 @@
 
                             </div>
                             <div class="modal-footer">
-                              <button id="btUploadSuggestion" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i>   ตกลง</button>
+                              <button id="btUploadSuggestion" type="button" class="btn btn-success "><i class="fa fa-check"></i>   ตกลง</button>
                               <button id="btCloseSuggestion" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                             </div>
                           </div>
@@ -510,7 +510,7 @@
         </div>
 
         <div class="modal-footer">
-          <button id="btUploadStudyplan" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i>ตกลง</button>
+          <button id="btUploadStudyplan" type="button" class="btn btn-success "><i class="fa fa-check"></i>ตกลง</button>
 
           <button id="btCloseStudyplan" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
         </div>
@@ -624,7 +624,7 @@
                                               </div>
 
                                               <div class="modal-footer">
-                                                <button id="btEditExpert" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> ตกลง</button>
+                                                <button id="btEditExpert" type="button" class="btn btn-success "><i class="fa fa-check"></i> ตกลง</button>
                                                 <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                                               </div>
                                             </div>
@@ -697,7 +697,7 @@
 
 
                                   <div class="modal-footer">
-                                    <button id="btUploadEditDownload" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i>   ตกลง</button>
+                                    <button id="btUploadEditDownload" type="button" class="btn btn-success "><i class="fa fa-check"></i>   ตกลง</button>
                                     <button id="btCloseEditDownload" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                                   </div>
                                 </div>
