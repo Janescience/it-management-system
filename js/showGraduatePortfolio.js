@@ -17,6 +17,9 @@ $(document).ready(function(){
 	var GroupGraId = "";
 	var clickBtEditGraPortGroup = 0;
 
+  var del;
+
+
 // ========================================= Set initial Graduate Portfolio Modal =========================================
   txt = "";
   $('#GraduatePortfolioName').val("");
@@ -25,6 +28,8 @@ $(document).ready(function(){
   $("#GraduatePortfolioHallOfFame").prop("checked", false);
   $('#GraduatePortfolioYear').val("");
   $('#GraduatePortfolioPicture').val("");
+  $('#GraduatePortfolioPictureText').val("");
+  $('#GraduatePortfolioPictureView').removeAttr('src');
   // document.getElementById("GraduateDemo").innerHTML = txt;
 // ========================================= End Code =====================================================================
 
@@ -161,6 +166,8 @@ $('#SaveAddGraduatePortfolioGroup').on('click',function(e){
     $('#AddGraduatePortfolioGroup').show();
     $('#EditGraduatePortfolioGroup').show();
     $('#DeleteGraduatePortfolioGroup').show();
+    $('#AddPortTypeModal').modal('show');
+
 
     for(var i = 0;i< clickBtEditGraPortGroup;i++){
       $('#GraduatePortfolioGroup option:last').remove();
@@ -188,6 +195,8 @@ $('#SaveEditGraduatePortfolioGroup').on('click',function(e){
     $('#AddGraduatePortfolioGroup').show();
     $('#EditGraduatePortfolioGroup').show();
     $('#DeleteGraduatePortfolioGroup').show();
+    $('#EditPortTypeModal').modal('show');
+
 
     $('#GraduatePortfolioGroup').empty();
 
@@ -229,7 +238,7 @@ select = document.getElementById('GraduatePortfolioGroup');
 
       $('#list_GraduatePortfolio').append("<tr  id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_'+snap.key+"' class='"+'filled-in chk-col-red chk-select-port checkbox'+"'"+showStatus+">"+
                                 "<label for='"+'md_checkbox_'+snap.key+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
-                                + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 25px'+"' width='"+'100'+"' height='"+'100'+"'></td>"+
+                                + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 10px;width:200px;'+"' ></td>"+
                                "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
@@ -258,13 +267,25 @@ $('#list_GraduatePortfolio').on('click','.chk-select-port',function(e){
 // ========================================= End Code =============================================================================
 
 // ========================================= Delete Portfolio =====================================================================
+  var id;
 
 $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
-  var id = $(this).closest('tr').attr("id");
-  rootRef.child(id).remove().then(function(){
-      $('#deletePortModal').modal('show');
-  });
-    $(this).closest('tr').remove();
+
+        id = $(this).closest('tr').attr("id");
+
+        del = $(this).closest('tr');
+    $('#BeforeDeletePortModal').modal('show');
+
+
+
+});
+
+  $('#btConfirm').on('click',function(){
+    rootRef.child(id).remove().then(function(){
+        $('#deletePortModal').modal('show');
+        del.remove();
+
+    });
 });
 // ========================================= End Code =============================================================================
 
@@ -293,13 +314,13 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
      $('#GraduatePortfolioName').val(Name);
      $('#GraduatePortfolioDetail').val(Detail);
      $('#GraduatePortfolioGroup').val(Type);
-     $('#GraduatePortfolioPicture').val("");
+     $('#GraduatePortfolioPicturey').val("");
 
-     if(Status == "Hall Of Fame"){
+     if(Status == "ผลงานดีเด่น"){
        // $('#GraduatePortfolioHallOfFame').prop('checked',true);
        // $("#GraduatePortfolioHallOfFame").prop("checked") == true
        document.getElementById("GraduatePortfolioHallOfFame").checked = true;
-     }else if(Status == "General") {
+     }else if(Status == "ผลงานทั่วไป") {
        // $('#GraduatePortfolioHallOfFame').prop('checked',false);
        // $("#GraduatePortfolioHallOfFame").prop("checked") == false
        document.getElementById("GraduatePortfolioHallOfFame").checked = false;
@@ -307,13 +328,19 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
      // $('#GraduatePortfolioHallOfFame').prop("checked") == currentStatus;
      $('#GraduatePortfolioYear').val(Year);
      $('#GraduatePortfolioPicturePreview').attr('src',Picture);
+     $('#GraduatePortfolioPicture').val("");
+     $('#GraduatePortfolioPictureText').val("");
+     $('#GraduatePortfolioPictureView').removeAttr('src');
+     selectedFile = "";
      $('#editGraduatePortfolio').modal("show");
+
 
      });
 
      // ========================================= Graduate Portfolio Script =========================================
 
      $('#GraduatePortfolioPicture').on('change',function(event){
+       selectedFile = "";
        selectedFile = event.target.files[0];
 
      });
@@ -333,10 +360,10 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
        var Status;
 
        if ($("#GraduatePortfolioHallOfFame").prop("checked") == true) {
-          Status = "Hall Of Fame"
+          Status = "ผลงานดีเด่น"
 
        }else if ($("#GraduatePortfolioHallOfFame").prop("checked") == false){
-         Status = "General"
+         Status = "ผลงานทั่วไป"
        }
 
        uplodadTask.on('state_changed',function(snapshot){
@@ -384,7 +411,7 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
 
           $('#list_GraduatePortfolio').append("<tr  id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_'+snap.key+"' class='"+'filled-in chk-col-red chk-select-port checkbox'+"'"+showStatus+">"+
                                     "<label for='"+'md_checkbox_'+snap.key+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
-                                    + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 25px'+"' width='"+'100'+"' height='"+'100'+"'></td>"+
+                                    + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 10px;width:200px;'+"'></td>"+
                                    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
         });
@@ -398,6 +425,11 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
         $("#GraduatePortfolioHallOfFame").prop('checked', false);
         $('#GraduatePortfolioYear').val("");
         $('#GraduatePortfolioPicture').val("");
+        $('#EditPortModal').modal('show');
+        $('#GraduatePortfolioPictureText').val("");
+        $('#GraduatePortfolioPictureView').removeAttr('src');
+        selectedFile = "";
+
         // document.getElementById("GraduateDemo").innerHTML = txt;
       });
 
@@ -419,6 +451,10 @@ $('#btCloseEditGraduatePortfolio').on('click',function(){
   $("#GraduatePortfolioHallOfFame").prop('checked', false);
   $('#GraduatePortfolioYear').val("");
   $('#GraduatePortfolioPicture').val("");
+  $('#GraduatePortfolioPictureText').val("");
+  $('#GraduatePortfolioPictureView').removeAttr('src');
+  selectedFile = "";
+
   // document.getElementById("GraduateDemo").innerHTML = txt;
 
 });
