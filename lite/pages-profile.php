@@ -178,8 +178,8 @@
 
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <button id="btUpdateProfile"class="btn btn-success waves-effect waves-ligh"><i class="ti ti-pencil-alt"></i>  แก้ไขข้อมูลส่วนตัว</button>
-                                                        <button id="btUpdatePassword"class="btn btn-warning waves-effect waves-ligh"><i class="ti ti-lock"></i>  เปลี่ยนรหัสผ่าน</button>
+                                                        <button id="btUpdateProfile"class="btn btn-success waves-effect waves-light col-lg-4 col-sm-12"><i class="ti ti-pencil-alt"></i>  แก้ไขข้อมูลส่วนตัว</button><span class="hidden-md-up"><br><br></span>
+                                                        <button id="btUpdatePassword"class="btn btn-warning waves-effect waves-light col-lg-4 col-sm-12"><i class="ti ti-lock"></i>  เปลี่ยนรหัสผ่าน</button>
                                                         <button id="btLoadingProfile" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
                                                         <button id="btSubmitUpdateProfile" type="button" class="btn btn-success "><i class="fa fa-check"></i> บันทึก</button>
                                                         <button id="btCancelUpdateProfile" type="button" class="btn btn-danger "><i class="mdi mdi-close"></i> ยกเลิก</button>

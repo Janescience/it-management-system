@@ -28,13 +28,14 @@
             <div class="container-fluid">
 
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-
-                        </div>
-                    </div>
+              <div class="row page-titles">
+                <div class="col-md-5 col-8 align-self-center">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)"><h4>เมนูหลัก</h4></a></li>
+                    <li class="breadcrumb-item active">หลักสูตร</li>
+                  </ol>
                 </div>
+              </div>
 
 
 
@@ -56,12 +57,12 @@
                                       <div class="row">
 
                                             <select id="SelectTypeCourse" name="BecPortfolioGroup" class="form-control form-control-line">
-                                              <optgroup label="ระดับการศึกษา">
+
                                                 <option value="-">เลือกระดับการศึกษาที่ต้องการแสดง</option>
                                                 <option value="ปริญญาตรี">ปริญญาตรี</option>
                                                 <option value="ปริญญาโท">ปริญญาโท</option>
                                                 <option value="ปริญญาเอก">ปริญญาเอก</option>
-                                              </optgroup>
+
                                             </select>
 
 
@@ -86,7 +87,9 @@
                                                   <button type="button" id="btOpenModalSuggestion" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                                 </h2>
                                             </div>
-                                            <select id="SelectAddCourses" name="BecPortfolioGroup" class="form-control form-control-line col-xlg-8 col-lg-8 col-md-8"></select>
+                                            <select id="SelectAddCourses" name="BecPortfolioGroup" class="form-control form-control-line col-xlg-8 col-lg-8 col-md-8">
+                                            <option >กรุณาเลือกระดับการศึกษา</option>
+                                          </select>
                                         </div>
                                     </div>
 

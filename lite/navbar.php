@@ -94,7 +94,7 @@
                            </ul></li>
                 <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">ข้อมูลส่วนตัว</span></a>
                 </li>
-                <li id="manageUserMenu"> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">จัดการผู้ใช้ในระบบ</span></a>
+                <li hidden id="manageUserMenu"> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">จัดการผู้ใช้ในระบบ</span></a>
                 </li>
                 <li id="historyMenu"> <a class="waves-effect waves-dark" href="history.php" aria-expanded="false"><i class="mdi mdi-history"></i><span class="hide-menu">ประวัติ</span></a>
                 </li>
