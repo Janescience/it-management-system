@@ -22,4 +22,6 @@
 <!-- Include Firebase Library -->
 <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
 <script src="../js/all-pages.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/src/loadingoverlay.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/extras/loadingoverlay_progress/loadingoverlay_progress.min.js'></script>
 <script src="../js/check_not_login.js"></script>

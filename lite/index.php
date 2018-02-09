@@ -53,7 +53,7 @@
                   <h4 class="text-black card-title">รูปภาพไสลด์</h4>
                     <div class="message-box contact-box">
                       <h2 class="add-ct-btn">
-                        <button type="button" id="btAddHeader" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                        <button type="button" id="btAddHeader" data-toggle="tooltip" title="เพิ่มสไลด์" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                       </h2>
                     </div>
                 </div>
@@ -75,11 +75,69 @@
                                         <th class="text-center">ข้อความปุ่ม</th>
                                         <th class="text-center">จัดการ</th>
                                     </tr>
-                                    <tr id="loaderHeader">
-                                      <td colspan="6"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
-                                    </tr>
                                 </thead>
                                 <tbody id="list_header">
+
+                                </tbody>
+                            </table>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+<!--======================================================================-->
+
+<!--=========================== เกี่ยวกับสาขาวิชา ===========================-->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card ">
+                <div class="card-block ">
+                  <h4 class="text-black card-title">เกี่ยวกับสาขาวิชา</h4>
+                  <div class="message-box contact-box">
+                    <h2 class="add-ct-btn">
+                      <button type="button" id="btOpenModalPurpose" data-toggle="tooltip" title="เพิ่มวัตถุประสงค์" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                    </h2>
+                  </div>
+                </div>
+
+                <hr>
+
+                <div class="card-block ">
+
+
+                <center>
+
+
+                  <h5>ปรัชญา</h5>
+                  <div class="pull-center">
+
+                   <button id="editPhilosophy" type="button" data-toggle="tooltip" title="แก้ไข" class="btn btn-secondary"><i class="mdi mdi-pencil"></i></button>
+                  <button hidden id="addPhilosophy" type="button" data-toggle="tooltip" title="บันทึก" class="btn btn-success"> <i class="mdi mdi-check"></i></button>
+                  <button hidden id="cancelPhilosophy" type="button" data-toggle="tooltip" title="ยกเลิก" class="btn btn-danger"> <i class="mdi mdi-close"></i></button>
+
+              </div>
+              <br>
+                  <textarea disabled="true" type="text" rows="4" id="txtPhilosophy" class="form-control col-lg-8"></textarea>
+                </center><br>
+                  <div class="card">
+                    <div class="card-block">
+
+                      <form class="form-horizontal form-material ">
+                        <div class="table-responsive">
+                            <table id="tablePurpose" >
+                                <thead >
+                                    <tr class="table text-center" >
+                                        <th class="text-center">วัตถุประสงค์</th>
+                                        <th class="text-center">จัดการ</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody id="list_purpose">
 
                                 </tbody>
                             </table>
@@ -101,7 +159,7 @@
                 <h4 class="text-black card-title">ระดับการศึกษา</h4>
                   <div class="message-box contact-box">
                     <h2 class="add-ct-btn">
-                      <button type="button" id="btEditCourse" class="btn btn-circle btn-lg btn-success waves-effect waves-dark"><i class="mdi mdi-pencil"></i></button>
+                      <button type="button" id="btEditCourse" data-toggle="tooltip" title="แก้ไขระดับการศึกษา" class="btn btn-circle btn-lg btn-success waves-effect waves-dark"><i class="mdi mdi-pencil"></i></button>
                     </h2>
                   </div>
               </div>
@@ -148,11 +206,11 @@
 
               <hr>
 
-              <div class="card-block bg-info">
-                <h4 class="text-white card-title">ระดับปริญญาตรี</h4>
+              <div class="card-block ">
+                <h4 class="text-black card-title text-center">ระดับปริญญาตรี</h4>
                   <div class="message-box contact-box">
                     <h2 class="add-ct-btn">
-                      <button type="button" id="btOpenModalBachelor" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                      <button type="button" id="btOpenModalBachelor" data-toggle="tooltip" title="เพิ่มข่าวสารระดับปริญญาตรี" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                     </h2>
                   </div>
               </div>
@@ -170,9 +228,6 @@
                                       <th class="text-center">ลิงค์</th>
                                       <th class="text-center">จัดการ</th>
                                   </tr>
-                                  <tr id="loaderInforBachelor">
-                                    <td colspan="4"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
-                                  </tr>
                               </thead>
                               <tbody id="list_info_bachelor">
 
@@ -185,11 +240,11 @@
               </div>
 
 
-              <div class="card-block bg-info">
-                <h4 class="text-white card-title">ระดับบัณฑิตศึกษา</h4>
+              <div class="card-block ">
+                <h4 class="text-black card-title text-center">ระดับบัณฑิตศึกษา</h4>
                   <div class="message-box contact-box">
                     <h2 class="add-ct-btn">
-                      <button type="button" id="btOpenModalGraduate" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                      <button type="button" id="btOpenModalGraduate" data-toggle="tooltip" title="เพิ่มข่าวสารระดับบัณฑิตศึกษา" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                     </h2>
                   </div>
               </div>
@@ -206,9 +261,6 @@
                                       <th class="text-center">หัวข้อ</th>
                                       <th class="text-center">ลิงค์</th>
                                       <th class="text-center">จัดการ</th>
-                                  </tr>
-                                  <tr id="loaderInforGraduate">
-                                    <td colspan="4"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
                                   </tr>
                               </thead>
                               <tbody id="list_info_graduate">

@@ -9,17 +9,10 @@
         <!-- ============================================================== -->
         <div class="navbar-header">
             <a class="navbar-brand" href="index.php">
-                <!-- Logo icon --><b>
-                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                      <span class="hidden-xs-down"><img src="../images/it-logo.png" alt="homepage" class="light-logo" width="300px" /></span>
+                </a>
+                <span class="hidden-md-up"><img src="../images/logo-bird.png" alt="homepage" class="light-logo" width="35px" /></span>
 
-                    <!-- Light Logo icon -->
-                      <img src="../images/bird_logo.png" alt="homepage" class="light-logo" width="50px" height="50px" />
-                    </b>
-                <!--End Logo icon -->
-                <!-- Logo text --><span>
-
-                 <!-- Light Logo text -->
-                   <img src="../assets/images/logo-it.png" class="light-logo" alt="homepage" /></span></a>
         </div>
         <!-- ============================================================== -->
         <!-- End Logo -->
@@ -96,13 +89,12 @@
                 <li > <a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">เมนูหลัก</span></a>
                   <ul aria-expanded="true" class="collapse in">
                                <li ><a id="indexPage" href="index.php">หน้าแรก</a></li>
-                               <li><a href="about.php">เกี่ยวกับสขา</a></li>
-                               <li><a id="coursePage" href="courses.php">หลักสูตร</a></li>
+                               <li><a href="courses.php">หลักสูตร</a></li>
                                <li><a href="student.php">นักศึกษา</a></li>
                            </ul></li>
                 <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">ข้อมูลส่วนตัว</span></a>
                 </li>
-                <li id="manageUserMenu"> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">จัดการสมาชิกในระบบ</span></a>
+                <li id="manageUserMenu"> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">จัดการผู้ใช้ในระบบ</span></a>
                 </li>
                 <li id="historyMenu"> <a class="waves-effect waves-dark" href="history.php" aria-expanded="false"><i class="mdi mdi-history"></i><span class="hide-menu">ประวัติ</span></a>
                 </li>
@@ -115,7 +107,7 @@
     <!-- End Sidebar scroll-->
     <!-- Bottom points-->
     <div class="sidebar-footer">
-        <!-- item--><a id="btLogoutFooter"  class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
+        <!-- item--><a id="btLogoutFooter"  class="link" data-toggle="tooltip" title="ออกจากระบบ"><i class="mdi mdi-power"></i></a> </div>
     <!-- End Bottom points-->
 </aside>
 

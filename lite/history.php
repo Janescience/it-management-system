@@ -40,10 +40,10 @@
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">History</h3>
+
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Manage</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">ประวัติการแก้ไข</a></li>
+                            <li class="breadcrumb-item active">จัดการ</li>
                         </ol>
                     </div>
                 </div>
@@ -93,9 +93,7 @@
                                             <tr class="warning no-result">
   <td colspan="5"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
 </tr>
-<tr id="loaderHistory">
-  <td colspan="6"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
-</tr>
+
                                         </thead>
                                         <tbody id="list_history">
 

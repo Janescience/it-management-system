@@ -206,7 +206,6 @@ $('#CancelEditGraduateActivityVideo').hide();
 
    $('#ActvVideo').on('click','.delete',function(e){
 
-
      var id = $(this).closest('ul').attr("id");
 
      // alert(actName);

@@ -8,7 +8,7 @@ $(document).ready(function(){
   var next = 0;
   var page = 1;
   var previous = 0;
-
+ $.LoadingOverlay("show");
   var rootRef = historyRef;
 
     rootRef.on("child_added",snap => {
@@ -18,10 +18,10 @@ $(document).ready(function(){
       var topic = snap.child('topic').val();
       var date = snap.child('date').val();
       var time = snap.child('time').val();
-
+ $.LoadingOverlay("hide");
       $('#list_history').prepend("<tr><td>" + name + "</td><td>" + action + "</td><td>" + page + "</td><td>" + topic + "</td><td>" + date + "</td><td>" + time + "</td>"+
                                "</tr>");
-                               $('#loaderHistory').hide();
+                          
       key = snap.key;
       console.log("table on ready");
     });

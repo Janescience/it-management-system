@@ -1,7 +1,7 @@
 
   <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16" href="../images/icon_web.png">
-<title>Information of Technology Management System</title>
+<link rel="icon" type="image/png" sizes="16x16" href="../images/logo-bird.png">
+<title>MANAGEMENT SYSYTEM OF INFORMATION OF TECHNOLOGY</title>
 <!-- Bootstrap Core CSS -->
 <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
