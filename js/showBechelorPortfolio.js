@@ -179,26 +179,26 @@ $('#btAddBechelorPortfolio').on('click',function(e){
 	$('#BechelorPortfolioGroup').on('change',function(){
 	GroupBecId = $(this).children(":selected").attr("id");
 
-	$('#DeleteBechelorPortfolioGroup').on('click',function(){
-		// GroupGraId = $(this).children(":selected").attr("id");
-		clickBtEditBecPortGroup = clickBtEditBecPortGroup+1;
+  		$('#DeleteBechelorPortfolioGroup').on('click',function(){
+  			// GroupGraId = $(this).children(":selected").attr("id");
+  			clickBtEditBecPortGroup = clickBtEditBecPortGroup+1;
 
-		BechelorRootRef.child(GroupBecId).remove().then(function(){
-				$('#deletePortModal').modal('show');
+  			BechelorRootRef.child(GroupBecId).remove().then(function(){
+  					$('#DeletePortTypeModal').modal('show');
 
-				$('#BechelorPortfolioGroup').empty();
+  					$('#BechelorPortfolioGroup').empty();
 
-				BechelorRootRef.on("child_added",snap => {
-					var Type = snap.child('port_GroupType').val();
+  					BechelorRootRef.on("child_added",snap => {
+  						var Type = snap.child('port_GroupType').val();
 
-					$('#BechelorPortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
+  						$('#BechelorPortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
 
-					$('#BechelorPortfolioGroup').val("");
+  						$('#BechelorPortfolioGroup').val("");
 
-				});
-		});
-			$(this).children(":selected").remove();
-	});
+  					});
+  			});
+  				$(this).children(":selected").remove();
+  		});
 });
 
 	// ========================================= End Code =====================================================================

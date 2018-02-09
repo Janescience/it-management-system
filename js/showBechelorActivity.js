@@ -6,6 +6,9 @@ $(document).ready(function(){
   var auth = null;
 
   var countDeleteImage=0;
+
+  var countDeleteVideo=0;
+
   var rootRef = activityRef;
   var selectedFile;
 
@@ -13,7 +16,10 @@ $(document).ready(function(){
 
   var del;
 
-  // var clickBtEditAct = 0;
+  var clickBtEditAct = 0;
+
+  var clickBtEditPic = 0;
+
 
 
 
@@ -61,6 +67,8 @@ $('#CancelEditBechelorActivityVideo').hide();
 
 // ========================================= Put Bechelor Activity To Input =========================================
   $('#selectActivity').on('change',function(){
+    countDeleteImage = 0;
+    countDeleteVideo = 0;
     actName = $(this).children(":selected").attr("id");
    del = $(this).children(":selected");
    $('#ActvImage').empty();
@@ -131,7 +139,12 @@ $('#CancelEditBechelorActivityVideo').hide();
       Image = snap.child('images').val();
       key = snap.key;
 
-     $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
+
+      for(var i = 0;i< countDeleteImage;i++){
+        $("#ActvImage :nth-last").remove();
+      }
+
+       $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
              "<div  class='"+'el-card-item'+"'>"+
                  "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 10px;width:100%;'+"' alt='"+'user'+"'>"+
                      "<div class='"+'el-overlay'+"'>"+
@@ -143,12 +156,18 @@ $('#CancelEditBechelorActivityVideo').hide();
              "</div>"+
      "</div>");
 
+
+
    });
 
+
    $('#ActvImage').on('click','.delete',function(e){
+
      countDeleteImage = countDeleteImage+1;
 
      var id = $(this).closest('ul').attr("id");
+
+     // alert(countDeleteImage);
 
      var dbImage = rootRef.child(actName).child('activity_image').child(id).child('images');
      dbImage.on('value',snap => {
@@ -164,9 +183,17 @@ $('#CancelEditBechelorActivityVideo').hide();
      });
 
      rootRef.child(actName).child('activity_image').child(id).remove().then(function(){
-         $('#deletePortModal').modal('show');
+         $('#DeletePicture').modal('show');
      });
-       // $(this).closest('ul').remove();
+
+     // for(var i = 0;i< countDeleteImage;i++){
+     //   $('#ActvImage :nth-last-child').remove();
+     // }
+
+     // for(var i = 0;i< countDeleteImage;i++){
+     //  $('#ActvImage').last().remove();
+     // }
+
 
        $('#ActvImage').empty();
 
@@ -197,6 +224,10 @@ $('#CancelEditBechelorActivityVideo').hide();
      var Video = snap.child('videos').val();
      key = snap.key;
 
+     for(var i = 0;i< countDeleteVideo;i++){
+       $("#ActvVideo :nth-last").remove();
+     }
+
      $('#ActvVideo').append("<div class='"+'card-block'+"'><div  class='"+'col-lg-3 col-md-3 col-sm-6'+"'>"+
                  "<video   style='"+'border-radius:10px;'+"' width='"+'200px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
                          "<ul id='"+key+"' class='"+'el-info'+"'>"+
@@ -207,6 +238,7 @@ $('#CancelEditBechelorActivityVideo').hide();
 
    $('#ActvVideo').on('click','.delete',function(e){
 
+     countDeleteVideo = countDeleteVideo+1;
 
      var id = $(this).closest('ul').attr("id");
 
@@ -316,7 +348,6 @@ $('#CancelEditBechelorActivityVideo').hide();
       $('#EditBechelorActivity').show();
       $('#EditActModal').modal('show');
 
-
       $('#selectActivity').empty();
 
           rootRef.on("child_added",snap => {
@@ -372,11 +403,13 @@ $('#CancelEditBechelorActivityVideo').hide();
     $('#SaveEditBechelorActivityImage').on('click',function(e){
         e.preventDefault();
 
+
         // clickBtEditAct= clickBtEditAct+1;
 
                 for (var i = 0; i < p.target.files.length; i++) {
                     var imageFile = p.target.files[i];
                     uploadImageAsPromise(imageFile);
+
                 }
 
             //Handle waiting to upload each file using promise
@@ -422,6 +455,11 @@ $('#CancelEditBechelorActivityVideo').hide();
     			$('#BechelorActivityImageText').val("");
           $('#EditBechelorActivityImage').show();
           $('#AddPicture').modal('show');
+
+
+          // for(var i = 0;i< countDeleteImage;i++){
+          //   $('#ActvImage :nth-last-child').remove();
+          // }
 
 
 
@@ -528,6 +566,8 @@ $('#CancelEditBechelorActivityVideo').hide();
 
     $('#DeleteBechelorActivity').on('click',function(e){
         e.preventDefault();
+
+        clickBtEditAct = clickBtEditAct+1;
 
         $('#BeforeDeleteActModal').modal('show');
 
