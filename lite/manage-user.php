@@ -12,12 +12,30 @@
     <?php  include('header.php') ?>
 
     <style>
-    .results tr[visible='false'],
-    .no-result{
+    .results-teacher tr[visible='false'],
+    .no-result-teacher{
       display:none;
     }
 
-    .results tr[visible='true']{
+    .results-teacher tr[visible='true']{
+      display:table-row;
+    }
+
+    .results-staff tr[visible='false'],
+    .no-result-staff{
+      display:none;
+    }
+
+    .results-staff tr[visible='true']{
+      display:table-row;
+    }
+
+    .results-ta tr[visible='false'],
+    .no-result-ta{
+      display:none;
+    }
+
+    .results-ta tr[visible='true']{
       display:table-row;
     }
 
@@ -72,7 +90,7 @@
 
                 <div class="row">
 
-                    <div class="col-md-12">
+                    <div hidden id="teacher" class="col-md-12">
                       <div class="card">
                         <div class="card-block">
                           <div class="row">
@@ -87,10 +105,10 @@
 
                           <div class="form-group">
                             <h1 class="text-left">คณาจารย์</h1>
-                            <span class="counter pull-right"></span>
+                            <span class="counter-teacher pull-right"></span>
                               <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-search"></i></div>
-                                <input id="searchUser" type="text"  class="form-control" >
+                                <input id="searchTeacher" type="text"  class="form-control" >
                               </div>
                             </div>
                           </div>
@@ -104,7 +122,7 @@
 
                               <form class="form-horizontal form-material ">
                                 <div class="table-responsive">
-                                    <table class="table text-center results table-hover" >
+                                    <table class="table text-center results-teacher table-hover" >
                                         <thead >
                                             <tr >
                                               <th class="text-center">รูปภาพ</th>
@@ -113,7 +131,7 @@
                                                 <th class="text-center">หมายเลขโทรศัพท์</th>
                                                 <th class="text-center">จัดการ</th>
                                             </tr>
-                                            <tr class="warning no-result">
+                                            <tr class="warning no-result-teacher">
                                               <td colspan="6"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                             </tr>
 
@@ -129,7 +147,7 @@
                       </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div hidden id="staff" class="col-md-12">
                       <div class="card">
                         <div class="card-block">
                           <div class="row">
@@ -144,7 +162,7 @@
 
                           <div class="form-group">
                             <h1 class="text-left">เจ้าหน้าที่บริหารงานทั่วไป</h1>
-                            <span class="counter pull-right"></span>
+                            <span class="counter-staff pull-right"></span>
                               <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-search"></i></div>
                                 <input id="searchStaff" type="text"  class="form-control" >
@@ -157,7 +175,7 @@
 
                               <form class="form-horizontal form-material ">
                                 <div class="table-responsive">
-                                    <table class="table text-center results table-hover" >
+                                    <table class="table text-center results-staff table-hover" >
                                         <thead >
                                             <tr >
                                               <th class="text-center">รูปภาพ</th>
@@ -166,7 +184,7 @@
                                                 <th class="text-center">หมายเลขโทรศัพท์</th>
                                                 <th class="text-center">จัดการ</th>
                                             </tr>
-                                            <tr class="warning no-result">
+                                            <tr class="warning no-result-staff">
                                               <td colspan="6"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                             </tr>
 
@@ -183,7 +201,7 @@
                     </div>
 
 
-                    <div class="col-md-12">
+                    <div hidden id="ta" class="col-md-12">
                       <div class="card">
                         <div class="card-block">
                           <div class="row">
@@ -198,7 +216,7 @@
 
                           <div class="form-group">
                             <h1 class="text-left">ผู้ช่วยสอนและวิจัย</h1>
-                            <span class="counter pull-right"></span>
+                            <span class="counter-ta pull-right"></span>
                               <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-search"></i></div>
                                 <input id="searchTa" type="text"  class="form-control" >
@@ -210,7 +228,7 @@
 
                               <form class="form-horizontal form-material ">
                                 <div class="table-responsive">
-                                    <table class="table text-center results table-hover" >
+                                    <table class="table text-center results-ta table-hover" >
                                         <thead >
                                             <tr >
                                               <th class="text-center">รูปภาพ</th>
@@ -219,7 +237,7 @@
                                                 <th class="text-center">หมายเลขโทรศัพท์</th>
                                                 <th class="text-center">จัดการ</th>
                                             </tr>
-                                            <tr class="warning no-result">
+                                            <tr class="warning no-result-ta">
                                               <td colspan="6"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                             </tr>
 
@@ -275,7 +293,43 @@
 
     <!--================================================================================================-->
 
-    <!--==================================== Delete ====================================================-->
+    <!--==================================== Delete Teacher ====================================================-->
+
+    <div class="modal fade" id="confrimDeleteTeacherModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" >ต้องการลบผู้ใช้คนนี้ ?</h4>
+          </div>
+          <div class="modal-footer">
+            <button id="btConfrimTeacherDelete" class="btn btn-success" data-dismiss="modal">ตกลง</button>
+            <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--================================================================================================-->
+
+    <!--==================================== Delete Staff ====================================================-->
+
+    <div class="modal fade" id="confrimDeleteStaffModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" >ต้องการลบผู้ใช้คนนี้ ?</h4>
+          </div>
+          <div class="modal-footer">
+            <button id="btConfrimStaffDelete" class="btn btn-success" data-dismiss="modal">ตกลง</button>
+            <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--================================================================================================-->
+
+    <!--==================================== Delete Ta ====================================================-->
 
     <div class="modal fade" id="confrimDeleteTaModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
       <div class="modal-dialog modal-sm">
@@ -284,7 +338,7 @@
             <h4 class="modal-title" >ต้องการลบผู้ใช้คนนี้ ?</h4>
           </div>
           <div class="modal-footer">
-            <button id="btConfrimDelete" class="btn btn-success" data-dismiss="modal">ตกลง</button>
+            <button id="btConfrimTaDelete" class="btn btn-success" data-dismiss="modal">ตกลง</button>
             <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
           </div>
         </div>
@@ -378,17 +432,9 @@
 <div class="col-md-12">
 
       <form class="form-horizontal">
-
-          <div class="row">
-        <h4 class="col-lg-6 text-center">รูปภาพปัจจุบัน</h4>
-        <h4 class="col-lg-6 text-center">รูปภาพที่ต้องการอัปโหลด</h4>
-      </div>
       <div class="row">
-        <div class="col-lg-6 text-center">
-        <img id="imgShowEdit" width="150px" class="img-circle ">
-      </div>
-      <div class="col-lg-6 text-center">
-        <img class="img-show " width="150px" />
+        <div class="col-lg-12 text-center">
+        <img id="imgShowEdit" class="img-show">
       </div>
           </div>
       <br>

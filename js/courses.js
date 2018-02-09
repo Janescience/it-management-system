@@ -13,7 +13,7 @@ $(document).ready(function(){
  var page;
  var topic;
  var action;
-
+ $.LoadingOverlay("show");
   $('#loaderHeader').hide();
   $('#loaderHeader2').hide();
 
@@ -220,7 +220,7 @@ AddCoursesRootRef.on("child_added",snap => {
 
 /*======================= add Suggestion  ======================*/
 
- 
+
 
 
 

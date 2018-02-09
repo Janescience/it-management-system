@@ -18,8 +18,7 @@ $(document).ready(function(){
   var clickBtEditBecPortGroup = 0;
 
   var del;
-
-
+   $.LoadingOverlay("show");
 
 
 // ========================================= Set initial Bechelor Portfolio Modal =========================================

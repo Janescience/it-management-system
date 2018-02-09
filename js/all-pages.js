@@ -277,17 +277,38 @@ var dbUserImage = usersRef.child(sessionStorage.getItem("userId")).child('image'
 dbUserImage.on('value',snap => {
   $('#userImageProfile').attr('src',snap.val());
   $('#userImage').attr('src',snap.val());
+   $.LoadingOverlay("hide");
 });
 
 var dbStatus = usersRef.child(sessionStorage.getItem("userId")).child('level');
 dbStatus.on('value',snap => {
   sessionStorage.setItem("level",snap.val());
-  if(sessionStorage.getItem("level") != "คณาจารย์และบุคลากร"){
-    $('#manageUserMenu').removeAttr('hidden');
-  }else{
+  if(sessionStorage.getItem("level") == "คณาจารย์และบุคลากร"){
     $('#tabOfficeHour').removeAttr('hidden');
     $('#manageUserMenu').attr('hidden',"true");
+    $('#indexMenu').attr('hidden',"true");
+    $('#courseMenu').attr('hidden',"true");
+    $('#studentMenu').removeAttr('hidden');
+  }else if(sessionStorage.getItem("level") == "เจ้าหน้าที่บริหารงานทั่วไป"){
+    $('#manageUserMenu').removeAttr('hidden');
+    $('#indexMenu').removeAttr('hidden');
+    $('#courseMenu').removeAttr('hidden');
+    $('#studentMenu').removeAttr('hidden');
+    $('#tabOfficeHour').attr('hidden',"true");
+    $('#teacher').removeAttr('hidden');
+    $('#ta').removeAttr('hidden');
+    $('#staff').removeAttr('hidden');
+  }else if(sessionStorage.getItem("level") == "ผู้ช่วยสอนและวิจัย"){
+    $('#manageUserMenu').removeAttr('hidden');
+    $('#indexMenu').removeAttr('hidden');
+    $('#courseMenu').removeAttr('hidden');
+    $('#studentMenu').removeAttr('hidden');
+    $('#tabOfficeHour').attr('hidden',"true");
+    $('#teacher').removeAttr('hidden');
+    $('#ta').attr('hidden',"true");
+    $('#staff').attr('hidden',"true");
   }
+
 });
 
 

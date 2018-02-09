@@ -88,9 +88,15 @@
             <ul id="sidebarnav">
                 <li > <a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">เมนูหลัก</span></a>
                   <ul aria-expanded="true" class="collapse in">
+<<<<<<< HEAD
                                <li ><a id="indexPage" href="index.php">หน้าแรก</a></li>
                                <li><a href="courses.php">หลักสูตร</a></li>
                                <li><a id="studentPage" href="student.php">นักศึกษา</a></li>
+=======
+                               <li hidden id="indexMenu" ><a id="indexPage" href="index.php">หน้าแรก</a></li>
+                               <li hidden id="courseMenu" ><a id="coursePage" href="courses.php">หลักสูตร</a></li>
+                               <li hidden id="studentMenu"><a id="studentPage" href="student.php">ผลงานและกิจกรรม</a></li>
+>>>>>>> lasted version
                            </ul></li>
                 <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">ข้อมูลส่วนตัว</span></a>
                 </li>
