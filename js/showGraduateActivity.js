@@ -11,6 +11,8 @@ $(document).ready(function(){
 
   var nameAct;
 
+  var del;
+
   // var clickBtEditAct = 0;
 
 
@@ -55,13 +57,12 @@ $('#CancelEditGraduateActivityVideo').hide();
       $('#selectActivity').val("");
 
     });
-
-
 // ========================================= End Graduate Activity Type =========================================
 
 // ========================================= Put Graduate Activity To Input =========================================
   $('#selectActivity').on('change',function(){
-   actName = $(this).children(":selected").attr("id");
+    actName = $(this).children(":selected").attr("id");
+   del = $(this).children(":selected");
    $('#ActvImage').empty();
    $('#ActvVideo').empty();
    $('#viewActImage').show();
@@ -132,7 +133,7 @@ $('#CancelEditGraduateActivityVideo').hide();
 
      $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
              "<div  class='"+'el-card-item'+"'>"+
-                 "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 15px; height:120px'+"' alt='"+'user'+"'>"+
+                 "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 10px;width:100%;'+"' alt='"+'user'+"'>"+
                      "<div class='"+'el-overlay'+"'>"+
                          "<ul id='"+key+"' class='"+'el-info'+"'>"+
                              "<a class='"+'image-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
@@ -176,7 +177,7 @@ $('#CancelEditGraduateActivityVideo').hide();
 
           $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
                   "<div  class='"+'el-card-item'+"'>"+
-                      "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 15px; height:120px'+"' alt='"+'user'+"'>"+
+                      "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 10px;width:100%;'+"' alt='"+'user'+"'>"+
                           "<div class='"+'el-overlay'+"'>"+
                               "<ul id='"+key+"' class='"+'el-info'+"'>"+
                               "<a class='"+'image-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
@@ -196,8 +197,8 @@ $('#CancelEditGraduateActivityVideo').hide();
      var Video = snap.child('videos').val();
      key = snap.key;
 
-     $('#ActvVideo').append("<div  class='"+'col-lg-4 col-md-4 col-sm-6'+"'>"+
-                 "<video  style='"+'height:150px;margin-left:35px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
+     $('#ActvVideo').append("<div  class='"+'col-lg-3 col-md-3 col-sm-6'+"'>"+
+                 "<video   style='"+'border-radius: 10px;'+"' width='"+'300px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
                          "<ul id='"+key+"' class='"+'el-info'+"'>"+
                              "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
                          "</ul>"+
@@ -312,6 +313,8 @@ $('#CancelEditGraduateActivityVideo').hide();
       $('#SaveEditGraduateActivity').hide();
       $('#CancelEditGraduateActivity').hide();
       $('#EditGraduateActivity').show();
+      $('#EditActModal').modal('show');
+
 
       $('#selectActivity').empty();
 
@@ -336,6 +339,8 @@ $('#CancelEditGraduateActivityVideo').hide();
 
         $('#GraduateActivityImage').prop('disabled', false);
         $('#selectActivity').prop('disabled', true);
+        $('#GraduateActivityImage').val("");
+  			$('#GraduateActivityImageText').val("");
 
 
         $('#EditGraduateActivityImage').hide();
@@ -351,6 +356,8 @@ $('#CancelEditGraduateActivityVideo').hide();
 
         $('#GraduateActivityImage').prop('disabled', true);
         $('#selectActivity').prop('disabled', false);
+        $('#GraduateActivityImage').val("");
+  			$('#GraduateActivityImageText').val("");
 
         $('#SaveEditGraduateActivityImage').hide();
         $('#CancelEditGraduateActivityImage').hide();
@@ -405,7 +412,11 @@ $('#CancelEditGraduateActivityVideo').hide();
           $('#GraduateActivityImage').val("");
           $('#SaveEditGraduateActivityImage').hide();
           $('#CancelEditGraduateActivityImage').hide();
+          $('#GraduateActivityImage').val("");
+    			$('#GraduateActivityImageText').val("");
           $('#EditGraduateActivityImage').show();
+          $('#AddPicture').modal('show');
+
 
           // for(var i = 0;i< clickBtEditAct;i++){
           //   $('#list_expertise tr:last').remove();
@@ -422,6 +433,8 @@ $('#CancelEditGraduateActivityVideo').hide();
 
         $('#GraduateActivityVideo').prop('disabled', false);
         $('#selectActivity').prop('disabled', true);
+        $('#GraduateActivityVideo').val("");
+  			$('#GraduateActivityVideoText').val("");
 
 
         $('#EditGraduateActivityVideo').hide();
@@ -438,6 +451,8 @@ $('#CancelEditGraduateActivityVideo').hide();
 
       $('#GraduateActivityVideo').prop('disabled', true);
       $('#selectActivity').prop('disabled', false);
+      $('#GraduateActivityVideo').val("");
+			$('#GraduateActivityVideoText').val("");
 
       $('#SaveEditGraduateActivityVideo').hide();
       $('#CancelEditGraduateActivityVideo').hide();
@@ -493,11 +508,15 @@ $('#CancelEditGraduateActivityVideo').hide();
 
           $('#GraduateActivityVideo').prop('disabled',true);
           $('#selectActivity').prop('disabled', false);
+          $('#GraduateActivityVideo').val("");
+    			$('#GraduateActivityVideoText').val("");
 
           $('#GraduateActivityVideo').val("");
           $('#SaveEditGraduateActivityVideo').hide();
           $('#CancelEditGraduateActivityVideo').hide();
           $('#EditGraduateActivityVideo').show();
+          $('#AddVideo').modal('show');
+
 
         });
       });
@@ -509,50 +528,55 @@ $('#CancelEditGraduateActivityVideo').hide();
     $('#DeleteGraduateActivity').on('click',function(e){
         e.preventDefault();
 
-        rootRef.child(actName).remove().then(function(){
-            $('#deletePortModal').modal('show');
+        $('#BeforeDeleteActModal').modal('show');
+
+        $('#btDeleteActConfirm').on('click',function(e){
+
+          rootRef.child(actName).remove().then(function(){
+              del.remove();
+
+          $('#selectActivity').empty();
+
+              rootRef.on("child_added",snap => {
+                var key = snap.key;
+                var Name = snap.child('activity_name').val();
+
+                $('#selectActivity').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Name +"</option>");
+
+                $('#selectActivity').val("");
+
+              });
+
+
+                        $('#GraduateActivityName').prop('disabled', true);
+                        $('#GraduateActivityDetail').prop('disabled', true);
+                        $('#GraduateActivityImage').prop('disabled', true);
+                        $('#GraduateActivityVideo').prop('disabled', true);
+                        $('#GraduateActivityDateFrom').prop('disabled', true);
+                        $('#GraduateActivityDateTo').prop('disabled', true);
+                        $('#ShowActivityStatus').prop('disabled', true);
+                        $('#viewActImage').hide();
+                        $('#viewActVideo').hide();
+
+                        $('#SaveEditGraduateActivity').hide();
+                        $('#CancelEditGraduateActivity').hide();
+
+                        $('#SaveEditGraduateActivityImage').hide();
+                        $('#CancelEditGraduateActivityImage').hide();
+
+                        $('#SaveEditGraduateActivityVideo').hide();
+                        $('#CancelEditGraduateActivityVideo').hide();
+
+
+
+          });
+
+          $('#deleteActModal').modal('show');
+
         });
 
-        $('#selectActivity').empty();
 
-            rootRef.on("child_added",snap => {
-              var key = snap.key;
-              var Name = snap.child('activity_name').val();
 
-              $('#selectActivity').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Name +"</option>");
-
-              $('#selectActivity').val("");
-
-            });
       });
   // ========================================= End Delete Graduate Activity Button =========================================
-
 });
-
-
-
-
-    // $("#searchPort").keyup(function () {
-    //   var searchTerm = $("#searchPort").val();
-    //   var listItem = $('.results tbody').children('tr');
-    //   var searchSplit = searchTerm.replace(/ /g, "'):containsi('");
-    //
-    //   $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-    //       return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-    //     }
-    //     });
-    //   $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-    //   $(this).attr('visible','false');
-    //   });
-    //
-    //   $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-    //   $(this).attr('visible','true');
-    //   });
-    //
-    // var jobCount = $('.results tbody tr[visible="true"]').length;
-    //   $('.counter').text(jobCount + ' item');
-    //
-    // if(jobCount == "0") {$('.no-result').show();
-    // }else {$('.no-result').hide();}
-    //
-    //  });

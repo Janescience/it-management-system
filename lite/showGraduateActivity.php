@@ -177,9 +177,17 @@
                         <div class="col-md-6">
                           <div class="form-group">
                               <label class="col-md-12">แฟ้มรูปภาพ</label>
-                              <div class="input-group">
-                              <div class="input-group-addon"><i class="fa fa-camera"></i></div>
-                              <input type="file"class="form-control form-control-line" id="GraduateActivityImage" accept="image/*" multiple="60" name="image" value="">
+                              <div class="col-md-12">
+                                  <div class="form-group text-center">
+                                      <div class="input-group">
+                                          <span class="input-group-btn">
+                                              <span class="btn btn-secondary btn-file">
+                                                  เลือกรูปภาพ <input type="file" class="file-upload" id="GraduateActivityImage" accept="image/*" multiple="60" name="image" >
+                                              </span>
+                                          </span>
+                                          <input type="text" class="form-control" id="GraduateActivityImageText" readonly>
+                                      </div>
+                                  </div>
                               </div>
                           </div>
                         </div>
@@ -205,10 +213,18 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <label class="col-md-12">วิดีโอ<label style="color:red;">(ถ้ามี)</label></label>
-                              <div class="input-group">
-                              <div class="input-group-addon"><i class="fa fa-video-camera"></i></div>
-                              <input type="file"class="form-control form-control-line" id="GraduateActivityVideo" accept="video/*" multiple="5" name="video" value="">
-                              </div>
+                            <div class="col-md-12">
+                                <div class="form-group text-center">
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <span class="btn btn-secondary btn-file">
+                                                เลือกวิดีโอ <input type="file" class="file-upload" id="GraduateActivityVideo" accept="video/*" multiple="5" name="video" >
+                                            </span>
+                                        </span>
+                                        <input type="text" class="form-control" id="GraduateActivityVideoText" readonly>
+                                    </div>
+                                </div>
+                            </div>
                           </div>
                         </div>
                     </div>
@@ -279,7 +295,7 @@
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
     </div>
-    <?php include('modal-showGraduatePort.php')?>
+    <?php include('modal-student.php')?>
     <?php include('import-javascript.php')?>
     <script src="../js/showGraduateActivity.js"></script>
 

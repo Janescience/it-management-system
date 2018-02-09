@@ -51,8 +51,9 @@
           </div>
           <div class="card-body">
               <div class="row">
-
-                <div class="col-lg-6">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-5">
                             <div class="card" style="margin-top: 20px;margin-bottom: 20px;">
                                 <div class="card-block">
                                     <i class="fa fa-trophy fa-5x" aria-hidden="true"></i>
@@ -69,7 +70,7 @@
                             </div>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                             <div class="card" style="margin-top: 20px;margin-right: 25px;margin-bottom: 20px;">
                                 <div class="card-block">
                                     <i class="fa fa-camera-retro fa-5x" aria-hidden="true"></i>
@@ -103,8 +104,9 @@
               </div>
               <div class="card-body">
                 <div class="row">
-
-                <div class="col-lg-6">
+                  <div class="col-lg-1">
+                  </div>
+                <div class="col-lg-5">
                             <div class="card" style="margin-top: 20px;margin-bottom: 20px;">
                                 <div class="card-block">
                                     <i class="fa fa-trophy fa-5x" aria-hidden="true"></i>
@@ -122,7 +124,7 @@
                             </div>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                             <div class="card" style="margin-top: 20px;margin-right: 25px;margin-bottom: 20px;">
                                 <div class="card-block">
                                     <i class="fa fa-camera-retro fa-5x" aria-hidden="true"></i>
@@ -227,8 +229,20 @@
 
             <div class="form-group">
               <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
-                  <input type="file" id="BechelorPortfolioPicture" class="form-control" >
-                    <p id="BechelorDemo"></p>
+              <div class="col-md-12">
+                  <div class="form-group text-center">
+                      <div class="input-group">
+                          <span class="input-group-btn">
+                              <span class="btn btn-secondary btn-file">
+                                  เลือกรูปภาพ <input type="file" class="file-upload" id="BechelorPortfolioPicture" >
+                              </span>
+                          </span>
+                          <input type="text" class="form-control" id="BechelorPortfolioPictureText"  readonly>
+                      </div>
+                      <br><img id="BechelorPortfolioPictureView" class="img-show"/>
+                  </div>
+              </div>
+              <!-- <p id="BechelorDemo"></p> -->
                   <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
             </div>
           </div>
@@ -267,18 +281,34 @@
 
             <div class="form-group">
               <label class="col-md-12">แฟ้มรูปภาพ</label>
-              <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-camera"></i></div>
-              <input type="file"class="form-control form-control-line" id="BechelorActivityImage" accept="image/*" multiple="60" name="image" value="">
+              <div class="col-md-12">
+                  <div class="form-group text-center">
+                      <div class="input-group">
+                          <span class="input-group-btn">
+                              <span class="btn btn-secondary btn-file">
+                                  เลือกรูปภาพ <input type="file" class="file-upload" id="BechelorActivityImage" accept="image/*" multiple="60" name="image" >
+                              </span>
+                          </span>
+                          <input type="text" class="form-control" id="BechelorActivityImageText" readonly>
+                      </div>
+                  </div>
               </div>
               <!-- <button id="capture" class="btn btn-success"><i class="fa fa-check"></i>   capture</button> -->
             </div>
 
             <div class="form-group">
               <label class="col-md-12">วิดีโอ<label style="color:red;">(ถ้ามี)</label></label>
-              <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-video-camera"></i></div>
-              <input type="file"class="form-control form-control-line" id="BechelorActivityVideo" accept="video/*" multiple="5" name="video" value="">
+              <div class="col-md-12">
+                  <div class="form-group text-center">
+                      <div class="input-group">
+                          <span class="input-group-btn">
+                              <span class="btn btn-secondary btn-file">
+                                  เลือกวิดีโอ <input type="file" class="file-upload" id="BechelorActivityVideo" accept="video/*" multiple="5" name="video" >
+                              </span>
+                          </span>
+                          <input type="text" class="form-control" id="BechelorActivityVideoText" readonly>
+                      </div>
+                  </div>
               </div>
             </div>
 
@@ -387,8 +417,20 @@
 
               <div class="form-group">
                 <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
-                    <input type="file" id="GraduatePortfolioPicture" class="form-control" >
-                      <p id="GraduateDemo"></p>
+                <div class="col-md-12">
+                    <div class="form-group text-center">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-secondary btn-file">
+                                    เลือกรูปภาพ <input type="file" class="file-upload" id="GraduatePortfolioPicture" >
+                                </span>
+                            </span>
+                            <input type="text" class="form-control" id="GraduatePortfolioPictureText" readonly>
+                        </div>
+                        <br><img id="GraduatePortfolioPictureView" class="img-show"/>
+                    </div>
+                </div>
+                <!-- <p id="GraduateDemo"></p> -->
                     <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
               </div>
             </div>
@@ -429,18 +471,34 @@
 
               <div class="form-group">
                 <label class="col-md-12">แฟ้มรูปภาพ</label>
-                <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-camera"></i></div>
-                <input type="file"class="form-control form-control-line" id="GraduateActivityImage" accept="image/*" multiple="60" name="image" value="">
+                <div class="col-md-12">
+                    <div class="form-group text-center">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-secondary btn-file">
+                                    เลือกรูปภาพ <input type="file" class="file-upload" id="GraduateActivityImage" accept="image/*" multiple="60" name="image" >
+                                </span>
+                            </span>
+                            <input type="text" class="form-control" id="GraduateActivityImageText" readonly>
+                        </div>
+                    </div>
                 </div>
                 <!-- <button id="capture" class="btn btn-success"><i class="fa fa-check"></i>   capture</button> -->
               </div>
 
               <div class="form-group">
                 <label class="col-md-12">วิดีโอ<label style="color:red;">(ถ้ามี)</label></label>
-                <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-video-camera"></i></div>
-                <input type="file"class="form-control form-control-line" id="GraduateActivityVideo" accept="video/*" multiple="5" name="video" value="">
+                <div class="col-md-12">
+                    <div class="form-group text-center">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-secondary btn-file">
+                                    เลือกวิดีโอ <input type="file" class="file-upload" id="GraduateActivityVideo" accept="video/*" multiple="5" name="video" >
+                                </span>
+                            </span>
+                            <input type="text" class="form-control" id="GraduateActivityVideoText" readonly>
+                        </div>
+                    </div>
                 </div>
               </div>
 
@@ -479,7 +537,7 @@
     </div>
 
     <?php include('import-javascript.php')?>
-    <?php include('modal-showBechelorPort.php')?>
+    <?php include('modal-student.php')?>
     <script src="../js/student.js"></script>
 
 </body>

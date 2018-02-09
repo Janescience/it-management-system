@@ -202,7 +202,7 @@
                             <input type="checkbox" id="GraduatePortfolioGeneral" class="chk-col-grey" checked disabled>
                             <label for="GraduatePortfolioGeneral">ผลงานทั่วไป</label>
                             <input type="checkbox" id="GraduatePortfolioHallOfFame" class="chk-col-grey" >
-                            <label for="GraduatePortfolioHallOfFame">Hall of Fame</label>
+                            <label for="GraduatePortfolioHallOfFame">ผลงานดีเด่น</label>
                           </div>
                         </div>
                       </div>
@@ -219,8 +219,20 @@
 
                   <div class="form-group">
                     <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
-                        <input type="file" id="GraduatePortfolioPicture" class="form-control" >
-                          <p id="GraduateDemo"></p>
+                    <div class="col-md-12">
+                        <div class="form-group text-center">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-secondary btn-file">
+                                        เลือกรูปภาพ <input type="file" class="file-upload" id="GraduatePortfolioPicture" >
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" id="GraduatePortfolioPictureText"  readonly>
+                            </div>
+                            <br><img id="GraduatePortfolioPictureView" class="img-show"/>
+                        </div>
+                    </div>
+                    <p id="GraduateDemo"></p>
                         <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
                   </div>
                 </div>
@@ -236,7 +248,7 @@
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
     </div>
-    <?php include('modal-showBechelorPort.php')?>
+    <?php include('modal-student.php')?>
     <?php include('import-javascript.php')?>
     <script src="../js/showGraduatePortfolio.js"></script>
 

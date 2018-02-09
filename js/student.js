@@ -17,6 +17,9 @@ $(document).ready(function(){
 	var NameBechelorAct;
 	// var BechelorActivityImage = [];
 	// var BechelorActivityVideo = [];
+
+	var del;
+
 	// ========================================= Get Bechelor Portfolio Type From Database =========================================
 
 	var dbRef = firebase.database();
@@ -38,7 +41,7 @@ $(document).ready(function(){
 	$("#BechelorPortfolioHallOfFame").prop('checked', false);
 	$('#BechelorPortfolioYear').val("");
 	$('#BechelorPortfolioPicture').val("");
-	document.getElementById("BechelorDemo").innerHTML = txt;
+	// document.getElementById("BechelorDemo").innerHTML = txt;
 	// ========================================= End Code =====================================================================
 
 	// ========================================= Set initial Graduate Portfolio Modal =========================================
@@ -50,7 +53,7 @@ $(document).ready(function(){
 	$("#GraduatePortfolioHallOfFame").prop('checked', false);
 	$('#GraduatePortfolioYear').val("");
 	$('#GraduatePortfolioPicture').val("");
-	document.getElementById("GraduateDemo").innerHTML = txt;
+	// document.getElementById("GraduateDemo").innerHTML = txt;
 	// ========================================= End Code =====================================================================
 
 	// ========================================= Set initial Bechelor Portfolio Type =========================================
@@ -85,7 +88,9 @@ $(document).ready(function(){
 			$("#BechelorPortfolioHallOfFame").prop('checked', false);
 			$('#BechelorPortfolioYear').val("");
 			$('#BechelorPortfolioPicture').val("");
-			document.getElementById("BechelorDemo").innerHTML = txt;
+			$('#BechelorPortfolioPictureText').val("");
+			$('#BechelorPortfolioPictureView').removeAttr('src')
+			// document.getElementById("BechelorDemo").innerHTML = txt;
  			$('#addBechelorPortfolio').modal('show');
 
 			$('#AddBechelorPortfolioGroup').show();
@@ -158,26 +163,30 @@ $(document).ready(function(){
 
 		$('#BechelorPortfolioGroup').on('change',function(){
 		GroupBecId = $(this).children(":selected").attr("id");
+		del =  $(this).children(":selected");
 
-		$('#DeleteBechelorPortfolioGroup').on('click',function(){
-			// GroupGraId = $(this).children(":selected").attr("id");
-			clickBtEditBecPortGroup = clickBtEditBecPortGroup+1;
+		$('#DeleteBechelorPortfolioGroup').on('click',function(e){
+			$('#BeforeDeletePortTypeModal').modal('show');
 
-			BechelorRootRef.child(GroupBecId).remove().then(function(){
-					$('#deletePortModal').modal('show');
 
+			$('#btConfirm').on('click',function(e){
+				clickBtEditBecPortGroup = clickBtEditBecPortGroup+1;
+
+				BechelorRootRef.child(GroupBecId).remove().then(function(de){
+						$('#deletePortModal').modal('show');
+						del.remove();
+				});
 					$('#BechelorPortfolioGroup').empty();
-
 					BechelorRootRef.on("child_added",snap => {
-						var Type = snap.child('port_GroupType').val();
+					var Type = snap.child('port_GroupType').val();
 
-						$('#BechelorPortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
+					$('#BechelorPortfolioGroup').append("<option id='"+snap.key+"' class='"+'txtType'+"'>"+ Type +"</option>");
 
-						$('#BechelorPortfolioGroup').val("");
+					$('#BechelorPortfolioGroup').val("");
 
-					});
+				});
 			});
-				$(this).children(":selected").remove();
+
 		});
 	});
 
@@ -216,6 +225,8 @@ $(document).ready(function(){
 				$('#AddBechelorPortfolioGroup').show();
 				$('#EditBechelorPortfolioGroup').show();
 				$('#DeleteBechelorPortfolioGroup').show();
+				$('#AddPortTypeModal').modal('show');
+
 
 				for(var i = 0;i< clickBtEditBecPortGroup;i++){
 	        $('#BechelorPortfolioGroup option:last').remove();
@@ -247,6 +258,8 @@ $(document).ready(function(){
 				$('#AddBechelorPortfolioGroup').show();
 				$('#EditBechelorPortfolioGroup').show();
 				$('#DeleteBechelorPortfolioGroup').show();
+				$('#EditPortTypeModal').modal('show');
+
 
 				$('#BechelorPortfolioGroup').empty();
 
@@ -270,7 +283,9 @@ $(document).ready(function(){
 			$('#BechelorActivityName').val("");
 			$('#BechelorActivityDetail').val("");
 			$('#BechelorActivityImage').val("");
+			$('#BechelorActivityImageText').val("");
 			$('#BechelorActivityVideo').val("");
+			$('#BechelorActivityVideoText').val("");
 			$('#BechelorActivityDateFrom').val("");
 			$('#BechelorActivityDateTo').val("");
 
@@ -292,7 +307,9 @@ $(document).ready(function(){
 			$("#GraduatePortfolioHallOfFame").prop('checked', false);
 			$('#GraduatePortfolioYear').val("");
 			$('#GraduatePortfolioPicture').val("");
-			document.getElementById("GraduateDemo").innerHTML = txt;
+			$('#GraduatePortfolioPictureText').val("");
+			$('#GraduatePortfolioPictureView').removeAttr('src');
+			// document.getElementById("GraduateDemo").innerHTML = txt;
    		$('#addGraduatePortfolio').modal('show');
 
 
@@ -371,7 +388,6 @@ $(document).ready(function(){
 		$('#GraduatePortfolioGroup').on('change',function(){
 		GroupGraId = $(this).children(":selected").attr("id");
 
-
 		$('#DeleteGraduatePortfolioGroup').on('click',function(){
 			// GroupGraId = $(this).children(":selected").attr("id");
 			clickBtEditGraPortGroup = clickBtEditGraPortGroup+1;
@@ -415,7 +431,9 @@ $(document).ready(function(){
 			$('#GraduateActivityName').val("");
 			$('#GraduateActivityDetail').val("");
 			$('#GraduateActivityImage').val("");
+			$('#GraduateActivityImageText').val("");
 			$('#GraduateActivityVideo').val("");
+			$('#GraduateActivityVideoText').val("");
 			$('#GraduateActivityDateFrom').val("");
 			$('#GraduateActivityDateTo').val("");
 
@@ -488,6 +506,8 @@ $(document).ready(function(){
 				$('#AddGraduatePortfolioGroup').show();
 				$('#EditGraduatePortfolioGroup').show();
 				$('#DeleteGraduatePortfolioGroup').show();
+				$('#AddPortTypeModal').modal('show');
+
 
 				for(var i = 0;i< clickBtEditGraPortGroup;i++){
 	        $('#GraduatePortfolioGroup option:last').remove();
@@ -515,6 +535,8 @@ $(document).ready(function(){
 				$('#AddGraduatePortfolioGroup').show();
 				$('#EditGraduatePortfolioGroup').show();
 				$('#DeleteGraduatePortfolioGroup').show();
+				$('#EditPortTypeModal').modal('show');
+
 
 				$('#GraduatePortfolioGroup').empty();
 
@@ -537,35 +559,35 @@ $(document).ready(function(){
 	});
 	// ================================================================= End Code =================================================================
 	// <!-- <=========================================================== Bechelor Portfolio Picture ===========================================================> -->
-
-	$('#BechelorPortfolioPicture').on('change',function(){
-		var x = document.getElementById("BechelorPortfolioPicture");
-		if ('files' in x) {
-				if (x.files.length == 0) {
-						txt = "เพิ่มไฟล์รูปภาพ";
-				} else {
-						for (var i = 0; i < x.files.length; i++) {
-								// txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-								var file = x.files[i];
-								if ('name' in file) {
-										txt += "<strong> File " + (i+1)+ ". </strong>" + "name: " + file.name + "<br>";
-								}
-								if ('size' in file) {
-										txt += "size: " + file.size + " bytes <br>";
-								}
-						}
-				}
-		}
-		else {
-				if (x.value == "") {
-						txt += "เพิ่มไฟล์รูปภาพ";
-				} else {
-						txt += "The files property is not supported by your browser!";
-						txt  += "<br>The path of the selected file: " + x.value;
-				}
-		}
-		document.getElementById("BechelorDemo").innerHTML = txt;
-		});
+  //
+	// $('#BechelorPortfolioPicture').on('change',function(){
+	// 	var x = document.getElementById("BechelorPortfolioPicture");
+	// 	if ('files' in x) {
+	// 			if (x.files.length == 0) {
+	// 					txt = "เพิ่มไฟล์รูปภาพ";
+	// 			} else {
+	// 					for (var i = 0; i < x.files.length; i++) {
+	// 							// txt += "<br><strong>" + (i+1) + ". file</strong><br>";
+	// 							var file = x.files[i];
+	// 							if ('name' in file) {
+	// 									txt += "<strong> File " + (i+1)+ ". </strong>" + "name: " + file.name + "<br>";
+	// 							}
+	// 							if ('size' in file) {
+	// 									txt += "size: " + file.size + " bytes <br>";
+	// 							}
+	// 					}
+	// 			}
+	// 	}
+	// 	else {
+	// 			if (x.value == "") {
+	// 					txt += "เพิ่มไฟล์รูปภาพ";
+	// 			} else {
+	// 					txt += "The files property is not supported by your browser!";
+	// 					txt  += "<br>The path of the selected file: " + x.value;
+	// 			}
+	// 	}
+	// 	document.getElementById("BechelorDemo").innerHTML = txt;
+	// 	});
 		// ================================================================= End Code =================================================================
 
 		// ================================================================= Bechelor Portfolio Button Action =================================================================
@@ -618,7 +640,9 @@ $(document).ready(function(){
 					$("#BechelorPortfolioHallOfFame").prop('checked', false);
 					$('#BechelorPortfolioYear').val("");
 					$('#BechelorPortfolioPicture').val("");
-					document.getElementById("BechelorDemo").innerHTML = txt;
+					$('#AddPortModal').modal('show');
+
+					// document.getElementById("BechelorDemo").innerHTML = txt;
 				});
 			});
 
@@ -642,6 +666,11 @@ $(document).ready(function(){
 			    document.getElementById("BechelorActivityVideo").addEventListener('change', function(v){
 
 			      $('#btSubmitBechelorActivity').on('click',function(){
+
+							if($('#BechelorActivityDateFrom').val() > $('#BechelorActivityDateTo').val()){
+
+								alert("yaaa");
+							}
 
 			        var data = {
 			        activity_name:$('#BechelorActivityName').val(),
@@ -730,6 +759,8 @@ $(document).ready(function(){
 			}
 
 			$('#addBechelorActivity').modal('hide');
+			$('#AddActModal').modal('show');
+
 
 			  // $('#BechelorActivityName').val("");
 			  // $('#BechelorActivityDetail').val("");
@@ -750,35 +781,35 @@ $(document).ready(function(){
 		// ================================================================= End Code =================================================================
 
 		// <!-- <=========================================================== Graduate Portfolio Picture ===========================================================> -->
-		$('#GraduatePortfolioPicture').on('change',function(){
-			var x = document.getElementById("GraduatePortfolioPicture");
-			var txt = "";
-			if ('files' in x) {
-					if (x.files.length == 0) {
-							txt = "เพิ่มไฟล์รูปภาพ";
-					} else {
-							for (var i = 0; i < x.files.length; i++) {
-									// txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-									var file = x.files[i];
-									if ('name' in file) {
-											txt += "<strong> File " + (i+1)+ ". </strong>" + "name: " + file.name + "<br>";
-									}
-									if ('size' in file) {
-											txt += "size: " + file.size + " bytes <br>";
-									}
-							}
-					}
-			}
-			else {
-					if (x.value == "") {
-							txt += "เพิ่มไฟล์รูปภาพ";
-					} else {
-							txt += "The files property is not supported by your browser!";
-							txt  += "<br>The path of the selected file: " + x.value;
-					}
-			}
-			document.getElementById("GraduateDemo").innerHTML = txt;
-			});
+		// $('#GraduatePortfolioPicture').on('change',function(){
+		// 	var x = document.getElementById("GraduatePortfolioPicture");
+		// 	var txt = "";
+		// 	if ('files' in x) {
+		// 			if (x.files.length == 0) {
+		// 					txt = "เพิ่มไฟล์รูปภาพ";
+		// 			} else {
+		// 					for (var i = 0; i < x.files.length; i++) {
+		// 							// txt += "<br><strong>" + (i+1) + ". file</strong><br>";
+		// 							var file = x.files[i];
+		// 							if ('name' in file) {
+		// 									txt += "<strong> File " + (i+1)+ ". </strong>" + "name: " + file.name + "<br>";
+		// 							}
+		// 							if ('size' in file) {
+		// 									txt += "size: " + file.size + " bytes <br>";
+		// 							}
+		// 					}
+		// 			}
+		// 	}
+		// 	else {
+		// 			if (x.value == "") {
+		// 					txt += "เพิ่มไฟล์รูปภาพ";
+		// 			} else {
+		// 					txt += "The files property is not supported by your browser!";
+		// 					txt  += "<br>The path of the selected file: " + x.value;
+		// 			}
+		// 	}
+		// 	document.getElementById("GraduateDemo").innerHTML = txt;
+		// 	});
 			// ================================================================= End Code =================================================================
 
 			// ================================================================= Graduate Portfolio Script =================================================================
@@ -824,15 +855,18 @@ $(document).ready(function(){
 				 console.log("Graduate portfolio Saved:");
 				});
 
-				// txt = "";
-        //
-				// $('#GraduatePortfolioName').val("");
-				// $('#GraduatePortfolioDetail').val("");
-				// $('#GraduatePortfolioGroup').val("");
-				// $("#GraduatePortfolioHallOfFame").prop('checked', false);
-				// $('#GraduatePortfolioYear').val("");
-				// $('#GraduatePortfolioPicture').val("");
+				txt = "";
+
+				$('#GraduatePortfolioName').val("");
+				$('#GraduatePortfolioDetail').val("");
+				$('#GraduatePortfolioGroup').val("");
+				$("#GraduatePortfolioHallOfFame").prop('checked', false);
+				$('#GraduatePortfolioYear').val("");
+				$('#GraduatePortfolioPicture').val("");
 				// document.getElementById("GraduateDemo").innerHTML = txt;
+
+				$('#AddPortModal').modal('show');
+
 			});
 		});
 		// ================================================================= End Code =================================================================
@@ -851,7 +885,7 @@ $(document).ready(function(){
 			$("#GraduatePortfolioHallOfFame").prop('checked', false);
 			$('#GraduatePortfolioYear').val("");
 			$('#GraduatePortfolioPicture').val("");
-			document.getElementById("GraduateDemo").innerHTML = txt;
+			// document.getElementById("GraduateDemo").innerHTML = txt;
 
 		});
 		// ================================================================= End Code =================================================================
@@ -946,6 +980,7 @@ $(document).ready(function(){
 		}
 
 		$('#addGraduateActivity').modal('hide');
+		$('#AddActModal').modal('show');
 
 		// $('#GraduateActivityName').val("");
 		// $('#GraduateActivityDetail').val("");

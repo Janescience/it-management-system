@@ -202,7 +202,7 @@
                           <input type="checkbox" id="BechelorPortfolioGeneral" class="chk-col-grey" checked disabled>
                           <label for="BechelorPortfolioGeneral">ผลงานทั่วไป</label>
                           <input type="checkbox" id="BechelorPortfolioHallOfFame" class="chk-col-grey" >
-                          <label for="BechelorPortfolioHallOfFame">Hall of Fame</label>
+                          <label for="BechelorPortfolioHallOfFame">ผลงานดีเด่น</label>
                         </div>
                       </div>
                     </div>
@@ -219,8 +219,20 @@
 
                 <div class="form-group">
                   <label  class="col-md-12">รูปภาพ<label style="color:red;"> (ถ้ามี)</label></label>
-                      <input type="file" id="BechelorPortfolioPicture" class="form-control" >
-                        <p id="BechelorDemo"></p>
+                  <div class="col-md-12">
+                      <div class="form-group text-center">
+                          <div class="input-group">
+                              <span class="input-group-btn">
+                                  <span class="btn btn-secondary btn-file">
+                                      เลือกรูปภาพ <input type="file" class="file-upload" id="BechelorPortfolioPicture" >
+                                  </span>
+                              </span>
+                              <input type="text" class="form-control" id="BechelorPortfolioPictureText"  readonly>
+                          </div>
+                          <br><img id="BechelorPortfolioPictureView" class="img-show"/>
+                      </div>
+                  </div>
+                  <p id="BechelorDemo"></p>
                       <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
                 </div>
               </div>
@@ -235,10 +247,11 @@
             <footer class="footer">Copyright © Information Technology 2017</footer>
         </div>
     </div>
-    <?php include('modal-showBechelorPort.php')?>
+    <?php include('modal-student.php')?>
     <?php include('import-javascript.php')?>
     <script src="../js/showBechelorPortfolio.js"></script>
 
 </body>
+
 
 </html>

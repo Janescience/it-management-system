@@ -17,6 +17,8 @@ $(document).ready(function(){
   var GroupBecId = "";
   var clickBtEditBecPortGroup = 0;
 
+  var del;
+
 
 
 
@@ -28,6 +30,8 @@ $(document).ready(function(){
   $("#BechelorPortfolioHallOfFame").prop("checked", false);
   $('#BechelorPortfolioYear').val("");
   $('#BechelorPortfolioPicture').val("");
+  $('#BechelorPortfolioPictureText').val("");
+  $('#BechelorPortfolioPictureView').removeAttr('src');
   // document.getElementById("BechelorDemo").innerHTML = txt;
 // ========================================= End Code =====================================================================
 
@@ -97,6 +101,8 @@ $('#btAddBechelorPortfolio').on('click',function(e){
     $("#BechelorPortfolioHallOfFame").prop('checked', false);
     $('#BechelorPortfolioYear').val("");
     $('#BechelorPortfolioPicture').val("");
+    $('#BechelorPortfolioPictureText').val("");
+    $('#BechelorPortfolioPictureView').removeAttr('src');
     document.getElementById("BechelorDemo").innerHTML = txt;
     $('#addBechelorPortfolio').modal('show');
 
@@ -229,6 +235,8 @@ $('#btAddBechelorPortfolio').on('click',function(e){
       $('#AddBechelorPortfolioGroup').show();
       $('#EditBechelorPortfolioGroup').show();
       $('#DeleteBechelorPortfolioGroup').show();
+      $('#AddPortTypeModal').modal('show');
+
 
       for(var i = 0;i< clickBtEditBecPortGroup;i++){
         $('#BechelorPortfolioGroup option:last').remove();
@@ -259,6 +267,8 @@ $('#btAddBechelorPortfolio').on('click',function(e){
       $('#AddBechelorPortfolioGroup').show();
       $('#EditBechelorPortfolioGroup').show();
       $('#DeleteBechelorPortfolioGroup').show();
+      $('#EditPortTypeModal').modal('show');
+
 
       $('#BechelorPortfolioGroup').empty();
 
@@ -288,7 +298,7 @@ $('#btAddBechelorPortfolio').on('click',function(e){
 
       $('#list_BechelorPortfolio').append("<tr  id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_'+snap.key+"' class='"+'filled-in chk-col-red chk-select-port checkbox'+"'"+showStatus+">"+
                                 "<label for='"+'md_checkbox_'+snap.key+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
-                                + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 10px'+"' width='"+'100'+"' ></td>"+
+                                + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 10px;;width:200px;'+"'></td>"+
                                "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
@@ -317,16 +327,32 @@ $('#list_BechelorPortfolio').on('click','.chk-select-port',function(e){
 // ========================================= End Code =============================================================================
 
 // ========================================= Delete Portfolio =====================================================================
+  var id;
 
 $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
-  var id = $(this).closest('tr').attr("id");
-  rootRef.child(id).remove().then(function(){
-      $('#deletePortModal').modal('show');
+
+          id = $(this).closest('tr').attr("id");
+          del = $(this).closest('tr');
+      $('#BeforeDeletePortModal').modal('show');
+
   });
-    $(this).closest('tr').remove();
+
+    $('#btConfirm').on('click',function(){
+      rootRef.child(id).remove().then(function(){
+          $('#deletePortModal').modal('show');
+          del.remove();
+
+      });
 });
 // ========================================= End Code =============================================================================
 
+// ========================================= Bechelor Portfolio Script =========================================
+
+$('#BechelorPortfolioPicture').on('change',function(event){
+  selectedFile = "";
+  selectedFile = event.target.files[0];
+
+});
 // ========================================= Edit Bechelor Portfolio ==============================================================
 
 
@@ -352,30 +378,22 @@ $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
      $('#BechelorPortfolioName').val(Name);
      $('#BechelorPortfolioDetail').val(Detail);
      $('#BechelorPortfolioGroup').val(Type);
-     if(Status == "Hall Of Fame"){
-       // $('#BechelorPortfolioHallOfFame').prop('checked',true);
-       // $("#BechelorPortfolioHallOfFame").prop("checked") == true
+     if(Status == "ผลงานดีเด่น"){
        document.getElementById("BechelorPortfolioHallOfFame").checked = true;
-     }else if(Status == "General") {
-       // $('#BechelorPortfolioHallOfFame').prop('checked',false);
-       // $("#BechelorPortfolioHallOfFame").prop("checked") == false
+     }else if(Status == "ผลงานทั่วไป") {
        document.getElementById("BechelorPortfolioHallOfFame").checked = false;
      }
-     // $('#BechelorPortfolioHallOfFame').prop("checked") == currentStatus;
      $('#BechelorPortfolioYear').val(Year);
      $('#BechelorPortfolioPicturePreview').attr('src',Picture);
+     selectedFile = "";
+     $('#BechelorPortfolioPictureText').val("");
+     $('#BechelorPortfolioPictureView').removeAttr('src');
      $('#editBechelorPortfolio').modal("show");
 
 
-
      });
 
-     // ========================================= Bechelor Portfolio Script =========================================
 
-     $('#BechelorPortfolioPicture').on('change',function(event){
-       selectedFile = event.target.files[0];
-
-     });
 
 
        // <!-- <=========================================================== Save Edit Bechelor Portfolio ===========================================================> -->
@@ -383,6 +401,7 @@ $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
      $('#btSubmitBechelorPortfolio').on('click',function(){
 
          clickBtEditPort= clickBtEditPort+1;
+
 
        $('#editBechelorPortfolio').modal('hide');
 
@@ -392,10 +411,10 @@ $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
        var Status;
 
        if ($("#BechelorPortfolioHallOfFame").prop("checked") == true) {
-          Status = "Hall Of Fame"
+          Status = "ผลงานดีเด่น"
 
        }else if ($("#BechelorPortfolioHallOfFame").prop("checked") == false){
-         Status = "General"
+         Status = "ผลงานทั่วไป"
        }
 
        uplodadTask.on('state_changed',function(snapshot){
@@ -443,7 +462,7 @@ $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
 
           $('#list_BechelorPortfolio').append("<tr  id='"+snap.key+"'><td><input type='"+'checkbox'+"' id='"+'md_checkbox_'+snap.key+"' class='"+'filled-in chk-col-red chk-select-port checkbox'+"'"+showStatus+">"+
                                     "<label for='"+'md_checkbox_'+snap.key+"'></label></td>" + "<td class='"+'txtName'+"'>" + Name + "</td>" + "<td class='"+'txtDetail'+"'>" + Detail + "</td>"+ "<td class='"+'txtType'+"'>" + Type + "</td>"+ "<td class='"+'txtStatus'+"'>" + Status + "</td>"
-                                    + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 25px'+"' width='"+'100'+"' height='"+'100'+"'></td>"+
+                                    + "<td class='"+'txtYear'+"'>"+ Year + "</td>"+ "<td ><img class='"+'txtPicture'+"' src='"+Picture+"' style='"+'border-radius: 10px;width:200px;'+"' ></td>"+
                                    "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                                    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-port'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
         });
@@ -457,6 +476,11 @@ $('#list_BechelorPortfolio').on('click','.btn-delete-port',function(){
         $("#BechelorPortfolioHallOfFame").prop('checked', false);
         $('#BechelorPortfolioYear').val("");
         $('#BechelorPortfolioPicture').val("");
+        $('#BechelorPortfolioPictureText').val("");
+        $('#EditPortModal').modal('show');
+  			$('#BechelorPortfolioPictureView').removeAttr('src');
+        selectedFile = "";
+
         // document.getElementById("BechelorDemo").innerHTML = txt;
       });
 
@@ -478,6 +502,10 @@ $('#btCloseEditBechelorPortfolio').on('click',function(){
   $("#BechelorPortfolioHallOfFame").prop('checked', false);
   $('#BechelorPortfolioYear').val("");
   $('#BechelorPortfolioPicture').val("");
+  $('#BechelorPortfolioPictureText').val("");
+  $('#BechelorPortfolioPictureView').removeAttr('src');
+  selectedFile = "";
+
   // document.getElementById("BechelorDemo").innerHTML = txt;
 
 });
