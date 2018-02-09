@@ -117,7 +117,7 @@ $('#DeleteGraduatePortfolioGroup').on('click',function(){
   clickBtEditGraPortGroup = clickBtEditGraPortGroup+1;
 
   GraduateRootRef.child(GroupGraId).remove().then(function(){
-      $('#deletePortModal').modal('show');
+      $('#DeletePortTypeModal').modal('show');
 
       $('#GraduatePortfolioGroup').empty();
 

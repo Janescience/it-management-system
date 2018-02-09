@@ -223,3 +223,30 @@
     </div>
   </div>
 </div>
+
+<!--==================================== Delete Picture modal ====================================================-->
+<div class="modal fade" id="DeletePicture" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="messagePassModal">ลบรูปภาพสำเร็จ</h4>
+      </div>
+      <div class="modal-footer">
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--==================================== Delete Video modal ====================================================-->
+<div class="modal fade" id="DeleteVideo" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="messagePassModal">ลบวีดีโอสำเร็จ</h4>
+      </div>
+      <div class="modal-footer">
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>

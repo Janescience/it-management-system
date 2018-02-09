@@ -61,10 +61,10 @@
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h2 class="text-themecolor">Bechelor Portfolio <h5 class="text-themecolor">Bechelor Degree</h5></h2>
+                        <h2 class="text-themecolor">นักศึกษา </h2>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Student</a></li>
-                            <li class="breadcrumb-item active">Show Bechelor Portfolio</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">จัดการผลงาน</a></li>
+                            <li class="breadcrumb-item active">ผลงานของนักศึกษาระดับปริญญาตรี</li>
                         </ol>
                     </div>
                 </div>
@@ -73,8 +73,8 @@
                     <div class="col-lg-12">
                       <div class="card">
                           <div class="card-block">
-                            <h1 class="w3-animate-right">Portfolio</h1>
-                            <h4>Bechelor Degrees</h4>
+                            <h1 class="w3-animate-right">ผลงานของนักศึกษาระดับปริญญาตรี</h1>
+                            <h4>ระดับปริญญาตรี</h4>
                                 <hr/><br/>
 
                                 <div class="row">
@@ -99,7 +99,7 @@
 
                               <div class="card-block bg-info">
 
-                                <h4 class="text-white card-title">Portfolio</h4>
+                                <h4 class="text-white card-title">ผลงาน</h4>
                                 <div class="message-box contact-box">
 
 
@@ -113,18 +113,17 @@
                                     <!-- color-bordered-table success-bordered-table -->
                                       <thead >
                                           <tr >
-                                              <th class="text-center">Show</th>
-                                              <th class="text-center">Portfolio Name</th>
-                                              <th class="text-center">Portfolio Detail</th>
-                                              <th class="text-center">Portfolio Type</th>
-                                              <th class="text-center">Portfolio Status</th>
-                                              <th class="text-center">Portfolio Year</th>
-                                              <th class="text-center">Portfolio Picture</th>
-                                              <th class="text-center">Manage</th>
-
+                                              <th class="text-center">แสดง</th>
+                                              <th class="text-center">ชื่อผลงาน</th>
+                                              <th class="text-center">รายละเอียด</th>
+                                              <th class="text-center">กลุ่มผลงาน</th>
+                                              <th class="text-center">ระดับผลงาน</th>
+                                              <th class="text-center">ปีที่ได้รับรางวัล</th>
+                                              <th class="text-center">รูปภาพ</th>
+                                              <th class="text-center">จัดการผลงาน</th>
                                           </tr>
                                           <tr class="warning no-result">
-                                            <td colspan="8"><i class="fa fa-warning"></i> No result</td>
+                                            <td colspan="8"><i class="fa fa-warning"></i> ไม่พบผลลัพธ์</td>
                                           </tr>
                                       </thead>
                                       <tbody id="list_BechelorPortfolio">
@@ -237,8 +236,8 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button id="btSubmitBechelorPortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
-                <button id="btCloseBechelorPortfolio" type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
+                <button id="btSubmitBechelorPortfolio" class="btn btn-success"><i class="fa fa-check"></i>   บันทึก</button>
+                <button id="btCloseBechelorPortfolio" type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   ยกเลิก</button>
               </div>
             </div>
           </div>

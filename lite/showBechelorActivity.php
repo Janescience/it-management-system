@@ -86,7 +86,7 @@
                           </div>
                           <div class="col-md-3">
                             <div  class="form-group">
-                              <div class="demo-switch-title"><h2><i class="fa fa-check-square"></i> แสดง</h2></div>
+                              <div class="demo-switch-title"><h2><i class="fa fa-square"></i> แสดง <i class="fa fa-check-square"></i></h2></div>
                               <div class="switch">
                                   <label>ปิด<input type="checkbox"  id="ShowActivityStatus"><span class="lever switch-col-red"></span>เปิด</label>
                               </div>

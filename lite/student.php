@@ -29,7 +29,15 @@
 
         <div class="page-wrapper">
             <div class="container-fluid">
-                <div class="row page-titles">
+
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="card">
+
+                      </div>
+                  </div>
+              </div>
+                <!-- <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
                         <h3 class="text-themecolor">Main</h3>
                         <ol class="breadcrumb">
@@ -38,7 +46,7 @@
 
                         </ol>
                     </div>
-                </div>
+                </div> -->
 
 <!-- <================================================================== Bechelor ==================================================================> -->
 
@@ -73,7 +81,7 @@
                             <div class="card text-center">
                                 <div class="card-block">
                                     <i class="fa fa-camera-retro fa-5x" aria-hidden="true"></i>
-                                <h4 class="card-title">ภาพกิจกรรมนักศึกษา</h4>
+                                <h4 class="card-title">กิจกรรมนักศึกษา</h4>
 
                                 <form action="/action_page.php">
 
@@ -124,7 +132,7 @@
                             <div class="card text-center" >
                                 <div class="card-block">
                                     <i class="fa fa-camera-retro fa-5x" aria-hidden="true"></i>
-                                <h4 class="card-title">ภาพกิจกรรมบันฑิตศึกษา</h4>
+                                <h4 class="card-title">กิจกรรมบันฑิตศึกษา</h4>
 
 
                                 <!-- <h6 class="card-subtitle">ระดับบัณฑิตศึกษา</h6> -->
@@ -243,8 +251,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button id="btSubmitBechelorPortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
-            <button id="btCloseBechelorPortfolio" type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
+            <button id="btSubmitBechelorPortfolio" class="btn btn-success"><i class="fa fa-check"></i>   บันทึก</button>
+            <button id="btCloseBechelorPortfolio" type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   ยกเลิก</button>
           </div>
         </div>
       </div>
@@ -325,9 +333,9 @@
           <div class="modal-footer">
             <div class="form-group">
                 <div class="col-sm-12 text-center">
-                  <button id="btSubmitBechelorActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   Submit</button>
-                  <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
-                  <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  <button id="btSubmitBechelorActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   บันทึก</button>
+                  <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> ยกเลิก</button>
+                  <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                 </div>
             </div>
           </div>
@@ -431,8 +439,8 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button id="btSubmitGraduatePortfolio" class="btn btn-success"><i class="fa fa-check"></i>   Submit</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   Close</button>
+              <button id="btSubmitGraduatePortfolio" class="btn btn-success"><i class="fa fa-check"></i>   บันทึก</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>   ยกเลิก</button>
             </div>
             <!-- </form> -->
           </div>
@@ -514,9 +522,9 @@
           <div class="modal-footer">
             <div class="form-group">
                 <div class="col-sm-12 text-center">
-                  <button id="btSubmitGraduateActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   Submit</button>
-                  <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> Cancel</button>
-                  <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  <button id="btSubmitGraduateActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   บันทึก</button>
+                  <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> ยกเลิก</button>
+                  <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                 </div>
             </div>
           </div>
