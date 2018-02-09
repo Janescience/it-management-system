@@ -18,7 +18,7 @@ $(document).ready(function(){
 	var clickBtEditGraPortGroup = 0;
 
   var del;
-
+   $.LoadingOverlay("show");
 
 // ========================================= Set initial Graduate Portfolio Modal =========================================
   txt = "";

@@ -33,11 +33,11 @@
     echo "<script>window.location.href = 'index.php' </script>";
   }else if($page == "หลักสูตร"){
     echo "<script>window.location.href = 'course.php' </script>";
-  }else if($page == "นักศึกษา"){
+  }else if($page == "ผลงานและกิจกรรม"){
     echo "<script>window.location.href = 'student.php' </script>";
   }else if($page == "ข้อมูลส่วนตัว"){
     echo "<script>window.location.href = 'pages-profile.php' </script>";
-  }else if($page == "จัจัดการผู้ใช้ในระบบ"){
+  }else if($page == "จัดการผู้ใช้ในระบบ"){
     echo "<script>window.location.href = 'manage-user.php' </script>";
   }else if($page == "ประวัติ"){
     echo "<script>window.location.href = 'history.php' </script>";

@@ -39,10 +39,10 @@
               </div>
                 <!-- <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor">Main</h3>
+                        <h3 class="text-themecolor">หน้าหลัก</h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Student</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">ผลงานและกิจกรรม</a></li>
+                            <li class="breadcrumb-item active">แบ่งระดับการศึกษา</li>
 
                         </ol>
                     </div>
@@ -334,7 +334,10 @@
             <div class="form-group">
                 <div class="col-sm-12 text-center">
                   <button id="btSubmitBechelorActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   บันทึก</button>
+<<<<<<< HEAD
                   <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> ยกเลิก</button>
+=======
+>>>>>>> lasted version
                   <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                 </div>
             </div>
@@ -397,7 +400,7 @@
               </div>
 
               <div class="form-group">
-                  <label class="col-md-12">Status</label>
+                  <label class="col-md-12">สถานะ</label>
                   <div class="col-md-12">
                     <div class="row">
                       <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
@@ -523,7 +526,10 @@
             <div class="form-group">
                 <div class="col-sm-12 text-center">
                   <button id="btSubmitGraduateActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   บันทึก</button>
+<<<<<<< HEAD
                   <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> ยกเลิก</button>
+=======
+>>>>>>> lasted version
                   <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                 </div>
             </div>

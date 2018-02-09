@@ -45,7 +45,7 @@ $('#btClose').on('click',function (e){
         setTimeout(function () {
           $('#messageModal').modal('hide');
           $('.unauthenticated, .userAuth').toggleClass('unauthenticated').toggleClass('authenticated');
-          window.location.href = "index.php";
+          window.location.href = "pages-profile.php";
         })
      })
      .catch(function(error) {

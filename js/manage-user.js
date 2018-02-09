@@ -4,34 +4,85 @@ $(document).ready(function(){
  var dbRef = firebase.database();
  var usersRef = dbRef.ref('users')
  var auth = null;
- var selectedFile;
-
+ var selectedFile,selectFileEdit;
+ var btClickEditUser=0;
+var idUpdate;
   $.LoadingOverlay("show");
 
- $("#searchUser").keyup(function () {
-   var searchTerm = $("#searchUser").val();
-   var listItem = $('.results tbody').children('tr');
+ $("#searchTeacher").keyup(function () {
+   var searchTerm = $("#searchTeacher").val();
+   var listItem = $('.results-teacher tbody').children('tr');
    var searchSplit = searchTerm.replace(/ /g, "'):containsi('");
 
    $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
        return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
      }
      });
-   $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+   $(".results-teacher tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
    $(this).attr('visible','false');
    });
 
-   $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+   $(".results-teacher tbody tr:containsi('" + searchSplit + "')").each(function(e){
    $(this).attr('visible','true');
    });
 
- var jobCount = $('.results tbody tr[visible="true"]').length;
-   $('.counter').text(jobCount + ' item');
+ var jobCount = $('.results-teacher tbody tr[visible="true"]').length;
+   $('.counter-teacher').text(jobCount + ' item');
 
- if(jobCount == '0') {$('.no-result').show();}
-   else {$('.no-result').hide();}
+ if(jobCount == '0') {$('.no-result-teacher').show();}
+   else {$('.no-result-teacher').hide();}
 
   });
+
+  $("#searchStaff").keyup(function () {
+    var searchTerm = $("#searchStaff").val();
+    var listItem = $('.results-staff tbody').children('tr');
+    var searchSplit = searchTerm.replace(/ /g, "'):containsi('");
+
+    $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+        return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+      }
+      });
+    $(".results-staff tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+    $(this).attr('visible','false');
+    });
+
+    $(".results-staff tbody tr:containsi('" + searchSplit + "')").each(function(e){
+    $(this).attr('visible','true');
+    });
+
+  var jobCount = $('.results-staff tbody tr[visible="true"]').length;
+    $('.counter-staff').text(jobCount + ' item');
+
+  if(jobCount == '0') {$('.no-result-staff').show();}
+    else {$('.no-result-staff').hide();}
+
+   });
+
+   $("#searchTa").keyup(function () {
+     var searchTerm = $("#searchTa").val();
+     var listItem = $('.results-ta tbody').children('tr');
+     var searchSplit = searchTerm.replace(/ /g, "'):containsi('");
+
+     $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+         return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+       }
+       });
+     $(".results-ta tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+     $(this).attr('visible','false');
+     });
+
+     $(".results-ta tbody tr:containsi('" + searchSplit + "')").each(function(e){
+     $(this).attr('visible','true');
+     });
+
+   var jobCount = $('.results-ta tbody tr[visible="true"]').length;
+     $('.counter-ta').text(jobCount + ' item');
+
+   if(jobCount == '0') {$('.no-result-ta').show();}
+     else {$('.no-result-ta').hide();}
+
+    });
 
 
   var rootRef = dbRef.ref().child("users");
@@ -60,6 +111,7 @@ $(document).ready(function(){
  });
 
  $('#list_teacher').on('click','.btn-edit-user',function(){
+   idUpdate = $(this).closest('tr').attr("id");
    var image = $(this).closest('tr').find(".avatar").attr("src");
    var name =  $(this).closest('tr').find(".txtname").text();
    var email =  $(this).closest('tr').find(".txtemail").text();
@@ -75,16 +127,16 @@ $(document).ready(function(){
  var rowDeleteTeacher;
  $('#list_teacher').on('click','.btn-delete-user',function(){
    idDeleteTeacher = $(this).closest('tr').attr("id");
-   $('#confrimDeleteUserModal').modal('show');
+   $('#confrimDeleteTeacherModal').modal('show');
      rowDeleteTeacher = $(this).closest('tr');
  });
 
- // $('#btConfrimDelete').on('click',function(){
- //   rootRef.child(idDeleteTeacher).remove().then(function(){
- //       $('#deleteUserModal').modal('show');
- //       rowDeleteTeacher.remove();
- //   });
- // })
+ $('#btConfrimTeacherDelete').on('click',function(){
+   rootRef.child(idDeleteTeacher).remove().then(function(){
+       $('#deleteUserModal').modal('show');
+       rowDeleteTeacher.remove();
+   });
+ })
 
 
  rootRef.on("child_added",snap => {
@@ -110,6 +162,7 @@ $(document).ready(function(){
 });
 
 $('#list_staff').on('click','.btn-edit-user',function(){
+  idUpdate = $(this).closest('tr').attr("id");
   var image = $(this).closest('tr').find(".avatar").attr("src");
   var name =  $(this).closest('tr').find(".txtname").text();
   var email =  $(this).closest('tr').find(".txtemail").text();
@@ -125,16 +178,16 @@ var idDeleteStaff;
 var rowDeleteStaff;
 $('#list_staff').on('click','.btn-delete-user',function(){
   idDeleteStaff = $(this).closest('tr').attr("id");
-  $('#confrimDeleteUserModal').modal('show');
+  $('#confrimDeleteStaffModal').modal('show');
     rowDeleteStaff = $(this).closest('tr');
 });
 
-// $('#btConfrimDelete').on('click',function(){
-//   rootRef.child(idDeleteStaff).remove().then(function(){
-//       $('#deleteUserModal').modal('show');
-//       rowDeleteStaff.remove();
-//   });
-// })
+$('#btConfrimStaffDelete').on('click',function(){
+  rootRef.child(idDeleteStaff).remove().then(function(){
+      $('#deleteUserModal').modal('show');
+      rowDeleteStaff.remove();
+  });
+})
 
 
 rootRef.on("child_added",snap => {
@@ -157,7 +210,7 @@ if(key != sessionStorage.getItem("userId")){
    }
 }
 });
-var idUpdate;
+
 $('#list_ta').on('click','.btn-edit-user',function(){
   idUpdate = $(this).closest('tr').attr("id");
   var image = $(this).closest('tr').find(".avatar").attr("src");
@@ -179,7 +232,7 @@ $('#list_ta').on('click','.btn-delete-user',function(){
     rowDeleteTa = $(this).closest('tr');
 });
 
-$('#btConfrimDelete').on('click',function(){
+$('#btConfrimTaDelete').on('click',function(){
   rootRef.child(idDeleteTa).remove().then(function(){
       $('#deleteUserModal').modal('show');
       rowDeleteTa.remove();
@@ -310,6 +363,8 @@ $('#btConfrimDelete').on('click',function(){
 
                     },500);
 
+
+
                   }).catch(function(error){
                       console.log("Error creating user:", error);
                       $('#messageModalLabel').html(spanText(error.code, ['danger']))
@@ -319,9 +374,93 @@ $('#btConfrimDelete').on('click',function(){
                   $('#messageModalLabel').html(spanText("ไม่สามารถเพิ่มผู้ใช้ได้", ['danger']))
               }
           });
+          for(var i;i<btClickEditUser;i++){
+            $('#list_teacher tr:last').remove();
+            $('#list_staff tr:last').remove();
+            $('#list_ta tr:last').remove();
+          }
        });
 
+  $('#fileUploadImageEditUser').on('change',function(event){
+    selectFileEdit = event.target.files[0];
+  });
+
+  function pushImageEdit(){
+    var filename= selectFileEdit.name;
+    var storageRef = firebase.storage().ref('/ProfileImage/' + filename);
+    var uplodadTask = storageRef.put(selectFileEdit);
+
+    uplodadTask.on('state_changed',function(sanpshot){
+
+    },function(error){
+
+    },function(){
+      var downloadURL = uplodadTask.snapshot.downloadURL;
+      var postImage = {
+        image:downloadURL
+      };
+      var deleteRef;
+      var deleteImageProfile = usersRef.child(idUpdate).child('image');
+      deleteImageProfile.on('value',snap => {
+        deleteRef = firebase.storage().refFromURL(snap.val());
+      });
+      deleteRef.delete().then(function() {
+      }).catch(function(error) {
+
+      });
+      usersRef.child(idUpdate).update(postImage);
+      btClickEditUser = btClickEditUser+1;
+      $('#list_teacher').empty();
+      $('#list_staff').empty();
+      $('#list_ta').empty();
+
+      usersRef.on("child_added",snap => {
+
+        var key = snap.key;
+        var level = snap.child("level").val();
+        var email = snap.child("email").val();
+        var phone = snap.child("telephone").val();
+        var image = snap.child("image").val();
+        var name = snap.child("name").val();
+        var office = snap.child("office").val();
+        var level = snap.child("level").val();
+
+
+      if(key != sessionStorage.getItem("userId")){
+
+        if(level == "คณาจารย์และบุคลากร"){
+        $('#list_teacher').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
+            "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td>"+
+            "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+            " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+          }
+
+        if(level == "เจ้าหน้าที่บริหารงานทั่วไป"){
+        $('#list_staff').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
+              "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td>"+
+              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+            }
+
+        if(level == "ผู้ช่วยสอนและวิจัย"){
+        $('#list_ta').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
+                "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td>"+
+                "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+              }
+
+      }
+     });
+    });
+
+  };
+
   $('#btEditUser').on('click',function(){
+
+    btClickEditUser = btClickEditUser+1;
+    if(selectFileEdit!="" && selectFileEdit!=null){
+      pushImageEdit();
+    }
     $('#editUserModal').modal('hide');
     var dataUpdate = {
       name:$('#nameEditUser').val(),
@@ -329,6 +468,50 @@ $('#btConfrimDelete').on('click',function(){
       telephone:$('#phoneEditUser').val()
     };
     usersRef.child(idUpdate).update(dataUpdate);
+
+
+
+    $('#list_teacher').empty();
+    $('#list_staff').empty();
+    $('#list_ta').empty();
+
+    usersRef.on("child_added",snap => {
+
+      var key = snap.key;
+      var level = snap.child("level").val();
+      var email = snap.child("email").val();
+      var phone = snap.child("telephone").val();
+      var image = snap.child("image").val();
+      var name = snap.child("name").val();
+      var office = snap.child("office").val();
+      var level = snap.child("level").val();
+
+
+    if(key != sessionStorage.getItem("userId")){
+
+      if(level == "คณาจารย์และบุคลากร"){
+      $('#list_teacher').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
+          "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td>"+
+          "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+          " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+        }
+
+      if(level == "เจ้าหน้าที่บริหารงานทั่วไป"){
+      $('#list_staff').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
+            "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td>"+
+            "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+            " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+          }
+
+      if(level == "ผู้ช่วยสอนและวิจัย"){
+      $('#list_ta').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
+              "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td>"+
+              "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+              " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+            }
+
+    }
+   });
 
   });
 

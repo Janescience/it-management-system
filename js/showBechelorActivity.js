@@ -16,11 +16,8 @@ $(document).ready(function(){
 
   var del;
 
-  var clickBtEditAct = 0;
-
-  var clickBtEditPic = 0;
-
-
+  // var clickBtEditAct = 0;
+ $.LoadingOverlay("show");
 
 
 

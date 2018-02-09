@@ -12,7 +12,7 @@ $(document).ready(function(){
   var nameAct;
 
   var del;
-
+   $.LoadingOverlay("show");
   // var clickBtEditAct = 0;
 
 

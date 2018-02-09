@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	 $.LoadingOverlay("show");
 	var selectedFile;
 	var txt = "";
 
