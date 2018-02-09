@@ -19,6 +19,5 @@ display: block;
 }
 
 .img-show {
-width: 60%;
-border-radius:10px;
+border-radius:100%;
 }

@@ -15,9 +15,10 @@
   <header class="topbar">
       <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
           <div class="navbar-header">
-              <a class="navbar-brand" href="login.php">
-              <b><img src="../images/bird_logo.png" alt="homepage" class="light-logo" width="50px" height="50px"/></b>
-              <span><img src="../assets/images/logo-it.png" class="light-logo" alt="homepage" /></span></a>
+            <a class="navbar-brand" href="login.php">
+                      <span class="hidden-xs-down"><img src="../images/it-logo.png" alt="homepage" class="light-logo" width="300px" /></span>
+                </a>
+                <span class="hidden-md-up"><img src="../images/logo-bird.png" alt="homepage" class="light-logo" width="35px" /></span>
           </div>
       </nav>
   </header>
@@ -70,7 +71,7 @@
         <h4 class="modal-title" id="messageModalLabel">Message</h4>
       </div>
       <div class="modal-footer">
-        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">ปิด</button>
       </div>
     </div>
   </div>
@@ -81,10 +82,10 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" >email or password is wrong !!</h4>
+        <h4 class="modal-title" >อีเมล์หรือรหัสผ่านผิด กรุลองใหม่อีกครั้ง</h4>
       </div>
       <div class="modal-footer">
-        <button id="btClose" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal">ปิด</button>
       </div>
     </div>
   </div>

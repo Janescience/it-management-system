@@ -10,15 +10,20 @@
       </div>
       <div class="modal-body">
         <h5 class="modal-title">รูปภาพ</h5>
-        <div  class="setting image_picker">
-          <div class="settings_wrap">
-            <label class="drop_target">
-              <div class="image_preview"></div>
-              <input  class="upload" id="fileUploadImageHeader" type="file"/>
-            </label>
-            <div class="settings_actions vertical"><a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i> เลือกรูปภาพ</a><a class="disabled" data-action="remove_current_image"><i class="fa fa-ban"></i> ลบรูปภาพ</a></div>
-          </div>
+        <div class="col-md-12">
+            <div class="form-group text-center">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <span class="btn btn-secondary btn-file">
+                            เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadImageHeader" >
+                        </span>
+                    </span>
+                    <input type="text" class="form-control" readonly>
+                </div>
+                <br><img class="img-show "/>
+            </div>
         </div>
+
 
         <h5 class="modal-title" >หัวข้อ</h5>
         <textarea class="form-control" rows="2" id="textTopic"></textarea>
@@ -32,7 +37,7 @@
       <div class="modal-footer">
 
         <button id="btLoading" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
-        <button id="btUploadImageHeader" type="submit" class="btn btn-outline-success "><i class="fa fa-check"></i> บันทึก</button>
+        <button id="btUploadImageHeader" type="submit" class="btn btn-success "><i class="fa fa-check"></i> บันทึก</button>
         <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
 
       </div>
@@ -224,8 +229,20 @@
         <h5 class="modal-title" >รูปภาพ</h5><br>
         <center>
         <img width="300px" id="bgHeaderEdit" style="border-radius:10px"></center><br>
+        <div class="col-md-12">
+            <div class="form-group text-center">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <span class="btn btn-secondary btn-file">
+                            เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadImageHeaderEdit" >
+                        </span>
+                    </span>
+                    <input type="text" class="form-control" readonly>
+                </div>
+                <br><img class="img-show "/>
+            </div>
+        </div>
 
-        <input  id="fileUploadImageHeaderEdit" type="file" />
 
         <h5 class="modal-title" >หัวข้อ</h5>
         <textarea class="form-control" rows="2" id="textTopicEdit"></textarea>
@@ -265,18 +282,78 @@
                 </select>
             </div>
         </div>
-              <hr>
-        <input class="form-control btn btn-outline-inverse col-md-12" type="file" id="fileUploadImageCourse">
+        <hr>
+        <div class="col-md-12">
+            <div class="form-group text-center">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <span class="btn btn-secondary btn-file">
+                            เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadImageCourse" >
+                        </span>
+                    </span>
+                    <input type="text" class="form-control" readonly>
+                </div>
+                <br><img class="img-show "/>
+            </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button id="btLoadingCourse" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
-        <button id="btUploadImageCourse" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> บันทึก</button>
-        <button id="btClearTextFileCourse" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> ยกเลิก</button>
+        <button id="btUploadImageCourse" type="button" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
+        <button id="btClearTextFileCourse" type="button" class="btn btn-danger"><i class="mdi mdi-close"></i> ยกเลิก</button>
         <button id="btCloseCourse" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
       </div>
     </div>
   </div>
 </div>
+<!--================================================================================================-->
+
+<!--==================================== Add Purpose ====================================================-->
+
+<div class="modal fade" id="addPurposeModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" >เกี่ยวกับสาขาวิชา (เพิ่ม)</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <h5>วัตถุประสงค์</h5>
+        <textarea type="text" rows="5" id="addPurepose" class="form-control col-lg-12"></textarea>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btAddPurpose" class="btn btn-success" ><i class="fa fa-check"></i> บันทึก</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close"></i> ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--================================================================================================-->
+
+<!--==================================== Edit Purpose ====================================================-->
+
+<div class="modal fade" id="editPurposeModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" >เกี่ยวกับสาขาวิชา (แก้ไข)</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <h5>วัตถุประสงค์</h5>
+        <textarea type="text" rows="5" id="editPurepose" class="form-control col-lg-12"></textarea>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btEditPurpose" class="btn btn-success" ><i class="fa fa-check"></i> บันทึก</button>
+        <button id="btClose" class="btn btn-danger" data-dismiss="modal"><i class="mdi mdi-close"></i> ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--================================================================================================-->
 
 <!--==================================== Delete ====================================================-->

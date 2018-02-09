@@ -1,73 +1,6 @@
 $(document).ready(function(){
 
 
-
-  <!--===============================upload====================================-->
-   var $dropzone = $('.image_picker'),
-      $droptarget = $('.drop_target'),
-      $dropinput = $('.upload'),
-      $dropimg = $('.image_preview'),
-      $remover = $('[data-action="remove_current_image"]');
-
-   $dropzone.on('dragover', function() {
-    $droptarget.addClass('dropping');
-    return false;
-   });
-
-   $dropzone.on('dragend dragleave', function() {
-    $droptarget.removeClass('dropping');
-    return false;
-   });
-
-   $dropzone.on('drop', function(e) {
-    $droptarget.removeClass('dropping');
-    $droptarget.addClass('dropped');
-    $remover.removeClass('disabled');
-    e.preventDefault();
-
-    var file = e.originalEvent.dataTransfer.files[0],
-        reader = new FileReader();
-
-    reader.onload = function(event) {
-      $dropimg.css('background-image', 'url(' + event.target.result + ')');
-    };
-
-    console.log(file);
-    reader.readAsDataURL(file);
-
-    return false;
-   });
-
-   $dropinput.change(function(e) {
-    $droptarget.addClass('dropped');
-    $remover.removeClass('disabled');
-    $('.image_title input').val('');
-
-    var file = $dropinput.get(0).files[0],
-        reader = new FileReader();
-
-    reader.onload = function(event) {
-      $dropimg.css('background-image', 'url(' + event.target.result + ')');
-    }
-
-    reader.readAsDataURL(file);
-   });
-
-   $remover.on('click', function() {
-    $dropimg.css('background-image', '');
-    $droptarget.removeClass('dropped');
-    $remover.addClass('disabled');
-    $('.image_title input').val('');
-   });
-
-   $('.image_title input').blur(function() {
-    if ($(this).val() != '') {
-      $droptarget.removeClass('dropped');
-    }
-   });
-<!--===========================================================================-->
-
-
  var Auth = firebase.auth();
  var dbRef = firebase.database();
  var usersRef = dbRef.ref('users')
@@ -86,9 +19,11 @@ $(document).ready(function(){
  var clickBtEditHeader = 0,clickBtEditInfoBachelor=0,clickBtEditInfoGraduate=0;
  var page,topic,action;
 
+ $.LoadingOverlay("show");
+
 
 <!--============================== ส่วนหัว ===================================-->
-
+var i=0;
 var dbHeader = dbRef.ref('website/index/header');
 dbHeader.on('child_added',snap =>{
   var bg = snap.child('bg').val();
@@ -96,12 +31,15 @@ dbHeader.on('child_added',snap =>{
   var detail = snap.child('detail').val();
   var link = snap.child('link').val();
   var txt_bt = snap.child('txt_bt').val();
-
+  i=i+1
   $('#list_header').append("<tr id='"+snap.key+"'><td><img src='"+bg+"' width='"+'200px'+"' style='"+'border-radius:10px'+"' class='"+'header-bg'+"'></td><td class='"+'txttopic'+"'>"+topic+"</td><td class='"+'txtdetail'+"'>"+detail+"</td><td><a class='"+'txtlink'+"' href='"+link+"'>URL</a></td>"+
                         "<td><button class='"+'btn btn-info txtbt'+"'>"+txt_bt+"</button></td>"+
                         "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-header'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
                         " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-header'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
-$('#loaderHeader').hide();
+  if(i==3){
+    $.LoadingOverlay("hide");
+  }
+
 });
 
 $('#list_header').on('click','.btn-edit-header',function(){
@@ -169,6 +107,12 @@ function editHeader(){
 
     });
     firebase.database().ref('website/index/header').child(idHeader).update(updateHeader);
+
+    page = $('#indexPage').text();
+    topic = $('#textTopicEdit').val();
+    action = "แก้ไขรูปภาพไสลด์";
+    pushHistory();
+
     $('#fileUploadImageHeaderEdit').val("");
     $('#textTopicEdit').val("");
     $('#textDetailEdit').val("");
@@ -195,10 +139,7 @@ function editHeader(){
                               " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-header'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
 
       });
-      page = $('#indexPage').text();
-      topic = $('#textTopicEdit').val();
-      action = "แก้ไขรูปภาพไสลด์";
-      pushHistory();
+
   });
 };
 
@@ -287,15 +228,125 @@ function editHeader(){
 
    firebase.database().ref('history').push().set(dataHistory);
 
-   var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ "+"''"+topic+"''";
+   var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
+   var txtpage = page;
 
-  window.location.href = "notify.php?message=" + message;
+  window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
  }
 
 <!--========================================================================-->
 
 
+<!--============================== เกี่ยวกับสาขาวิชา ===========================-->
 
+var idPurpose;
+var btClickEditPurpose=0;
+var listPurpose = firebase.database().ref('website/index/about/purpose');
+listPurpose.on('child_added',snap=>{
+  var purpose = snap.child('purpose').val();
+  $('#list_purpose').append("<tr id='"+snap.key+"'><td class='"+'txtpurpose'+"'>"+purpose+"</td>"+
+                            "<td class='"+'text-center'+"'><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-purpose'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                            "<a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-purpose'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+});
+
+$('#editPhilosophy').on('click',function(){
+  $('#txtPhilosophy').prop('disabled', false);
+  $('#editPhilosophy').hide();
+  $('#addPhilosophy').removeAttr('hidden');
+  $('#cancelPhilosophy').removeAttr('hidden');
+});
+
+$('#addPhilosophy').on('click',function(){
+  $('#txtPhilosophy').prop('disabled', true);
+  $('#editPhilosophy').show();
+  $('#addPhilosophy').attr('hidden','true');
+  $('#cancelPhilosophy').attr('hidden','true');
+
+  var txtPhilosophy = {
+    philosophy:$('#txtPhilosophy').val()
+  }
+  firebase.database().ref('website/index/about').update(txtPhilosophy);
+
+  page = $('#indexPage').text();
+  topic = $('#txtPhilosophy').val();
+  action = "แก้ไขปรัชญาเกี่ยวกับสาขาวิชา";
+  pushHistory();
+});
+
+$('#cancelPhilosophy').on('click',function(){
+  $('#txtPhilosophy').prop('disabled', true);
+  $('#editPhilosophy').show();
+  $('#addPhilosophy').attr('hidden','true');
+  $('#cancelPhilosophy').attr('hidden','true');
+});
+
+$('#btOpenModalPurpose').on('click',function(){
+  $('#addPurepose').val("");
+  $('#addPurposeModal').modal('show');
+})
+
+$('#btAddPurpose').on('click',function(){
+  $('#addPurposeModal').modal('hide');
+  var purposeData ={
+    purpose:$('#addPurepose').val()
+  };
+
+  firebase.database().ref('website/index/about/purpose').push().set(purposeData);
+
+  page = $('#indexPage').text();
+  topic = $('#addPurepose').val();
+  action = "เพิ่มวัตถุประสงค์เกี่ยวกับสาขาวิชา";
+  pushHistory();
+
+  for(var i=0;i< btClickEditPurpose;i++){
+    $('#list_purpose tr:last').remove();
+  }
+
+});
+
+$('#btEditPurpose').on('click',function(){
+  btClickEditPurpose = btClickEditPurpose+1;
+  $('#editPurposeModal').modal('hide');
+  var purposeUpdate ={
+    purpose:$('#editPurepose').val()
+  };
+  firebase.database().ref('website/index/about/purpose').child(idPurpose).update(purposeUpdate);
+  $('#list_purpose').empty();
+  listPurpose.on('child_added',snap=>{
+    var purpose = snap.child('purpose').val();
+    $('#list_purpose').append("<tr id='"+snap.key+"'><td class='"+'txtpurpose'+"'>"+purpose+"</td>"+
+                              "<td class='"+'text-center'+"'><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-purpose'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
+                              "<a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-purpose'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
+  });
+
+  page = $('#indexPage').text();
+  topic = $('#editPurepose').val();
+  action = "แก้ไขวัตถุประสงค์เกี่ยวกับสาขาวิชา";
+  pushHistory();
+
+});
+
+$('#list_purpose').on('click','.btn-edit-purpose',function(){
+  idPurpose = $(this).closest('tr').attr('id');
+  $('#editPurepose').val("");
+  var txtpurpose = $(this).closest('tr').find('.txtpurpose').text()
+  $('#editPurepose').val(txtpurpose);
+  $('#editPurposeModal').modal('show');
+});
+
+$('#list_purpose').on('click','.btn-delete-purpose',function(){
+  var id = $(this).closest('tr').attr("id");
+  listPurpose.child(id).remove().then(function(){
+      $('#deleteModal').modal('show');
+  });
+    $(this).closest('tr').remove();
+});
+
+var txtPhilosophy = firebase.database().ref('website/index/about/philosophy');
+txtPhilosophy.on('value',snap=>{
+$('#txtPhilosophy').val(snap.val());
+});
+<!--========================================================================-->
 
 
 <!--============================= หลักสูตรที่เปิดสอน ============================-->

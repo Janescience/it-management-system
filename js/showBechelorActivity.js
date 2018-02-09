@@ -5,7 +5,7 @@ $(document).ready(function(){
   var activityRef = dbRef.ref("website/student/bechelor/activity");
   var auth = null;
 
-
+  var countDeleteImage=0;
   var rootRef = activityRef;
   var selectedFile;
 
@@ -145,7 +145,7 @@ $('#CancelEditBechelorActivityVideo').hide();
    });
 
    $('#ActvImage').on('click','.delete',function(e){
-
+     countDeleteImage = countDeleteImage+1;
 
      var id = $(this).closest('ul').attr("id");
 
@@ -176,7 +176,7 @@ $('#CancelEditBechelorActivityVideo').hide();
 
           $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
                   "<div  class='"+'el-card-item'+"'>"+
-                      "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 15px; height:120px'+"' alt='"+'user'+"'>"+
+                      "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' width='"+'100px'+"' style='"+'border-radius: 10px;'+"' alt='"+'user'+"'>"+
                           "<div class='"+'el-overlay'+"'>"+
                               "<ul id='"+key+"' class='"+'el-info'+"'>"+
                               "<a class='"+'image-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
@@ -196,12 +196,12 @@ $('#CancelEditBechelorActivityVideo').hide();
      var Video = snap.child('videos').val();
      key = snap.key;
 
-     $('#ActvVideo').append("<div  class='"+'col-lg-3 col-md-3 col-sm-6'+"'>"+
-                 "<video   style='"+'border-radius: 10px;'+"' width='"+'300px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
+     $('#ActvVideo').append("<div class='"+'card-block'+"'><div  class='"+'col-lg-3 col-md-3 col-sm-6'+"'>"+
+                 "<video   style='"+'border-radius:10px;'+"' width='"+'200px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
                          "<ul id='"+key+"' class='"+'el-info'+"'>"+
                              "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
                          "</ul>"+
-                       "</div>");
+                       "</div></div>");
    });
 
    $('#ActvVideo').on('click','.delete',function(e){
@@ -394,9 +394,14 @@ $('#CancelEditBechelorActivityVideo').hide();
                     // };
                     // firebase.database().ref('website/student').child('bechelor').child('activity').child('image').push().set(downloadImageURL);
                     firebase.database().ref('website/student').child('bechelor').child('activity').child(actName).child('activity_image').push().child('images').set(downloadImageURL).then(function(){
+
                      console.log("Added Bechelor Activity Images :");
                     });
+
+
+
                 });
+
             });
           }
 
@@ -408,9 +413,7 @@ $('#CancelEditBechelorActivityVideo').hide();
           $('#CancelEditBechelorActivityImage').hide();
           $('#EditBechelorActivityImage').show();
 
-          // for(var i = 0;i< clickBtEditAct;i++){
-          //   $('#list_expertise tr:last').remove();
-          // }
+    
         });
       });
 
@@ -453,9 +456,6 @@ $('#CancelEditBechelorActivityVideo').hide();
   document.getElementById("BechelorActivityVideo").addEventListener('change', function(v){
     $('#SaveEditBechelorActivityVideo').on('click',function(e){
         e.preventDefault();
-
-
-
 
               for (var i = 0; i < v.target.files.length; i++) {
                   var videoFile = v.target.files[i];

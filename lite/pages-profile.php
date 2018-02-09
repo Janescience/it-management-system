@@ -22,7 +22,7 @@
     -moz-border-radius: 500px;
     }
 
-    
+
     .results tr[visible='false'],
     .no-result{
       display:none;
@@ -78,7 +78,7 @@
 
                                     <div class="card">
                                       <div class="card-block">
-                                        <div  class="pull-right">
+                                        <div  hidden id="switchMap" class="pull-right">
                                           <div class="demo-switch-title"><h4><i class="fa fa-map-marker"> </i> ตำแหน่ง</h4></div>
                                           <div class="switch">
                                               <label><input type="checkbox"  id="openMap"><span class="lever switch-col-blue"></span></label>
@@ -94,16 +94,18 @@
 
                                             </div>
                                           </div>
-
-                                          <div hidden class="setting image_picker" id="uploadImageProfile">
-                                            <div class="settings_wrap">
-                                              <label class="drop_target">
-                                                <div class="image_preview"></div>
-                                                <input  class="upload" id="fileUploadImageProfile" type="file"/>
-                                              </label>
-                                              <div class="settings_actions vertical"><a data-action="choose_from_uploaded"><i class="fa fa-picture-o"></i> Choose from Uploads</a><a class="disabled" data-action="remove_current_image"><i class="fa fa-ban"></i> Remove Current Image</a></div>
-
-                                            </div>
+                                          <div hidden class="col-md-12 " id="uploadImageProfile">
+                                              <div class="form-group text-center">
+                                                  <div class="input-group">
+                                                      <span class="input-group-btn">
+                                                          <span class="btn btn-secondary btn-file">
+                                                              เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadImageProfile" >
+                                                          </span>
+                                                      </span>
+                                                      <input type="text" class="form-control" readonly>
+                                                  </div>
+                                                  <br><img class="img-show "/>
+                                              </div>
                                           </div>
                                           <button id="btUploadImageProfile" type="button" class="btn btn-success "><i class="fa fa-check"></i> บันทึก</button>
                                           <button hidden id="cancelUpload" type="button" class="btn btn-danger "><i class="fa fa-close"></i> ยกเลิก</button>
@@ -176,12 +178,11 @@
 
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        <button id="btUpdateProfile"class="btn btn-info waves-effect waves-ligh"><i class="ti ti-pencil-alt"></i>  แก้ไขข้อมูลส่วนตัว</button>
-                                                        <button id="btUpdatePassword"class="btn btn-danger waves-effect waves-ligh"><i class="ti ti-lock"></i>  เปลี่ยนรหัสผ่าน</button>
-
+                                                        <button id="btUpdateProfile"class="btn btn-success waves-effect waves-ligh"><i class="ti ti-pencil-alt"></i>  แก้ไขข้อมูลส่วนตัว</button>
+                                                        <button id="btUpdatePassword"class="btn btn-warning waves-effect waves-ligh"><i class="ti ti-lock"></i>  เปลี่ยนรหัสผ่าน</button>
                                                         <button id="btLoadingProfile" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
-                                                        <button id="btSubmitUpdateProfile" type="button" class="btn btn-outline-success "><i class="fa fa-check"></i> บันทึก</button>
-                                                        <button id="btCancelUpdateProfile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> ยกเลิก</button>
+                                                        <button id="btSubmitUpdateProfile" type="button" class="btn btn-success "><i class="fa fa-check"></i> บันทึก</button>
+                                                        <button id="btCancelUpdateProfile" type="button" class="btn btn-danger "><i class="mdi mdi-close"></i> ยกเลิก</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -205,7 +206,8 @@
                                       <ul class="nav nav-tabs profile-tab " role="tablist">
                                           <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#hisEducation" role="tab"><span class="hidden-sm-up"><i class="ti-ruler-pencil"></i></span><span class="hidden-xs-down">ประวัติการศึกษา</span></a> </li>
                                           <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#hisWork" role="tab"><span class="hidden-sm-up"><i class="ti-briefcase"></i></span><span class="hidden-xs-down">ประวัติการทำงาน</span></a> </li>
-                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academic" role="tab"><span class="hidden-sm-up"><i class="ti-cup"></i></span><span class="hidden-xs-down">ผลงานวิชาการ</span></a> </li>
+                                          <li  id="tabWorkingPerson" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academicPerson" role="tab"><span class="hidden-sm-up"><i class="ti-cup"></i></span><span class="hidden-xs-down">ผลงานวิชาการ</span></a> </li>
+                                          <li id="tabWorkingTeacher" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#academicTeacher" role="tab"><span class="hidden-sm-up"><i class="ti-cup"></i></span><span class="hidden-xs-down">ผลงานวิชาการ</span></a> </li>
                                       </ul>
                                       <!-- Tab panes -->
                                       <div class="tab-content">
@@ -324,13 +326,13 @@
                                               </div>
                                           </div>
 
-                                  <div class="tab-pane" id="academic" role="tabpanel">
+                                  <div class="tab-pane" id="academicTeacher" role="tabpanel">
 
                                     <div class="card-block">
                                       <div class="row">
                                         <div class="card-block">
                                           <h3 class="text-left">ประเภทผลงาน (กรุณาเลือก)</h3>
-                                        <select id="selectAcdemicWork" class="form-control">
+                                        <select id="selectAcdemicWork" class="form-control col-lg-6">
                                           <option>ผลงานที่ได้รับรางวัลระดับนานาชาติ</option>
                                           <option>ผลงานที่ได้รับรางวัลระดับชาติ</option>
                                           <option>วารสารระดับชาติ</option>
@@ -356,8 +358,8 @@
                                           </div>
                                         <select id="selectWorkInterPrevious" class="form-control col-lg-5 ">
                                           <option>ดูผลงานที่ได้รับรางวัลระดับนานาชาติย้อนหลัง</option>
+                                          <option>ย้อนหลัง 1 ปี</option>
                                           <option>ย้อนหลัง 5 ปี</option>
-                                          <option>ย้อนหลัง 10 ปี</option>
                                         </select>
 
                                       </div>
@@ -394,11 +396,18 @@
                                     <div id="headNationJour" class="card-block bg-info">
                                       <h4 class="text-white card-title">วารสารระดับชาติ</h4>
                                         <div class="message-box contact-box">
+                                          <div class="row">
+                                            <span class="counter pull-right"></span>
+                                            <div class="input-group col-lg-5">
+                                              <div class="input-group-addon"><i class="ti-search"></i></div>
+                                              <input id="searchNationJour" type="text"  class="form-control" >
+                                            </div>
                                           <select id="selectJourNationPrevious" class="form-control col-lg-4 ">
                                             <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                            <option>ย้อนหลัง 1 ปี</option>
                                             <option>ย้อนหลัง 5 ปี</option>
-                                            <option>ย้อนหลัง 10 ปี</option>
                                           </select>
+                                        </div>
                                             <h2 class="add-ct-btn">
                                               <button type="button" id="btOpenModalNationJournal" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                             </h2>
@@ -406,18 +415,21 @@
                                       </div>
                                       <form class="form-horizontal form-material ">
                                         <div class="table-responsive">
-                                            <table id="tableNationJour" class="table text-center color-bordered-table success-bordered-table">
+                                            <table id="tableNationJour" class="table results text-center color-bordered-table success-bordered-table">
                                                 <thead >
                                                     <tr >
                                                         <th class="text-center">แสดง</th>
                                                         <th class="text-center">ชื่อบทความ</th>
                                                         <th class="text-center">สถานะผู้เขียนบทความ</th>
-                                                          <th class="text-center">รหัส-ชื่อโครงการวิจัย</th>
+                                                        <th class="text-center">รหัส-ชื่อโครงการวิจัย</th>
                                                         <th class="text-center">ชื่อวารสาร</th>
                                                         <th class="text-center">ประเภทบทความ</th>
                                                         <th class="text-center">ปีที่พิมพ์</th>
                                                         <th class="text-center">ฉบับที่</th>
                                                         <th class="text-center">จัดการ</th>
+                                                    </tr>
+                                                    <tr class="warning no-result">
+                                                      <td colspan="9"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="list_nation_jour">
@@ -430,11 +442,18 @@
                                       <div id="headInterJourNotDatabase" class="card-block bg-info">
                                         <h4 class="text-white card-title">วารสารระดับนานาชาติที่ไม่อยู่ในฐานข้อมูลสากล</h4>
                                           <div class="message-box contact-box">
-                                            <select id="selectJourInterNotBasePrevious" class="form-control col-lg-6 ">
-                                              <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                            <div class="row">
+                                              <span class="counter pull-right"></span>
+                                              <div class="input-group col-lg-4">
+                                                <div class="input-group-addon"><i class="ti-search"></i></div>
+                                                <input id="searchInterJourNotBase" type="text"  class="form-control" >
+                                              </div>
+                                            <select id="selectJourInterNotBasePrevious" class="form-control col-lg-6">
+                                              <option>ดูวารสารระดับนานาชาติที่ไม่อยู่ในฐานข้อมูลสากลย้อนหลัง</option>
+                                              <option>ย้อนหลัง 1 ปี</option>
                                               <option>ย้อนหลัง 5 ปี</option>
-                                              <option>ย้อนหลัง 10 ปี</option>
                                             </select>
+                                          </div>
                                               <h2 class="add-ct-btn">
                                                 <button type="button" id="btOpenModalInterJournalNotDatabase" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                               </h2>
@@ -442,7 +461,7 @@
                                         </div>
                                         <form class="form-horizontal form-material ">
                                           <div class="table-responsive">
-                                              <table id="tableInterJourNotDatabase" class="table text-center color-bordered-table success-bordered-table">
+                                              <table id="tableInterJourNotDatabase" class="table text-center results color-bordered-table success-bordered-table">
                                                   <thead >
                                                       <tr >
                                                         <th class="text-center">แสดง</th>
@@ -454,6 +473,9 @@
                                                         <th class="text-center">ปีที่พิมพ์</th>
                                                         <th class="text-center">ฉบับที่</th>
                                                         <th class="text-center">จัดการ</th>
+                                                      </tr>
+                                                      <tr class="warning no-result">
+                                                        <td colspan="9"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                                       </tr>
                                                   </thead>
                                                   <tbody id="list_inter_jour_not_database">
@@ -467,11 +489,18 @@
 
                                           <h4 class="text-white card-title">วารสารระดับนานาชาติที่อยู่ในฐานข้อมูลสากล</h4>
                                             <div class="message-box contact-box">
+                                              <div class="row">
+                                                <span class="counter-inter-jour-in-base pull-right"></span>
+                                                <div class="input-group col-lg-4">
+                                                  <div class="input-group-addon"><i class="ti-search"></i></div>
+                                                  <input id="searchInterJourInBase" type="text"  class="form-control" >
+                                                </div>
                                               <select id="selectJourInterInBasePrevious" class="form-control col-lg-6 ">
-                                                <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                                <option>ดูวารสารระดับนานาชาติที่อยู่ในฐานข้อมูลสากลย้อนหลัง</option>
+                                                <option>ย้อนหลัง 1 ปี</option>
                                                 <option>ย้อนหลัง 5 ปี</option>
-                                                <option>ย้อนหลัง 10 ปี</option>
                                               </select>
+                                            </div>
                                                 <h2 class="add-ct-btn">
                                                   <button type="button" id="btOpenModalInterJournalInDatabase" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                                 </h2>
@@ -479,7 +508,7 @@
                                           </div>
                                           <form class="form-horizontal form-material ">
                                             <div class="table-responsive">
-                                                <table id="tableInterJourInDatabase" class="table text-center color-bordered-table success-bordered-table">
+                                                <table id="tableInterJourInDatabase" class="table text-center results color-bordered-table success-bordered-table">
                                                     <thead >
                                                         <tr >
                                                           <th class="text-center">แสดง</th>
@@ -492,6 +521,9 @@
                                                           <th class="text-center">ฉบับที่</th>
                                                           <th class="text-center">จัดการ</th>
                                                         </tr>
+                                                        <tr class="warning no-result">
+                                                          <td colspan="9"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
+                                                        </tr>
                                                     </thead>
                                                     <tbody id="list_inter_jour_in_database">
 
@@ -503,11 +535,18 @@
                                         <div id="headNationWork" class="card-block bg-info">
                                           <h4 class="text-white card-title">ผลงานที่ได้รับรางวัลระดับชาติ</h4>
                                             <div class="message-box contact-box">
-                                              <select id="selectWorkNationPrevious" class="form-control col-lg-6 ">
-                                                <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                              <div class="row">
+                                                <span class="counter-nation-work pull-right"></span>
+                                                <div class="input-group col-lg-4">
+                                                  <div class="input-group-addon"><i class="ti-search"></i></div>
+                                                  <input id="searchNationWork" type="text"  class="form-control" >
+                                                </div>
+                                              <select id="selectWorkNationPrevious" class="form-control col-lg-4 ">
+                                                <option>ดผลงานที่ได้รับรางวัลระดับชาติิย้อนหลัง</option>
+                                                <option>ย้อนหลัง 1 ปี</option>
                                                 <option>ย้อนหลัง 5 ปี</option>
-                                                <option>ย้อนหลัง 10 ปี</option>
                                               </select>
+                                            </div>
                                                 <h2 class="add-ct-btn">
                                                   <button type="button" id="btOpenModalNationWork" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                                 </h2>
@@ -515,7 +554,7 @@
                                           </div>
                                           <form class="form-horizontal form-material ">
                                             <div class="table-responsive">
-                                                <table id="tableNationWork" class="table text-center color-bordered-table success-bordered-table">
+                                                <table id="tableNationWork" class="table text-center results color-bordered-table success-bordered-table">
                                                     <thead >
                                                         <tr >
                                                           <th class="text-center">แสดง</th>
@@ -525,6 +564,9 @@
                                                           <th class="text-center">หน่วยงานที่ได้รับรางวัล</th>
                                                           <th class="text-center">วันที่</th>
                                                             <th class="text-center">จัดการ</th>
+                                                        </tr>
+                                                        <tr class="warning no-result">
+                                                          <td colspan="7"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="list_nation_work">
@@ -538,11 +580,18 @@
                                           <div id="headNationConference" class="card-block bg-info">
                                             <h4 class="text-white card-title">การประชุมระดับชาติ</h4>
                                               <div class="message-box contact-box">
+                                                <div class="row">
+                                                  <span class="counter-nation-conference pull-right"></span>
+                                                  <div class="input-group col-lg-4">
+                                                    <div class="input-group-addon"><i class="ti-search"></i></div>
+                                                    <input id="searchNationConference" type="text"  class="form-control" >
+                                                  </div>
                                                 <select id="selectConferenceNationPrevious" class="form-control col-lg-6 ">
-                                                  <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                                  <option>ดการประชุมระดับชาติิย้อนหลัง</option>
+                                                  <option>ย้อนหลัง 1 ปี</option>
                                                   <option>ย้อนหลัง 5 ปี</option>
-                                                  <option>ย้อนหลัง 10 ปี</option>
                                                 </select>
+                                              </div>
                                                   <h2 class="add-ct-btn">
                                                     <button type="button" id="btOpenModalNationConference" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                                   </h2>
@@ -550,7 +599,7 @@
                                             </div>
                                             <form class="form-horizontal form-material ">
                                               <div class="table-responsive">
-                                                  <table id="tableNationConference" class="table text-center color-bordered-table success-bordered-table">
+                                                  <table id="tableNationConference" class="table text-center results color-bordered-table success-bordered-table">
                                                       <thead >
                                                           <tr >
                                                             <th class="text-center">แสดง</th>
@@ -566,6 +615,9 @@
                                                             <th class="text-center">ประเทศ</th>
                                                             <th class="text-center">จัดการ</th>
                                                           </tr>
+                                                          <tr class="warning no-result">
+                                                            <td colspan="12"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
+                                                          </tr>
                                                       </thead>
                                                       <tbody id="list_nation_conference">
 
@@ -577,11 +629,18 @@
                                             <div id="headInterConference" class="card-block bg-info">
                                               <h4 class="text-white card-title">การประชุมระดับนานาชาติ</h4>
                                                 <div class="message-box contact-box">
+                                                  <div class="row">
+                                                    <span class="counter-inter-conference pull-right"></span>
+                                                    <div class="input-group col-lg-4">
+                                                      <div class="input-group-addon"><i class="ti-search"></i></div>
+                                                      <input id="searchInterConference" type="text"  class="form-control" >
+                                                    </div>
                                                   <select id="selectConferenceInterPrevious" class="form-control col-lg-6 ">
-                                                    <option>ดูวารสารระดับชาติย้อนหลัง</option>
+                                                    <option>ดูการประชุมระดับนานาชาติิย้อนหลัง</option>
+                                                    <option>ย้อนหลัง 1 ปี</option>
                                                     <option>ย้อนหลัง 5 ปี</option>
-                                                    <option>ย้อนหลัง 10 ปี</option>
                                                   </select>
+                                                </div>
                                                     <h2 class="add-ct-btn">
                                                       <button type="button" id="btOpenModalInterConference" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                                     </h2>
@@ -589,7 +648,7 @@
                                               </div>
                                               <form class="form-horizontal form-material ">
                                                 <div class="table-responsive">
-                                                    <table id="tableInterConference" class="table text-center color-bordered-table success-bordered-table">
+                                                    <table id="tableInterConference" class="table text-center results color-bordered-table success-bordered-table">
                                                         <thead >
                                                             <tr >
                                                               <th class="text-center">แสดง</th>
@@ -605,6 +664,9 @@
                                                               <th class="text-center">ประเทศ</th>
                                                               <th class="text-center">จัดการ</th>
                                                             </tr>
+                                                            <tr class="warning no-result">
+                                                              <td colspan="12"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
+                                                            </tr>
                                                         </thead>
                                                         <tbody id="list_inter_conference">
 
@@ -613,9 +675,41 @@
                                                 </div>
                                               </form>
 
+                                          </div>
+                                          <div class="tab-pane" id="academicPerson" role="tabpanel">
+                                            <div class="card-block">
+                                              <div class="card-block bg-info">
+                                                <h4 class="text-white card-title">ผลงานวิชาการ</h4>
+                                                  <div class="message-box contact-box">
+                                                      <h2 class="add-ct-btn">
+                                                        <button type="button" id="btOpenModalWorkingPerson" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                      </h2>
+                                                  </div>
+                                                </div>
+                                            <form class="form-horizontal form-material ">
+                                              <div class="table-responsive">
+                                                  <table id="tableWorkingPerson" class="table text-center results color-bordered-table success-bordered-table">
+                                                      <thead >
+                                                          <tr >
+                                                              <th class="text-center">แสดง</th>
+                                                              <th class="text-center">ชื่อรางวัล</th>
+                                                              <th class="text-center">ชื่อผลงาน</th>
+                                                              <th class="text-center">รายละเอียด</th>
+                                                              <th class="text-center">หน่วยงานที่ได้รับรางวัล</th>
+                                                              <th class="text-center">วันที่</th>
+                                                              <th class="text-center">จัดการ</th>
+                                                          </tr>
+                                                          <tr class="warning no-result">
+                                                            <td colspan="7"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody id="list_work_person">
 
-
-
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                            </form>
+                                          </div>
                                           </div>
                                       </div>
                                     </div>

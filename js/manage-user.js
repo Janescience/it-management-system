@@ -6,6 +6,8 @@ $(document).ready(function(){
  var auth = null;
  var selectedFile;
 
+  $.LoadingOverlay("show");
+
  $("#searchUser").keyup(function () {
    var searchTerm = $("#searchUser").val();
    var listItem = $('.results tbody').children('tr');
@@ -48,16 +50,44 @@ $(document).ready(function(){
   if(key != sessionStorage.getItem("userId")){
     if(level == "คณาจารย์และบุคลากร"){
     $('#list_teacher').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
-        "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td><td><span class='"+'label label-success'+"'>"+level+"</span></td>"+
+        "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td>"+
         "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
         " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
       }
   }
-  $('#loaderUser').hide();
+   $.LoadingOverlay("hide");
+
  });
 
-  var rootRefStaff = dbRef.ref().child("users");
- rootRefStaff.on("child_added",snap => {
+ $('#list_teacher').on('click','.btn-edit-user',function(){
+   var image = $(this).closest('tr').find(".avatar").attr("src");
+   var name =  $(this).closest('tr').find(".txtname").text();
+   var email =  $(this).closest('tr').find(".txtemail").text();
+   var phone =  $(this).closest('tr').find(".txtphone").text();
+   $('#imgShowEdit').attr("src",image);
+   $('#nameEditUser').val(name);
+   $('#emailEditUser').val(email);
+   $('#phoneEditUser').val(phone);
+   $('#editUserModal').modal('show');
+ });
+
+ var idDeleteTeacher;
+ var rowDeleteTeacher;
+ $('#list_teacher').on('click','.btn-delete-user',function(){
+   idDeleteTeacher = $(this).closest('tr').attr("id");
+   $('#confrimDeleteUserModal').modal('show');
+     rowDeleteTeacher = $(this).closest('tr');
+ });
+
+ // $('#btConfrimDelete').on('click',function(){
+ //   rootRef.child(idDeleteTeacher).remove().then(function(){
+ //       $('#deleteUserModal').modal('show');
+ //       rowDeleteTeacher.remove();
+ //   });
+ // })
+
+
+ rootRef.on("child_added",snap => {
 
    var key = snap.key;
    var level = snap.child("level").val();
@@ -71,16 +101,43 @@ $(document).ready(function(){
  if(key != sessionStorage.getItem("userId")){
    if(level == "เจ้าหน้าที่บริหารงานทั่วไป"){
    $('#list_staff').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
-       "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td><td><span class='"+'label label-success'+"'>"+level+"</span></td>"+
+       "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td>"+
        "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
        " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
      }
  }
- $('#loaderStaff').hide();
+
 });
 
-var rootRefTa = dbRef.ref().child("users");
-rootRefTa.on("child_added",snap => {
+$('#list_staff').on('click','.btn-edit-user',function(){
+  var image = $(this).closest('tr').find(".avatar").attr("src");
+  var name =  $(this).closest('tr').find(".txtname").text();
+  var email =  $(this).closest('tr').find(".txtemail").text();
+  var phone =  $(this).closest('tr').find(".txtphone").text();
+  $('#imgShowEdit').attr("src",image);
+  $('#nameEditUser').val(name);
+  $('#emailEditUser').val(email);
+  $('#phoneEditUser').val(phone);
+  $('#editUserModal').modal('show');
+});
+
+var idDeleteStaff;
+var rowDeleteStaff;
+$('#list_staff').on('click','.btn-delete-user',function(){
+  idDeleteStaff = $(this).closest('tr').attr("id");
+  $('#confrimDeleteUserModal').modal('show');
+    rowDeleteStaff = $(this).closest('tr');
+});
+
+// $('#btConfrimDelete').on('click',function(){
+//   rootRef.child(idDeleteStaff).remove().then(function(){
+//       $('#deleteUserModal').modal('show');
+//       rowDeleteStaff.remove();
+//   });
+// })
+
+
+rootRef.on("child_added",snap => {
 
  var key = snap.key;
  var level = snap.child("level").val();
@@ -94,15 +151,15 @@ rootRefTa.on("child_added",snap => {
 if(key != sessionStorage.getItem("userId")){
  if(level == "ผู้ช่วยสอนและวิจัย"){
  $('#list_ta').append("<tr id='"+snap.key+"'><td ><div id='"+'container'+"'><img id='"+'imageListProfile'+"'src='"+image+"' class='"+'avatar'+"' style='"+office+"'></td>"+
-     "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td><td><span class='"+'label label-success'+"'>"+level+"</span></td>"+
+     "<td class='"+'txtname'+"'>" + name + "</td><td  class='"+'txtemail'+"'>" + email +"</td><td class='"+'txtphone'+"'>" + phone +"</td>"+
      "<td><a href='"+'javascript:void(0)'+"'  class='"+'text-inverse p-r-10 btn-edit-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Edit'+"'><i class='"+'ti-marker-alt'+"'></i></a>"+
      " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-user'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
    }
 }
-$('#loaderTa').hide();
 });
-
-$('#list_teacher').on('click','.btn-edit-user',function(){
+var idUpdate;
+$('#list_ta').on('click','.btn-edit-user',function(){
+  idUpdate = $(this).closest('tr').attr("id");
   var image = $(this).closest('tr').find(".avatar").attr("src");
   var name =  $(this).closest('tr').find(".txtname").text();
   var email =  $(this).closest('tr').find(".txtemail").text();
@@ -114,6 +171,20 @@ $('#list_teacher').on('click','.btn-edit-user',function(){
   $('#editUserModal').modal('show');
 });
 
+var idDeleteTa;
+var rowDeleteTa;
+$('#list_ta').on('click','.btn-delete-user',function(){
+  idDeleteTa = $(this).closest('tr').attr("id");
+  $('#confrimDeleteTaModal').modal('show');
+    rowDeleteTa = $(this).closest('tr');
+});
+
+$('#btConfrimDelete').on('click',function(){
+  rootRef.child(idDeleteTa).remove().then(function(){
+      $('#deleteUserModal').modal('show');
+      rowDeleteTa.remove();
+  });
+})
 
 
  $('#btAddUser').on('click',function(e){
@@ -249,6 +320,17 @@ $('#list_teacher').on('click','.btn-edit-user',function(){
               }
           });
        });
+
+  $('#btEditUser').on('click',function(){
+    $('#editUserModal').modal('hide');
+    var dataUpdate = {
+      name:$('#nameEditUser').val(),
+      email:$('#emailEditUser').val(),
+      telephone:$('#phoneEditUser').val()
+    };
+    usersRef.child(idUpdate).update(dataUpdate);
+
+  });
 
 });
 

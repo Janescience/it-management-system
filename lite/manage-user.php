@@ -29,7 +29,15 @@
     -moz-border-radius: 500px;
 }
 
-  #list_user td{
+  #list_teacher td{
+   text-align:center;
+   vertical-align:middle;
+  }
+  #list_staff td{
+   text-align:center;
+   vertical-align:middle;
+  }
+  #list_ta td{
    text-align:center;
    vertical-align:middle;
   }
@@ -103,15 +111,12 @@
                                                 <th class="text-center">ชื่อ-นามสกุล</th>
                                                 <th class="text-center">อีเมลล์</th>
                                                 <th class="text-center">หมายเลขโทรศัพท์</th>
-                                                <th class="text-center">บทบาท</th>
                                                 <th class="text-center">จัดการ</th>
                                             </tr>
                                             <tr class="warning no-result">
                                               <td colspan="6"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                             </tr>
-                                            <tr id="loaderUser">
-                                              <td colspan="6"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
-                                            </tr>
+
                                         </thead>
                                         <tbody id="list_teacher">
 
@@ -159,15 +164,12 @@
                                                 <th class="text-center">ชื่อ-นามสกุล</th>
                                                 <th class="text-center">อีเมลล์</th>
                                                 <th class="text-center">หมายเลขโทรศัพท์</th>
-                                                <th class="text-center">บทบาท</th>
                                                 <th class="text-center">จัดการ</th>
                                             </tr>
                                             <tr class="warning no-result">
                                               <td colspan="6"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                             </tr>
-                                            <tr id="loaderStaff">
-                                              <td colspan="6"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
-                                            </tr>
+
                                         </thead>
                                         <tbody id="list_staff">
 
@@ -215,15 +217,12 @@
                                                 <th class="text-center">ชื่อ-นามสกุล</th>
                                                 <th class="text-center">อีเมลล์</th>
                                                 <th class="text-center">หมายเลขโทรศัพท์</th>
-                                                <th class="text-center">บทบาท</th>
                                                 <th class="text-center">จัดการ</th>
                                             </tr>
                                             <tr class="warning no-result">
                                               <td colspan="6"><i class="fa fa-warning"></i> ไม่มีข้อมูล</td>
                                             </tr>
-                                            <tr id="loaderTa">
-                                              <td colspan="6"><img src="../images/ajax-loader.gif">  กำลังโหลดข้อมูล...</td>
-                                            </tr>
+
                                         </thead>
                                         <tbody id="list_ta">
 
@@ -269,6 +268,24 @@
           </div>
           <div class="modal-footer">
             <button id="btClose" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--================================================================================================-->
+
+    <!--==================================== Delete ====================================================-->
+
+    <div class="modal fade" id="confrimDeleteTaModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" >ต้องการลบผู้ใช้คนนี้ ?</h4>
+          </div>
+          <div class="modal-footer">
+            <button id="btConfrimDelete" class="btn btn-success" data-dismiss="modal">ตกลง</button>
+            <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
           </div>
         </div>
       </div>
@@ -361,14 +378,34 @@
 <div class="col-md-12">
 
       <form class="form-horizontal">
-        <center>
-        <img id="imgShowEdit" width="150px" class="img-circle">
-      </center>
+
+          <div class="row">
+        <h4 class="col-lg-6 text-center">รูปภาพปัจจุบัน</h4>
+        <h4 class="col-lg-6 text-center">รูปภาพที่ต้องการอัปโหลด</h4>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 text-center">
+        <img id="imgShowEdit" width="150px" class="img-circle ">
+      </div>
+      <div class="col-lg-6 text-center">
+        <img class="img-show " width="150px" />
+      </div>
+          </div>
+      <br>
         <div class="form-group">
           <label for="nameCreateUser">รูปภาพประจำตัว</label>
-              <div class="input-group">
-              <div class="input-group-addon"><i class="ti-image"></i></div>
-              <input class="form-control" type="file" id="fileUploadImageCreateUser"><hr>
+            <div class="col-md-12">
+                <div class="form-group text-center">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-secondary btn-file">
+                                เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadImageEditUser" >
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" readonly>
+                    </div>
+
+                </div>
             </div>
         </div>
 

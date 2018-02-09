@@ -1750,3 +1750,125 @@
 </div>
 
 <!--======================================================================================================-->
+
+
+<!--==================================== Add Person Work ================================================-->
+
+<div class="modal fade" id="addPersonWorkModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">ผลงานวิชาการ (เพิ่ม)</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+            <label >ชื่อรางวัล</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-cup"></i></div>
+                <input id="nameAwardPersonWorkAdd" type="text"  class="form-control" />
+            </div>
+        </div>
+
+        <div  class="form-group">
+            <label >ชื่อผลงาน</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-medall-alt"></i></div>
+                <input id="nameWorkPersonWorkAdd" type="text"  class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label >รายละเอียด</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-comment"></i></div>
+                <textarea id="detailPersonWorkAdd" type="text" rows="5" class="form-control" ></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label >หน่วยงานที่ให้รางวัล</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-location-pin"></i></div>
+                <textarea id="departmentPersonWorkAdd" type="text" rows="3" class="form-control" ></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label >วัน เดือน ปี ที่ให้รางวัล</label>
+              <div class="col-lg-10">
+                <input class="form-control" type="date" id="datePersonWorkAdd" id="example-date-input">
+              </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btAddPersonWork" type="button" class="btn btn-success "><i class="fa fa-check"></i> บันทึก</button>
+        <button  class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--======================================================================================================-->
+
+
+<!--==================================== Edit Person Work ================================================-->
+
+<div class="modal fade" id="editPersonWorkModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">ผลงานวิชาการ (แก้ไข)</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+            <label >ชื่อรางวัล</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-cup"></i></div>
+                <input id="nameAwardPersonWorkEdit" type="text"  class="form-control" />
+            </div>
+        </div>
+
+        <div  class="form-group">
+            <label >ชื่อผลงาน</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-medall-alt"></i></div>
+                <input id="nameWorkPersonWorkEdit" type="text"  class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label >รายละเอียด</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-comment"></i></div>
+                <textarea id="detailPersonWorkEdit" type="text" rows="5" class="form-control" ></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label >หน่วยงานที่ให้รางวัล</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-location-pin"></i></div>
+                <textarea id="departmentPersonWorkEdit" type="text" rows="3" class="form-control" ></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label >วัน เดือน ปี ที่ให้รางวัล</label>
+              <div class="col-lg-10">
+                <input class="form-control" type="date" id="datePersonWorkEdit" id="example-date-input">
+              </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btEditPersonWork" type="button" class="btn btn-success "><i class="fa fa-check"></i> บันทึก</button>
+        <button  class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--======================================================================================================-->
