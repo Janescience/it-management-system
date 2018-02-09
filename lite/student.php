@@ -50,19 +50,18 @@
             <h4 class="m-b-0 text-white">ระดับปริญญาตรี</h4>
           </div>
           <div class="card-body">
+            <div class="card-block">
               <div class="row">
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-5">
-                            <div class="card" style="margin-top: 20px;margin-bottom: 20px;">
+
+                <div class="col-lg-6">
+                            <div class="card text-center">
                                 <div class="card-block">
                                     <i class="fa fa-trophy fa-5x" aria-hidden="true"></i>
                                 <h4 class="card-title">ผลงานนักศึกษา</h4>
 
-                                <!-- <h6 class="card-subtitle">ระดับปริญญาตรี</h6> -->
 
                                 <form action="/action_page.php">
-                                <button type="button" id="btAddBechelorPortfolio" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มผลงาน</button>
+                                <button type="button" id="btAddBechelorPortfolio" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มผลงาน</button><span class="hidden-md-up"><br><br></span>
                                 <button type="button" id="btShowBechelorPortfolio" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-hand-o-right"></i>  จัดการผลงาน  <i class="ti ti-medall"></i></button>
                                 </form>
 
@@ -70,18 +69,15 @@
                             </div>
                 </div>
 
-                <div class="col-lg-5">
-                            <div class="card" style="margin-top: 20px;margin-right: 25px;margin-bottom: 20px;">
+                <div class="col-lg-6">
+                            <div class="card text-center">
                                 <div class="card-block">
                                     <i class="fa fa-camera-retro fa-5x" aria-hidden="true"></i>
                                 <h4 class="card-title">ภาพกิจกรรมนักศึกษา</h4>
 
-
-                                <!-- <h6 class="card-subtitle">ระดับปริญญาตรี</h6> -->
-
                                 <form action="/action_page.php">
 
-                                <button type="submit" id="btAddBechelorActivity" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มกิจกรรม</button>
+                                <button type="submit" id="btAddBechelorActivity" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มกิจกรรม</button><span class="hidden-md-up"><br><br></span>
                                 <button type="button" id="btShowBechelorActivity" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-hand-o-right"></i>  จัดการกิจกรรม  <i class="fa fa-bullhorn"></i></button>
 
                                 </form>
@@ -89,7 +85,7 @@
                                 </div>
                             </div>
                 </div>
-
+              </div>
               </div>
             </div>
           </div>
@@ -103,11 +99,11 @@
                 <h4 class="m-b-0 text-white">ระดับบัณฑิตศึกษา</h4>
               </div>
               <div class="card-body">
+                <div class="card-block">
                 <div class="row">
-                  <div class="col-lg-1">
-                  </div>
-                <div class="col-lg-5">
-                            <div class="card" style="margin-top: 20px;margin-bottom: 20px;">
+
+                <div class="col-lg-6">
+                            <div class="card text-center" >
                                 <div class="card-block">
                                     <i class="fa fa-trophy fa-5x" aria-hidden="true"></i>
                                 <h4 class="card-title">ผลงานบัณฑิตศึกษา</h4>
@@ -116,7 +112,7 @@
 
                                 <form action="/action_page.php">
 
-                                <button type="submit" id="btAddGraduatePortfolio" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มผลงาน</button>
+                                <button type="submit" id="btAddGraduatePortfolio" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มผลงาน</button><span class="hidden-md-up"><br><br></span>
                                 <button type="button" id="btShowGraduatePortfolio" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-hand-o-right"></i>  จัดการผลงาน  <i class="ti ti-medall"></i></button>
                                 </form>
 
@@ -124,8 +120,8 @@
                             </div>
                 </div>
 
-                <div class="col-lg-5">
-                            <div class="card" style="margin-top: 20px;margin-right: 25px;margin-bottom: 20px;">
+                <div class="col-lg-6">
+                            <div class="card text-center" >
                                 <div class="card-block">
                                     <i class="fa fa-camera-retro fa-5x" aria-hidden="true"></i>
                                 <h4 class="card-title">ภาพกิจกรรมบันฑิตศึกษา</h4>
@@ -135,14 +131,14 @@
 
                                 <form action="/action_page.php">
 
-                                <button type="submit" id="btAddGraduateActivity" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มกิจกรรม</button>
+                                <button type="submit" id="btAddGraduateActivity" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-plus"></i>  เพิ่มกิจกรรม</button><span class="hidden-md-up"><br><br></span>
                                 <button type="button" id="btShowGraduateActivity" class="btn btn-info waves-effect waves-light m-r-10"><i class="fa fa-hand-o-right"></i>  จัดการกิจกรรม  <i class="fa fa-bullhorn"></i></button>
                                 </form>
 
                                 </div>
                             </div>
                 </div>
-
+              </div>
               </div>
             </div>
           </div>

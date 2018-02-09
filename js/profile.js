@@ -20,6 +20,7 @@ $(document).ready(function(){
 
  $.LoadingOverlay("show");
 
+
  var txtlevel = usersRef.child(sessionStorage.getItem("userId")).child('level');
  txtlevel.on('value',snap=>{
    if(snap.val() == "คณาจารย์และบุคลากร"){
