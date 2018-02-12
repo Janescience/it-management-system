@@ -18,10 +18,18 @@ $(document).ready(function(){
       var topic = snap.child('topic').val();
       var date = snap.child('date').val();
       var time = snap.child('time').val();
+      var id = snap.child('id').val();
+
  $.LoadingOverlay("hide");
-      $('#list_history').prepend("<tr><td>" + name + "</td><td>" + action + "</td><td>" + page + "</td><td>" + topic + "</td><td>" + date + "</td><td>" + time + "</td>"+
-                               "</tr>");
-                          
+        if(id == sessionStorage.getItem("userId")){
+          $('#list_history').prepend("<tr ><td >" + name + "</td><td>" + action + "</td><td>" + page + "</td><td>" + topic + "</td><td>" + date + "</td><td><span class='"+'label label-danger text-white'+"'>" + time + "</span></td>"+
+                                  "</tr>");
+        }else{
+          $('#list_history').prepend("<tr><td>" + name + "</td><td>" + action + "</td><td>" + page + "</td><td>" + topic + "</td><td>" + date + "</td><td><span class='"+'label label-success text-white'+"'>" + time + "</span></td>"+
+                                  "</tr>");
+        }
+
+
       key = snap.key;
       console.log("table on ready");
     });

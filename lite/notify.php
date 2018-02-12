@@ -3,6 +3,7 @@
   // $Token = $_POST["Token"];
   $message = $_GET["message"];
   $page = $_GET["page"];
+  $type = $_GET["type"];
 
   $lineapi = "mz0dTbhLDkDQ7ypumci9q91nLzwIcVhCubtj0vi15dY"; // ใส่ token key ที่ได้มา
 	$mms =  trim($message); // ข้อความที่ต้องการส่ง
@@ -34,7 +35,16 @@
   }else if($page == "หลักสูตร"){
     echo "<script>window.location.href = 'course.php' </script>";
   }else if($page == "ผลงานและกิจกรรม"){
-    echo "<script>window.location.href = 'student.php' </script>";
+    
+    if($type == "ผลงานระดับปริญญาตรี"){
+      echo "<script>window.location.href = 'showBechelorPortfolio.php' </script>";
+    }else if($type == "ผลงานระดับบัณฑิตศึกษา"){
+      echo "<script>window.location.href = 'showGraduatePortfolio.php' </script>";
+    }else if($type == "กิจกรรมระดับปริญญาตรี"){
+      echo "<script>window.location.href = 'showBechelorActivity.php' </script>";
+    }else if($type == "กิจกรรมระดับปริญญาตรี"){
+      echo "<script>window.location.href = 'showGraduateActivity.php' </script>";
+    }
   }else if($page == "ข้อมูลส่วนตัว"){
     echo "<script>window.location.href = 'pages-profile.php' </script>";
   }else if($page == "จัดการผู้ใช้ในระบบ"){

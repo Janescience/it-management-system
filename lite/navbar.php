@@ -40,16 +40,16 @@
                                         <div class="drop-title">การแจ้งเตือน</div>
                                     </li>
                                     <li style="overflow: visible;">
-                                        <div class="slimScrollDiv" style="position: relative; overflow-x: visible; overflow-y: hidden; width: auto; height: 250px;">
-                                          <div id="notify" class="message-center" style="overflow: hidden; width: auto; height: 250px;">
+                                        <div class="slimScrollDiv" >
+                                          <div id="notify" class="message-center" >
 
                                         </div>
-                                        <div class="slimScrollBar" style="background: rgb(220, 220, 220); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 192.901px;"></div>
-                                        <div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                                        <div class="slimScrollBar" ></div>
+                                        <div class="slimScrollRail"></div>
                                       </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>ดูการแจ้งเตือนทั้งหมด</strong> <i class="fa fa-angle-right"></i> </a>
+                                        <a class="nav-link text-center" href="history.php"> <strong>ดูการแจ้งเตือนทั้งหมด</strong> <i class="fa fa-angle-right"></i> </a>
                                     </li>
                                 </ul>
                             </div>
@@ -88,15 +88,9 @@
             <ul id="sidebarnav">
                 <li > <a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">เมนูหลัก</span></a>
                   <ul aria-expanded="true" class="collapse in">
-<<<<<<< HEAD
-                               <li ><a id="indexPage" href="index.php">หน้าแรก</a></li>
-                               <li><a href="courses.php">หลักสูตร</a></li>
-                               <li><a id="studentPage" href="student.php">นักศึกษา</a></li>
-=======
                                <li hidden id="indexMenu" ><a id="indexPage" href="index.php">หน้าแรก</a></li>
                                <li hidden id="courseMenu" ><a id="coursePage" href="courses.php">หลักสูตร</a></li>
                                <li hidden id="studentMenu"><a id="studentPage" href="student.php">ผลงานและกิจกรรม</a></li>
->>>>>>> lasted version
                            </ul></li>
                 <li> <a class="waves-effect waves-dark" href="pages-profile.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">ข้อมูลส่วนตัว</span></a>
                 </li>

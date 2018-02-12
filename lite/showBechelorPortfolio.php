@@ -114,13 +114,13 @@
                                       <thead >
                                           <tr >
                                               <th class="text-center">แสดง</th>
-                                              <th class="text-center">ชื่อผลงาน</th>
+                                              <th class="text-center">ชื่อ</th>
                                               <th class="text-center">รายละเอียด</th>
-                                              <th class="text-center">กลุ่มผลงาน</th>
-                                              <th class="text-center">ระดับผลงาน</th>
+                                              <th class="text-center">กลุ่ม</th>
+                                              <th class="text-center">ระดับ</th>
                                               <th class="text-center">ปีที่ได้รับรางวัล</th>
                                               <th class="text-center">รูปภาพ</th>
-                                              <th class="text-center">จัดการผลงาน</th>
+                                              <th class="text-center">จัดการ</th>
                                           </tr>
                                           <tr class="warning no-result">
                                             <td colspan="8"><i class="fa fa-warning"></i> ไม่พบผลลัพธ์</td>

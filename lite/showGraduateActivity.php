@@ -64,7 +64,7 @@
                     <h2 class="text-themecolor">บัณฑิตศึกษา </h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">จัดการกิจกรรม</a></li>
-                        <li class="breadcrumb-item active">กิจกรรมของนักศึกษาระดับปริญญาตรี</li>
+                        <li class="breadcrumb-item active">กิจกรรมของนักศึกษาระดับบัณฑิตศึกษา</li>
                     </ol>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                             </select>
                           </div>
                           <div align="right" class="form-group">
-                            <button id="DeleteBechelorActivity" class="btn btn-danger"><i class="fa fa-close"></i> ลบกิจกรรม</button>
+                            <button id="DeleteGraduateActivity" class="btn btn-danger"><i class="fa fa-close"></i> ลบกิจกรรม</button>
                           </div>
                         </div>
                         <div class="col-md-3">
@@ -119,7 +119,7 @@
                               <label class="col-md-12">ชื่อกิจกรรม</label>
                               <div class="input-group">
                               <div class="input-group-addon"><i class="fa fa-grav"></i></div>
-                                <input id="BechelorActivityName" type="text"  class="form-control form-control-line">
+                                <input id="GraduateActivityName" type="text"  class="form-control form-control-line">
                               </div>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                               <label class="col-md-12">รายละเอียด</label>
                               <div class="input-group">
                               <div class="input-group-addon"><i class="fa fa-list"></i></div>
-                                <textarea class="form-control" rows="5" id="BechelorActivityDetail" ></textarea>
+                                <textarea class="form-control" rows="5" id="GraduateActivityDetail" ></textarea>
                               </div>
                           </div>
                         </div>
@@ -147,11 +147,11 @@
                               <label class="col-md-12">วันที่จัดกิจกรรม</label>
                               <div class="row" style="margin-left: 30px;margin-right: 0px;">
                                 <div class="col-md-5" style="padding-right: 0px;padding-left: 0px;">
-                                    <input  class="form-control form-control-line" type="date" id="BechelorActivityDateFrom"  name="BechelorActivityDateFrom" value="" >
+                                    <input  class="form-control form-control-line" type="date" id="GraduateActivityDateFrom"  name="GraduateActivityDateFrom" value="" >
                                 </div>
                                 <label class="col-md-1" style="padding-left: 10px;padding-right: 5px;margin-top: 10px;height: 20px;">ถึง</label>
                                 <div class="col-md-5" style="padding-right: 0px;padding-left: 0px;">
-                                    <input  class="form-control form-control-line" type="date" id="BechelorActivityDateTo"  name="BechelorActivityDateTo" value="" >
+                                    <input  class="form-control form-control-line" type="date" id="GraduateActivityDateTo"  name="GraduateActivityDateTo" value="" >
                                 </div>
                           </div>
                         </div>
@@ -181,10 +181,10 @@
                                     <div class="input-group">
                                         <span class="input-group-btn">
                                             <span class="btn btn-secondary btn-file">
-                                                เลือกรูปภาพ <input type="file" class="file-upload" id="BechelorActivityImage" accept="image/*" multiple="60" name="image" >
+                                                เลือกรูปภาพ <input type="file" class="file-upload" id="GraduateActivityImage" accept="image/*" multiple="60" name="image" >
                                             </span>
                                         </span>
-                                        <input type="text" class="form-control" id="BechelorActivityImageText" readonly>
+                                        <input type="text" class="form-control" id="GraduateActivityImageText" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -215,10 +215,10 @@
                                   <div class="input-group">
                                       <span class="input-group-btn">
                                           <span class="btn btn-secondary btn-file">
-                                              เลือกวิดีโอ <input type="file" class="file-upload" id="BechelorActivityVideo" accept="video/*" multiple="5" name="video" >
+                                              เลือกวิดีโอ <input type="file" class="file-upload"  id="GraduateActivityVideo" accept="video/*" multiple="5" name="video" >
                                           </span>
                                       </span>
-                                      <input type="text" class="form-control" id="BechelorActivityVideoText" readonly>
+                                      <input type="text" class="form-control" id="GraduateActivityVideoText" readonly>
                                   </div>
                               </div>
                           </div>
@@ -230,15 +230,15 @@
 
                       <div class="col-md-9">
                         <div align="right" class="">
-                          <button id="EditBechelorActivity" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i>   แก้ไขรายละเอียด</button>
-                          <button id="SaveEditBechelorActivity" class="btn btn-info" >   ตกลง</button>
-                          <button id="CancelEditBechelorActivity" class="btn btn-danger">   ยกเลิก</button>
-                          <button id="EditBechelorActivityImage" class="btn btn-success"><i class="fa fa-file-image-o"></i>   แก้ไขรูปภาพ</button>
-                          <button id="SaveEditBechelorActivityImage" class="btn btn-info" >   ตกลง</button>
-                          <button id="CancelEditBechelorActivityImage" class="btn btn-danger">   ยกเลิก</button>
-                          <button id="EditBechelorActivityVideo" class="btn btn-light"><i class="fa fa-file-video-o"></i>   แก้ไขวีดีโอ</button>
-                          <button id="SaveEditBechelorActivityVideo" class="btn btn-info" >   ตกลง</button>
-                          <button id="CancelEditBechelorActivityVideo" class="btn btn-danger">   ยกเลิก</button>
+                          <button id="EditGraduateActivity" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i>   แก้ไขรายละเอียด</button>
+                          <button id="SaveEditGraduateActivity" class="btn btn-info" >   ตกลง</button>
+                          <button id="CancelEditGraduateActivity" class="btn btn-danger">   ยกเลิก</button>
+                          <button id="EditGraduateActivityImage" class="btn btn-success"><i class="fa fa-file-image-o"></i>   แก้ไขรูปภาพ</button>
+                          <button id="SaveEditGraduateActivityImage" class="btn btn-info" >   ตกลง</button>
+                          <button id="CancelEditGraduateActivityImage" class="btn btn-danger">   ยกเลิก</button>
+                          <button id="EditGraduateActivityVideo" class="btn btn-light"><i class="fa fa-file-video-o"></i>   แก้ไขวีดีโอ</button>
+                          <button id="SaveEditGraduateActivityVideo" class="btn btn-info" >   ตกลง</button>
+                          <button id="CancelEditGraduateActivityVideo" class="btn btn-danger">   ยกเลิก</button>
                         </div>
                       </div>
                   </div><br/>
@@ -272,6 +272,9 @@
                           <div class="card">
                               <div class="card-block">
                                 <h4 class="card-title">วีดีโอทั้งหมด</h4>
+                                <center hidden id="loadingVideo">
+                                  <img src="../images/ajax-loader.gif"  width="50px"> กำลังอัปโหลดวิดีโอ...
+                                </center><br>
                                   <div class="row"  id="ActvVideo">
                                   </div>
                               </div>
@@ -284,7 +287,7 @@
           </div>
         </div>
 
-        <!-- Edit Bechelor Activity Modal -->
+        <!-- Edit Graduate Activity Modal -->
 
               <!-- </form> -->
             </div>
@@ -296,7 +299,7 @@
   </div>
   <?php include('modal-student.php')?>
   <?php include('import-javascript.php')?>
-  <script src="../js/showBechelorActivity.js"></script>
+  <script src="../js/showGraduateActivity.js"></script>
 
 </body>
 

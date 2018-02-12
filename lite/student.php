@@ -65,7 +65,7 @@
                             <div class="card text-center">
                                 <div class="card-block">
                                     <i class="fa fa-trophy fa-5x" aria-hidden="true"></i>
-                                <h4 class="card-title">ผลงานนักศึกษา</h4>
+                                <h4 class="card-title">ผลงานปริญญาตรี</h4>
 
 
                                 <form action="/action_page.php">
@@ -81,7 +81,7 @@
                             <div class="card text-center">
                                 <div class="card-block">
                                     <i class="fa fa-camera-retro fa-5x" aria-hidden="true"></i>
-                                <h4 class="card-title">กิจกรรมนักศึกษา</h4>
+                                <h4 class="card-title">กิจกรรมปริญญาตรี</h4>
 
                                 <form action="/action_page.php">
 
@@ -334,10 +334,6 @@
             <div class="form-group">
                 <div class="col-sm-12 text-center">
                   <button id="btSubmitBechelorActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   บันทึก</button>
-<<<<<<< HEAD
-                  <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> ยกเลิก</button>
-=======
->>>>>>> lasted version
                   <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                 </div>
             </div>
@@ -526,10 +522,6 @@
             <div class="form-group">
                 <div class="col-sm-12 text-center">
                   <button id="btSubmitGraduateActivity" type="button" class="btn btn-success "><i class="fa fa-check"></i>   บันทึก</button>
-<<<<<<< HEAD
-                  <button id="btClearTextFile" type="button" class="btn btn-outline-inverse "><i class="mdi mdi-close"></i> ยกเลิก</button>
-=======
->>>>>>> lasted version
                   <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                 </div>
             </div>
