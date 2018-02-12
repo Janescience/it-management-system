@@ -221,6 +221,7 @@ $('#list_ta').on('click','.btn-edit-user',function(){
   $('#nameEditUser').val(name);
   $('#emailEditUser').val(email);
   $('#phoneEditUser').val(phone);
+  $('#urlUploadImageCreateUser').val("");
   $('#editUserModal').modal('show');
 });
 
@@ -242,6 +243,8 @@ $('#btConfrimTaDelete').on('click',function(){
 
  $('#btAddUser').on('click',function(e){
    e.preventDefault();
+   $('#urlUploadImageCreateUser').val("");
+   $('#imgShowCreate').removeAttr('src');
     $('#addUserModal').modal('show');
  });
 

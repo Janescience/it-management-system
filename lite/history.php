@@ -40,11 +40,7 @@
             <div class="container-fluid">
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">ประวัติการแก้ไข</a></li>
-                            <li class="breadcrumb-item active">จัดการ</li>
-                        </ol>
+                    <h3 class="text-themecolor m-b-0 m-t-0">ประวัติการแก้ไข</h3>
                     </div>
                 </div>
                 <!-- Row -->
@@ -62,7 +58,7 @@
 
                       <div class="card">
                         <div class="card-block">
-
+                          <h2></h2>
                         <div class="card-block ">
 
                           <div class="col-md-4">
@@ -77,13 +73,16 @@
                           </div>
 
                       </div>
+                      <div  class="card-block bg-info">
+                        <h3 class="text-white card-title">ประวัติการแก้ไขทั้งหมด</h3>
+                        </div>
                               <form class="form-horizontal form-material ">
 
                                 <div class="table-responsive">
-                                    <table id="tableHistory" class="table text-center results ">
+                                    <table id="tableHistory" class="table text-center results color-bordered-table success-bordered-table">
                                         <thead >
                                             <tr >
-                                                <th class="text-center">ชื่อ - นามสกุล</th>
+                                                <th class="text-center">ชื่อ-นามสกุล</th>
                                                 <th class="text-center">สิ่งที่ทำ</th>
                                                 <th class="text-center">หน้า</th>
                                                 <th class="text-center">หัวข้อ</th>

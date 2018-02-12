@@ -64,8 +64,6 @@ $('#CancelEditBechelorActivityVideo').hide();
 
 // ========================================= Put Bechelor Activity To Input =========================================
   $('#selectActivity').on('change',function(){
-    countDeleteImage = 0;
-    countDeleteVideo = 0;
     actName = $(this).children(":selected").attr("id");
    del = $(this).children(":selected");
    $('#ActvImage').empty();
@@ -160,7 +158,6 @@ $('#CancelEditBechelorActivityVideo').hide();
 
    $('#ActvImage').on('click','.delete',function(e){
 
-     countDeleteImage = countDeleteImage+1;
 
      var id = $(this).closest('ul').attr("id");
 
@@ -179,39 +176,10 @@ $('#CancelEditBechelorActivityVideo').hide();
      }).catch(function(error) {
      });
 
-     rootRef.child(actName).child('activity_image').child(id).remove().then(function(){
-         $('#DeletePicture').modal('show');
-     });
+     rootRef.child(actName).child('activity_image').child(id).remove();
+     $(this).closest('div').parent().parent().parent().remove();
 
-     // for(var i = 0;i< countDeleteImage;i++){
-     //   $('#ActvImage :nth-last-child').remove();
-     // }
-
-     // for(var i = 0;i< countDeleteImage;i++){
-     //  $('#ActvImage').last().remove();
-     // }
-
-
-       $('#ActvImage').empty();
-
-       var dbImage = rootRef.child(actName).child('activity_image');
-       dbImage.on('child_added',snap => {
-          Image = snap.child('images').val();
-          key = snap.key;
-
-          $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
-                  "<div  class='"+'el-card-item'+"'>"+
-                      "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' width='"+'100px'+"' style='"+'border-radius: 10px;'+"' alt='"+'user'+"'>"+
-                          "<div class='"+'el-overlay'+"'>"+
-                              "<ul id='"+key+"' class='"+'el-info'+"'>"+
-                              "<a class='"+'image-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
-                              "</ul>"+
-                          "</div>"+
-                      "</div>"+
-                  "</div>"+
-          "</div>");
-
-       });
+     $('#DeletePicture').modal('show');
 
 
      });
@@ -225,17 +193,16 @@ $('#CancelEditBechelorActivityVideo').hide();
        $("#ActvVideo :nth-last").remove();
      }
 
-     $('#ActvVideo').append("<div class='"+'card-block'+"'><div  class='"+'col-lg-3 col-md-3 col-sm-6'+"'>"+
+     $('#ActvVideo').append("<div  class='"+'text-center col-lg-4 col-xlg-4 col-md-4 col-sm-6'+"'>"+
                  "<video   style='"+'border-radius:10px;'+"' width='"+'200px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
                          "<ul id='"+key+"' class='"+'el-info'+"'>"+
                              "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
                          "</ul>"+
-                       "</div></div>");
+                       "</div>");
    });
 
    $('#ActvVideo').on('click','.delete',function(e){
 
-     countDeleteVideo = countDeleteVideo+1;
 
      var id = $(this).closest('ul').attr("id");
 
@@ -252,26 +219,12 @@ $('#CancelEditBechelorActivityVideo').hide();
      }).catch(function(error) {
      });
 
-     rootRef.child(actName).child('activity_video').child(id).remove().then(function(){
-         $('#deletePortModal').modal('show');
-     });
-       // $(this).closest('ul').remove();
+     rootRef.child(actName).child('activity_video').child(id).remove();
 
-       $('#ActvVideo').empty();
+      $(this).closest('div').remove();
 
-       var dbVideo = rootRef.child(actName).child('activity_video');
-       dbVideo.on('child_added',snap => {
-          Video = snap.child('videos').val();
-          key = snap.key;
+      $('#DeleteVideo').modal('show');
 
-          $('#ActvVideo').append("<div  class='"+'col-lg-4 col-md-4 col-sm-6'+"'>"+
-                      "<video  style='"+'height:150px;margin-left:35px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
-                              "<ul id='"+key+"' class='"+'el-info'+"'>"+
-                                  "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
-                              "</ul>"+
-                            "</div>");
-
-       });
 
 
      });
@@ -319,9 +272,6 @@ $('#CancelEditBechelorActivityVideo').hide();
 // ========================================= Save Edit Text Bechelor Activity Button =========================================
   $('#SaveEditBechelorActivity').on('click',function(e){
       e.preventDefault();
-
-      // clickBtEditAct = clickBtEditAct+1;
-
 
       var updateActdata = {
 
@@ -400,9 +350,6 @@ $('#CancelEditBechelorActivityVideo').hide();
     $('#SaveEditBechelorActivityImage').on('click',function(e){
         e.preventDefault();
 
-
-        // clickBtEditAct= clickBtEditAct+1;
-
                 for (var i = 0; i < p.target.files.length; i++) {
                     var imageFile = p.target.files[i];
                     uploadImageAsPromise(imageFile);
@@ -424,18 +371,7 @@ $('#CancelEditBechelorActivityVideo').hide();
                     },function(){
                       var downloadImageURL = ImagesTask.snapshot.downloadURL;
 
-                      // BechelorActivityImage.push(downloadImageURL);
-
-                    //   qActImage = {
-                    //     activity_image:BechelorActivityImage
-                    // };
-                    // firebase.database().ref('website/student').child('bechelor').child('activity').child('image').push().set(downloadImageURL);
-                    firebase.database().ref('website/student').child('bechelor').child('activity').child(actName).child('activity_image').push().child('images').set(downloadImageURL).then(function(){
-
-                     console.log("Added Bechelor Activity Images :");
-                    });
-
-
+                    firebase.database().ref('website/student').child('bechelor').child('activity').child(actName).child('activity_image').push().child('images').set(downloadImageURL);
 
                 });
 
@@ -564,7 +500,6 @@ $('#CancelEditBechelorActivityVideo').hide();
     $('#DeleteBechelorActivity').on('click',function(e){
         e.preventDefault();
 
-        clickBtEditAct = clickBtEditAct+1;
 
         $('#BeforeDeleteActModal').modal('show');
 

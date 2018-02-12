@@ -351,7 +351,6 @@
 
                                       <div class="message-box contact-box">
                                         <div class="row">
-                                          <span class="counter pull-right"></span>
                                           <div class="input-group col-lg-5">
                                             <div class="input-group-addon"><i class="ti-search"></i></div>
                                             <input id="searchInterWork" type="text"  class="form-control" >
@@ -397,7 +396,6 @@
                                       <h4 class="text-white card-title">วารสารระดับชาติ</h4>
                                         <div class="message-box contact-box">
                                           <div class="row">
-                                            <span class="counter pull-right"></span>
                                             <div class="input-group col-lg-5">
                                               <div class="input-group-addon"><i class="ti-search"></i></div>
                                               <input id="searchNationJour" type="text"  class="form-control" >
@@ -443,7 +441,6 @@
                                         <h4 class="text-white card-title">วารสารระดับนานาชาติที่ไม่อยู่ในฐานข้อมูลสากล</h4>
                                           <div class="message-box contact-box">
                                             <div class="row">
-                                              <span class="counter pull-right"></span>
                                               <div class="input-group col-lg-4">
                                                 <div class="input-group-addon"><i class="ti-search"></i></div>
                                                 <input id="searchInterJourNotBase" type="text"  class="form-control" >
@@ -490,7 +487,6 @@
                                           <h4 class="text-white card-title">วารสารระดับนานาชาติที่อยู่ในฐานข้อมูลสากล</h4>
                                             <div class="message-box contact-box">
                                               <div class="row">
-                                                <span class="counter-inter-jour-in-base pull-right"></span>
                                                 <div class="input-group col-lg-4">
                                                   <div class="input-group-addon"><i class="ti-search"></i></div>
                                                   <input id="searchInterJourInBase" type="text"  class="form-control" >
@@ -536,7 +532,6 @@
                                           <h4 class="text-white card-title">ผลงานที่ได้รับรางวัลระดับชาติ</h4>
                                             <div class="message-box contact-box">
                                               <div class="row">
-                                                <span class="counter-nation-work pull-right"></span>
                                                 <div class="input-group col-lg-4">
                                                   <div class="input-group-addon"><i class="ti-search"></i></div>
                                                   <input id="searchNationWork" type="text"  class="form-control" >
@@ -581,7 +576,6 @@
                                             <h4 class="text-white card-title">การประชุมระดับชาติ</h4>
                                               <div class="message-box contact-box">
                                                 <div class="row">
-                                                  <span class="counter-nation-conference pull-right"></span>
                                                   <div class="input-group col-lg-4">
                                                     <div class="input-group-addon"><i class="ti-search"></i></div>
                                                     <input id="searchNationConference" type="text"  class="form-control" >
@@ -630,7 +624,6 @@
                                               <h4 class="text-white card-title">การประชุมระดับนานาชาติ</h4>
                                                 <div class="message-box contact-box">
                                                   <div class="row">
-                                                    <span class="counter-inter-conference pull-right"></span>
                                                     <div class="input-group col-lg-4">
                                                       <div class="input-group-addon"><i class="ti-search"></i></div>
                                                       <input id="searchInterConference" type="text"  class="form-control" >
@@ -735,7 +728,7 @@
                                         <th ><h6>Date / Time</h6></th>
                                         <th ><h6>8:30-9:00</h6></th>
                                         <th><h6>9:00-10:00</h6></th>
-                                        <th><h6>5:00-6:00</h6></th>
+                                        <th><h6>10:00-11:00</h6></th>
                                         <th><h6>11:00-12:00</h6></th>
                                         <th><h6>13:00-14:00</h6></th>
                                         <th><h6>14:00-15:00</h6></th>

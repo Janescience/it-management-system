@@ -2,6 +2,7 @@ $(document).ready(function(){
 	 $.LoadingOverlay("show");
 	var selectedFile;
 	var txt = "";
+	var page,topic,action,type;
 
 	var BecTypeEdit = "";
 	var GroupBecId = "";
@@ -192,41 +193,11 @@ $(document).ready(function(){
 		});
 
 
-						page = $('#studentPage').text();
-					    topic = $('#BechelorPortfolioGroup').val();
-					    action = "ลบประเภทผลงาน ";
-					    pushHistory();
             //
 						// for(var i = 0;i< clickBtEditBecPortGroup;i++){
 			      //   $('#BechelorPortfolioGroup option:last').remove();
 			      // }
 
-						function pushHistory(){
-						   var nameValue;
-						   var dateTimeCurrent = new Date();
-
-						   var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
-						   nameHistory.on('value',snap => {
-						     nameValue = snap.val();
-						   });
-
-						   var dataHistory = {
-						     id:sessionStorage.getItem("userId"),
-						     name:nameValue,
-						     page:page,
-						     topic:topic,
-						     action:action,
-						     date:dateTimeCurrent.toDateString(),
-						     time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
-						   };
-
-						   firebase.database().ref('history').push().set(dataHistory);
-
-						   var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
-						   var txtpage = page;
-
-						  window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
-						 }
 
 
 
@@ -269,41 +240,12 @@ $(document).ready(function(){
 				$('#DeleteBechelorPortfolioGroup').show();
 				$('#AddPortTypeModal').modal('show');
 
-				page = $('#studentPage').text();
-			    topic = $('#BechelorPortfolioGroup').val();
-			    action = "เพิ่มผลงาน ";
-			    pushHistory();
+
 
 				for(var i = 0;i< clickBtEditBecPortGroup;i++){
 	        $('#BechelorPortfolioGroup option:last').remove();
 	      }
 
-				function pushHistory(){
-				   var nameValue;
-				   var dateTimeCurrent = new Date();
-
-				   var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
-				   nameHistory.on('value',snap => {
-				     nameValue = snap.val();
-				   });
-
-				   var dataHistory = {
-				     id:sessionStorage.getItem("userId"),
-				     name:nameValue,
-				     page:page,
-				     topic:topic,
-				     action:action,
-				     date:dateTimeCurrent.toDateString(),
-				     time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
-				   };
-
-				   firebase.database().ref('history').push().set(dataHistory);
-
-				   var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
-				   var txtpage = page;
-
-				  window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
-				 }
 
 
 			});
@@ -344,41 +286,10 @@ $(document).ready(function(){
 
 				});
 
-				page = $('#studentPage').text();
-					topic = $('#BechelorPortfolioGroup').val();
-					action = "แก้ไขประเภทผลงาน ";
-					pushHistory();
 				//
 				// for(var i = 0;i< clickBtEditBecPortGroup;i++){
 				//   $('#BechelorPortfolioGroup option:last').remove();
 				// }
-
-				function pushHistory(){
-					 var nameValue;
-					 var dateTimeCurrent = new Date();
-
-					 var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
-					 nameHistory.on('value',snap => {
-						 nameValue = snap.val();
-					 });
-
-					 var dataHistory = {
-						 id:sessionStorage.getItem("userId"),
-						 name:nameValue,
-						 page:page,
-						 topic:topic,
-						 action:action,
-						 date:dateTimeCurrent.toDateString(),
-						 time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
-					 };
-
-					 firebase.database().ref('history').push().set(dataHistory);
-
-					 var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
-					 var txtpage = page;
-
-					window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
-				 }
 
 
 			});
@@ -516,41 +427,12 @@ $(document).ready(function(){
 		  });
 		    $(this).children(":selected").remove();
 
-				page = $('#studentPage').text();
-					topic = $('#GraduatePortfolioGroup').val();
-					action = "ลบประเภทผลงาน ";
-					pushHistory();
+
 				//
 				// for(var i = 0;i< clickBtEditBecPortGroup;i++){
 				//   $('#BechelorPortfolioGroup option:last').remove();
 				// }
 
-				function pushHistory(){
-					 var nameValue;
-					 var dateTimeCurrent = new Date();
-
-					 var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
-					 nameHistory.on('value',snap => {
-						 nameValue = snap.val();
-					 });
-
-					 var dataHistory = {
-						 id:sessionStorage.getItem("userId"),
-						 name:nameValue,
-						 page:page,
-						 topic:topic,
-						 action:action,
-						 date:dateTimeCurrent.toDateString(),
-						 time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
-					 };
-
-					 firebase.database().ref('history').push().set(dataHistory);
-
-					 var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
-					 var txtpage = page;
-
-					window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
-				 }
 
 		});
 	});
@@ -659,42 +541,11 @@ $(document).ready(function(){
 	        $('#GraduatePortfolioGroup option:last').remove();
 	      }
 
-				page = $('#studentPage').text();
-					topic = $('#BechelorPortfolioGroup').val();
-					action = "เพิ่มประเภทผลงาน ";
-					pushHistory();
+
 				//
 				// for(var i = 0;i< clickBtEditBecPortGroup;i++){
 				//   $('#BechelorPortfolioGroup option:last').remove();
 				// }
-
-				function pushHistory(){
-					 var nameValue;
-					 var dateTimeCurrent = new Date();
-
-					 var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
-					 nameHistory.on('value',snap => {
-						 nameValue = snap.val();
-					 });
-
-					 var dataHistory = {
-						 id:sessionStorage.getItem("userId"),
-						 name:nameValue,
-						 page:page,
-						 topic:topic,
-						 action:action,
-						 date:dateTimeCurrent.toDateString(),
-						 time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
-					 };
-
-					 firebase.database().ref('history').push().set(dataHistory);
-
-					 var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
-					 var txtpage = page;
-
-					window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
-				 }
-
 
 			});
 		// ========================================= End Add Graduate Portfolio Type =========================================
@@ -732,41 +583,10 @@ $(document).ready(function(){
 				});
 
 
-				page = $('#studentPage').text();
-					topic = $('#BechelorPortfolioGroup').val();
-					action = "แก้ไขประเภทผลงาน ";
-					pushHistory();
 				//
 				// for(var i = 0;i< clickBtEditBecPortGroup;i++){
 				//   $('#BechelorPortfolioGroup option:last').remove();
 				// }
-
-				function pushHistory(){
-					 var nameValue;
-					 var dateTimeCurrent = new Date();
-
-					 var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
-					 nameHistory.on('value',snap => {
-						 nameValue = snap.val();
-					 });
-
-					 var dataHistory = {
-						 id:sessionStorage.getItem("userId"),
-						 name:nameValue,
-						 page:page,
-						 topic:topic,
-						 action:action,
-						 date:dateTimeCurrent.toDateString(),
-						 time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
-					 };
-
-					 firebase.database().ref('history').push().set(dataHistory);
-
-					 var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
-					 var txtpage = page;
-
-					window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
-				 }
 
 			});
 	// ================================================================= End Code =================================================================
@@ -777,38 +597,7 @@ $(document).ready(function(){
 		selectedFile = event.target.files[0];
 
 	});
-	// ================================================================= End Code =================================================================
-	// <!-- <=========================================================== Bechelor Portfolio Picture ===========================================================> -->
-  //
-	// $('#BechelorPortfolioPicture').on('change',function(){
-	// 	var x = document.getElementById("BechelorPortfolioPicture");
-	// 	if ('files' in x) {
-	// 			if (x.files.length == 0) {
-	// 					txt = "เพิ่มไฟล์รูปภาพ";
-	// 			} else {
-	// 					for (var i = 0; i < x.files.length; i++) {
-	// 							// txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-	// 							var file = x.files[i];
-	// 							if ('name' in file) {
-	// 									txt += "<strong> File " + (i+1)+ ". </strong>" + "name: " + file.name + "<br>";
-	// 							}
-	// 							if ('size' in file) {
-	// 									txt += "size: " + file.size + " bytes <br>";
-	// 							}
-	// 					}
-	// 			}
-	// 	}
-	// 	else {
-	// 			if (x.value == "") {
-	// 					txt += "เพิ่มไฟล์รูปภาพ";
-	// 			} else {
-	// 					txt += "The files property is not supported by your browser!";
-	// 					txt  += "<br>The path of the selected file: " + x.value;
-	// 			}
-	// 	}
-	// 	document.getElementById("BechelorDemo").innerHTML = txt;
-	// 	});
-		// ================================================================= End Code =================================================================
+
 
 		// ================================================================= Bechelor Portfolio Button Action =================================================================
 
@@ -848,9 +637,14 @@ $(document).ready(function(){
 						port_show_status:"checked"
 	 			  };
 
-					firebase.database().ref('website/student').child('bechelor').child('portfolio').push().set(data).then(function(){
-				 	 console.log("Bechelor portfolio Saved:");
-				  });
+					firebase.database().ref('website/student').child('bechelor').child('portfolio').push().set(data);
+
+					 page = $('#studentPage').text();
+					 topic = $('#BechelorPortfolioName').val();
+					 action = "เพิ่มผลงานระดับปริญญาตรี";
+					 type = "ผลงานระดับปริญญาตรี"
+					 pushHistory();
+
 
 					txt = "";
 
@@ -864,58 +658,39 @@ $(document).ready(function(){
 
 					// document.getElementById("BechelorDemo").innerHTML = txt;
 				});
-			});
 
-			$('#btCloseBechelorPortfolio').on('click',function(){
-
-				// txt = "";
-				// $('#addBechelorPortfolio').modal('hide');
-        //
-				// 	$('#BechelorPortfolioName').val("");
-				// 	$('#BechelorPortfolioDetail').val("");
-				// 	$('#BechelorPortfolioGroup').val("");
-				// 	$("#BechelorPortfolioHallOfFame").prop('checked', false);
-				// 	$('#BechelorPortfolioYear').val("");
-				// 	$('#BechelorPortfolioPicture').val("");
-				// 	document.getElementById("BechelorDemo").innerHTML = txt;
-
-				page = $('#studentPage').text();
-					topic = $('#BechelorPortfolioName').val();
-					action = "เพิ่มผลงาน ";
-					pushHistory();
-				//
-				// for(var i = 0;i< clickBtEditBecPortGroup;i++){
-				//   $('#BechelorPortfolioGroup option:last').remove();
-				// }
-
-				function pushHistory(){
-					 var nameValue;
-					 var dateTimeCurrent = new Date();
-
-					 var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
-					 nameHistory.on('value',snap => {
-						 nameValue = snap.val();
-					 });
-
-					 var dataHistory = {
-						 id:sessionStorage.getItem("userId"),
-						 name:nameValue,
-						 page:page,
-						 topic:topic,
-						 action:action,
-						 date:dateTimeCurrent.toDateString(),
-						 time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
-					 };
-
-					 firebase.database().ref('history').push().set(dataHistory);
-
-					 var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
-					 var txtpage = page;
-
-					window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
-				 }
 
 			});
+
+
+
+			function pushHistory(){
+				 var nameValue;
+				 var dateTimeCurrent = new Date();
+
+				 var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
+				 nameHistory.on('value',snap => {
+					 nameValue = snap.val();
+				 });
+
+				 var dataHistory = {
+					 id:sessionStorage.getItem("userId"),
+					 name:nameValue,
+					 page:page,
+					 topic:topic,
+					 action:action,
+					 date:dateTimeCurrent.toDateString(),
+					 time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
+				 };
+
+				 firebase.database().ref('history').push().set(dataHistory);
+
+				 var message =  nameValue+" "+action+" ในหน้า ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
+				 var txtpage = page;
+				 var txttype = type;
+
+				window.location.href = "notify.php?message=" + message + "&page="+ txtpage + "&type=" + txttype;
+			 }
 
 			// ================================================================= End Code =================================================================
 			// ================================================================= Bechelor Activity Upload Script =================================================================
@@ -932,8 +707,6 @@ $(document).ready(function(){
 			        var data = {
 			        activity_name:$('#BechelorActivityName').val(),
 			        activity_detail:$('#BechelorActivityDetail').val(),
-			        // activity_image:"-",
-			        // activity_video:"-",
 			        activity_start:$('#BechelorActivityDateFrom').val(),
 			        activity_end:$('#BechelorActivityDateTo').val(),
 							activity_show_status:"checked"
@@ -942,9 +715,7 @@ $(document).ready(function(){
 			      NameBechelorAct = $("#BechelorActivityName").val();
 
 
-			      firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).set(data).then(function(){
-			       console.log("Bechelor Activity Saved:");
-			      });
+			      firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).set(data);
 
 
 			      for (var i = 0; i < p.target.files.length; i++) {
@@ -976,22 +747,15 @@ $(document).ready(function(){
 			          },function(){
 
 			            var downloadImageURL = ImagesTask.snapshot.downloadURL;
-									// alert(NameBechelorAct);
 
-			          //   qActImage = {
-			          //     activity_image:BechelorActivityImage
-			          // };
-								// firebase.database().ref('website/student').child('bechelor').child('activity').child('image').push().set(downloadImageURL);
-			          firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).child('activity_image').push().child('images').set(downloadImageURL).then(function(){
-			           console.log("Bechelor Activity Images Saved:");
-			          });
+			          firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).child('activity_image').push().child('images').set(downloadImageURL);
 			      });
 			  });
 
 			}
 			function uploadVideoAsPromise (videoFile) {
 			        return new Promise(function (resolve, reject) {
-			            // var storageRef = firebase.storage().ref("/Activity/Bechelor/Image/"+imageFile.name);
+
 			            var storageVideosRef = firebase.storage().ref("/Activity/Bechelor/Video/"+NameBechelorAct+"/"+videoFile.name);
 
 			            var VideosTask = storageVideosRef.put(videoFile);
@@ -1003,14 +767,7 @@ $(document).ready(function(){
 			            },function(){
 			              var downloadVideoURL = VideosTask.snapshot.downloadURL;
 
-			              // BechelorActivityVideo.push(downloadVideoURL);
-                  //
-			            //   qActVideo = {
-			            //     activity_video:BechelorActivityVideo
-			            // };
-			            firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).child('activity_video').push().child('videos').set(downloadVideoURL).then(function(){
-			             console.log("Bechelor Activity Video Saved:");
-			            });
+			            firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).child('activity_video').push().child('videos').set(downloadVideoURL);
 			        });
 			    });
 			}
@@ -1018,50 +775,14 @@ $(document).ready(function(){
 			$('#addBechelorActivity').modal('hide');
 			$('#AddActModal').modal('show');
 
-
-			  // $('#BechelorActivityName').val("");
-			  // $('#BechelorActivityDetail').val("");
 			  $('#BechelorActivityImage').val("");
 			  $('#BechelorActivityVideo').val("");
-			  // $('#BechelorActivityDateFrom').val("");
-			  // $('#BechelorActivityDateTo').val("");
-
 
 				page = $('#studentPage').text();
 					topic = $('#BechelorActivityName').val();
-					action = "เพิ่มกิจกรรม ";
+					action = "เพิ่มกิจกรรมระดับปริญญาตรี";
+					type = "กิจกรรมระดับปริญญาตรี"
 					pushHistory();
-				//
-				// for(var i = 0;i< clickBtEditBecPortGroup;i++){
-				//   $('#BechelorPortfolioGroup option:last').remove();
-				// }
-
-				function pushHistory(){
-					 var nameValue;
-					 var dateTimeCurrent = new Date();
-
-					 var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
-					 nameHistory.on('value',snap => {
-						 nameValue = snap.val();
-					 });
-
-					 var dataHistory = {
-						 id:sessionStorage.getItem("userId"),
-						 name:nameValue,
-						 page:page,
-						 topic:topic,
-						 action:action,
-						 date:dateTimeCurrent.toDateString(),
-						 time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
-					 };
-
-					 firebase.database().ref('history').push().set(dataHistory);
-
-					 var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
-					 var txtpage = page;
-
-					window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
-				 }
 
 			});
 			});
@@ -1146,9 +867,14 @@ $(document).ready(function(){
 					port_show_status:"checked"
 				};
 
-				firebase.database().ref('website/student').child('graduate').child('portfolio').push().set(data).then(function(){
-				 console.log("Graduate portfolio Saved:");
-				});
+				firebase.database().ref('website/student').child('graduate').child('portfolio').push().set(data);
+
+				 	 page = $('#studentPage').text();
+					 topic = $('#GraduatePortfolioName').val();
+					 action = "เพิ่มผลงานระดับบัณฑิตศึกษา";
+					 type = "ผลงานระดับบัณฑิตศึกษา";
+					 pushHistory();
+
 
 				txt = "";
 
@@ -1164,41 +890,13 @@ $(document).ready(function(){
 
 			});
 
-			page = $('#studentPage').text();
-				topic = $('#GraduatePortfolioName').val();
-				action = "เพิ่มผลงาน ";
-				pushHistory();
+
 			//
 			// for(var i = 0;i< clickBtEditBecPortGroup;i++){
 			//   $('#BechelorPortfolioGroup option:last').remove();
 			// }
 
-			function pushHistory(){
-				 var nameValue;
-				 var dateTimeCurrent = new Date();
 
-				 var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
-				 nameHistory.on('value',snap => {
-					 nameValue = snap.val();
-				 });
-
-				 var dataHistory = {
-					 id:sessionStorage.getItem("userId"),
-					 name:nameValue,
-					 page:page,
-					 topic:topic,
-					 action:action,
-					 date:dateTimeCurrent.toDateString(),
-					 time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
-				 };
-
-				 firebase.database().ref('history').push().set(dataHistory);
-
-				 var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
-				 var txtpage = page;
-
-				window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
-			 }
 		});
 		// ================================================================= End Code =================================================================
 
@@ -1240,9 +938,7 @@ $(document).ready(function(){
 		    };
 		    NameGraduateAct = $("#GraduateActivityName").val();
 
-		    firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).set(data).then(function(){
-		     console.log("Graduate Activity Saved:");
-		    });
+		    firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).set(data);
 
 
 		    for (var i = 0; i < p.target.files.length; i++) {
@@ -1277,9 +973,7 @@ $(document).ready(function(){
 		        //     activity_image:GraduateActivityImage
 		        // };
 		        // firebase.database().ref('website/student').child('graduate').child('activity').child('image').push().set(downloadImageURL);
-		        firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_image').push().child('images').set(downloadImageURL).then(function(){
-		         console.log("Graduate Activity Images Saved:");
-		        });
+		        firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_image').push().child('images').set(downloadImageURL);
 		    });
 		});
 
@@ -1303,9 +997,7 @@ $(document).ready(function(){
 		          //   qActVideo = {
 		          //     activity_video:GraduateActivityVideo
 		          // };
-		          firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_video').push().child('videos').set(downloadVideoURL).then(function(){
-		           console.log("Graduate Activity Video Saved:");
-		          });
+		          firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_video').push().child('videos').set(downloadVideoURL);
 		      });
 		  });
 		}
@@ -1313,48 +1005,16 @@ $(document).ready(function(){
 		$('#addGraduateActivity').modal('hide');
 		$('#AddActModal').modal('show');
 
-		// $('#GraduateActivityName').val("");
-		// $('#GraduateActivityDetail').val("");
+
 		$('#GraduateActivityImage').val("");
 		$('#GraduateActivityVideo').val("");
-		// $('#GraduateActivityDateFrom').val("");
-		// $('#GraduateActivityDateTo').val("");
 
-		page = $('#studentPage').text();
-			topic = $('#GraduateActivityName').val();
-			action = "เพิ่มกิจกรรม ";
-			pushHistory();
-		//
-		// for(var i = 0;i< clickBtEditBecPortGroup;i++){
-		//   $('#BechelorPortfolioGroup option:last').remove();
-		// }
 
-		function pushHistory(){
-			 var nameValue;
-			 var dateTimeCurrent = new Date();
-
-			 var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
-			 nameHistory.on('value',snap => {
-				 nameValue = snap.val();
-			 });
-
-			 var dataHistory = {
-				 id:sessionStorage.getItem("userId"),
-				 name:nameValue,
-				 page:page,
-				 topic:topic,
-				 action:action,
-				 date:dateTimeCurrent.toDateString(),
-				 time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
-			 };
-
-			 firebase.database().ref('history').push().set(dataHistory);
-
-			 var message =  nameValue+" "+action+" ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
-			 var txtpage = page;
-
-			window.location.href = "notify.php?message=" + message + "&page="+ txtpage;
-		 }
+				page = $('#studentPage').text();
+					topic = $('#GraduateActivityName').val();
+					action = "เพิ่มกิจกรรมระดับบัณฑิตศึกษา";
+					type = "กิจกรรมระดับบัณฑิตศึกษา"
+					pushHistory();
 
 		});
 	});

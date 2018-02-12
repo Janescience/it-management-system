@@ -81,7 +81,7 @@
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">จัดการสมาชิกในระบบ</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">จัดการผู้ใช้ในระบบ</a></li>
                             <li class="breadcrumb-item active">จัดการ</li>
                         </ol>
                     </div>
@@ -360,12 +360,26 @@
     <div class="col-md-12">
 
           <form class="form-horizontal">
+            <div class="row">
+              <div class="col-lg-12 text-center">
+              <img id="imgShowCreate" class="img-show">
+            </div>
+                </div>
             <div class="form-group">
               <label for="nameCreateUser">รูปภาพประจำตัว</label>
-                  <div class="input-group">
-                  <div class="input-group-addon"><i class="ti-image"></i></div>
-                  <input class="form-control" type="file" id="fileUploadImageCreateUser"><hr>
-                </div>
+              <div class="col-md-12">
+                  <div class="form-group text-center">
+                      <div class="input-group">
+                          <span class="input-group-btn">
+                              <span class="btn btn-secondary btn-file">
+                                  เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadImageCreateUser" >
+                              </span>
+                          </span>
+                          <input type="text" class="form-control" id="urlUploadImageCreateUser" readonly>
+                      </div>
+
+                  </div>
+              </div>
             </div>
 
             <div class="form-group">

@@ -1237,10 +1237,10 @@ roofSubject.on('child_added',snap=>{
     $('#editSubjectModal').modal('show');
   });
 
-  $('#list_inter_work').on('click','.btn-delete-subject',function(){
+  $('#list_subject').on('click','.btn-delete-subject',function(){
     var id = $(this).closest('tr').attr("id");
     roofSubject.child(id).remove().then(function(){
-        $('#deleteModal').modal('show');
+        $('#deleteProfileModal').modal('show');
     });
       $(this).closest('tr').remove();
   });

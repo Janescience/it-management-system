@@ -61,7 +61,7 @@
         <div class="container-fluid">
             <div class="row page-titles">
                 <div class="col-md-5 col-sm-8 align-self-center">
-                    <h2 class="text-themecolor">ผลงานและกิจจกรรม</h2>
+                    <h2 class="text-themecolor">ปริญญาตรี</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">จัดการกิจกรรม</a></li>
                         <li class="breadcrumb-item active">กิจกรรมของนักศึกษาระดับปริญญาตรี</li>

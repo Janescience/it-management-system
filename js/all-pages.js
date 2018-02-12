@@ -219,7 +219,7 @@ var i=0;
 if(id !=  sessionStorage.getItem("userId")){
 
     $('#notify').prepend("<a href='"+'#'+"'><div class='"+'btn btn-success btn-circle'+"'><i class='"+'fa fa-pencil'+"'></i></div>"+
-                        " <div class='"+'mail-contnet'+"'><h5>"+ name +"</h5><span class='"+'mail-desc'+"'>"+page+ ":" +topic+"</span>"+
+                        " <div class='"+'mail-contnet'+"'><h6>"+ name +"</h6>"+
                         "<span class='"+'time'+"'>"+date+ "  "+time+"</span></div></a>");
 
 }

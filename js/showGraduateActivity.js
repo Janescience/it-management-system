@@ -5,7 +5,7 @@ $(document).ready(function(){
   var activityRef = dbRef.ref("website/student/graduate/activity");
   var auth = null;
 
-
+  var btClickCountImage=0;
   var rootRef = activityRef;
   var selectedFile;
 
@@ -14,9 +14,6 @@ $(document).ready(function(){
   var del;
    $.LoadingOverlay("show");
   // var clickBtEditAct = 0;
-
-
-
 
 // ========================================= Set initial Graduate Activity Modal =========================================
 $('#GraduateActivityName').prop('disabled', true);
@@ -124,14 +121,14 @@ $('#CancelEditGraduateActivityVideo').hide();
      $('#GraduateActivityDateTo').val(snap.val());
    });
 
-    $('#ActvImage').empty();
+
 
    var dbImage = rootRef.child(actName).child('activity_image');
    dbImage.on('child_added',snap => {
       Image = snap.child('images').val();
       key = snap.key;
 
-     $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
+     $('#ActvImage').append("<div id='"+'imgActivity'+"' class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
              "<div  class='"+'el-card-item'+"'>"+
                  "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 10px;width:100%;'+"' alt='"+'user'+"'>"+
                      "<div class='"+'el-overlay'+"'>"+
@@ -146,7 +143,6 @@ $('#CancelEditGraduateActivityVideo').hide();
    });
 
    $('#ActvImage').on('click','.delete',function(e){
-
 
      var id = $(this).closest('ul').attr("id");
 
@@ -163,32 +159,11 @@ $('#CancelEditGraduateActivityVideo').hide();
      }).catch(function(error) {
      });
 
-     rootRef.child(actName).child('activity_image').child(id).remove().then(function(){
-         $('#deletePortModal').modal('show');
-     });
-       // $(this).closest('ul').remove();
+     rootRef.child(actName).child('activity_image').child(id).remove();
 
-       $('#ActvImage').empty();
+      $(this).closest('div').parent().parent().parent().remove();
 
-       var dbImage = rootRef.child(actName).child('activity_image');
-       dbImage.on('child_added',snap => {
-          Image = snap.child('images').val();
-          key = snap.key;
-
-          $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
-                  "<div  class='"+'el-card-item'+"'>"+
-                      "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 10px;width:100%;'+"' alt='"+'user'+"'>"+
-                          "<div class='"+'el-overlay'+"'>"+
-                              "<ul id='"+key+"' class='"+'el-info'+"'>"+
-                              "<a class='"+'image-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
-                              "</ul>"+
-                          "</div>"+
-                      "</div>"+
-                  "</div>"+
-          "</div>");
-
-       });
-
+      $('#deletePortModal').modal('show');
 
      });
 
@@ -197,12 +172,13 @@ $('#CancelEditGraduateActivityVideo').hide();
      var Video = snap.child('videos').val();
      key = snap.key;
 
-     $('#ActvVideo').append("<div  class='"+'col-lg-3 col-md-3 col-sm-6'+"'>"+
-                 "<video   style='"+'border-radius: 10px;'+"' width='"+'300px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
-                         "<ul id='"+key+"' class='"+'el-info'+"'>"+
+     $('#ActvVideo').append("<div  class='"+' text-center col-lg-4 col-xlg-4 col-md-4 col-sm-6'+"'>"+
+                 "<video   style='"+'border-radius: 10px;'+"' width='"+'200px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
+                         "<ul id='"+key+"' >"+
                              "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
                          "</ul>"+
                        "</div>");
+    $('#loadingVideo').attr('hidden','true');
    });
 
    $('#ActvVideo').on('click','.delete',function(e){
@@ -222,27 +198,11 @@ $('#CancelEditGraduateActivityVideo').hide();
      }).catch(function(error) {
      });
 
-     rootRef.child(actName).child('activity_video').child(id).remove().then(function(){
-         $('#deletePortModal').modal('show');
-     });
-       // $(this).closest('ul').remove();
+     rootRef.child(actName).child('activity_video').child(id).remove();
 
-       $('#ActvVideo').empty();
+     $(this).closest('div').remove();
 
-       var dbVideo = rootRef.child(actName).child('activity_video');
-       dbVideo.on('child_added',snap => {
-          Video = snap.child('videos').val();
-          key = snap.key;
-
-          $('#ActvVideo').append("<div  class='"+'col-lg-4 col-md-4 col-sm-6'+"'>"+
-                      "<video  style='"+'height:150px;margin-left:35px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
-                              "<ul id='"+key+"' class='"+'el-info'+"'>"+
-                                  "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
-                              "</ul>"+
-                            "</div>");
-
-       });
-
+     $('#deletePortModal').modal('show');
 
      });
 });
@@ -399,9 +359,11 @@ $('#CancelEditGraduateActivityVideo').hide();
                     //     activity_image:GraduateActivityImage
                     // };
                     // firebase.database().ref('website/student').child('graduate').child('activity').child('image').push().set(downloadImageURL);
-                    firebase.database().ref('website/student').child('graduate').child('activity').child(actName).child('activity_image').push().child('images').set(downloadImageURL).then(function(){
-                     console.log("Added Graduate Activity Images :");
-                    });
+                    firebase.database().ref('website/student').child('graduate').child('activity').child(actName).child('activity_image').push().child('images').set(downloadImageURL);
+
+
+
+
                 });
             });
           }
@@ -416,12 +378,13 @@ $('#CancelEditGraduateActivityVideo').hide();
     			$('#GraduateActivityImageText').val("");
           $('#EditGraduateActivityImage').show();
           $('#AddPicture').modal('show');
+          $('#loadingVideo').hide();
 
 
-          // for(var i = 0;i< clickBtEditAct;i++){
-          //   $('#list_expertise tr:last').remove();
-          // }
+
         });
+
+
       });
 
   // ========================================= End Save Edit Image Graduate Activity Button =========================================
@@ -467,7 +430,7 @@ $('#CancelEditGraduateActivityVideo').hide();
   document.getElementById("GraduateActivityVideo").addEventListener('change', function(v){
     $('#SaveEditGraduateActivityVideo').on('click',function(e){
         e.preventDefault();
-
+        $('#loadingVideo').removeAttr('hidden');
 
 
 
