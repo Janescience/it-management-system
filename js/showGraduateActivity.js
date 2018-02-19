@@ -9,12 +9,17 @@ $(document).ready(function(){
   var rootRef = activityRef;
   var selectedFile;
 
+  var CountImage=0;
+
   var nameAct;
 
   var del;
    $.LoadingOverlay("show");
   // var clickBtEditAct = 0;
 
+  var usersRef = dbRef.ref("users");
+
+ var  page,topic,action,type;
 // ========================================= Set initial Graduate Activity Modal =========================================
 $('#GraduateActivityName').prop('disabled', true);
 $('#GraduateActivityDetail').prop('disabled', true);
@@ -128,7 +133,7 @@ $('#CancelEditGraduateActivityVideo').hide();
       Image = snap.child('images').val();
       key = snap.key;
 
-     $('#ActvImage').append("<div id='"+'imgActivity'+"' class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
+      $('#ActvImage').append("<div  class='"+'col-xlg-3 col-lg-3 col-md-3 col-sm-4 col-xl-3'+"'>"+
              "<div  class='"+'el-card-item'+"'>"+
                  "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 10px;width:100%;'+"' alt='"+'user'+"'>"+
                      "<div class='"+'el-overlay'+"'>"+
@@ -172,7 +177,7 @@ $('#CancelEditGraduateActivityVideo').hide();
      var Video = snap.child('videos').val();
      key = snap.key;
 
-     $('#ActvVideo').append("<div  class='"+' text-center col-lg-4 col-xlg-4 col-md-4 col-sm-6'+"'>"+
+     $('#ActvVideo').append("<div  class='"+'text-center col-xlg-4 col-lg-4 col-md-4 col-sm-6 col-xl-4'+"'>"+
                  "<video   style='"+'border-radius: 10px;'+"' width='"+'200px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
                          "<ul id='"+key+"' >"+
                              "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
@@ -275,6 +280,13 @@ $('#CancelEditGraduateActivityVideo').hide();
       $('#EditGraduateActivity').show();
       $('#EditActModal').modal('show');
 
+      page = $('#studentPage').text();
+      topic = $('#GraduateActivityName').val();
+      action = "แก้ไขรายละเอียดของกิจกรรมระดับบัณฑิตศึกษา";
+      type = "กิจกรรมระดับบัณฑิตศึกษา"
+      pushHistory();
+
+
 
       $('#selectActivity').empty();
 
@@ -338,6 +350,22 @@ $('#CancelEditGraduateActivityVideo').hide();
                     uploadImageAsPromise(imageFile);
                 }
 
+                // for (var i = 0; i < p.target.files.length; i++) {
+                //
+                //   if (CountImage = p.target.files[i]){
+                //
+                //
+                //
+                //   }
+                //
+                //     page = $('#studentPage').text();
+                //     topic = $('#GraduateActivityName').val();
+                //     action = "เพิ่มรูปภาพของกิจกรรมระดับบัณฑิตศึกษา";
+                //     type = "กิจกรรมระดับบัณฑิตศึกษา";
+                //     pushHistory();
+                //
+                // }
+
             //Handle waiting to upload each file using promise
             function uploadImageAsPromise (imageFile) {
                 return new Promise(function (resolve, reject) {
@@ -361,7 +389,7 @@ $('#CancelEditGraduateActivityVideo').hide();
                     // firebase.database().ref('website/student').child('graduate').child('activity').child('image').push().set(downloadImageURL);
                     firebase.database().ref('website/student').child('graduate').child('activity').child(actName).child('activity_image').push().child('images').set(downloadImageURL);
 
-
+                    CountImage = CountImage+1;
 
 
                 });
@@ -381,11 +409,10 @@ $('#CancelEditGraduateActivityVideo').hide();
           $('#loadingVideo').hide();
 
 
-
         });
-
-
       });
+
+
 
   // ========================================= End Save Edit Image Graduate Activity Button =========================================
 
@@ -480,6 +507,12 @@ $('#CancelEditGraduateActivityVideo').hide();
           $('#EditGraduateActivityVideo').show();
           $('#AddVideo').modal('show');
 
+          page = $('#studentPage').text();
+          topic = $('#GraduateActivityName').val();
+          action = "เพิ่มวีดีโอของกิจกรรมระดับบัณฑิตศึกษา";
+          type = "กิจกรรมระดับบัณฑิตศึกษา"
+          pushHistory();
+
 
         });
       });
@@ -541,5 +574,33 @@ $('#CancelEditGraduateActivityVideo').hide();
 
 
       });
-  // ========================================= End Delete Graduate Activity Button =========================================
+
+      function pushHistory(){
+         var nameValue;
+         var dateTimeCurrent = new Date();
+
+         var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
+         nameHistory.on('value',snap => {
+           nameValue = snap.val();
+         });
+
+         var dataHistory = {
+           id:sessionStorage.getItem("userId"),
+           name:nameValue,
+           page:page,
+           topic:topic,
+           action:action,
+           date:dateTimeCurrent.toDateString(),
+           time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
+         };
+
+         firebase.database().ref('history').push().set(dataHistory);
+
+         var message =  nameValue+" "+action+" ในหน้า ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
+         var txtpage = page;
+         var txttype = type;
+
+        window.location.href = "notify.php?message=" + message + "&page="+ txtpage + "&type=" + txttype;
+       }
+
 });

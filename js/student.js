@@ -27,6 +27,11 @@ $(document).ready(function(){
 
 	var usersRef = dbRef.ref("users");
 
+	var countImage = 0;
+	var countVideo = 0;
+
+	var NumCount = 0;
+
 
 
 	// ========================================= Get Bechelor Portfolio Type From Database =========================================
@@ -191,18 +196,11 @@ $(document).ready(function(){
 			});
 				$(this).children(":selected").remove();
 		});
-
-
             //
 						// for(var i = 0;i< clickBtEditBecPortGroup;i++){
 			      //   $('#BechelorPortfolioGroup option:last').remove();
 			      // }
-
-
-
-
 	});
-
 		// ========================================= End Code =====================================================================
 
 		// ========================================= Cancel Edits Bechelor Portfolio Group =========================================
@@ -227,9 +225,7 @@ $(document).ready(function(){
  			    port_GroupType:$('#AddBechelorPortfolioType').val(),
  			  };
 
-				firebase.database().ref('website/student').child('bechelor').child('portfolioGroup').push().set(data).then(function(){
-			 	 console.log("Bechelor portfolio Group Saved:");
-			  });
+				firebase.database().ref('website/student').child('bechelor').child('portfolioGroup').push().set(data);
 
 				$('#AddBechelorPortfolioType').val("");
 				$('#AddBechelorPortfolioType').hide();
@@ -240,14 +236,9 @@ $(document).ready(function(){
 				$('#DeleteBechelorPortfolioGroup').show();
 				$('#AddPortTypeModal').modal('show');
 
-
-
 				for(var i = 0;i< clickBtEditBecPortGroup;i++){
 	        $('#BechelorPortfolioGroup option:last').remove();
 	      }
-
-
-
 			});
 		// ========================================= End Add Bechelor Portfolio Type =========================================
 
@@ -285,13 +276,10 @@ $(document).ready(function(){
 					$('#BechelorPortfolioGroup').val("");
 
 				});
-
 				//
 				// for(var i = 0;i< clickBtEditBecPortGroup;i++){
 				//   $('#BechelorPortfolioGroup option:last').remove();
 				// }
-
-
 			});
 		// ========================================= End Add Bechelor Portfolio Type =========================================
 
@@ -523,10 +511,7 @@ $(document).ready(function(){
  			    port_GroupType:$('#AddGraduatePortfolioType').val(),
  			  };
 
-				firebase.database().ref('website/student').child('graduate').child('portfolioGroup').push().set(data).then(function(){
-			 	 console.log("Graduate portfolio Group Saved:");
-			  });
-
+				firebase.database().ref('website/student').child('graduate').child('portfolioGroup').push().set(data);
 				$('#AddGraduatePortfolioType').val("");
 				$('#AddGraduatePortfolioType').hide();
 				$('#CancelAddGraduatePortfolioGroup').hide();
@@ -540,8 +525,6 @@ $(document).ready(function(){
 				for(var i = 0;i< clickBtEditGraPortGroup;i++){
 	        $('#GraduatePortfolioGroup option:last').remove();
 	      }
-
-
 				//
 				// for(var i = 0;i< clickBtEditBecPortGroup;i++){
 				//   $('#BechelorPortfolioGroup option:last').remove();
@@ -597,8 +580,6 @@ $(document).ready(function(){
 		selectedFile = event.target.files[0];
 
 	});
-
-
 		// ================================================================= Bechelor Portfolio Button Action =================================================================
 
 			$('#btSubmitBechelorPortfolio').on('click',function(){
@@ -662,8 +643,6 @@ $(document).ready(function(){
 
 			});
 
-
-
 			function pushHistory(){
 				 var nameValue;
 				 var dateTimeCurrent = new Date();
@@ -699,11 +678,6 @@ $(document).ready(function(){
 
 			      $('#btSubmitBechelorActivity').on('click',function(){
 
-							if($('#BechelorActivityDateFrom').val() > $('#BechelorActivityDateTo').val()){
-
-								alert("yaaa");
-							}
-
 			        var data = {
 			        activity_name:$('#BechelorActivityName').val(),
 			        activity_detail:$('#BechelorActivityDetail').val(),
@@ -718,16 +692,27 @@ $(document).ready(function(){
 			      firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).set(data);
 
 
+
+
 			      for (var i = 0; i < p.target.files.length; i++) {
 			          var imageFile = p.target.files[i];
 			          uploadImageAsPromise(imageFile);
 			      }
 
+						countVideo = v.target.files.length;
+
 			      for (var i = 0; i < v.target.files.length; i++) {
 			          var videoFile = v.target.files[i];
-
 			          uploadVideoAsPromise(videoFile);
+								NumCount++;
 			      }
+						// if(NumCount = countVideo)	{
+						// 	page = $('#studentPage').text();
+						// 		topic = $('#BechelorActivityName').val();
+						// 		action = "เพิ่มกิจกรรมระดับปริญญาตรี";
+						// 		type = "กิจกรรมระดับปริญญาตรี"
+						// 		pushHistory();
+						// }
 
 			  //Handle waiting to upload each file using promise
 			  function uploadImageAsPromise (imageFile) {
@@ -768,6 +753,9 @@ $(document).ready(function(){
 			              var downloadVideoURL = VideosTask.snapshot.downloadURL;
 
 			            firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).child('activity_video').push().child('videos').set(downloadVideoURL);
+
+
+
 			        });
 			    });
 			}
@@ -778,11 +766,7 @@ $(document).ready(function(){
 			  $('#BechelorActivityImage').val("");
 			  $('#BechelorActivityVideo').val("");
 
-				page = $('#studentPage').text();
-					topic = $('#BechelorActivityName').val();
-					action = "เพิ่มกิจกรรมระดับปริญญาตรี";
-					type = "กิจกรรมระดับปริญญาตรี"
-					pushHistory();
+
 
 			});
 			});
@@ -926,6 +910,9 @@ $(document).ready(function(){
 
 		    $('#btSubmitGraduateActivity').on('click',function(){
 
+					var countImage = 0;
+					var countVideo = 0;
+
 		      var data = {
 		      activity_name:$('#GraduateActivityName').val(),
 		      activity_detail:$('#GraduateActivityDetail').val(),
@@ -939,7 +926,6 @@ $(document).ready(function(){
 		    NameGraduateAct = $("#GraduateActivityName").val();
 
 		    firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).set(data);
-
 
 		    for (var i = 0; i < p.target.files.length; i++) {
 		        var imageFile = p.target.files[i];
@@ -973,7 +959,16 @@ $(document).ready(function(){
 		        //     activity_image:GraduateActivityImage
 		        // };
 		        // firebase.database().ref('website/student').child('graduate').child('activity').child('image').push().set(downloadImageURL);
-		        firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_image').push().child('images').set(downloadImageURL);
+		        firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_image').push().child('images').set(downloadImageURL).then(function(){
+							countImage+=1;
+							if(countImage = p.target.files.length)	{
+								page = $('#studentPage').text();
+									topic = $('#GraduateActivityName').val();
+									action = "เพิ่มกิจกรรมระดับบัณฑิตศึกษา";
+									type = "กิจกรรมระดับบัณฑิตศึกษา"
+									pushHistory();
+							}
+			      });
 		    });
 		});
 
@@ -997,28 +992,35 @@ $(document).ready(function(){
 		          //   qActVideo = {
 		          //     activity_video:GraduateActivityVideo
 		          // };
-		          firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_video').push().child('videos').set(downloadVideoURL);
+		          firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_video').push().child('videos').set(downloadVideoURL).then(function(){
+								countVideo+=1;
+								if(countVideo = p.target.files.length)	{
+									page = $('#studentPage').text();
+										topic = $('#GraduateActivityName').val();
+										action = "เพิ่มกิจกรรมระดับบัณฑิตศึกษา";
+										type = "กิจกรรมระดับบัณฑิตศึกษา"
+										pushHistory();
+								}
+				      });;
 		      });
 		  });
 		}
+		// countUpload = countUpload+1;
 
 		$('#addGraduateActivity').modal('hide');
 		$('#AddActModal').modal('show');
-
-
 		$('#GraduateActivityImage').val("");
 		$('#GraduateActivityVideo').val("");
 
+		// setTimeout(myFunction, 10000);
 
-				page = $('#studentPage').text();
-					topic = $('#GraduateActivityName').val();
-					action = "เพิ่มกิจกรรมระดับบัณฑิตศึกษา";
-					type = "กิจกรรมระดับบัณฑิตศึกษา"
-					pushHistory();
 
 		});
 	});
 });
+
+// function myFunction() {
+// 	}
 	// ================================================================= End Code =================================================================
 
  });

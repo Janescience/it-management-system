@@ -139,7 +139,7 @@ $('#CancelEditBechelorActivityVideo').hide();
         $("#ActvImage :nth-last").remove();
       }
 
-       $('#ActvImage').append("<div  class='"+'col-lg-3 col-md-3 col-sm-4'+"'>"+
+       $('#ActvImage').append("<div  class='"+'col-xlg-3 col-lg-3 col-md-3 col-sm-4 col-xl-3'+"'>"+
              "<div  class='"+'el-card-item'+"'>"+
                  "<div class='"+'el-card-avatar el-overlay-1'+"'> <img src='"+Image+"' style='"+'border-radius: 10px;width:100%;'+"' alt='"+'user'+"'>"+
                      "<div class='"+'el-overlay'+"'>"+
@@ -193,7 +193,7 @@ $('#CancelEditBechelorActivityVideo').hide();
        $("#ActvVideo :nth-last").remove();
      }
 
-     $('#ActvVideo').append("<div  class='"+'text-center col-lg-4 col-xlg-4 col-md-4 col-sm-6'+"'>"+
+     $('#ActvVideo').append("<div  class='"+'text-center col-xlg-4 col-lg-4 col-md-4 col-sm-6 col-xl-4'+"'>"+
                  "<video   style='"+'border-radius:10px;'+"' width='"+'200px'+"' controls><source src='"+Video+"' type='"+'video/WebM'+"'></video>"+
                          "<ul id='"+key+"' class='"+'el-info'+"'>"+
                              "<a class='"+' video-popup-vertical-fit delete'+"'><i class='"+'fa fa-minus-circle btn btn-danger'+"'></i></a>"+
