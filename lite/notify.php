@@ -35,10 +35,6 @@
   }else if($page == "หลักสูตร"){
     echo "<script>window.location.href = 'courses.php' </script>";
   }else if($page == "ผลงานและกิจกรรม"){
-<<<<<<< HEAD
-=======
-
->>>>>>> line notify in port but not activity
     if($type == "ผลงานระดับปริญญาตรี"){
       echo "<script>window.location.href = 'showBechelorPortfolio.php' </script>";
     }else if($type == "ผลงานระดับบัณฑิตศึกษา"){
