@@ -372,3 +372,20 @@
 </div>
 
 <!--================================================================================================-->
+
+<!--==================================== Not Delete ====================================================-->
+
+<div class="modal fade" id="notDeleteModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">ไม่สามารถลบได้ ข้อมูลเหลือเพียงชุดเดียว</h4>
+      </div>
+      <div class="modal-footer">
+        <button  class="btn btn-danger" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--================================================================================================-->

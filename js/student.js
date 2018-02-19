@@ -642,7 +642,7 @@ $(document).ready(function(){
 					 page = $('#studentPage').text();
 					 topic = $('#BechelorPortfolioName').val();
 					 action = "เพิ่มผลงานระดับปริญญาตรี";
-					 type = "ผลงานระดับปริญญาตรี"
+					 type = "ผลงานระดับปริญญาตรี";
 					 pushHistory();
 
 

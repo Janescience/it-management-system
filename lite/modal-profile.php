@@ -10,8 +10,8 @@
         <div class="card-block">
         <div class="card">
           <center>
-            <div>
-              <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" id="map" style="width: 600px; height: 400px;"></div>
+            <div  style="width:100%;">
+              <div class="col-md-12 col-sm-12 col-lg-12 col-xlg-12 col-xs-12" id="map" style="height:70vh;"></div>
             </div>
           </center>
         </div>

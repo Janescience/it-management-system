@@ -58,11 +58,17 @@ $('#list_header').on('click','.btn-edit-header',function(){
 });
 
 $('#list_header').on('click','.btn-delete-header',function(){
-  var id = $(this).closest('tr').attr("id");
-  dbHeader.child(id).remove().then(function(){
-      $('#deleteModal').modal('show');
-  });
-    $(this).closest('tr').remove();
+  var count = $('#list_header tr').length;
+  if(count > 1){
+    var id = $(this).closest('tr').attr("id");
+    dbHeader.child(id).remove().then(function(){
+        $('#deleteModal').modal('show');
+    });
+      $(this).closest('tr').remove();
+  }else{
+      $('#notDeleteModal').modal('show');
+  }
+
 });
 
 

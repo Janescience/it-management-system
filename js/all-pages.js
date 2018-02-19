@@ -122,6 +122,11 @@ var dbRef = firebase.database();
 var usersRef = dbRef.ref('users')
 var status;
 var mapShow;
+var session = sessionStorage.getItem("userId");
+
+if(session == null){
+  window.location.href="login.php";
+}
 
 var dbShowMap = usersRef.child(sessionStorage.getItem("userId")).child("show_map");
 dbShowMap.on('value',snap=>{
@@ -205,6 +210,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 
+
+
+
+
 var historyRef = dbRef.ref('history');
 
 var rootRefHistory = historyRef;
@@ -261,6 +270,7 @@ $('#notifyClick').on('click',function(e){
 var dbName = usersRef.child(sessionStorage.getItem("userId")).child('name');
 dbName.on('value',snap => {
   document.getElementById('userProfile').innerText = snap.val();
+
 });
 
 var dbEmail = usersRef.child(sessionStorage.getItem("userId")).child('email');
@@ -320,7 +330,8 @@ dbStatus.on('value',snap => {
      firebase.auth().onAuthStateChanged(function(user) {
        if (sessionStorage.getItem("userId")) {
          Auth.signOut().then(function() {
-         window.location = "login.php"
+         window.location = "login.php";
+         sessionStorage.removeItem("userId");
        }, function(error) {
 
          });
@@ -338,7 +349,8 @@ dbStatus.on('value',snap => {
      firebase.auth().onAuthStateChanged(function(user) {
        if (sessionStorage.getItem("userId")) {
          Auth.signOut().then(function() {
-         window.location = "login.php"
+         window.location = "login.php";
+         sessionStorage.removeItem("userId");
        }, function(error) {
 
          });

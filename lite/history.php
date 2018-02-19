@@ -85,7 +85,6 @@
                                                 <th class="text-center">ชื่อ-นามสกุล</th>
                                                 <th class="text-center">สิ่งที่ทำ</th>
                                                 <th class="text-center">หน้า</th>
-                                                <th class="text-center">หัวข้อ</th>
                                                 <th class="text-center">วัน</th>
                                                 <th class="text-center">เวลา</th>
                                             </tr>
