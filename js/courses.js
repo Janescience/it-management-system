@@ -100,7 +100,7 @@ $(document).ready(function(){
 
           page = $('#coursePage').text();
           topic = $('#TopicStudyplan').val();
-          action = "ได้ทำการแก้ไขแผนการศึกษา " + TopicNameCouresStudyplan + " ในหน้า ";
+          action = "แก้ไขแผนการศึกษา " + TopicNameCouresStudyplan;
           pushHistory();
 
         });
@@ -201,7 +201,7 @@ AddCoursesRootRef.on("child_added",snap => {
 
            page = $('#coursePage').text();
            topic = $('#TopicNameEditCourse').val();
-           action = "ได้ทำการเพิ่มหลักสูตรการศึกษาในระดับ " + TopicNameCoures + " ในหน้า ";
+           action = "เพิ่มหลักสูตรการศึกษาในระดับ" + TopicNameCoures;
            pushHistory();
          });
 
@@ -309,7 +309,7 @@ AddCoursesRootRef.on("child_added",snap => {
                                      $(this).closest('tr').remove();
                                      page = $('#coursePage').text();
                                      topic = $('#SelectAddCourses').val();
-                                     action = "ได้ทำการลบหัวข้อการดาวน์โหลด " + " ในหน้า ";
+                                     action = "ลบหัวข้อการดาวน์โหลด ";
                                      pushHistory();
 
                                  });
@@ -346,22 +346,22 @@ AddCoursesRootRef.on("child_added",snap => {
    var detail = $(this).closest('tr').find('.txtdetail').text();
    var detail2 = $(this).closest('tr').find('.txtdetail2').text();
     $('#bgHeaderEdit').attr("src",bg);
-    $('#TopicExpert').val(topic);
-    $('#TopicExpert2').val(topic2);
-    $('#detailExpert').val(detail);
-    $('#detailExpert2').val(detail2);
-    $('#editExpertModal').modal('show');
+    $('#TopicCourse').val(topic);
+    $('#TopicDegree').val(topic2);
+    $('#detailCourse').val(detail);
+    $('#detailDegree').val(detail2);
+    $('#editSuggestionModal').modal('show');
  });
 
- $('#btEditExpert').on('click',function(){
-   editExpert();
+ $('#btEditSuggestion').on('click',function(){
+   editSuggestion();
  });
 
- $('#fileUploadExpert').on('change',function(event){
+ $('#fileUploadAddSuggestion').on('change',function(event){
    selectedFileEdit = event.target.files[0];
  });
 
- function editExpert(){
+ function editSuggestion(){
    var filename= selectedFileEdit.name;
    var storageRef = firebase.storage().ref('/CourseImage/' + filename);
    var uplodadTask = storageRef.put(selectedFileEdit);
@@ -374,10 +374,10 @@ AddCoursesRootRef.on("child_added",snap => {
      var downloadURL = uplodadTask.snapshot.downloadURL;
      var updatebachelor = {
        file:downloadURL,
-       topic:  $('#TopicExpert').val(),
-       topic2:  $('#TopicExpert2').val(),
-       detail:  $('#detailExpert').val(),
-       detail2:  $('#detailExpert2').val(),
+       topic:  $('#TopicCourse').val(),
+       topic2:  $('#TopicDegree').val(),
+       detail:  $('#detailCourse').val(),
+       detail2:  $('#detailDegree').val(),
      };
 
      var Type = $("#SelectTypeCourse").val();
@@ -398,15 +398,15 @@ AddCoursesRootRef.on("child_added",snap => {
      firebase.database().ref("website/course/AddCourses").child(Type).child(View).child(idBody).update(updatebachelor);
 
      page = $('#coursePage').text();
-     topic = $('#TopicExpert').val();
-     action = "ได้ทำการแก้ไขข้อมูลกลุ่มวิชาใน " + View + " ในหน้า ";
+     topic = $('#TopicCourse').val();
+     action = "แก้ไขข้อมูลกลุ่มวิชา" + View;
      pushHistory();
 
-     $('#fileUploadExpert').val("");
-     $('#TopicExpert').val("");
-     $('#TopicExpert2').val("");
-     $('#detailExpert').val("");
-     $('#detailExpert2').val("");
+     $('#fileUploadAddSuggestion').val("");
+     $('#TopicCourse').val("");
+     $('#TopicDegree').val("");
+     $('#detailCourse').val("");
+     $('#detailDegree').val("");
 
 
        $('#Suggestion_work').empty();
@@ -437,7 +437,7 @@ AddCoursesRootRef.on("child_added",snap => {
                                    " <a href='"+'javascript:void(0)'+"'  class='"+'text-inverse  btn-delete-expert'+"'  data-toggle='"+'tooltip'+"' title='"+''+"' data-original-title='"+'Delete'+"'><i class='"+'ti-trash'+"'></i></a></td></tr>");
       });
 
-       $('#addEditExpert2').modal('show');
+       $('#addEditSuggestion2').modal('show');
 
    });
  };
@@ -470,7 +470,7 @@ AddCoursesRootRef.on("child_added",snap => {
       page = $('#courses').text();
       topic = $('#TopicEditDownload').val();
       var TopicCourse = $('#AddTypeCourse2').val();
-      action = "ได้ทำการเพิ่มข้อมูลกลุ่มวิชาใน" + TopicCourse;
+      action = "เพิ่มข้อมูลกลุ่มวิชาใน" + TopicCourse;
       pushHistory();
     });
 
@@ -583,7 +583,7 @@ AddCoursesRootRef.on("child_added",snap => {
 
                 page = $('#coursePage').text();
                 topic = $('#TopicEditDownload').val();
-                action = "เพิ่มข้อมูลดาวน์โหลด PDF " + TopicNameDownload + " ในหน้า ";
+                action = "เพิ่มข้อมูลดาวน์โหลด PDF " + TopicNameDownload;
                 pushHistory();
 
               });

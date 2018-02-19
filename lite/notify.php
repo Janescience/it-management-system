@@ -33,7 +33,7 @@
   if($page == "หน้าแรก"){
     echo "<script>window.location.href = 'index.php' </script>";
   }else if($page == "หลักสูตร"){
-    echo "<script>window.location.href = 'course.php' </script>";
+    echo "<script>window.location.href = 'courses.php' </script>";
   }else if($page == "ผลงานและกิจกรรม"){
     if($type == "ผลงานระดับปริญญาตรี"){
       echo "<script>window.location.href = 'showBechelorPortfolio.php' </script>";

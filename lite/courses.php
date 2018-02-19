@@ -218,7 +218,7 @@
 
                                   <!-- Modal edit Suggestion -->
 
-                                  <div class="modal fade" id="editExpertModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                                  <div class="modal fade" id="editSuggestionModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                       <div class="modal-content">
                                         <div class="modal-header">
@@ -233,7 +233,7 @@
                                             <h6 class="card-subtitle">ชื่อหลักสูตร</h6>
                                                 <div class="input-group">
                                                 <div class="input-group-addon"><i class="ti-write"></i></div>
-                                                <input id="TopicExpert" type="text"  class="form-control" >
+                                                <input id="TopicCourse" type="text"  class="form-control" >
                                               </div>
                                           </div>
 
@@ -241,7 +241,7 @@
                                             <h6 class="card-subtitle">ชื่อปริญญา</h6>
                                                 <div class="input-group">
                                                 <div class="input-group-addon"><i class="ti-write"></i></div>
-                                                <input id="TopicExpert2" type="text"  class="form-control" >
+                                                <input id="TopicDegree" type="text"  class="form-control" >
                                               </div>
                                           </div>
 
@@ -249,7 +249,7 @@
                                             <h6 class="card-subtitle">ลักษณะวิชาชีพ</h6>
                                                 <div class="input-group">
                                                 <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                                                <textarea id="detailExpert" type="text"  class="form-control" rows="5"></textarea>
+                                                <textarea id="detailCourse" type="text"  class="form-control" rows="5"></textarea>
                                               </div>
                                           </div>
 
@@ -257,7 +257,7 @@
                                             <h6 class="card-subtitle">ลักษณะวิชาที่ศึกษา</h6>
                                                 <div class="input-group">
                                                 <div class="input-group-addon"><i class="ti-comment-alt"></i></div>
-                                                <textarea id="detailExpert2" type="text"  class="form-control" rows="5"></textarea>
+                                                <textarea id="detailDegree" type="text"  class="form-control" rows="5"></textarea>
                                               </div>
                                           </div>
 
@@ -269,7 +269,7 @@
                                                           <div class="input-group">
                                                               <span class="input-group-btn">
                                                                   <span class="btn btn-secondary btn-file">
-                                                                      เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadExpert">
+                                                                      เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadAddSuggestion">
                                                                   </span>
                                                               </span>
                                                               <input type="text" class="form-control" readonly="">
@@ -282,7 +282,7 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button id="btEditExpert" type="button" class="btn btn-success"><i class="fa fa-check"></i> ตกลง</button>
+                                            <button id="btEditSuggestion" type="button" class="btn btn-success"><i class="fa fa-check"></i> ตกลง</button>
                                             <button id="btClose" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                                         </div>
                                       </div>
@@ -291,7 +291,7 @@
 
 
                                           <!-- Modal edit Suggestion2 -->
-                                                <div class="modal fade" id="addEditExpert2" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                                                <div class="modal fade" id="addEditSuggestion2" role="dialog" aria-labelledby="Message" aria-hidden="true">
                                                     <div class="modal-dialog modal-sm">
                                                         <div class="modal-content">
 
@@ -302,7 +302,7 @@
                                                               <h8 class="card-subtitle">แก้ไขข้อมูลเสร็จสิ้น</h8>
                                                           </div>
                                                            <div class="modal-footer">
-                                                              <button id="btCloseEditExpert" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                                                              <button id="btCloseEditSuggestion" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
                                                            </div>
 
                                                           </div>
