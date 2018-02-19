@@ -60,7 +60,7 @@
         <div class="page-wrapper">
             <div class="container-fluid">
                 <div class="row page-titles">
-                    <div class="col-md-5 col-8 align-self-center">
+                    <div class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 align-self-center">
                         <h2 class="text-themecolor">นักศึกษา </h2>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">จัดการผลงาน</a></li>
@@ -69,76 +69,76 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-12">
-                      <div class="card">
-                          <div class="card-block">
-                            <h1 class="w3-animate-right">ผลงานของนักศึกษาระดับปริญญาตรี</h1>
-                            <h4>ระดับปริญญาตรี</h4>
-                                <hr/><br/>
+    <div class="row">
+      <div class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 ">
+          <div class="card">
+              <div class="card-block">
+                <h1 class="w3-animate-right">ผลงานของนักศึกษาระดับปริญญาตรี</h1>
+                <h4>ระดับปริญญาตรี</h4>
+                    <hr/><br/>
 
-                                <div class="row">
-                                  <div class="col-md-4">
-                                  </div>
-                                  <div class="col-md-4">
-                                  </div>
-                                  <div class="col-md-4">
-
-                                  <div class="form-group">
-                                    <span class="counter pull-right"></span>
-                                      <div class="input-group">
-                                        <div class="input-group-addon"><i class="ti-search"></i></div>
-                                        <input id="searchPort" type="text"  class="form-control" >
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row">
-
-                            <div class="col-md-12">
-
-                              <div class="card-block bg-info">
-
-                                <h4 class="text-white card-title">ผลงาน</h4>
-                                <div class="message-box contact-box">
-
-
-                            </div>
-                            </div>
-
-                            <form class="form-horizontal form-material ">
-
-                              <div class="table-responsive">
-                                  <table class="table text-center results table-hover color-bordered-table success-bordered-table">
-                                    <!-- color-bordered-table success-bordered-table -->
-                                      <thead >
-                                          <tr >
-                                              <th class="text-center">แสดง</th>
-                                              <th class="text-center">ชื่อ</th>
-                                              <th class="text-center">รายละเอียด</th>
-                                              <th class="text-center">กลุ่ม</th>
-                                              <th class="text-center">ระดับ</th>
-                                              <th class="text-center">ปีที่ได้รับรางวัล</th>
-                                              <th class="text-center">รูปภาพ</th>
-                                              <th class="text-center">จัดการ</th>
-                                          </tr>
-                                          <tr class="warning no-result">
-                                            <td colspan="8"><i class="fa fa-warning"></i> ไม่พบผลลัพธ์</td>
-                                          </tr>
-                                      </thead>
-                                      <tbody id="list_BechelorPortfolio">
-
-                                      </tbody>
-                                  </table>
-                              </div>
-                            </form>
-
-                            </div>
-                          </div>
+                    <div class="row">
+                      <div class="col-md-4">
                       </div>
+                      <div class="col-md-4">
+                      </div>
+                      <div class="col-xlg-4 col-lg-4 col-md-4 col-sm-4 col-xl-4">
+
+                      <div class="form-group">
+                        <span class="counter pull-right"></span>
+                          <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-search"></i></div>
+                            <input id="searchPort" type="text"  class="form-control" >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+
+                      <div class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 ">
+
+                  <div class="card-block bg-info col-xlg-12 col-lg-12 col-md-12 col-sm-12">
+
+                    <h4 class="text-white card-title">ผลงาน</h4>
+                    <div class="message-box contact-box">
+
+
                 </div>
-            </div>
+                </div>
+
+                <form class="form-horizontal form-material ">
+
+                  <div class="table-responsive">
+                      <table class="table text-center results table-hover color-bordered-table success-bordered-table">
+                        <!-- color-bordered-table success-bordered-table -->
+                          <thead >
+                              <tr >
+                                  <th class="text-center">แสดง</th>
+                                  <th class="text-center">ชื่อ</th>
+                                  <th class="text-center">รายละเอียด</th>
+                                  <th class="text-center">กลุ่ม</th>
+                                  <th class="text-center">ระดับ</th>
+                                  <th class="text-center">ปีที่ได้รับรางวัล</th>
+                                  <th class="text-center">รูปภาพ</th>
+                                  <th class="text-center">จัดการ</th>
+                              </tr>
+                              <tr class="warning no-result">
+                                <td colspan="8"><i class="fa fa-warning"></i> ไม่พบผลลัพธ์</td>
+                              </tr>
+                          </thead>
+                          <tbody id="list_BechelorPortfolio">
+
+                          </tbody>
+                      </table>
+                  </div>
+                </form>
+
+                </div>
+              </div>
           </div>
+    </div>
+</div>
+</div>
 
           <!-- Edit Bechelor Portfolio Modal -->
         <div class="modal fade" id="editBechelorPortfolio" role="dialog" aria-labelledby="Message" aria-hidden="true">

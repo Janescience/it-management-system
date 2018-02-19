@@ -20,6 +20,10 @@ $(document).ready(function(){
   var del;
    $.LoadingOverlay("show");
 
+   var usersRef = dbRef.ref("users");
+
+   var  page,topic,action,type;
+
 // ========================================= Set initial Graduate Portfolio Modal =========================================
   txt = "";
   $('#GraduatePortfolioName').val("");
@@ -99,7 +103,7 @@ $('#EditGraduatePortfolioGroup').on('click',function(e){
   GroupGraId = $(this).children(":selected").attr("id");
     // alert(GroupBecId);
   GraTypeEdit = $("#GraduatePortfolioGroup option:selected" ).text();
-  // alert($("#BechelorPortfolioGroup option:selected" ).text());
+  // alert($("#GraduatePortfolioGroup option:selected" ).text());
   $('#EditGraduatePortfolioType').val(GraTypeEdit);
   });
 
@@ -172,7 +176,6 @@ $('#SaveAddGraduatePortfolioGroup').on('click',function(e){
     for(var i = 0;i< clickBtEditGraPortGroup;i++){
       $('#GraduatePortfolioGroup option:last').remove();
     }
-
   });
 // ========================================= End Add Graduate Portfolio Type =========================================
 
@@ -419,6 +422,12 @@ $('#list_GraduatePortfolio').on('click','.btn-delete-port',function(){
 
         txt = "";
 
+        page = $('#studentPage').text();
+        topic = $('#GraduatePortfolioName').val();
+        action = "แก้ไขรายละเอียดของผลงานนักศึกษาระดับบัณฑิตศึกษา";
+        type = "ผลงานระดับบัณฑิตศึกษา"
+        pushHistory();
+
         $('#GraduatePortfolioName').val("");
         $('#GraduatePortfolioDetail').val("");
         $('#GraduatePortfolioGroup').val("");
@@ -501,5 +510,34 @@ $('#btCloseEditGraduatePortfolio').on('click',function(){
     }else {$('.no-result').hide();}
 
      });
+
+
+          function pushHistory(){
+             var nameValue;
+             var dateTimeCurrent = new Date();
+
+             var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
+             nameHistory.on('value',snap => {
+               nameValue = snap.val();
+             });
+
+             var dataHistory = {
+               id:sessionStorage.getItem("userId"),
+               name:nameValue,
+               page:page,
+               topic:topic,
+               action:action,
+               date:dateTimeCurrent.toDateString(),
+               time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
+             };
+
+             firebase.database().ref('history').push().set(dataHistory);
+
+             var message =  nameValue+" "+action+" ในหน้า ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
+             var txtpage = page;
+             var txttype = type;
+
+            window.location.href = "notify.php?message=" + message + "&page="+ txtpage + "&type=" + txttype;
+           }
 
 });

@@ -17,33 +17,6 @@
      <?php  include('header.php') ?>
 
 
-         <style>
-         .results tr[visible='false'],
-         .no-result{
-           display:none;
-         }
-
-         .results tr[visible='true']{
-           display:table-row;
-         }
-
-         .avatar {
-         width:100px;
-         margin: 10px;
-         border-radius: 500px;
-         -webkit-border-radius: 500px;
-         -moz-border-radius: 500px;
-     }
-
-       #list_user td{
-        text-align:center;
-        vertical-align:middle;
-       }
-
-
-         </style>
-
-
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -60,7 +33,7 @@
     <div class="page-wrapper">
         <div class="container-fluid">
             <div class="row page-titles">
-                <div class="col-md-5 col-sm-8 align-self-center">
+              <div class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 align-self-center">
                     <h2 class="text-themecolor">ปริญญาตรี</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">จัดการกิจกรรม</a></li>
@@ -72,7 +45,7 @@
       <div class="row">
           <div class="col-md-1">
           </div>
-          <div class="col-lg-10">
+          <div class="col-xlg-10 col-lg-10 col-md-10 col-sm-10 col-xl-10">
             <div class="card">
                 <div class="card-block">
                   <h1 class="w3-animate-right">กิจกรรม</h1>
@@ -80,11 +53,11 @@
                       <hr/><br/>
 
                       <div class="row">
-                          <div class="col-md-3">
+                        <div class="col-xlg-3 col-lg-3 col-md-3 col-sm-3 col-xl-3">
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-xlg-6 col-lg-6 col-md-6 col-sm-6 col-xl-6">
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-xlg-3 col-lg-3 col-md-3 col-sm-3 col-xl-3">
                             <div  class="form-group">
                               <div class="demo-switch-title"><h2><i class="fa fa-square"></i> แสดง <i class="fa fa-check-square"></i></h2></div>
                               <div class="switch">
@@ -95,11 +68,11 @@
                       </div>
 
                       <div class="row">
-                          <div class="col-md-3">
+                        <div class="col-xlg-3 col-lg-3 col-md-3 col-sm-3 col-xl-3">
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-xlg-6 col-lg-6 col-md-6 col-sm-6 col-xl-6">
                             <div class="form-group">
-                              <label class="col-md-12">เลือกกิจกรรม</label>
+                              <label class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">เลือกกิจกรรม</label>
                               <select class="form-control js--animations" id="selectActivity">
                               </select>
                             </div>
@@ -107,16 +80,16 @@
                               <button id="DeleteBechelorActivity" class="btn btn-danger"><i class="fa fa-close"></i> ลบกิจกรรม</button>
                             </div>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-xlg-3 col-lg-3 col-md-3 col-sm-3 col-xl-3">
                           </div>
                       </div>
 
                       <div class="row">
-                          <div class="col-md-3">
+                        <div class="col-xlg-3 col-lg-3 col-md-3 col-sm-3 col-xl-3">
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-xlg-6 col-lg-6 col-md-6 col-sm-6 col-xl-6">
                             <div class="form-group">
-                                <label class="col-md-12">ชื่อกิจกรรม</label>
+                                <label class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">ชื่อกิจกรรม</label>
                                 <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-grav"></i></div>
                                   <input id="BechelorActivityName" type="text"  class="form-control form-control-line">
@@ -126,11 +99,11 @@
                       </div>
 
                       <div class="row">
-                          <div class="col-md-3">
+                        <div class="col-xlg-3 col-lg-3 col-md-3 col-sm-3 col-xl-3">
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-xlg-6 col-lg-6 col-md-6 col-sm-6 col-xl-6">
                             <div class="form-group">
-                                <label class="col-md-12">รายละเอียด</label>
+                                <label class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">รายละเอียด</label>
                                 <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-list"></i></div>
                                   <textarea class="form-control" rows="5" id="BechelorActivityDetail" ></textarea>
@@ -140,17 +113,17 @@
                       </div>
 
                       <div class="row">
-                          <div class="col-md-3">
+                        <div class="col-xlg-3 col-lg-3 col-md-3 col-sm-3 col-xl-3">
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-xlg-6 col-lg-6 col-md-6 col-sm-6 col-xl-6">
                             <div class="form-group">
-                                <label class="col-md-12">วันที่จัดกิจกรรม</label>
+                                <label class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">วันที่จัดกิจกรรม</label>
                                 <div class="row" style="margin-left: 30px;margin-right: 0px;">
-                                  <div class="col-md-5" style="padding-right: 0px;padding-left: 0px;">
+                                  <div class="col-xlg-5 col-lg-5 col-md-5 col-sm-5 col-xl-5" style="padding-right: 0px;padding-left: 0px;">
                                       <input  class="form-control form-control-line" type="date" id="BechelorActivityDateFrom"  name="BechelorActivityDateFrom" value="" >
                                   </div>
-                                  <label class="col-md-1" style="padding-left: 10px;padding-right: 5px;margin-top: 10px;height: 20px;">ถึง</label>
-                                  <div class="col-md-5" style="padding-right: 0px;padding-left: 0px;">
+                                  <label class="col-xlg-2 col-lg-2 col-md-2 col-sm-2 col-xl-2" style="padding-left: 10px;padding-right: 5px;margin-top: 10px;height: 20px;">ถึง</label>
+                                  <div class="col-xlg-5 col-lg-5 col-md-5 col-sm-5 col-xl-5" style="padding-right: 0px;padding-left: 0px;">
                                       <input  class="form-control form-control-line" type="date" id="BechelorActivityDateTo"  name="BechelorActivityDateTo" value="" >
                                   </div>
                             </div>
@@ -163,7 +136,7 @@
                         </div> -->
                         <!-- <div class="col-md-4">
                         </div> -->
-                        <div class="col-md-9">
+                        <div class="col-xlg-9 col-lg-9 col-md-9 col-sm-9 col-xl-9">
                           <div align="right" class="">
 
                           </div>
@@ -171,12 +144,12 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3">
+                      <div class="col-xlg-3 col-lg-3 col-md-3 col-sm-3 col-xl-3">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-xlg-6 col-lg-6 col-md-6 col-sm-6 col-xl-6">
                           <div class="form-group">
-                              <label class="col-md-12">แฟ้มรูปภาพ</label>
-                              <div class="col-md-12">
+                              <label class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">แฟ้มรูปภาพ</label>
+                              <div class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">
                                   <div class="form-group text-center">
                                       <div class="input-group">
                                           <span class="input-group-btn">
@@ -197,7 +170,7 @@
                         </div> -->
                         <!-- <div class="col-md-4">
                         </div> -->
-                        <div class="col-lg-12 col-xlg-12 col-md-12">
+                        <div class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">
                           <div align="right" class="">
 
                           </div>
@@ -205,12 +178,12 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3">
+                      <div class="col-xlg-3 col-lg-3 col-md-3 col-sm-3 col-xl-3">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-xlg-6 col-lg-6 col-md-6 col-sm-6 col-xl-6">
                           <div class="form-group">
-                            <label class="col-md-12">วิดีโอ<label style="color:red;">(ถ้ามี)</label></label>
-                            <div class="col-md-12">
+                            <label class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">วิดีโอ<label style="color:red;">(ถ้ามี)</label></label>
+                            <div class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">
                                 <div class="form-group text-center">
                                     <div class="input-group">
                                         <span class="input-group-btn">
@@ -228,7 +201,7 @@
 
                     <div class="row">
 
-                        <div class="col-md-9">
+                      <div class="col-xlg-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">
                           <div align="right" class="">
                             <button id="EditBechelorActivity" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i>   แก้ไขรายละเอียด</button>
                             <button id="SaveEditBechelorActivity" class="btn btn-info" >   ตกลง</button>
@@ -244,9 +217,9 @@
                     </div><br/>
 
                       <div class="row">
-                        <div class="col-lg-1">
+                        <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1 col-xl-1">
                         </div>
-                          <div class="col-lg-10" id="viewActImage">
+                          <div class="col-xlg-10 col-lg-10 col-md-10 col-sm-10 col-xl-10" id="viewActImage">
                             <div class="card">
                                 <div class="card-block">
                                 <h4 class="card-title">ภาพกิจกรรมทั้งหมด</h4>
@@ -261,14 +234,14 @@
                                 </div>
                             </div>
                           </div>
-                        <div class="col-lg-1">
+                          <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1 col-xl-1">
                         </div>
                       </div>
 
                       <div class="row">
-                        <div class="col-lg-1">
+                        <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1 col-xl-1">
                         </div>
-                          <div class="col-lg-10" id="viewActVideo">
+                          <div class="col-xlg-10 col-lg-10 col-md-10 col-sm-10 col-xl-10" id="viewActVideo">
                             <div class="card">
                                 <div class="card-block">
                                   <h4 class="card-title">วีดีโอทั้งหมด</h4>

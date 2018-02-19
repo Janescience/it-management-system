@@ -20,6 +20,9 @@ $(document).ready(function(){
   var del;
    $.LoadingOverlay("show");
 
+   var usersRef = dbRef.ref("users");
+
+   var  page,topic,action,type;
 
 // ========================================= Set initial Bechelor Portfolio Modal =========================================
   txt = "";
@@ -384,10 +387,10 @@ $('#BechelorPortfolioPicture').on('change',function(event){
      }
      $('#BechelorPortfolioYear').val(Year);
      $('#BechelorPortfolioPicturePreview').attr('src',Picture);
-     selectedFile = "";
      $('#BechelorPortfolioPictureText').val("");
      $('#BechelorPortfolioPictureView').removeAttr('src');
      $('#editBechelorPortfolio').modal("show");
+     // selectedFile = "";
 
 
      });
@@ -400,7 +403,6 @@ $('#BechelorPortfolioPicture').on('change',function(event){
      $('#btSubmitBechelorPortfolio').on('click',function(){
 
          clickBtEditPort= clickBtEditPort+1;
-
 
        $('#editBechelorPortfolio').modal('hide');
 
@@ -469,6 +471,12 @@ $('#BechelorPortfolioPicture').on('change',function(event){
 
         txt = "";
 
+        page = $('#studentPage').text();
+        topic = $('#BechelorPortfolioName').val();
+        action = "แก้ไขรายละเอียดของผลงานนักศึกษาระดับปริญญาตรี";
+        type = "ผลงานระดับปริญญาตรี"
+        pushHistory();
+
         $('#BechelorPortfolioName').val("");
         $('#BechelorPortfolioDetail').val("");
         $('#BechelorPortfolioGroup').val("");
@@ -479,6 +487,8 @@ $('#BechelorPortfolioPicture').on('change',function(event){
         $('#EditPortModal').modal('show');
   			$('#BechelorPortfolioPictureView').removeAttr('src');
         selectedFile = "";
+
+
 
         // document.getElementById("BechelorDemo").innerHTML = txt;
       });
@@ -551,5 +561,33 @@ $('#btCloseEditBechelorPortfolio').on('click',function(){
     }else {$('.no-result').hide();}
 
      });
+
+     function pushHistory(){
+        var nameValue;
+        var dateTimeCurrent = new Date();
+
+        var nameHistory = usersRef.child(sessionStorage.getItem("userId")).child('name');
+        nameHistory.on('value',snap => {
+          nameValue = snap.val();
+        });
+
+        var dataHistory = {
+          id:sessionStorage.getItem("userId"),
+          name:nameValue,
+          page:page,
+          topic:topic,
+          action:action,
+          date:dateTimeCurrent.toDateString(),
+          time:dateTimeCurrent.getHours()+":"+dateTimeCurrent.getMinutes()
+        };
+
+        firebase.database().ref('history').push().set(dataHistory);
+
+        var message =  nameValue+" "+action+" ในหน้า ''"+page+"''"+" หัวข้อ/รายละเอียด "+"''"+topic+"''";
+        var txtpage = page;
+        var txttype = type;
+
+       window.location.href = "notify.php?message=" + message + "&page="+ txtpage + "&type=" + txttype;
+      }
 
 });
