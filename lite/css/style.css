@@ -1964,8 +1964,7 @@ File: scss
       padding-right: .75rem;
       font-size: 19px;
       line-height: 50px; }
-    .topbar .top-navbar .navbar-nav > .nav-item.show {
-      background: rgba(0, 0, 0, 0.05); }
+
   .topbar .profile-pic {
     width: 30px;
     border-radius: 100%; }

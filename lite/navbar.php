@@ -9,7 +9,7 @@
         <!-- ============================================================== -->
         <div class="navbar-header">
             <a class="navbar-brand" href="index.php">
-                      <span class="hidden-xs-down"><img src="../images/it-logo.png" alt="homepage" class="light-logo" width="300px" /></span>
+                      <span class="hidden-xs-down"><img src="../images/it-logo.png" alt="homepage" class="light-logo" width="400px" /></span>
                 </a>
                 <span class="hidden-md-up"><img src="../images/logo-bird.png" alt="homepage" class="light-logo" width="35px" /></span>
 
@@ -97,6 +97,8 @@
                 <li hidden id="manageUserMenu"> <a class="waves-effect waves-dark" href="manage-user.php" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span class="hide-menu">จัดการผู้ใช้ในระบบ</span></a>
                 </li>
                 <li id="historyMenu"> <a class="waves-effect waves-dark" href="history.php" aria-expanded="false"><i class="mdi mdi-history"></i><span class="hide-menu">ประวัติ</span></a>
+                </li>
+                <li id="statisticMenu"> <a class="waves-effect waves-dark" href="statistic.php" aria-expanded="false"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">สถิติ</span></a>
                 </li>
 
 

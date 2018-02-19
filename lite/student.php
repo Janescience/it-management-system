@@ -227,7 +227,6 @@
                   <div class="input-group">
                   <div class="input-group-addon"><i class="mdi mdi-calendar-check"></i></div>
                   <select id="BechelorPortfolioYear"  class="form-control form-control-line"></select>
-                    <!-- <input id="BechelorPortfolioYear" type="text" pattern="(?:25|25)[0-9]{2}" title="กรุณากรอกปีพ.ศ.ปีที่ได้รับรางวัล" class="form-control form-control-line"> -->
                 </div>
               </div>
 
@@ -246,8 +245,7 @@
                       <br><img id="BechelorPortfolioPictureView" class="img-show"/>
                   </div>
               </div>
-              <!-- <p id="BechelorDemo"></p> -->
-                  <!-- <input class="form-control  btn-outline-inverse col-md-12" type="file" id="BechelorPortfolioPicture"> -->
+    
             </div>
           </div>
           <div class="modal-footer">

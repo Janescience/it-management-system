@@ -35,7 +35,6 @@
   }else if($page == "หลักสูตร"){
     echo "<script>window.location.href = 'course.php' </script>";
   }else if($page == "ผลงานและกิจกรรม"){
-    
     if($type == "ผลงานระดับปริญญาตรี"){
       echo "<script>window.location.href = 'showBechelorPortfolio.php' </script>";
     }else if($type == "ผลงานระดับบัณฑิตศึกษา"){

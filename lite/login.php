@@ -61,6 +61,7 @@
 
     </div>
   </div>
+
 </div>
 
 <!-- Modal -->
@@ -93,11 +94,22 @@
 
 <footer>
   <div class="container container-fluid bg-4 text-center">
+    <br>
     <div class="row-lg-12">
       <div class="col-lg-12 ">
-        <p style="color:#808080; font-size:10px;">Copyright © Information Technology 2017</p>
+        <a target="_blank" href="https://wrappixel.com/demos/free-admin-templates/material-pro-lite/lite/"><img src="../images/logo-icon.png" width="20px"></a>
+        <a target="_blank" href="https://git-scm.com/"><img src="../images/git.png" width="20px"></a>
+        <a target="_blank" href="https://firebase.google.com/"><img src="../images/firebase.png" width="20px"></a>
+        <a target="_blank" href="https://github.com/"><img src="../images/github.png" width="20px"></a>
       </div>
     </div>
+<br>
+    <div class="row-lg-12">
+      <div class="col-lg-12 ">
+        <p style="color:#808080; font-size:10px;">Copyright © Information of Technology 2017</p>
+      </div>
+    </div><br>
+
   </div>
 </footer>
 

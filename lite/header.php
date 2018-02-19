@@ -1,7 +1,7 @@
 
   <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="16x16" href="../images/logo-bird.png">
-<title>MANAGEMENT SYSYTEM OF INFORMATION OF TECHNOLOGY</title>
+<title>Information of Technology Management System</title>
 <!-- Bootstrap Core CSS -->
 <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -12,7 +12,8 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/upload.css" rel="stylesheet">
 
-<!-- You can change the theme colors from here -->
+
+
 <link href="css/colors/blue.css" id="theme" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css'>
