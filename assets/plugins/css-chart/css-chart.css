@@ -19,7 +19,6 @@
 .css-bar:after,
 .css-bar > img {
   display: inline-block;
-  position: absolute;
   top: 0;
   left: 0;
   border-radius: 50%;
@@ -39,8 +38,7 @@
 .css-bar > img {
   width: 70px;
   height: 70px;
-  margin-left: 5px;
-  margin-top: 5px;
+  margin:5px;
   line-height: 70px;
 }
 
