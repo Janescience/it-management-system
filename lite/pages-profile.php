@@ -121,22 +121,22 @@
                                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(69px, 33px, 0px); top: 0px; left: 0px; will-change: transform;">
                                                 <a class="dropdown-item" href="javascript:void(0)" id="available">
                                                   <svg width="30" height="30"  >
-                                                      <circle  cx="15" cy="15" r="5"  fill="#00ff00" stroke-width="3"/>
+                                                      <circle  cx="15" cy="15" r="5"  fill="#66ff66" stroke-width="3"/>
                                                   </svg>สามารถเข้าพบได้
                                                 </a>
                                                 <a class="dropdown-item" href="javascript:void(0)" id="notintheoffice">
                                                   <svg width="30" height="30" id="svg" >
-                                                      <circle  cx="15" cy="15" r="5"  fill="#0099ff" stroke-width="3"/>
+                                                      <circle  cx="15" cy="15" r="5"  fill="#ff6666" stroke-width="3"/>
                                                   </svg>ไม่อยู่
                                                 </a>
                                                 <a class="dropdown-item" href="javascript:void(0)" id="beback">
                                                   <svg width="30" height="30" id="svg" >
-                                                    <circle  cx="15" cy="15" r="5"  fill="#ffcc00" stroke-width="3"/>
+                                                    <circle  cx="15" cy="15" r="5"  fill="#ffdb4d" stroke-width="3"/>
                                                   </svg>กรุณารอสักครู่
                                                </a>
                                                 <a class="dropdown-item" href="javascript:void(0)" id="dontdisturb">
                                                   <svg width="30" height="30" id="svg" >
-                                                    <circle  cx="15" cy="15" r="5"  fill="#ff3300" stroke-width="3"/>
+                                                    <circle  cx="15" cy="15" r="5"  fill="#ffa366" stroke-width="3"/>
                                                   </svg>ห้ามรบกวน
                                                 </a>
                                             </div>

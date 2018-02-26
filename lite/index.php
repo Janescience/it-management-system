@@ -129,7 +129,7 @@
 
                       <form class="form-horizontal form-material ">
                         <div class="table-responsive">
-                            <table id="tablePurpose" >
+                            <table id="tablePurpose" class="table">
                                 <thead >
                                     <tr class="table text-center" >
                                         <th class="text-center">วัตถุประสงค์</th>
@@ -279,7 +279,7 @@
         </div>
       </div>
 
-            <footer class="footer">Copyright © Information Technology 2017</footer>
+            <footer class="footer text-center"><h6>Copyright © Information Technology 2017</h6></footer>
         </div>
     </div>
 

@@ -27,10 +27,9 @@ $(document).ready(function(){
 
 	var usersRef = dbRef.ref("users");
 
-	var countImage = 0;
-	var countVideo = 0;
+	var countVideoBachelor = 0,countVideoGraduate = 0;
 
-	var NumCount = 0;
+	var NumCountBachelor = 0,NumCountGraduate = 0;
 
 
 
@@ -699,20 +698,15 @@ $(document).ready(function(){
 			          uploadImageAsPromise(imageFile);
 			      }
 
-						countVideo = v.target.files.length;
+						countVideoBachelor = v.target.files.length;
 
 			      for (var i = 0; i < v.target.files.length; i++) {
 			          var videoFile = v.target.files[i];
+								NumCountBachelor++;
 			          uploadVideoAsPromise(videoFile);
-								NumCount++;
+
 			      }
-						// if(NumCount = countVideo)	{
-						// 	page = $('#studentPage').text();
-						// 		topic = $('#BechelorActivityName').val();
-						// 		action = "เพิ่มกิจกรรมระดับปริญญาตรี";
-						// 		type = "กิจกรรมระดับปริญญาตรี"
-						// 		pushHistory();
-						// }
+
 
 			  //Handle waiting to upload each file using promise
 			  function uploadImageAsPromise (imageFile) {
@@ -752,7 +746,16 @@ $(document).ready(function(){
 			            },function(){
 			              var downloadVideoURL = VideosTask.snapshot.downloadURL;
 
-			            firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).child('activity_video').push().child('videos').set(downloadVideoURL);
+			            firebase.database().ref('website/student/bechelor').child('activity').child(NameBechelorAct).child('activity_video').push().child('videos').set(downloadVideoURL).then(function(){
+										if(NumCountBachelor == countVideoBachelor){
+											page = $('#studentPage').text();
+												topic = $('#BechelorActivityName').val();
+												action = "เพิ่มกิจกรรมระดับปริญญาตรี";
+												type = "กิจกรรมระดับปริญญาตรี"
+												pushHistory();
+										}
+									});
+
 
 
 
@@ -932,9 +935,10 @@ $(document).ready(function(){
 		        uploadImageAsPromise(imageFile);
 		    }
 
+				countVideoGraduate = v.target.files.length;
 		    for (var i = 0; i < v.target.files.length; i++) {
 		        var videoFile = v.target.files[i];
-
+						NumCountGraduate++;
 		        uploadVideoAsPromise(videoFile);
 		    }
 		//Handle waiting to upload each file using promise
@@ -959,16 +963,7 @@ $(document).ready(function(){
 		        //     activity_image:GraduateActivityImage
 		        // };
 		        // firebase.database().ref('website/student').child('graduate').child('activity').child('image').push().set(downloadImageURL);
-		        firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_image').push().child('images').set(downloadImageURL).then(function(){
-							countImage+=1;
-							if(countImage = p.target.files.length)	{
-								page = $('#studentPage').text();
-									topic = $('#GraduateActivityName').val();
-									action = "เพิ่มกิจกรรมระดับบัณฑิตศึกษา";
-									type = "กิจกรรมระดับบัณฑิตศึกษา"
-									pushHistory();
-							}
-			      });
+		        firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_image').push().child('images').set(downloadImageURL);
 		    });
 		});
 
@@ -987,18 +982,12 @@ $(document).ready(function(){
 		          },function(){
 		            var downloadVideoURL = VideosTask.snapshot.downloadURL;
 
-		            // GraduateActivityVideo.push(downloadVideoURL);
-		          //
-		          //   qActVideo = {
-		          //     activity_video:GraduateActivityVideo
-		          // };
 		          firebase.database().ref('website/student/graduate').child('activity').child(NameGraduateAct).child('activity_video').push().child('videos').set(downloadVideoURL).then(function(){
-								countVideo+=1;
-								if(countVideo = p.target.files.length)	{
-									page = $('#studentPage').text();
+								if(NumCountGraduate == countVideoGraduate)	{
+										page = $('#studentPage').text();
 										topic = $('#GraduateActivityName').val();
 										action = "เพิ่มกิจกรรมระดับบัณฑิตศึกษา";
-										type = "กิจกรรมระดับบัณฑิตศึกษา"
+										type = "กิจกรรมระดับบัณฑิตศึกษา";
 										pushHistory();
 								}
 				      });;

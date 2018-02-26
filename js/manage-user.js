@@ -252,8 +252,49 @@ $('#btConfrimTaDelete').on('click',function(){
    selectedFile = event.target.files[0];
  });
 
+ $('#rankCreateUser').on('change',function(){
+   var indexRank = document.getElementById('rankCreateUser').selectedIndex;
+   if(indexRank==0){
+     $('#position').attr('hidden','true');
+     $('#nameCreateUser').prop('disabled',true);
+     $('#emailCreateUser').prop('disabled',true);
+     $('#ageCreateUser').prop('disabled',true);
+     $('#passwordCreateUser').prop('disabled',true);
+     $('#phoneCreateUser').prop('disabled',true);
+     $('#btCreateUser').attr('hidden','true');
+   }else if(indexRank==1){
+     $('#position').removeAttr('hidden');
+     $('#nameCreateUser').prop('disabled',false);
+     $('#emailCreateUser').prop('disabled',false);
+     $('#ageCreateUser').prop('disabled',false);
+     $('#passwordCreateUser').prop('disabled',false);
+     $('#phoneCreateUser').prop('disabled',false);
+     $('#btCreateUser').removeAttr('hidden');
+   }else if(indexRank==2){
+     $('#position').attr('hidden','true');
+     $('#nameCreateUser').prop('disabled',false);
+     $('#emailCreateUser').prop('disabled',false);
+     $('#ageCreateUser').prop('disabled',false);
+     $('#passwordCreateUser').prop('disabled',false);
+     $('#phoneCreateUser').prop('disabled',false);
+     $('#btCreateUser').removeAttr('hidden');
+   }else if(indexRank==3){
+     $('#position').attr('hidden','true');
+     $('#nameCreateUser').prop('disabled',false);
+     $('#emailCreateUser').prop('disabled',false);
+     $('#ageCreateUser').prop('disabled',false);
+     $('#passwordCreateUser').prop('disabled',false);
+     $('#phoneCreateUser').prop('disabled',false);
+     $('#btCreateUser').removeAttr('hidden');
+   }
+ });
+
+
  $('#btCreateUser').on('click',function(e){
    e.preventDefault();
+   if($('#nameCreateUser').val() == "" || $('#emailCreateUser').val() == "" || $('#phoneCreateUser').val() == "" || $('#passwordCreateUser').val() == "" || $('#fileUploadImageCreateUser').val() == ""){
+     $('#notifyInput').modal('show');
+   }else{
    $('#addUserModal').modal('hide');
    $('#messageModalWait').html("กำลังบันทึกข้อมูล...  "+ spanText('<i class="fa fa-circle-o-notch fa-spin fa-lg"</i>', ['center', 'info']));
     $('#waitModal').modal('show');
@@ -269,8 +310,10 @@ $('#btConfrimTaDelete').on('click',function(){
     },function(){
       var downloadURL = uplodadTask.snapshot.downloadURL;
       var data = {
+           position:$('#positionCreateUser').val(),
            name:$('#nameCreateUser').val(),
            email: $('#emailCreateUser').val(),
+           age:$('#ageCreateUser').val(),
            telephone: $('#phoneCreateUser').val(),
            image: downloadURL,
            level: $('#rankCreateUser').val(),
@@ -382,6 +425,7 @@ $('#btConfrimTaDelete').on('click',function(){
             $('#list_staff tr:last').remove();
             $('#list_ta tr:last').remove();
           }
+        }
        });
 
   $('#fileUploadImageEditUser').on('change',function(event){
