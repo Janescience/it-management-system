@@ -155,7 +155,7 @@
 
                           </div>
                         <div class="card-block">
-                          <div class="col-md-5">
+                          <div class="col-md-4">
 
                           <div class="form-group">
                             <h1 class="text-left">เจ้าหน้าที่บริหารงานทั่วไป</h1>
@@ -372,7 +372,7 @@
                                   เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadImageCreateUser" >
                               </span>
                           </span>
-                          <input type="text" class="form-control" id="urlUploadImageCreateUser" readonly>
+                          <input type="text" class="form-control" id="urlUploadImageCreateUser" required readonly>
                       </div>
 
                   </div>
@@ -380,10 +380,34 @@
             </div>
 
             <div class="form-group">
+              <label >เลือกบทบาท</label>
+                  <select id="rankCreateUser" class="form-control form-control-line" required>
+                      <option>กรุณาเลือกบทบาท</option>
+                      <option>คณาจารย์และบุคลากร</option>
+                      <option>เจ้าหน้าที่บริหารงานทั่วไป</option>
+                      <option>ผู้ช่วยสอนและวิจัย</option>
+                  </select>
+            </div>
+
+            <div hidden id="position" class="form-group">
+              <label for="nameCreateUser">ตำแหน่ง</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-crown"></i></div>
+                  <select id="positionCreateUser" required class="form-control">
+                    <option></option>
+                    <option>ผู้ช่วยศาสตราจารย์ ดอกเตอร์ (ผศ. ดร.)</option>
+                    <option>รองศาสตราจารย์ ดอกเตอร์ (รศ. ดร.)</option>
+                    <option>อาจารย์ ดอกเตอร์ (อ. ดร.)</option>
+                    <option>อาจารย์ (อ.)</option>
+                  </select>
+                </div>
+            </div>
+
+            <div class="form-group">
               <label for="nameCreateUser">ชื่อ - นามสกุล</label>
                   <div class="input-group">
                   <div class="input-group-addon"><i class="ti-user"></i></div>
-                  <input id="nameCreateUser" type="text" class="form-control">
+                  <input id="nameCreateUser" disabled="true" type="text" class="form-control" required>
                 </div>
             </div>
 
@@ -391,7 +415,15 @@
               <label for="emailCreateUser" >อีเมล์</label>
                   <div class="input-group">
                   <div class="input-group-addon"><i class="ti-email"></i></div>
-                  <input id="emailCreateUser" type="email"  class="form-control " >
+                  <input id="emailCreateUser" disabled="true" type="email"  class="form-control " required>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label for="emailCreateUser" >อายุ</label>
+                  <div class="input-group">
+                  <div class="input-group-addon"><i class="ti-id-badge"></i></div>
+                  <input id="ageCreateUser" disabled="true" type="number"  class="form-control" required>
                 </div>
             </div>
 
@@ -399,7 +431,7 @@
               <label for="passwordCreateUser">รหัสผ่าน</label>
               <div class="input-group">
                 <div class="input-group-addon"><i class="ti-lock"></i></div>
-                  <input id="passwordCreateUser" type="password"  class="form-control ">
+                  <input id="passwordCreateUser" disabled="true" type="password"  class="form-control" required>
               </div>
             </div>
 
@@ -407,23 +439,16 @@
                 <label for="phoneCreateUser">หมายเลขโทรศัพท์</label>
                 <div class="input-group">
                   <div class="input-group-addon"><i class="ti-mobile"></i></div>
-                    <input id="phoneCreateUser" type="text"  class="form-control">
+                    <input id="phoneCreateUser" disabled="true" type="tel"  class="form-control" required>
                 </div>
             </div>
-            <div class="form-group">
-                <label >เลือกบทบาท</label>
-                    <select id="rankCreateUser" class="form-control form-control-line">
-                        <option>คณาจารย์และบุคลากร</option>
-                        <option>เจ้าหน้าที่บริหารงานทั่วไป</option>
-                        <option>ผู้ช่วยสอนและวิจัย</option>
-                    </select>
-            </div>
+
             </form>
       </div>
     </div>
     <div class="modal-footer">
-      <button id="btCreateUser" type="submit" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> บันทึก</button>
-      <button   type="submit" class="btn btn-inverse" data-dismiss="modal">ยกเลิก</button>
+      <button hidden id="btCreateUser"  type="submit" class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> บันทึก</button>
+      <button  class="btn btn-inverse" data-dismiss="modal">ยกเลิก</button>
     </div>
     </div>
   </div>
@@ -500,6 +525,24 @@
 </div>
 </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="notifyInput" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" >การแจ้งเตือน</h4>
+      </div>
+<div class="modal-body">
+  <h4>กรุณากรอกข้อมูลให้ครบ</h4>
+</div>
+<div class="modal-footer">
+  <button   type="submit" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+</div>
+</div>
+</div>
+</div>
+
 
     <?php include('import-javascript.php')?>
     <script src="../js/manage-user.js"></script>

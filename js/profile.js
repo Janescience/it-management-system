@@ -2577,25 +2577,25 @@ if(showBoolean){
 
  $('#available').click(function(){
    var color={
-     office:"border:8px solid #00ff00;"
+     office:"border:8px solid #66ff66;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
  $('#notintheoffice').click(function(){
    var color={
-     office:"border:8px solid #0099ff;"
+     office:"border:8px solid #ff6666;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
  $('#beback').click(function(){
    var color={
-     office:"border:8px solid #ffcc00;"
+     office:"border:8px solid #ffdb4d;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
  $('#dontdisturb').click(function(){
    var color={
-     office:"border:8px solid #ff3300;"
+     office:"border:8px solid #ffa366;"
    };
    usersRef.child(sessionStorage.getItem("userId")).update(color);
  });
@@ -3094,13 +3094,13 @@ $('#btSubmitExp').on('click',function(){
  var dbStatus = usersRef.child(sessionStorage.getItem("userId")).child('office');
  dbStatus.on('value',snap => {
    $('#imageProfile').attr("style",snap.val());
-   if(snap.val() == "border:8px solid #00ff00;"){
+   if(snap.val() == "border:8px solid #66ff66;"){
      document.getElementById('showStatus').innerText = "สามารถเข้าพบได้";
-   }else if(snap.val() == "border:8px solid #0099ff;"){
+   }else if(snap.val() == "border:8px solid #ff6666;"){
      document.getElementById('showStatus').innerText = "ไม่อยู่";
-   }else if(snap.val() == "border:8px solid #ffcc00;"){
+   }else if(snap.val() == "border:8px solid #ffdb4d;"){
      document.getElementById('showStatus').innerText = "กรุณารอสักครู่";
-   }else if(snap.val() == "border:8px solid #ff3300;"){
+   }else if(snap.val() == "border:8px solid #ffa366;"){
      document.getElementById('showStatus').innerText = "ห้ามรบกวน";
 
    }
@@ -3110,9 +3110,7 @@ $('#btSubmitExp').on('click',function(){
  $('#btSetPassword').on('click',function(){
    var user = firebase.auth().currentUser;
    user.updatePassword($('#passwordUpdate').val()).then(function() {
-
          window.location = "login.php"
-
    }).catch(function(error) {
   // An error happened.
   });
