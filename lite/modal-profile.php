@@ -169,6 +169,24 @@
 
 <!--===========================================================================================================-->
 
+<!--==================================== Confirm Change Password ====================================================-->
+
+<div class="modal fade" id="confirmChangePassModal" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">คุณแน่ใจว่าต้องการเปลี่ยนรหัสผ่าน ?</h4>
+      </div>
+      <div class="modal-footer">
+        <button id="btConfirmSetPassword"  class="btn btn-success waves-effect waves-light m-r-5"><i class="fa fa-check"></i> ตกลง</button>
+        <button  class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--===========================================================================================================-->
+
 <!--==================================== Delete ====================================================-->
 
 <div class="modal fade" id="deleteProfileModal" role="dialog" aria-labelledby="Message" aria-hidden="true">

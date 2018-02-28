@@ -226,10 +226,7 @@
                 </div>
             </div>
 
-
-            <footer class="footer">
-                Copyright © Information Technology 2017
-            </footer>
+<footer class="footer text-center"><h6>Copyright © Information Technology 2017</h6></footer>
         </div>
     </div>
 

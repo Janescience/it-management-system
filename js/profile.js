@@ -3108,13 +3108,17 @@ $('#btSubmitExp').on('click',function(){
 
 
  $('#btSetPassword').on('click',function(){
+   $('#changePassModal').modal('hide');
+   $('#confirmChangePassModal').modal('show');
+ });
+
+ $('#btConfirmSetPassword').on('click',function(){
    var user = firebase.auth().currentUser;
    user.updatePassword($('#passwordUpdate').val()).then(function() {
          window.location = "login.php"
    }).catch(function(error) {
   // An error happened.
   });
-
  });
 
 
@@ -3194,6 +3198,20 @@ $('#btSubmitExp').on('click',function(){
  });
 
  $('#btCancelUpdateProfile').on('click',function(){
+   var dbName = usersRef.child(sessionStorage.getItem("userId")).child('name');
+   dbName.on('value',snap => {
+     $('#nameProfile').val(snap.val());
+   });
+
+   var dbEmail = usersRef.child(sessionStorage.getItem("userId")).child('email');
+   dbEmail.on('value',snap => {
+     $('#emailProfile').val(snap.val());
+   });
+
+   var dbPhone = usersRef.child(sessionStorage.getItem("userId")).child('telephone');
+   dbPhone.on('value',snap => {
+     $('#phoneProfile').val(snap.val());
+   });
    document.getElementById("nameProfile").disabled = true;
    document.getElementById("emailProfile").disabled = true;
    document.getElementById("phoneProfile").disabled = true;

@@ -291,7 +291,7 @@
                             เลือกรูปภาพ <input type="file" class="file-upload" id="fileUploadImageCourse" >
                         </span>
                     </span>
-                    <input type="text" class="form-control" readonly>
+                    <input id="txtFileUploadImageCourse" type="text" class="form-control" readonly>
                 </div>
                 <br><img class="img-show "/>
             </div>
@@ -300,8 +300,7 @@
       <div class="modal-footer">
         <button id="btLoadingCourse" class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings"></i></button>
         <button id="btUploadImageCourse" type="button" class="btn btn-success"><i class="fa fa-check"></i> บันทึก</button>
-        <button id="btClearTextFileCourse" type="button" class="btn btn-danger"><i class="mdi mdi-close"></i> ยกเลิก</button>
-        <button id="btCloseCourse" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+        <button id="btCloseCourse" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> ยกเลิก</button>
       </div>
     </div>
   </div>

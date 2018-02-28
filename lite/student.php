@@ -30,23 +30,14 @@
         <div class="page-wrapper">
             <div class="container-fluid">
 
-              <div class="row">
-                  <div class="col-lg-12">
-                      <div class="card">
-
-                      </div>
-                  </div>
+              <div class="row page-titles">
+                <div class="col-md-5 col-8 align-self-center">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)"><h4>เมนูหลัก</h4></a></li>
+                    <li class="breadcrumb-item active">ผลงานและกิจกรรม</li>
+                  </ol>
+                </div>
               </div>
-                <!-- <div class="row page-titles">
-                    <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor">หน้าหลัก</h3>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">ผลงานและกิจกรรม</a></li>
-                            <li class="breadcrumb-item active">แบ่งระดับการศึกษา</li>
-
-                        </ol>
-                    </div>
-                </div> -->
 
 <!-- <================================================================== Bechelor ==================================================================> -->
 
@@ -209,7 +200,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-md-12">Status</label>
+                <label class="col-md-12">ระดับผลงาน</label>
                 <div class="col-md-12">
                   <div class="row">
                     <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
@@ -245,7 +236,7 @@
                       <br><img id="BechelorPortfolioPictureView" class="img-show"/>
                   </div>
               </div>
-    
+
             </div>
           </div>
           <div class="modal-footer">
@@ -394,7 +385,7 @@
               </div>
 
               <div class="form-group">
-                  <label class="col-md-12">สถานะ</label>
+                  <label class="col-md-12">ระดับผลงาน</label>
                   <div class="col-md-12">
                     <div class="row">
                       <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
@@ -532,8 +523,8 @@
       </div>
     </div>
 
-            <footer class="footer">Copyright © Information Technology 2017</footer>
-        </div>
+<footer class="footer text-center"><h6>Copyright © Information Technology 2017</h6></footer>
+</div>
     </div>
 
     <?php include('import-javascript.php')?>
