@@ -112,15 +112,30 @@ var idUpdate;
 
  $('#list_teacher').on('click','.btn-edit-user',function(){
    idUpdate = $(this).closest('tr').attr("id");
+   $('#positionForEdit').removeAttr('hidden');
    var image = $(this).closest('tr').find(".avatar").attr("src");
    var name =  $(this).closest('tr').find(".txtname").text();
    var email =  $(this).closest('tr').find(".txtemail").text();
    var phone =  $(this).closest('tr').find(".txtphone").text();
+   var position = usersRef.child(idUpdate).child('position');
+   position.on('value',snap=>{
+     $('#positionEditUser').val(snap.val());
+   });
+   var leader = usersRef.child(idUpdate).child('leader');
+   leader.on('value',snap=>{
+     if(snap.val() =="หัวหน้าสาขา"){
+       $("#leaderEditUser").prop("checked",true);
+     }else{
+       $("#leaderEditUser").prop("checked",false);
+     }
+   });
    $('#imgShowEdit').attr("src",image);
    $('#nameEditUser').val(name);
    $('#emailEditUser').val(email);
    $('#phoneEditUser').val(phone);
    $('#editUserModal').modal('show');
+
+
  });
 
  var idDeleteTeacher;
@@ -245,6 +260,12 @@ $('#btConfrimTaDelete').on('click',function(){
    e.preventDefault();
    $('#urlUploadImageCreateUser').val("");
    $('#imgShowCreate').removeAttr('src');
+   usersRef.on('child_added',snap=>{
+     var leader = snap.child('leader').val();
+     if(leader=="หัวหน้าสาขา"){
+        $('#leader').remove();
+     }
+   });
     $('#addUserModal').modal('show');
  });
 
@@ -256,6 +277,7 @@ $('#btConfrimTaDelete').on('click',function(){
    var indexRank = document.getElementById('rankCreateUser').selectedIndex;
    if(indexRank==0){
      $('#position').attr('hidden','true');
+     $('#leader').attr('hidden','true');
      $('#nameCreateUser').prop('disabled',true);
      $('#emailCreateUser').prop('disabled',true);
      $('#ageCreateUser').prop('disabled',true);
@@ -264,6 +286,7 @@ $('#btConfrimTaDelete').on('click',function(){
      $('#btCreateUser').attr('hidden','true');
    }else if(indexRank==1){
      $('#position').removeAttr('hidden');
+     $('#leader').removeAttr('hidden');
      $('#nameCreateUser').prop('disabled',false);
      $('#emailCreateUser').prop('disabled',false);
      $('#ageCreateUser').prop('disabled',false);
@@ -272,6 +295,7 @@ $('#btConfrimTaDelete').on('click',function(){
      $('#btCreateUser').removeAttr('hidden');
    }else if(indexRank==2){
      $('#position').attr('hidden','true');
+     $('#leader').attr('hidden','true');
      $('#nameCreateUser').prop('disabled',false);
      $('#emailCreateUser').prop('disabled',false);
      $('#ageCreateUser').prop('disabled',false);
@@ -280,6 +304,7 @@ $('#btConfrimTaDelete').on('click',function(){
      $('#btCreateUser').removeAttr('hidden');
    }else if(indexRank==3){
      $('#position').attr('hidden','true');
+     $('#leader').attr('hidden','true');
      $('#nameCreateUser').prop('disabled',false);
      $('#emailCreateUser').prop('disabled',false);
      $('#ageCreateUser').prop('disabled',false);
@@ -309,6 +334,9 @@ $('#btConfrimTaDelete').on('click',function(){
 
     },function(){
       var downloadURL = uplodadTask.snapshot.downloadURL;
+      if ($("#leaderCreateUser").prop("checked") == true) {
+         var leaderText = "หัวหน้าสาขา";
+      }
       var data = {
            position:$('#positionCreateUser').val(),
            name:$('#nameCreateUser').val(),
@@ -316,6 +344,7 @@ $('#btConfrimTaDelete').on('click',function(){
            age:$('#ageCreateUser').val(),
            telephone: $('#phoneCreateUser').val(),
            image: downloadURL,
+           leader:leaderText,
            level: $('#rankCreateUser').val(),
            office:"border:8px solid #BDBDBD;",
            status:"",
@@ -508,9 +537,18 @@ $('#btConfrimTaDelete').on('click',function(){
     if(selectFileEdit!="" && selectFileEdit!=null){
       pushImageEdit();
     }
+
+    if($("#leaderEditUser").prop("checked")==true){
+      var leaderEditText = "หัวหน้าสาขา";
+    }else{
+      var leaderEditText = "";
+    }
+
     $('#editUserModal').modal('hide');
     var dataUpdate = {
       name:$('#nameEditUser').val(),
+      leader:leaderEditText,
+      position:$('#positionEditUser').val(),
       email:$('#emailEditUser').val(),
       telephone:$('#phoneEditUser').val()
     };

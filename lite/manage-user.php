@@ -253,9 +253,7 @@
 
                 </div>
             </div>
-            <footer class="footer">
-                Copyright © Information Technology 2017
-            </footer>
+    <footer class="footer text-center"><h6>Copyright © Information Technology 2017</h6></footer>
         </div>
     </div>
     <!-- Modal -->
@@ -389,6 +387,18 @@
                   </select>
             </div>
 
+            <div hidden id="leader" class="form-group">
+                <label class="col-md-12">ระดับ</label>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
+                      <input type="checkbox" id="leaderCreateUser" class="chk-col-grey" >
+                      <label for="leaderCreateUser">หัวหน้าสาขา</label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
             <div hidden id="position" class="form-group">
               <label for="nameCreateUser">ตำแหน่ง</label>
                   <div class="input-group">
@@ -488,6 +498,32 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+
+        <div  class="form-group">
+            <label class="col-md-12">ระดับ</label>
+            <div class="col-md-12">
+              <div class="row">
+                <div class="demo-checkbox" style="margin-left: 23px;margin-top: 20px;">
+                  <input type="checkbox" id="leaderEditUser" class="chk-col-grey" >
+                  <label for="leaderEditUser">หัวหน้าสาขา</label>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div hidden id="positionForEdit" class="form-group">
+          <label for="nameCreateUser">ตำแหน่ง</label>
+              <div class="input-group">
+              <div class="input-group-addon"><i class="ti-crown"></i></div>
+              <select id="positionEditUser" required class="form-control">
+                <option></option>
+                <option>ผู้ช่วยศาสตราจารย์ ดอกเตอร์ (ผศ. ดร.)</option>
+                <option>รองศาสตราจารย์ ดอกเตอร์ (รศ. ดร.)</option>
+                <option>อาจารย์ ดอกเตอร์ (อ. ดร.)</option>
+                <option>อาจารย์ (อ.)</option>
+              </select>
             </div>
         </div>
 

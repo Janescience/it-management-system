@@ -50,7 +50,7 @@
             <div class="col-lg-12">
               <div class="card ">
                 <div class="card-block ">
-                  <h4 class="text-black card-title">รูปภาพไสลด์</h4>
+                  <h4 class="text-black card-title">รูปภาพสไลด์</h4>
                     <div class="message-box contact-box">
                       <h2 class="add-ct-btn">
                         <button type="button" id="btAddHeader" data-toggle="tooltip" title="เพิ่มสไลด์" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>

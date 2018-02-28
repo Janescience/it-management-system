@@ -378,29 +378,27 @@ dbImageDoctor.on('value',snap => {
 });
 
 $('#btUploadImageCourse').hide();
-$('#btClearTextFileCourse').hide();
 $('#btLoadingCourse').hide();
 
 $('#fileUploadImageCourse').on('change',function(event){
   selectImageCourse = event.target.files[0];
 $('#btUploadImageCourse').show();
-$('#btClearTextFileCourse').show();
 });
 
 $('#btUploadImageCourse').on('click',function(e){
   e.preventDefault();
 $('#btUploadImageCourse').hide();
-$('#btClearTextFileCourse').hide();
 $('#btCloseCourse').hide();
 $('#btLoadingCourse').show();
   uploadImageCourse();
 });
 
-$('#btClearTextFileCourse').on('click',function(){
-  $('#fileUploadImageCourse').val("");
-  $('#btUploadImageCourse').hide();
-  $('#btClearTextFileCourse').hide();
+$('#btCloseCourse').on('click',function(e){
+$('#txtFileUploadImageCourse').val("");
+$('.img-show').removeAttr('src');
 });
+
+
 
 function uploadImageCourse(){
   var filename= selectImageCourse.name;

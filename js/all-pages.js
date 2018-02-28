@@ -309,7 +309,7 @@ dbStatus.on('value',snap => {
     $('#ta').removeAttr('hidden');
     $('#staff').removeAttr('hidden');
   }else if(sessionStorage.getItem("level") == "ผู้ช่วยสอนและวิจัย"){
-    $('#manageUserMenu').removeAttr('hidden');
+    $('#manageUserMenu').attr('hidden',"true");
     $('#indexMenu').removeAttr('hidden');
     $('#courseMenu').removeAttr('hidden');
     $('#studentMenu').removeAttr('hidden');

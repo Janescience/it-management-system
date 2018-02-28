@@ -53,10 +53,10 @@
                                           <button id="btAddDeitlCourses" class="btn waves-effect waves-light btn-warning m-t-10"> เพิ่มหลักสูตร</button>
                                         </h2>
                                       </div>
-                                  <div class="col-md-4">
-                                      <div class="row">
 
-                                            <select id="SelectTypeCourse" name="BecPortfolioGroup" class="form-control form-control-line">
+                                      <div class="row">
+                                        <div class="card-block">
+                                            <select id="SelectTypeCourse" name="BecPortfolioGroup" class="form-control col-xlg-3 col-lg-3 col-md-3">
 
                                                 <option value="-">เลือกระดับการศึกษาที่ต้องการแสดง</option>
                                                 <option value="ปริญญาตรี">ปริญญาตรี</option>
@@ -64,10 +64,14 @@
                                                 <option value="ปริญญาเอก">ปริญญาเอก</option>
 
                                             </select>
+                                            
+                                            <select id="SelectAddCourses" name="BecPortfolioGroup" class="form-control  col-xlg-7 col-lg-7 col-md-7">
+                                            <option >กรุณาเลือกระดับการศึกษา</option>
+                                          </select>
 
-
+                                        </div>
                                       </div>
-                                   </div>
+
 
                                    <div class="row">
                                       <div class="col-md-12">
@@ -84,12 +88,10 @@
                                             <h4 class="text-white card-title">รายละเอียดหลักสูตร</h4>
                                             <div class="message-box contact-box">
                                                 <h2 class="add-ct-btn">
-                                                  <button type="button" id="btOpenModalSuggestion" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
+                                                  <button type="button" id="btOpenModalSuggestion" class="btn   btn-success waves-effect waves-dark">เพิ่มรายละเอียดหลักสูตร</button>
                                                 </h2>
                                             </div>
-                                            <select id="SelectAddCourses" name="BecPortfolioGroup" class="form-control form-control-line col-xlg-8 col-lg-8 col-md-8">
-                                            <option >กรุณาเลือกระดับการศึกษา</option>
-                                          </select>
+
                                         </div>
                                     </div>
 
@@ -799,8 +801,7 @@
           </div>
 
       </div>
-      <footer class="footer">Copyright © Information Technology 2017</footer>
-    </div>
+<footer class="footer text-center"><h6>Copyright © Information Technology 2017</h6></footer>    </div>
 </div>
 
     <?php include('import-javascript.php')?>
